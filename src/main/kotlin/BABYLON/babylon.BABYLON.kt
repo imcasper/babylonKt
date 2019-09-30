@@ -1,5 +1,6 @@
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION", "NESTED_CLASS_IN_EXTERNAL_INTERFACE")
-@file:JsQualifier("BABYLON")
+@file:JsNonModule()
+@file:JsModule("babylonjs")
 package BABYLON
 
 import kotlin.js.*
@@ -2709,7 +2710,7 @@ external interface ICameraInput<TCamera : Camera> {
     var camera: TCamera
     fun getClassName(): String
     fun getSimpleName(): String
-    fun attachControl(element: HTMLElement, noPreventDefault: Boolean? = definedExternally /* null */)
+	fun attachControl(element: HTMLElement, noPreventDefault: Boolean)
     fun detachControl(element: HTMLElement)
     var checkInputs: (() -> Unit)? get() = definedExternally; set(value) = definedExternally
 }
@@ -2767,7 +2768,7 @@ external open class FreeCameraKeyboardMoveInput : ICameraInput<FreeCamera> {
     open var _onKeyboardObserver: Any = definedExternally
     open var _engine: Any = definedExternally
     open var _scene: Any = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     open fun checkInputs(): Unit = definedExternally
     override fun getClassName(): String = definedExternally
@@ -4090,7 +4091,7 @@ external open class FreeCameraMouseInput(touchEnabled: Boolean? = definedExterna
     open var previousPosition: Any = definedExternally
     open var onPointerMovedObservable: Observable<`T$5`> = definedExternally
     open var _allowCameraRotation: Boolean = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     open fun onContextMenu(evt: PointerEvent): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     override fun getClassName(): String = definedExternally
@@ -4106,7 +4107,7 @@ external open class FreeCameraTouchInput : ICameraInput<FreeCamera> {
     open var _pointerInput: Any = definedExternally
     open var _observer: Any = definedExternally
     open var _onLostFocus: Any = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     open fun checkInputs(): Unit = definedExternally
     override fun getClassName(): String = definedExternally
@@ -5974,7 +5975,8 @@ external open class MirrorTexture : RenderTargetTexture {
     override fun dispose(): Unit = definedExternally
 }
 external open class Texture : BaseTexture {
-    constructor(url: String, scene: Scene, noMipmap: Boolean? = definedExternally /* null */, invertY: Boolean? = definedExternally /* null */, samplingMode: Number? = definedExternally /* null */, onLoad: (() -> Unit)? = definedExternally /* null */, onError: ((message: String? /*= null*/, exception: Any? /*= null*/) -> Unit)? = definedExternally /* null */, buffer: String? = definedExternally /* null */, deleteBuffer: Boolean? = definedExternally /* null */, format: Number? = definedExternally /* null */)
+	constructor(url: String, scene: Scene, noMipmap: Boolean? = definedExternally /* null */, invertY: Boolean? = definedExternally /* null */, samplingMode: Number? = definedExternally /* null */, onLoad: (() -> Unit)? = definedExternally /* null */, onError: ((message: String? /*= null*/, exception: Any? /*= null*/) -> Unit)? = definedExternally /* null */)
+	constructor(url: String, scene: Scene, noMipmap: Boolean? = definedExternally /* null */, invertY: Boolean? = definedExternally /* null */, samplingMode: Number? = definedExternally /* null */, onLoad: (() -> Unit)? = definedExternally /* null */, onError: ((message: String? /*= null*/, exception: Any? /*= null*/) -> Unit)? = definedExternally /* null */, buffer: String? = definedExternally /* null */, deleteBuffer: Boolean? = definedExternally /* null */, format: Number? = definedExternally /* null */)
     constructor(url: String, scene: Scene, noMipmap: Boolean? = definedExternally /* null */, invertY: Boolean? = definedExternally /* null */, samplingMode: Number? = definedExternally /* null */, onLoad: (() -> Unit)? = definedExternally /* null */, onError: ((message: String? /*= null*/, exception: Any? /*= null*/) -> Unit)? = definedExternally /* null */, buffer: HTMLImageElement? = definedExternally /* null */, deleteBuffer: Boolean? = definedExternally /* null */, format: Number? = definedExternally /* null */)
     constructor(url: String, scene: Scene, noMipmap: Boolean? = definedExternally /* null */, invertY: Boolean? = definedExternally /* null */, samplingMode: Number? = definedExternally /* null */, onLoad: (() -> Unit)? = definedExternally /* null */, onError: ((message: String? /*= null*/, exception: Any? /*= null*/) -> Unit)? = definedExternally /* null */, buffer: Blob? = definedExternally /* null */, deleteBuffer: Boolean? = definedExternally /* null */, format: Number? = definedExternally /* null */)
     constructor(url: String, scene: Scene, noMipmap: Boolean? = definedExternally /* null */, invertY: Boolean? = definedExternally /* null */, samplingMode: Number? = definedExternally /* null */, onLoad: (() -> Unit)? = definedExternally /* null */, onError: ((message: String? /*= null*/, exception: Any? /*= null*/) -> Unit)? = definedExternally /* null */, buffer: ArrayBuffer? = definedExternally /* null */, deleteBuffer: Boolean? = definedExternally /* null */, format: Number? = definedExternally /* null */)
@@ -9197,7 +9199,7 @@ external open class BaseCameraPointersInput : ICameraInput<Camera> {
     open var _shiftKey: Boolean = definedExternally
     open var _buttonsPressed: Number = definedExternally
     open var buttons: Array<Number> = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     override fun getClassName(): String = definedExternally
     override fun getSimpleName(): String = definedExternally
@@ -9254,7 +9256,7 @@ external open class ArcRotateCameraKeyboardMoveInput : ICameraInput<ArcRotateCam
     open var _onKeyboardObserver: Any = definedExternally
     open var _engine: Any = definedExternally
     open var _scene: Any = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     open fun checkInputs(): Unit = definedExternally
     override fun getClassName(): String = definedExternally
@@ -9267,7 +9269,7 @@ external open class ArcRotateCameraMouseWheelInput : ICameraInput<ArcRotateCamer
     open var _wheel: Any = definedExternally
     open var _observer: Any = definedExternally
     open var computeDeltaFromMouseWheelLegacyEvent: Any = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     override fun getClassName(): String = definedExternally
     override fun getSimpleName(): String = definedExternally
@@ -9687,7 +9689,7 @@ external open class ArcRotateCameraGamepadInput : ICameraInput<ArcRotateCamera> 
     open var gamepadMoveSensibility: Number = definedExternally
     open var _onGamepadConnectedObserver: Any = definedExternally
     open var _onGamepadDisconnectedObserver: Any = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     open fun checkInputs(): Unit = definedExternally
     override fun getClassName(): String = definedExternally
@@ -9701,7 +9703,7 @@ external open class ArcRotateCameraVRDeviceOrientationInput : ICameraInput<ArcRo
     open var _gamma: Any = definedExternally
     open var _dirty: Any = definedExternally
     open var _deviceOrientationHandler: Any = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     open fun _onOrientationEvent(evt: DeviceOrientationEvent): Unit = definedExternally
     open fun checkInputs(): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
@@ -9723,7 +9725,7 @@ external open class FlyCameraMouseInput(touchEnabled: Boolean? = definedExternal
     open var previousPosition: Any = definedExternally
     open var noPreventDefault: Any = definedExternally
     open var element: Any = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     override fun getClassName(): String = definedExternally
     override fun getSimpleName(): String = definedExternally
@@ -9789,7 +9791,7 @@ external open class FlyCameraKeyboardInput : ICameraInput<FlyCamera> {
     open var _onKeyboardObserver: Any = definedExternally
     open var _engine: Any = definedExternally
     open var _scene: Any = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     override fun getClassName(): String = definedExternally
     open fun _onLostFocus(e: FocusEvent): Unit = definedExternally
@@ -9805,7 +9807,7 @@ external open class FollowCameraMouseWheelInput : ICameraInput<FollowCamera> {
     open var wheelDeltaPercentage: Number = definedExternally
     open var _wheel: Any = definedExternally
     open var _observer: Any = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     override fun getClassName(): String = definedExternally
     override fun getSimpleName(): String = definedExternally
@@ -9897,7 +9899,7 @@ external open class FollowCameraKeyboardMoveInput : ICameraInput<FollowCamera> {
     open var _onKeyboardObserver: Any = definedExternally
     open var _engine: Any = definedExternally
     open var _scene: Any = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     open fun checkInputs(): Unit = definedExternally
     override fun getClassName(): String = definedExternally
@@ -9916,7 +9918,7 @@ external open class FreeCameraDeviceOrientationInput : ICameraInput<FreeCamera> 
     open var _gamma: Any = definedExternally
     open var _onDeviceOrientationChangedObservable: Observable<Unit> = definedExternally
     override var camera: FreeCamera = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     open var _orientationChanged: Any = definedExternally
     open var _deviceOrientation: Any = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
@@ -9935,7 +9937,7 @@ external open class FreeCameraGamepadInput : ICameraInput<FreeCamera> {
     open var _deltaTransform: Any = definedExternally
     open var _vector3: Any = definedExternally
     open var _vector2: Any = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     open fun checkInputs(): Unit = definedExternally
     override fun getClassName(): String = definedExternally
@@ -9998,7 +10000,7 @@ external open class FreeCameraVirtualJoystickInput : ICameraInput<FreeCamera> {
     open fun getLeftJoystick(): VirtualJoystick = definedExternally
     open fun getRightJoystick(): VirtualJoystick = definedExternally
     open fun checkInputs(): Unit = definedExternally
-    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean?): Unit = definedExternally
+    override fun attachControl(element: HTMLElement, noPreventDefault: Boolean): Unit = definedExternally
     override fun detachControl(element: HTMLElement): Unit = definedExternally
     override fun getClassName(): String = definedExternally
     override fun getSimpleName(): String = definedExternally

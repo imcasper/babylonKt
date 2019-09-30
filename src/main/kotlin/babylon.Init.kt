@@ -1,5 +1,6 @@
 package BABYLON
 
+
 external interface GamepadButton
 
 external open class Error
@@ -13,21 +14,21 @@ external class AudioNode
 external class GainNode
 external class AudioContext
 external class AudioBuffer
-external class WebGLQuery
-external class WebGLTransformFeedback
-external class WebGLVertexArrayObject
+//external class WebGLQuery
+//external class WebGLTransformFeedback
+//external class WebGLVertexArrayObject
 external class ClientRect
 external class WEBGL_compressed_texture_s3tc
 external class EXT_texture_filter_anisotropic
-external class EXT_disjoint_timer_query
+//external class EXT_disjoint_timer_query
 external class BodyInit
 external class MediaStream
 external class MediaStreamTrack
 external class MediaTrackConstraints
-external class XRSession
-external class XRFrameOfReference
-external class XRFrame
-external class XRSessionCreationOptions
+//external class XRSession
+//external class XRFrameOfReference
+//external class XRFrame
+//external class XRSessionCreationOptions
 external class ClipboardEvent
 external class ObjectURLOptions
 external class IDBFactory
@@ -53,6 +54,7 @@ external class PointerEvent {
 	val tiltY:Double
 	val twist:Double
 	val pointerType:Any
+	val button:Number
 	val isPrimary:Boolean
 }
 
