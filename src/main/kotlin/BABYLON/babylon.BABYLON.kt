@@ -1794,10 +1794,10 @@ external open class TransformNode(name: String, scene: Scene? = definedExternall
     open var position: Vector3 = definedExternally
     open var rotation: Vector3 = definedExternally
     open var scaling: Vector3 = definedExternally
-    open var rotationQuaternion: Quaternion = definedExternally
-    open var forward: Vector3 = definedExternally
-    open var up: Vector3 = definedExternally
-    open var right: Vector3 = definedExternally
+    open var rotationQuaternion: Quaternion? = definedExternally
+    val forward: Vector3 = definedExternally;
+    val up: Vector3 = definedExternally;
+    val right: Vector3 = definedExternally;
     open fun updatePoseMatrix(matrix: Matrix): TransformNode = definedExternally
     open fun getPoseMatrix(): Matrix = definedExternally
     override fun _isSynchronized(): Boolean = definedExternally
@@ -1816,8 +1816,6 @@ external open class TransformNode(name: String, scene: Scene? = definedExternall
     open fun getPositionExpressedInLocalSpace(): Vector3 = definedExternally
     open fun locallyTranslate(vector3: Vector3): TransformNode = definedExternally
     open fun lookAt(targetPoint: Vector3, yawCor: Number? = definedExternally /* null */, pitchCor: Number? = definedExternally /* null */, rollCor: Number? = definedExternally /* null */, space: Number? /* 0 */ = definedExternally /* null */): TransformNode = definedExternally
-    open fun lookAt(targetPoint: Vector3, yawCor: Number? = definedExternally /* null */, pitchCor: Number? = definedExternally /* null */, rollCor: Number? = definedExternally /* null */, space: Number? /* 1 */ = definedExternally /* null */): TransformNode = definedExternally
-    open fun lookAt(targetPoint: Vector3, yawCor: Number? = definedExternally /* null */, pitchCor: Number? = definedExternally /* null */, rollCor: Number? = definedExternally /* null */, space: Number? /* 2 */ = definedExternally /* null */): TransformNode = definedExternally
     open fun getDirection(localAxis: Vector3): Vector3 = definedExternally
     open fun getDirectionToRef(localAxis: Vector3, result: Vector3): TransformNode = definedExternally
     open fun setDirection(localAxis: Vector3, yawCor: Number? = definedExternally /* null */, pitchCor: Number? = definedExternally /* null */, rollCor: Number? = definedExternally /* null */): TransformNode = definedExternally
@@ -5586,7 +5584,7 @@ external open class AbstractMesh(name: String, scene: Scene? = definedExternally
     open var _waitingData: `T$51` = definedExternally
     open var _bonesTransformMatrices: Float32Array = definedExternally
     open var skeleton: Skeleton = definedExternally
-    open var onRebuildObservable: Observable<AbstractMesh> = definedExternally
+    open var onRebuildObservable: Observable<AbstractMesh> = definedExternally//root.scalingDeterminant = 0.001
     override fun getClassName(): String = definedExternally
     open fun toString(fullDetails: Boolean? = definedExternally /* null */): String = definedExternally
     override fun _getEffectiveParent(): Node = definedExternally
@@ -7716,7 +7714,7 @@ external open class Node(name: String, scene: Scene? = definedExternally /* null
     open var _worldMatrixDeterminantIsDirty: Boolean = definedExternally
     open var _sceneRootNodesIndex: Any = definedExternally
     open fun isDisposed(): Boolean = definedExternally
-    open var parent: Node = definedExternally
+    open var parent: Node? = definedExternally
     open var addToSceneRootNodes: Any = definedExternally
     open var removeFromSceneRootNodes: Any = definedExternally
     open var _animationPropertiesOverride: Any = definedExternally
@@ -13858,40 +13856,7 @@ external open class DecalBuilder {
         fun CreateDecal(name: String, sourceMesh: AbstractMesh, options: `T$115`): Mesh = definedExternally
     }
 }
-external interface `T$116` {
-    var size: Number? get() = definedExternally; set(value) = definedExternally
-    var width: Number? get() = definedExternally; set(value) = definedExternally
-    var height: Number? get() = definedExternally; set(value) = definedExternally
-    var depth: Number? get() = definedExternally; set(value) = definedExternally
-    var faceUV: Array<Vector4>? get() = definedExternally; set(value) = definedExternally
-    var faceColors: Array<Color4>? get() = definedExternally; set(value) = definedExternally
-    var sideOrientation: Number? get() = definedExternally; set(value) = definedExternally
-    var frontUVs: Vector4? get() = definedExternally; set(value) = definedExternally
-    var backUVs: Vector4? get() = definedExternally; set(value) = definedExternally
-    var updatable: Boolean? get() = definedExternally; set(value) = definedExternally
-}
 
-external interface `T$118` {
-    var radius: Number? get() = definedExternally; set(value) = definedExternally
-    var tessellation: Number? get() = definedExternally; set(value) = definedExternally
-    var arc: Number? get() = definedExternally; set(value) = definedExternally
-    var updatable: Boolean? get() = definedExternally; set(value) = definedExternally
-    var sideOrientation: Number? get() = definedExternally; set(value) = definedExternally
-    var frontUVs: Vector4? get() = definedExternally; set(value) = definedExternally
-    var backUVs: Vector4? get() = definedExternally; set(value) = definedExternally
-}
-external interface `T$119` {
-    var radius: Number? get() = definedExternally; set(value) = definedExternally
-    var radiusX: Number? get() = definedExternally; set(value) = definedExternally
-    var radiusY: Number? get() = definedExternally; set(value) = definedExternally
-    var radiusZ: Number? get() = definedExternally; set(value) = definedExternally
-    var flat: Boolean? get() = definedExternally; set(value) = definedExternally
-    var subdivisions: Number? get() = definedExternally; set(value) = definedExternally
-    var sideOrientation: Number? get() = definedExternally; set(value) = definedExternally
-    var frontUVs: Vector4? get() = definedExternally; set(value) = definedExternally
-    var backUVs: Vector4? get() = definedExternally; set(value) = definedExternally
-    var updatable: Boolean? get() = definedExternally; set(value) = definedExternally
-}
 external interface `T$120` {
     var pathArray: Array<Array<Vector3>>
     var closeArray: Boolean? get() = definedExternally; set(value) = definedExternally
@@ -14102,10 +14067,10 @@ external interface `T$139` {
 }
 external open class MeshBuilder {
     companion object {
-        fun CreateBox(name: String, options: `T$116`, scene: Scene? = definedExternally /* null */): Mesh = definedExternally
+        fun CreateBox(name: String, options: BoxOptions, scene: Scene? = definedExternally /* null */): Mesh = definedExternally
         fun CreateSphere(name: String, options: SphereOptions, scene: Scene? = definedExternally /* null */): Mesh = definedExternally
-        fun CreateDisc(name: String, options: `T$118`, scene: Scene? = definedExternally /* null */): Mesh = definedExternally
-        fun CreateIcoSphere(name: String, options: `T$119`, scene: Scene? = definedExternally /* null */): Mesh = definedExternally
+        fun CreateDisc(name: String, options: DiskOptions, scene: Scene? = definedExternally /* null */): Mesh = definedExternally
+        fun CreateIcoSphere(name: String, options: IcoSphereOptions, scene: Scene? = definedExternally /* null */): Mesh = definedExternally
         fun CreateRibbon(name: String, options: `T$120`, scene: Scene? = definedExternally /* null */): Mesh = definedExternally
         fun CreateCylinder(name: String, options: `T$121`, scene: Scene? = definedExternally /* null */): Mesh = definedExternally
         fun CreateTorus(name: String, options: `T$122`, scene: Scene? = definedExternally /* null */): Mesh = definedExternally

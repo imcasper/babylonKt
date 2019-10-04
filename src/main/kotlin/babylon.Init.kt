@@ -58,7 +58,6 @@ external class PointerEvent {
 	val isPrimary:Boolean
 }
 
-
 class SphereOptions (
 		var segments: Number? = null,
 		var diameter: Number? = null,
@@ -71,4 +70,40 @@ class SphereOptions (
 		var frontUVs: Vector4? = null,
 		var backUVs: Vector4? = null,
 		var updatable: Boolean? = null
+)
+
+class BoxOptions (
+	var size: Number? = null,
+	var width: Number? = null,
+	var height: Number? = null,
+	var depth: Number? = null,
+	var faceUV: Array<Vector4>? = null,
+	var faceColors: Array<Color4>? = null,
+	var sideOrientation: Number? = null,
+	var frontUVs: Vector4? = null,
+	var backUVs: Vector4? = null,
+	var updatable: Boolean? = null
+)
+
+class DiskOptions (
+	var radius: Number? = null,
+	var tessellation: Number? = null,
+	var arc: Number? = null,
+	var updatable: Boolean? = null,
+	var sideOrientation: Number? = null,
+	var frontUVs: Vector4? = null,
+	var backUVs: Vector4? = null
+)
+
+class IcoSphereOptions (
+	var radius: Number? = null,
+	var radiusX: Number? = null,
+	var radiusY: Number? = null,
+	var radiusZ: Number? = null,
+	var flat: Boolean? = null,
+	var subdivisions: Number? = null,
+	var sideOrientation: Number? = null,
+	var frontUVs: Vector4? = null,
+	var backUVs: Vector4? = null,
+	var updatable: Boolean? = null
 )
