@@ -37,9 +37,12 @@ kotlin {
             }
 
             compileKotlinJs {
-                kotlinOptions.metaInfo = true
-                kotlinOptions.sourceMap = true
-                kotlinOptions.moduleKind = "umd"
+                kotlinOptions {
+                    suppressWarnings = true
+                    sourceMap = true
+                    sourceMapEmbedSources = "always"
+                    moduleKind = "umd"
+                }
             }
         }
 
