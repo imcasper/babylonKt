@@ -10480,23 +10480,23 @@ external open class StandardMaterialDefines : MaterialDefines, IImageProcessingC
 }
 external open class StandardMaterial(name: String, scene: Scene) : PushMaterial {
     open var _diffuseTexture: Any = definedExternally
-    open var diffuseTexture: BaseTexture = definedExternally
+    open var diffuseTexture: BaseTexture? = definedExternally
     open var _ambientTexture: Any = definedExternally
-    open var ambientTexture: BaseTexture = definedExternally
+    open var ambientTexture: BaseTexture? = definedExternally
     open var _opacityTexture: Any = definedExternally
-    open var opacityTexture: BaseTexture = definedExternally
+    open var opacityTexture: BaseTexture? = definedExternally
     open var _reflectionTexture: Any = definedExternally
-    open var reflectionTexture: BaseTexture = definedExternally
+    open var reflectionTexture: BaseTexture? = definedExternally
     open var _emissiveTexture: Any = definedExternally
-    open var emissiveTexture: BaseTexture = definedExternally
+    open var emissiveTexture: BaseTexture? = definedExternally
     open var _specularTexture: Any = definedExternally
-    open var specularTexture: BaseTexture = definedExternally
+    open var specularTexture: BaseTexture? = definedExternally
     open var _bumpTexture: Any = definedExternally
-    open var bumpTexture: BaseTexture = definedExternally
+    open var bumpTexture: BaseTexture? = definedExternally
     open var _lightmapTexture: Any = definedExternally
-    open var lightmapTexture: BaseTexture = definedExternally
+    open var lightmapTexture: BaseTexture? = definedExternally
     open var _refractionTexture: Any = definedExternally
-    open var refractionTexture: BaseTexture = definedExternally
+    open var refractionTexture: BaseTexture? = definedExternally
     open var ambientColor: Color3 = definedExternally
     open var diffuseColor: Color3 = definedExternally
     open var specularColor: Color3 = definedExternally
