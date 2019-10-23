@@ -7865,7 +7865,7 @@ external open class BaseTexture(scene: Scene) : IAnimatable {
     open var hasAlpha: Boolean = definedExternally
     open var getAlphaFromRGB: Boolean = definedExternally
     open var level: Number = definedExternally
-    open var coordinatesIndex: Number = definedExternally
+    open var coordinatesIndex: Int = definedExternally
     open var _coordinatesMode: Any = definedExternally
     open var coordinatesMode: Number = definedExternally
     open var wrapU: Number = definedExternally
