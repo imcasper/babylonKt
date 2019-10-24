@@ -45,6 +45,8 @@ typealias float = Float
  */
 external class PointerEvent {
 	val pointerId:Any
+	val x:Double
+	val y:Double
 	val width:Double
 	val height:Double
 
