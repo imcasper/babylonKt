@@ -11,9 +11,7 @@ fun TransformNode.setPlayAnimation(loop: Boolean, speedRatio: Double = 1.0) {
 		beginAnimation(animationRange.name, loop, speedRatio)
 	}
 	getChildMeshes { true }.forEach { node ->
-		if (node is Mesh) {
-			node.setPlayAnimation(loop, speedRatio)
-		}
+		node.setPlayAnimation(loop, speedRatio)
 	}
 }
 
@@ -24,9 +22,7 @@ fun TransformNode.setStopAnimation() {
 	}
 
 	getChildMeshes { true }.forEach { node ->
-		if (node is Mesh) {
-			node.setStopAnimation()
-		}
+		node.setStopAnimation()
 	}
 }
 
