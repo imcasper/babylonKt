@@ -6657,6 +6657,9 @@ var Image = /** @class */ (function (_super) {
                 babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Tools"].SetCorsBehavior(value, this._domImage);
                 this._domImage.src = value;
             }
+            if (this._domImage.width != 0) {
+                _this._onImageLoaded();
+            }
         },
         enumerable: true,
         configurable: true
