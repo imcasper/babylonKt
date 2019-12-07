@@ -1,4 +1,9 @@
-package BABYLON
+package BABYLON.extension
+
+import BABYLON.AbstractMesh
+import BABYLON.Mesh
+import BABYLON.Scene
+import BABYLON.TransformNode
 
 fun AbstractMesh.setVisibleRecursive(value: Boolean) {
 	if (isVisible == value) return
@@ -37,5 +42,15 @@ fun TransformNode.setFrameAnimation(frame: Double) {
 		if (node is Mesh) {
 			node.setFrameAnimation(frame)
 		}
+	}
+}
+
+
+fun Scene.runRenderLoop() {
+	// run the render loop
+	val engine = this.getEngine()
+	engine.runRenderLoop {
+		engine.resize()
+		this.render()
 	}
 }
