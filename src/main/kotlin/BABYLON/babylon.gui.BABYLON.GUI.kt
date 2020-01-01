@@ -55,7 +55,7 @@ external open class Style(host: AdvancedDynamicTexture) : BABYLON.IDisposable {
 	override fun dispose(): Unit = definedExternally
 }
 external open class Vector2WithInfo(source: BABYLON.Vector2, buttonIndex: Number? = definedExternally /* null */) : BABYLON.Vector2 {
-    open var buttonIndex: Number = definedExternally
+    open var buttonIndex: BABYLON.Number = definedExternally
 }
 external open class Matrix2D(m00: Number, m01: Number, m10: Number, m11: Number, m20: Number, m21: Number) {
     open var m: Float32Array = definedExternally

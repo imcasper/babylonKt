@@ -5285,9 +5285,9 @@ var Control = /** @class */ (function () {
         // Prevent pointerout to lose control context.
         // Event redundancy is checked inside the function.
         this._onPointerEnter(this);
-        if (this._downCount !== 0) {
-            return false;
-        }
+        // if (this._downCount !== 0) {
+        //     return false;
+        // }
         this._downCount++;
         this._downPointerIds[pointerId] = true;
         var canNotify = this.onPointerDownObservable.notifyObservers(new _math2D__WEBPACK_IMPORTED_MODULE_3__["Vector2WithInfo"](coordinates, buttonIndex), -1, target, this);

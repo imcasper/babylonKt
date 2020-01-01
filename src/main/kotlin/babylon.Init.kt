@@ -60,6 +60,13 @@ external class PointerEvent {
 	val isPrimary:Boolean
 }
 
+class MouseButton {
+	companion object {
+		val LEFT = 0.0
+		val MIDDLE = 1.0
+		val RIGHT = 2.0
+	}
+}
 class SphereOptions (
 		var segments: Number? = null,
 		var diameter: Number? = null,
