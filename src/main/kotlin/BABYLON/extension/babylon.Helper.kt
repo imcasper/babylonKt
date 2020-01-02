@@ -4,6 +4,8 @@ import BABYLON.AbstractMesh
 import BABYLON.Mesh
 import BABYLON.Scene
 import BABYLON.TransformNode
+import org.w3c.dom.events.Event
+import kotlin.browser.window
 
 fun AbstractMesh.setVisibleRecursive(value: Boolean) {
 	if (isVisible == value) return
@@ -49,8 +51,25 @@ fun TransformNode.setFrameAnimation(frame: Double) {
 fun Scene.runRenderLoop() {
 	// run the render loop
 	val engine = this.getEngine()
-	engine.runRenderLoop {
-		engine.resize()
-		this.render()
+	var lastException: Throwable? = null
+
+	val onResize: (Event) -> Unit = {
+		if (lastException == null) {
+			engine.resize()
+		}
 	}
+
+	val onRender: () -> Unit = {
+		if (lastException == null) {
+			try {
+				render()
+			} catch (exception: Throwable) {
+				lastException = exception
+				console.error(lastException)
+			}
+		}
+	}
+
+	engine.runRenderLoop(onRender)
+	window.addEventListener("resize", onResize)
 }
