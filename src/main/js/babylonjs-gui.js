@@ -6872,8 +6872,8 @@ var Image = /** @class */ (function (_super) {
             bottomHeight -= 1;
             rightWidth -= 1;
         }
-        var centerWidth = this._sliceRight - this._sliceLeft + 1;
-        var targetCenterWidth = this._currentMeasure.width - rightWidth - this.sliceLeft + 1;
+        var centerWidth = this._sliceRight - this._sliceLeft;
+        var targetCenterWidth = this._currentMeasure.width - rightWidth - this.sliceLeft;
         var targetTopHeight = this._currentMeasure.height - height + this._sliceBottom;
         // Corners
         this._renderCornerPatch(context, left, top, leftWidth, topHeight, 0, 0);
@@ -6881,7 +6881,7 @@ var Image = /** @class */ (function (_super) {
         this._renderCornerPatch(context, this._sliceRight, top, rightWidth, topHeight, this._currentMeasure.width - rightWidth, 0);
         this._renderCornerPatch(context, this._sliceRight, this._sliceBottom, rightWidth, height - this._sliceBottom, this._currentMeasure.width - rightWidth, targetTopHeight);
         // Center
-        this._drawImage(context, this._sliceLeft, this._sliceTop, centerWidth, this._sliceBottom - this._sliceTop + 1, this._currentMeasure.left + leftWidth, this._currentMeasure.top + topHeight, targetCenterWidth, targetTopHeight - topHeight + 1);
+        this._drawImage(context, this._sliceLeft, this._sliceTop, centerWidth, this._sliceBottom - this._sliceTop, this._currentMeasure.left + leftWidth, this._currentMeasure.top + topHeight, targetCenterWidth, targetTopHeight - topHeight);
         // Borders
         this._drawImage(context, left, this._sliceTop, leftWidth, this._sliceBottom - this._sliceTop, this._currentMeasure.left, this._currentMeasure.top + topHeight, leftWidth, targetTopHeight - topHeight);
         this._drawImage(context, this._sliceRight, this._sliceTop, leftWidth, this._sliceBottom - this._sliceTop, this._currentMeasure.left + this._currentMeasure.width - rightWidth, this._currentMeasure.top + topHeight, leftWidth, targetTopHeight - topHeight);

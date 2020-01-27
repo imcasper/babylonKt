@@ -20,7 +20,6 @@ repositories {
 
 apply plugin: "kotlin-multiplatform"
 apply plugin: 'maven-publish'
-
 group 'casper'
 version '1.0.0'
 
