@@ -38,8 +38,9 @@ kotlin {
             compileKotlinJs {
                 kotlinOptions {
                     suppressWarnings = true
+                    metaInfo = true
                     sourceMap = true
-                    sourceMapEmbedSources = "inlining"
+                    sourceMapEmbedSources = "always"
                     moduleKind = "umd"
                 }
             }
