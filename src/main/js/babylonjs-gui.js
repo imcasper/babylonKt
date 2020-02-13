@@ -97,10 +97,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ({
 
 /***/ "../../node_modules/tslib/tslib.es6.js":
-/*!***********************************************************!*\
-  !*** D:/Repos/Babylon.js/node_modules/tslib/tslib.es6.js ***!
-  \***********************************************************/
-/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
+/*!**************************************************************************************!*\
+  !*** /home/casper/projects/Babylon/exporter/babylon/node_modules/tslib/tslib.es6.js ***!
+  \**************************************************************************************/
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -117,6 +117,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__values", function() { return __values; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__read", function() { return __read; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spread", function() { return __spread; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArrays", function() { return __spreadArrays; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__await", function() { return __await; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function() { return __asyncGenerator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function() { return __asyncDelegator; });
@@ -169,8 +170,10 @@ function __rest(s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
     return t;
 }
 
@@ -264,6 +267,14 @@ function __spread() {
     return ar;
 }
 
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+
 function __await(v) {
     return this instanceof __await ? (this.v = v, this) : new __await(v);
 }
@@ -355,8 +366,8 @@ module.exports = g;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdvancedDynamicTextureInstrumentation", function() { return AdvancedDynamicTextureInstrumentation; });
-/* harmony import */ var babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babylonjs/Misc/tools */ "babylonjs/Misc/observable");
-/* harmony import */ var babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var babylonjs_Misc_perfCounter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babylonjs/Misc/perfCounter */ "babylonjs/Misc/observable");
+/* harmony import */ var babylonjs_Misc_perfCounter__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babylonjs_Misc_perfCounter__WEBPACK_IMPORTED_MODULE_0__);
 
 /**
  * This class can be used to get instrumentation data from a AdvancedDynamicTexture object
@@ -374,9 +385,9 @@ var AdvancedDynamicTextureInstrumentation = /** @class */ (function () {
     texture) {
         this.texture = texture;
         this._captureRenderTime = false;
-        this._renderTime = new babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_0__["PerfCounter"]();
+        this._renderTime = new babylonjs_Misc_perfCounter__WEBPACK_IMPORTED_MODULE_0__["PerfCounter"]();
         this._captureLayoutTime = false;
-        this._layoutTime = new babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_0__["PerfCounter"]();
+        this._layoutTime = new babylonjs_Misc_perfCounter__WEBPACK_IMPORTED_MODULE_0__["PerfCounter"]();
         // Observers
         this._onBeginRenderObserver = null;
         this._onEndRenderObserver = null;
@@ -523,7 +534,7 @@ __webpack_require__.r(__webpack_exports__);
 * @see http://doc.babylonjs.com/how_to/gui
 */
 var AdvancedDynamicTexture = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](AdvancedDynamicTexture, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(AdvancedDynamicTexture, _super);
     /**
    * Creates a new AdvancedDynamicTexture
    * @param name defines the name of the texture
@@ -538,7 +549,7 @@ var AdvancedDynamicTexture = /** @class */ (function (_super) {
         if (height === void 0) { height = 0; }
         if (generateMipMaps === void 0) { generateMipMaps = false; }
         if (samplingMode === void 0) { samplingMode = babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Texture"].NEAREST_SAMPLINGMODE; }
-        var _this = _super.call(this, name, { width: width, height: height }, scene, generateMipMaps, samplingMode, babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Engine"].TEXTUREFORMAT_RGBA) || this;
+        var _this = _super.call(this, name, { width: width, height: height }, scene, generateMipMaps, samplingMode, babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Constants"].TEXTUREFORMAT_RGBA) || this;
         _this._isDirty = false;
         /** @hidden */
         _this._rootContainer = new _controls_container__WEBPACK_IMPORTED_MODULE_2__["Container"]("root");
@@ -559,6 +570,10 @@ var AdvancedDynamicTexture = /** @class */ (function (_super) {
         _this._blockNextFocusCheck = false;
         _this._renderScale = 1;
         _this._cursorChanged = false;
+        /** @hidden */
+        _this._numLayoutCalls = 0;
+        /** @hidden */
+        _this._numRenderCalls = 0;
         /**
         * Define type to string to ensure compatibility across browsers
         * Safari doesn't support DataTransfer constructor
@@ -621,7 +636,7 @@ var AdvancedDynamicTexture = /** @class */ (function (_super) {
         if (!scene || !_this._texture) {
             return _this;
         }
-        _this._rootCanvas = scene.getEngine().getRenderingCanvas();
+        _this._rootElement = scene.getEngine().getInputElement();
         _this._renderObserver = scene.onBeforeCameraRenderObservable.add(function (camera) { return _this._checkUpdate(camera); });
         _this._preKeyboardObserver = scene.onPreKeyboardObservable.add(function (info) {
             if (!_this._focusedControl) {
@@ -641,6 +656,22 @@ var AdvancedDynamicTexture = /** @class */ (function (_super) {
         _this._texture.isReady = true;
         return _this;
     }
+    Object.defineProperty(AdvancedDynamicTexture.prototype, "numLayoutCalls", {
+        /** Gets the number of layout calls made the last time the ADT has been rendered */
+        get: function () {
+            return this._numLayoutCalls;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AdvancedDynamicTexture.prototype, "numRenderCalls", {
+        /** Gets the number of render calls made the last time the ADT has been rendered */
+        get: function () {
+            return this._numRenderCalls;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(AdvancedDynamicTexture.prototype, "renderScale", {
         /**
         * Gets or sets a number used to scale rendering size (2 means that the texture will be twice bigger).
@@ -747,6 +778,34 @@ var AdvancedDynamicTexture = /** @class */ (function (_super) {
             }
             this._renderAtIdealSize = value;
             this._onResize();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AdvancedDynamicTexture.prototype, "idealRatio", {
+        /**
+         * Gets the ratio used when in "ideal mode"
+        * @see http://doc.babylonjs.com/how_to/gui#adaptive-scaling
+         * */
+        get: function () {
+            var rwidth = 0;
+            var rheight = 0;
+            if (this._idealWidth) {
+                rwidth = (this.getSize().width) / this._idealWidth;
+            }
+            if (this._idealHeight) {
+                rheight = (this.getSize().height) / this._idealHeight;
+            }
+            if (this._useSmallestIdeal && this._idealWidth && this._idealHeight) {
+                return window.innerWidth < window.innerHeight ? rwidth : rheight;
+            }
+            if (this._idealWidth) { // horizontal
+                return rwidth;
+            }
+            if (this._idealHeight) { // vertical
+                return rheight;
+            }
+            return 1;
         },
         enumerable: true,
         configurable: true
@@ -948,7 +1007,7 @@ var AdvancedDynamicTexture = /** @class */ (function (_super) {
         if (!scene) {
             return;
         }
-        this._rootCanvas = null;
+        this._rootElement = null;
         scene.onBeforeCameraRenderObservable.remove(this._renderObserver);
         if (this._resizeObserver) {
             scene.getEngine().onResizeObservable.remove(this._resizeObserver);
@@ -1053,7 +1112,7 @@ var AdvancedDynamicTexture = /** @class */ (function (_super) {
                     });
                     continue;
                 }
-                var position = mesh.getBoundingInfo ? mesh.getBoundingInfo().boundingSphere.center : mesh.getAbsolutePosition();
+                var position = mesh.getBoundingInfo ? mesh.getBoundingInfo().boundingSphere.center : babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Vector3"].ZeroReadOnly;
                 var projectedPosition = babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Vector3"].Project(position, mesh.getWorldMatrix(), scene.getTransformMatrix(), globalViewport);
                 if (projectedPosition.z < 0 || projectedPosition.z > 1) {
                     control.notRenderable = true;
@@ -1082,6 +1141,7 @@ var AdvancedDynamicTexture = /** @class */ (function (_super) {
         // Layout
         this.onBeginLayoutObservable.notifyObservers(this);
         var measure = new _measure__WEBPACK_IMPORTED_MODULE_4__["Measure"](0, 0, renderWidth, renderHeight);
+        this._numLayoutCalls = 0;
         this._rootContainer._layout(measure, context);
         this.onEndLayoutObservable.notifyObservers(this);
         this._isDirty = false; // Restoring the dirty state that could have been set by controls during layout processing
@@ -1101,14 +1161,15 @@ var AdvancedDynamicTexture = /** @class */ (function (_super) {
         }
         // Render
         this.onBeginRenderObservable.notifyObservers(this);
+        this._numRenderCalls = 0;
         this._rootContainer._render(context, this._invalidatedRectangle);
         this.onEndRenderObservable.notifyObservers(this);
         this._invalidatedRectangle = null;
     };
     /** @hidden */
     AdvancedDynamicTexture.prototype._changeCursor = function (cursor) {
-        if (this._rootCanvas) {
-            this._rootCanvas.style.cursor = cursor;
+        if (this._rootElement) {
+            this._rootElement.style.cursor = cursor;
             this._cursorChanged = true;
         }
     };
@@ -1408,6 +1469,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./control */ "./2D/controls/control.ts");
 /* harmony import */ var _textBlock__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./textBlock */ "./2D/controls/textBlock.ts");
 /* harmony import */ var _image__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./image */ "./2D/controls/image.ts");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! babylonjs/Misc/typeStore */ "babylonjs/Misc/observable");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -1417,7 +1481,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to create 2D buttons
  */
 var Button = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Button, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Button, _super);
     /**
      * Creates a new Button
      * @param name defines the name of the button
@@ -1425,6 +1489,10 @@ var Button = /** @class */ (function (_super) {
     function Button(name) {
         var _this = _super.call(this, name) || this;
         _this.name = name;
+        /**
+         * Gets or sets a boolean indicating that the button will let internal controls handle picking instead of doing it directly using its bounding info
+         */
+        _this.delegatePickingToChildren = false;
         _this.thickness = 1;
         _this.isPointerBlocker = true;
         var alphaStore = null;
@@ -1478,6 +1546,19 @@ var Button = /** @class */ (function (_super) {
         }
         if (!_super.prototype.contains.call(this, x, y)) {
             return false;
+        }
+        if (this.delegatePickingToChildren) {
+            var contains = false;
+            for (var index = this._children.length - 1; index >= 0; index--) {
+                var child = this._children[index];
+                if (child.isEnabled && child.isHitTestVisible && child.isVisible && !child.notRenderable && child.contains(x, y)) {
+                    contains = true;
+                    break;
+                }
+            }
+            if (!contains) {
+                return false;
+            }
         }
         this._processObservables(type, x, y, pointerId, buttonIndex);
         return true;
@@ -1604,6 +1685,7 @@ var Button = /** @class */ (function (_super) {
     return Button;
 }(_rectangle__WEBPACK_IMPORTED_MODULE_1__["Rectangle"]));
 
+babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_5__["_TypeStore"].RegisteredTypes["BABYLON.GUI.Button"] = Button;
 
 
 /***/ }),
@@ -1629,11 +1711,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Class used to represent a 2D checkbox
  */
 var Checkbox = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Checkbox, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Checkbox, _super);
     /**
      * Creates a new CheckBox
      * @param name defines the control name
@@ -1718,7 +1801,7 @@ var Checkbox = /** @class */ (function (_super) {
         return "Checkbox";
     };
     /** @hidden */
-    Checkbox.prototype._draw = function (context) {
+    Checkbox.prototype._draw = function (context, invalidatedRectangle) {
         context.save();
         this._applyStates(context);
         var actualWidth = this._currentMeasure.width - this._thickness;
@@ -1785,6 +1868,7 @@ var Checkbox = /** @class */ (function (_super) {
     return Checkbox;
 }(_control__WEBPACK_IMPORTED_MODULE_2__["Control"]));
 
+babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["_TypeStore"].RegisteredTypes["BABYLON.GUI.Checkbox"] = Checkbox;
 
 
 /***/ }),
@@ -1817,9 +1901,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /** Class used to create color pickers */
 var ColorPicker = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](ColorPicker, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(ColorPicker, _super);
     /**
      * Creates a new ColorPicker
      * @param name defines the control name
@@ -1859,7 +1944,7 @@ var ColorPicker = /** @class */ (function (_super) {
                 return;
             }
             this._value.copyFrom(value);
-            this._RGBtoHSV(this._value, this._tmpColor);
+            this._value.toHSVToRef(this._tmpColor);
             this._h = this._tmpColor.r;
             this._s = Math.max(this._tmpColor.g, 0.00001);
             this._v = Math.max(this._tmpColor.b, 0.00001);
@@ -2004,7 +2089,7 @@ var ColorPicker = /** @class */ (function (_super) {
                 }
                 var dist = Math.sqrt(distSq);
                 var ang = Math.atan2(y, x);
-                this._HSVtoRGB(ang * 180 / Math.PI + 180, dist / radius, 1, color);
+                babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Color3"].HSVtoRGBToRef(ang * 180 / Math.PI + 180, dist / radius, 1, color);
                 var index = ((x + radius) + ((y + radius) * 2 * radius)) * 4;
                 data[index] = color.r * 255;
                 data[index + 1] = color.g * 255;
@@ -2039,72 +2124,6 @@ var ColorPicker = /** @class */ (function (_super) {
         }
         context.putImageData(image, 0, 0);
         return canvas;
-    };
-    ColorPicker.prototype._RGBtoHSV = function (color, result) {
-        var r = color.r;
-        var g = color.g;
-        var b = color.b;
-        var max = Math.max(r, g, b);
-        var min = Math.min(r, g, b);
-        var h = 0;
-        var s = 0;
-        var v = max;
-        var dm = max - min;
-        if (max !== 0) {
-            s = dm / max;
-        }
-        if (max != min) {
-            if (max == r) {
-                h = (g - b) / dm;
-                if (g < b) {
-                    h += 6;
-                }
-            }
-            else if (max == g) {
-                h = (b - r) / dm + 2;
-            }
-            else if (max == b) {
-                h = (r - g) / dm + 4;
-            }
-            h *= 60;
-        }
-        result.r = h;
-        result.g = s;
-        result.b = v;
-    };
-    ColorPicker.prototype._HSVtoRGB = function (hue, saturation, value, result) {
-        var chroma = value * saturation;
-        var h = hue / 60;
-        var x = chroma * (1 - Math.abs((h % 2) - 1));
-        var r = 0;
-        var g = 0;
-        var b = 0;
-        if (h >= 0 && h <= 1) {
-            r = chroma;
-            g = x;
-        }
-        else if (h >= 1 && h <= 2) {
-            r = x;
-            g = chroma;
-        }
-        else if (h >= 2 && h <= 3) {
-            g = chroma;
-            b = x;
-        }
-        else if (h >= 3 && h <= 4) {
-            g = x;
-            b = chroma;
-        }
-        else if (h >= 4 && h <= 5) {
-            r = x;
-            b = chroma;
-        }
-        else if (h >= 5 && h <= 6) {
-            r = chroma;
-            b = x;
-        }
-        var m = value - chroma;
-        result.set((r + m), (g + m), (b + m));
     };
     /** @hidden */
     ColorPicker.prototype._draw = function (context) {
@@ -2157,7 +2176,7 @@ var ColorPicker = /** @class */ (function (_super) {
             this._v = Math.min(this._v, 1);
             this._v = Math.max(this._v, ColorPicker._Epsilon);
         }
-        this._HSVtoRGB(this._h, this._s, this._v, this._tmpColor);
+        babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Color3"].HSVtoRGBToRef(this._h, this._s, this._v, this._tmpColor);
         this.value = this._tmpColor;
     };
     ColorPicker.prototype._isPointOnSquare = function (x, y) {
@@ -3238,6 +3257,7 @@ var ColorPicker = /** @class */ (function (_super) {
     return ColorPicker;
 }(_control__WEBPACK_IMPORTED_MODULE_2__["Control"]));
 
+babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["_TypeStore"].RegisteredTypes["BABYLON.GUI.ColorPicker"] = ColorPicker;
 
 
 /***/ }),
@@ -3261,12 +3281,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Root class for 2D containers
  * @see http://doc.babylonjs.com/how_to/gui#containers
  */
 var Container = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Container, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Container, _super);
     /**
      * Creates a new Container
      * @param name defines the name of the container
@@ -3284,6 +3305,14 @@ var Container = /** @class */ (function (_super) {
         _this._adaptWidthToChildren = false;
         /** @hidden */
         _this._adaptHeightToChildren = false;
+        /**
+         * Gets or sets a boolean indicating that layout cycle errors should be displayed on the console
+         */
+        _this.logLayoutCycleErrors = false;
+        /**
+         * Gets or sets the number of layout cycles (a change involved by a control while evaluating the layout) allowed
+         */
+        _this.maxLayoutCycle = 3;
         return _this;
     }
     Object.defineProperty(Container.prototype, "adaptHeightToChildren", {
@@ -3519,6 +3548,7 @@ var Container = /** @class */ (function (_super) {
         if (!this.isDirty && (!this.isVisible || this.notRenderable)) {
             return false;
         }
+        this.host._numLayoutCalls++;
         if (this._isDirty) {
             this._currentMeasure.transformToRef(this._transformMatrix, this._prevCurrentMeasureTransformedIntoGlobalSpace);
         }
@@ -3559,8 +3589,8 @@ var Container = /** @class */ (function (_super) {
                 this._postMeasure();
             }
             rebuildCount++;
-        } while (this._rebuildLayout && rebuildCount < 3);
-        if (rebuildCount >= 3) {
+        } while (this._rebuildLayout && rebuildCount < this.maxLayoutCycle);
+        if (rebuildCount >= 3 && this.logLayoutCycleErrors) {
             babylonjs_Misc_logger__WEBPACK_IMPORTED_MODULE_1__["Logger"].Error("Layout cycle detected in GUI (Container name=" + this.name + ", uniqueId=" + this.uniqueId + ")");
         }
         context.restore();
@@ -3590,8 +3620,7 @@ var Container = /** @class */ (function (_super) {
             child._render(context, invalidatedRectangle);
         }
     };
-    /** @hidden */
-    Container.prototype._getDescendants = function (results, directDescendantsOnly, predicate) {
+    Container.prototype.getDescendantsToRef = function (results, directDescendantsOnly, predicate) {
         if (directDescendantsOnly === void 0) { directDescendantsOnly = false; }
         if (!this.children) {
             return;
@@ -3602,7 +3631,7 @@ var Container = /** @class */ (function (_super) {
                 results.push(item);
             }
             if (!directDescendantsOnly) {
-                item._getDescendants(results, false, predicate);
+                item.getDescendantsToRef(results, false, predicate);
             }
         }
     };
@@ -3644,6 +3673,7 @@ var Container = /** @class */ (function (_super) {
     return Container;
 }(_control__WEBPACK_IMPORTED_MODULE_2__["Control"]));
 
+babylonjs_Misc_logger__WEBPACK_IMPORTED_MODULE_1__["_TypeStore"].RegisteredTypes["BABYLON.GUI.Container"] = Container;
 
 
 /***/ }),
@@ -3663,6 +3693,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _valueAndUnit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../valueAndUnit */ "./2D/valueAndUnit.ts");
 /* harmony import */ var _measure__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../measure */ "./2D/measure.ts");
 /* harmony import */ var _math2D__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../math2D */ "./2D/math2D.ts");
+
 
 
 
@@ -3747,7 +3778,11 @@ var Control = /** @class */ (function () {
         /** @hidden */
         this._rebuildLayout = false;
         /** @hidden */
+        this._customData = {};
+        /** @hidden */
         this._isClipped = false;
+        /** @hidden */
+        this._automaticSize = false;
         /**
          * Gets or sets an object used to store user defined information for the node
          */
@@ -4746,8 +4781,13 @@ var Control = /** @class */ (function () {
         }
         this.notRenderable = false;
     };
-    /** @hidden */
-    Control.prototype._getDescendants = function (results, directDescendantsOnly, predicate) {
+    /**
+     * Will store all controls that have this control as ascendant in a given array
+     * @param results defines the array where to store the descendants
+     * @param directDescendantsOnly defines if true only direct descendants of 'this' will be considered, if false direct and also indirect (children of children, an so on in a recursive manner) descendants of 'this' will be considered
+     * @param predicate defines an optional predicate that will be called on every evaluated child, the predicate must return true for a given child to be part of the result, otherwise it will be ignored
+     */
+    Control.prototype.getDescendantsToRef = function (results, directDescendantsOnly, predicate) {
         if (directDescendantsOnly === void 0) { directDescendantsOnly = false; }
         // Do nothing by default
     };
@@ -4759,7 +4799,7 @@ var Control = /** @class */ (function () {
      */
     Control.prototype.getDescendants = function (directDescendantsOnly, predicate) {
         var results = new Array();
-        this._getDescendants(results, directDescendantsOnly, predicate);
+        this.getDescendantsToRef(results, directDescendantsOnly, predicate);
         return results;
     };
     /**
@@ -4968,6 +5008,7 @@ var Control = /** @class */ (function () {
             return false;
         }
         if (this._isDirty || !this._cachedParentMeasure.isEqualsTo(parentMeasure)) {
+            this.host._numLayoutCalls++;
             this._currentMeasure.transformToRef(this._transformMatrix, this._prevCurrentMeasureTransformedIntoGlobalSpace);
             context.save();
             this._applyStates(context);
@@ -5166,6 +5207,7 @@ var Control = /** @class */ (function () {
             this._isDirty = false;
             return false;
         }
+        this.host._numRenderCalls++;
         context.save();
         this._applyStates(context);
         // Transform
@@ -5285,9 +5327,9 @@ var Control = /** @class */ (function () {
         // Prevent pointerout to lose control context.
         // Event redundancy is checked inside the function.
         this._onPointerEnter(this);
-        // if (this._downCount !== 0) {
-        //     return false;
-        // }
+        if (this._downCount !== 0) {
+            return false;
+        }
         this._downCount++;
         this._downPointerIds[pointerId] = true;
         var canNotify = this.onPointerDownObservable.notifyObservers(new _math2D__WEBPACK_IMPORTED_MODULE_3__["Vector2WithInfo"](coordinates, buttonIndex), -1, target, this);
@@ -5511,6 +5553,7 @@ var Control = /** @class */ (function () {
     return Control;
 }());
 
+babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_0__["_TypeStore"].RegisteredTypes["BABYLON.GUI.Control"] = Control;
 
 
 /***/ }),
@@ -5527,11 +5570,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DisplayGrid", function() { return DisplayGrid; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./control */ "./2D/controls/control.ts");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! babylonjs/Misc/typeStore */ "babylonjs/Misc/observable");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /** Class used to render a grid  */
 var DisplayGrid = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](DisplayGrid, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(DisplayGrid, _super);
     /**
      * Creates a new GridDisplayRectangle
      * @param name defines the control name
@@ -5680,7 +5726,7 @@ var DisplayGrid = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    DisplayGrid.prototype._draw = function (context) {
+    DisplayGrid.prototype._draw = function (context, invalidatedRectangle) {
         context.save();
         this._applyStates(context);
         if (this._isEnabled) {
@@ -5739,6 +5785,7 @@ var DisplayGrid = /** @class */ (function (_super) {
     return DisplayGrid;
 }(_control__WEBPACK_IMPORTED_MODULE_1__["Control"]));
 
+babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2__["_TypeStore"].RegisteredTypes["BABYLON.GUI.DisplayGrid"] = DisplayGrid;
 
 
 /***/ }),
@@ -5756,12 +5803,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./container */ "./2D/controls/container.ts");
 /* harmony import */ var _control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./control */ "./2D/controls/control.ts");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! babylonjs/Misc/typeStore */ "babylonjs/Misc/observable");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
 /** Class used to create 2D ellipse containers */
 var Ellipse = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Ellipse, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Ellipse, _super);
     /**
      * Creates a new Ellipse
      * @param name defines the control name
@@ -5831,6 +5881,7 @@ var Ellipse = /** @class */ (function (_super) {
     return Ellipse;
 }(_container__WEBPACK_IMPORTED_MODULE_1__["Container"]));
 
+babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_3__["_TypeStore"].RegisteredTypes["BABYLON.GUI.Ellipse"] = Ellipse;
 
 
 /***/ }),
@@ -5856,11 +5907,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Class used to create a 2D grid container
  */
 var Grid = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Grid, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Grid, _super);
     /**
      * Creates a new Grid
      * @param name defines control name
@@ -6290,6 +6342,7 @@ var Grid = /** @class */ (function (_super) {
     return Grid;
 }(_container__WEBPACK_IMPORTED_MODULE_1__["Container"]));
 
+babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_4__["_TypeStore"].RegisteredTypes["BABYLON.GUI.Grid"] = Grid;
 
 
 /***/ }),
@@ -6312,11 +6365,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Class used to create 2D images
  */
 var Image = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Image, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Image, _super);
     /**
      * Creates a new Image
      * @param name defines the control name
@@ -6326,6 +6380,7 @@ var Image = /** @class */ (function (_super) {
         if (url === void 0) { url = null; }
         var _this = _super.call(this, name) || this;
         _this.name = name;
+        _this._workingCanvas = null;
         _this._loaded = false;
         _this._stretch = Image.STRETCH_FILL;
         _this._autoScale = false;
@@ -6333,6 +6388,8 @@ var Image = /** @class */ (function (_super) {
         _this._sourceTop = 0;
         _this._sourceWidth = 0;
         _this._sourceHeight = 0;
+        _this._svgAttributesComputationCompleted = false;
+        _this._isSVG = false;
         _this._cellWidth = 0;
         _this._cellHeight = 0;
         _this._cellId = -1;
@@ -6341,6 +6398,10 @@ var Image = /** @class */ (function (_super) {
          * Observable notified when the content is loaded
          */
         _this.onImageLoadedObservable = new babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Observable"]();
+        /**
+         * Observable notified when _sourceLeft, _sourceTop, _sourceWidth and _sourceHeight are computed
+         */
+        _this.onSVGAttributesComputedObservable = new babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Observable"]();
         _this.source = url;
         return _this;
     }
@@ -6526,6 +6587,22 @@ var Image = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Image.prototype, "isSVG", {
+        /** Indicates if the format of the image is SVG */
+        get: function () {
+            return this._isSVG;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Image.prototype, "svgAttributesComputationCompleted", {
+        /** Gets the status of the SVG attributes computation (sourceLeft, sourceTop, sourceWidth, sourceHeight) */
+        get: function () {
+            return this._svgAttributesComputationCompleted;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Image.prototype, "autoScale", {
         /**
          * Gets or sets a boolean indicating if the image can force its container to adapt its size
@@ -6561,6 +6638,73 @@ var Image = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
+    /** @hidden */
+    Image.prototype._rotate90 = function (n, preserveProperties) {
+        if (preserveProperties === void 0) { preserveProperties = false; }
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        var width = this._domImage.width;
+        var height = this._domImage.height;
+        canvas.width = height;
+        canvas.height = width;
+        context.translate(canvas.width / 2, canvas.height / 2);
+        context.rotate(n * Math.PI / 2);
+        context.drawImage(this._domImage, 0, 0, width, height, -width / 2, -height / 2, width, height);
+        var dataUrl = canvas.toDataURL("image/jpg");
+        var rotatedImage = new Image(this.name + "rotated", dataUrl);
+        if (preserveProperties) {
+            rotatedImage._stretch = this._stretch;
+            rotatedImage._autoScale = this._autoScale;
+            rotatedImage._cellId = this._cellId;
+            rotatedImage._cellWidth = n % 1 ? this._cellHeight : this._cellWidth;
+            rotatedImage._cellHeight = n % 1 ? this._cellWidth : this._cellHeight;
+        }
+        this._handleRotationForSVGImage(this, rotatedImage, n);
+        return rotatedImage;
+    };
+    Image.prototype._handleRotationForSVGImage = function (srcImage, dstImage, n) {
+        var _this = this;
+        if (!srcImage._isSVG) {
+            return;
+        }
+        if (srcImage._svgAttributesComputationCompleted) {
+            this._rotate90SourceProperties(srcImage, dstImage, n);
+            this._markAsDirty();
+        }
+        else {
+            srcImage.onSVGAttributesComputedObservable.addOnce(function () {
+                _this._rotate90SourceProperties(srcImage, dstImage, n);
+                _this._markAsDirty();
+            });
+        }
+    };
+    Image.prototype._rotate90SourceProperties = function (srcImage, dstImage, n) {
+        var _a, _b;
+        var srcLeft = srcImage.sourceLeft, srcTop = srcImage.sourceTop, srcWidth = srcImage.domImage.width, srcHeight = srcImage.domImage.height;
+        var dstLeft = srcLeft, dstTop = srcTop, dstWidth = srcImage.sourceWidth, dstHeight = srcImage.sourceHeight;
+        if (n != 0) {
+            var mult = n < 0 ? -1 : 1;
+            n = n % 4;
+            for (var i = 0; i < Math.abs(n); ++i) {
+                dstLeft = -(srcTop - srcHeight / 2) * mult + srcHeight / 2;
+                dstTop = (srcLeft - srcWidth / 2) * mult + srcWidth / 2;
+                _a = [dstHeight, dstWidth], dstWidth = _a[0], dstHeight = _a[1];
+                if (n < 0) {
+                    dstTop -= dstHeight;
+                }
+                else {
+                    dstLeft -= dstWidth;
+                }
+                srcLeft = dstLeft;
+                srcTop = dstTop;
+                _b = [srcHeight, srcWidth], srcWidth = _b[0], srcHeight = _b[1];
+            }
+        }
+        dstImage.sourceLeft = dstLeft;
+        dstImage.sourceTop = dstTop;
+        dstImage.sourceWidth = dstWidth;
+        dstImage.sourceHeight = dstHeight;
+    };
     Object.defineProperty(Image.prototype, "domImage", {
         get: function () {
             return this._domImage;
@@ -6598,10 +6742,10 @@ var Image = /** @class */ (function (_super) {
         this._markAsDirty();
     };
     Image.prototype._extractNinePatchSliceDataFromImage = function () {
-        if (!Image._WorkingCanvas) {
-            Image._WorkingCanvas = document.createElement('canvas');
+        if (!this._workingCanvas) {
+            this._workingCanvas = document.createElement('canvas');
         }
-        var canvas = Image._WorkingCanvas;
+        var canvas = this._workingCanvas;
         var context = canvas.getContext('2d');
         var width = this._domImage.width;
         var height = this._domImage.height;
@@ -6649,6 +6793,9 @@ var Image = /** @class */ (function (_super) {
             }
             this._loaded = false;
             this._source = value;
+            if (value) {
+                value = this._svgCheck(value);
+            }
             this._domImage = document.createElement("img");
             this._domImage.onload = function () {
                 _this._onImageLoaded();
@@ -6657,13 +6804,97 @@ var Image = /** @class */ (function (_super) {
                 babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Tools"].SetCorsBehavior(value, this._domImage);
                 this._domImage.src = value;
             }
-            if (this._domImage.width != 0) {
-                _this._onImageLoaded();
-            }
         },
         enumerable: true,
         configurable: true
     });
+    /**
+     * Checks for svg document with icon id present
+     */
+    Image.prototype._svgCheck = function (value) {
+        var _this = this;
+        if (window.SVGSVGElement && (value.search(/.svg#/gi) !== -1) && (value.indexOf("#") === value.lastIndexOf("#"))) {
+            this._isSVG = true;
+            var svgsrc = value.split('#')[0];
+            var elemid = value.split('#')[1];
+            // check if object alr exist in document
+            var svgExist = document.body.querySelector('object[data="' + svgsrc + '"]');
+            if (svgExist) {
+                var svgDoc = svgExist.contentDocument;
+                // get viewbox width and height, get svg document width and height in px
+                if (svgDoc && svgDoc.documentElement) {
+                    var vb = svgDoc.documentElement.getAttribute("viewBox");
+                    var docwidth = Number(svgDoc.documentElement.getAttribute("width"));
+                    var docheight = Number(svgDoc.documentElement.getAttribute("height"));
+                    if (vb && docwidth && docheight) {
+                        this._getSVGAttribs(svgExist, elemid);
+                        return value;
+                    }
+                }
+                // wait for object to load
+                svgExist.addEventListener("load", function () {
+                    _this._getSVGAttribs(svgExist, elemid);
+                });
+            }
+            else {
+                // create document object
+                var svgImage = document.createElement("object");
+                svgImage.data = svgsrc;
+                svgImage.type = "image/svg+xml";
+                svgImage.width = "0%";
+                svgImage.height = "0%";
+                document.body.appendChild(svgImage);
+                // when the object has loaded, get the element attribs
+                svgImage.onload = function () {
+                    var svgobj = document.body.querySelector('object[data="' + svgsrc + '"]');
+                    if (svgobj) {
+                        _this._getSVGAttribs(svgobj, elemid);
+                    }
+                };
+            }
+            return svgsrc;
+        }
+        else {
+            return value;
+        }
+    };
+    /**
+     * Sets sourceLeft, sourceTop, sourceWidth, sourceHeight automatically
+     * given external svg file and icon id
+     */
+    Image.prototype._getSVGAttribs = function (svgsrc, elemid) {
+        var svgDoc = svgsrc.contentDocument;
+        // get viewbox width and height, get svg document width and height in px
+        if (svgDoc && svgDoc.documentElement) {
+            var vb = svgDoc.documentElement.getAttribute("viewBox");
+            var docwidth = Number(svgDoc.documentElement.getAttribute("width"));
+            var docheight = Number(svgDoc.documentElement.getAttribute("height"));
+            // get element bbox and matrix transform
+            var elem = svgDoc.getElementById(elemid);
+            if (vb && docwidth && docheight) {
+                var vb_width = Number(vb.split(" ")[2]);
+                var vb_height = Number(vb.split(" ")[3]);
+                var elem_bbox = elem.getBBox();
+                var elem_matrix_a = 1;
+                var elem_matrix_d = 1;
+                var elem_matrix_e = 0;
+                var elem_matrix_f = 0;
+                if (elem.transform && elem.transform.baseVal.consolidate()) {
+                    elem_matrix_a = elem.transform.baseVal.consolidate().matrix.a;
+                    elem_matrix_d = elem.transform.baseVal.consolidate().matrix.d;
+                    elem_matrix_e = elem.transform.baseVal.consolidate().matrix.e;
+                    elem_matrix_f = elem.transform.baseVal.consolidate().matrix.f;
+                }
+                // compute source coordinates and dimensions
+                this.sourceLeft = ((elem_matrix_a * elem_bbox.x + elem_matrix_e) * docwidth) / vb_width;
+                this.sourceTop = ((elem_matrix_d * elem_bbox.y + elem_matrix_f) * docheight) / vb_height;
+                this.sourceWidth = (elem_bbox.width * elem_matrix_a) * (docwidth / vb_width);
+                this.sourceHeight = (elem_bbox.height * elem_matrix_d) * (docheight / vb_height);
+                this._svgAttributesComputationCompleted = true;
+                this.onSVGAttributesComputedObservable.notifyObservers(this);
+            }
+        }
+    };
     Object.defineProperty(Image.prototype, "cellWidth", {
         /**
          * Gets or sets the cell width to use when animation sheet is enabled
@@ -6728,10 +6959,10 @@ var Image = /** @class */ (function (_super) {
         if (!_super.prototype.contains.call(this, x, y)) {
             return false;
         }
-        if (!this._detectPointerOnOpaqueOnly || !Image._WorkingCanvas) {
+        if (!this._detectPointerOnOpaqueOnly || !this._workingCanvas) {
             return true;
         }
-        var canvas = Image._WorkingCanvas;
+        var canvas = this._workingCanvas;
         var context = canvas.getContext("2d");
         var width = this._currentMeasure.width | 0;
         var height = this._currentMeasure.height | 0;
@@ -6780,10 +7011,10 @@ var Image = /** @class */ (function (_super) {
         if (!this._detectPointerOnOpaqueOnly) {
             return;
         }
-        if (!Image._WorkingCanvas) {
-            Image._WorkingCanvas = document.createElement('canvas');
+        if (!this._workingCanvas) {
+            this._workingCanvas = document.createElement('canvas');
         }
-        var canvas = Image._WorkingCanvas;
+        var canvas = this._workingCanvas;
         var width = this._currentMeasure.width;
         var height = this._currentMeasure.height;
         var context = canvas.getContext("2d");
@@ -6796,7 +7027,7 @@ var Image = /** @class */ (function (_super) {
         if (!this._detectPointerOnOpaqueOnly) {
             return;
         }
-        var canvas = Image._WorkingCanvas;
+        var canvas = this._workingCanvas;
         context = canvas.getContext("2d");
         context.drawImage(this._domImage, sx, sy, sw, sh, tx - this._currentMeasure.left, ty - this._currentMeasure.top, tw, th);
     };
@@ -6891,8 +7122,8 @@ var Image = /** @class */ (function (_super) {
     Image.prototype.dispose = function () {
         _super.prototype.dispose.call(this);
         this.onImageLoadedObservable.clear();
+        this.onSVGAttributesComputedObservable.clear();
     };
-    Image._WorkingCanvas = null;
     // Static
     /** STRETCH_NONE */
     Image.STRETCH_NONE = 0;
@@ -6907,6 +7138,7 @@ var Image = /** @class */ (function (_super) {
     return Image;
 }(_control__WEBPACK_IMPORTED_MODULE_2__["Control"]));
 
+babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["_TypeStore"].RegisteredTypes["BABYLON.GUI.Image"] = Image;
 
 
 /***/ }),
@@ -6915,7 +7147,7 @@ var Image = /** @class */ (function (_super) {
 /*!******************************!*\
   !*** ./2D/controls/index.ts ***!
   \******************************/
-/*! exports provided: Button, Checkbox, ColorPicker, Container, Control, Ellipse, Grid, Image, InputText, InputPassword, Line, MultiLine, RadioButton, StackPanel, SelectorGroup, CheckboxGroup, RadioGroup, SliderGroup, SelectionPanel, ScrollViewer, TextWrapping, TextBlock, KeyPropertySet, VirtualKeyboard, Rectangle, DisplayGrid, BaseSlider, Slider, ImageBasedSlider, ScrollBar, name */
+/*! exports provided: Button, Checkbox, ColorPicker, Container, Control, Ellipse, Grid, Image, InputText, InputPassword, Line, MultiLine, RadioButton, StackPanel, SelectorGroup, CheckboxGroup, RadioGroup, SliderGroup, SelectionPanel, ScrollViewer, TextWrapping, TextBlock, KeyPropertySet, VirtualKeyboard, Rectangle, DisplayGrid, BaseSlider, Slider, ImageBasedSlider, ScrollBar, ImageScrollBar, name */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7004,8 +7236,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sliders_scrollBar__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./sliders/scrollBar */ "./2D/controls/sliders/scrollBar.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ScrollBar", function() { return _sliders_scrollBar__WEBPACK_IMPORTED_MODULE_23__["ScrollBar"]; });
 
-/* harmony import */ var _statics__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./statics */ "./2D/controls/statics.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "name", function() { return _statics__WEBPACK_IMPORTED_MODULE_24__["name"]; });
+/* harmony import */ var _sliders_imageScrollBar__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./sliders/imageScrollBar */ "./2D/controls/sliders/imageScrollBar.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImageScrollBar", function() { return _sliders_imageScrollBar__WEBPACK_IMPORTED_MODULE_24__["ImageScrollBar"]; });
+
+/* harmony import */ var _statics__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./statics */ "./2D/controls/statics.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "name", function() { return _statics__WEBPACK_IMPORTED_MODULE_25__["name"]; });
+
 
 
 
@@ -7048,13 +7284,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InputPassword", function() { return InputPassword; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _inputText__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inputText */ "./2D/controls/inputText.ts");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! babylonjs/Misc/typeStore */ "babylonjs/Misc/observable");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /**
  * Class used to create a password control
  */
 var InputPassword = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](InputPassword, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(InputPassword, _super);
     function InputPassword() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
@@ -7068,6 +7307,7 @@ var InputPassword = /** @class */ (function (_super) {
     return InputPassword;
 }(_inputText__WEBPACK_IMPORTED_MODULE_1__["InputText"]));
 
+babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2__["_TypeStore"].RegisteredTypes["BABYLON.GUI.InputPassword"] = InputPassword;
 
 
 /***/ }),
@@ -7093,11 +7333,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Class used to create input text control
  */
 var InputText = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](InputText, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(InputText, _super);
     /**
      * Creates a new InputText
      * @param name defines the control name
@@ -7134,6 +7375,8 @@ var InputText = /** @class */ (function (_super) {
         _this._isPointerDown = false;
         /** Gets or sets a string representing the message displayed on mobile when the control gets the focus */
         _this.promptMessage = "Please enter text:";
+        /** Force disable prompt on mobile device */
+        _this.disableMobilePrompt = false;
         /** Observable raised when the text changes */
         _this.onTextChangedObservable = new babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Observable"]();
         /** Observable raised just before an entered character is to be added */
@@ -7465,7 +7708,7 @@ var InputText = /** @class */ (function (_super) {
         this._cursorOffset = 0;
         this._markAsDirty();
         this.onFocusObservable.notifyObservers(this);
-        if (navigator.userAgent.indexOf("Mobile") !== -1) {
+        if (navigator.userAgent.indexOf("Mobile") !== -1 && !this.disableMobilePrompt) {
             var value = prompt(this.promptMessage);
             if (value !== null) {
                 this.text = value;
@@ -7875,7 +8118,7 @@ var InputText = /** @class */ (function (_super) {
         var insertPosition = this._text.length - this._cursorOffset;
         this.text = this._text.slice(0, insertPosition) + data + this._text.slice(insertPosition);
     };
-    InputText.prototype._draw = function (context) {
+    InputText.prototype._draw = function (context, invalidatedRectangle) {
         var _this = this;
         context.save();
         this._applyStates(context);
@@ -8077,6 +8320,7 @@ var InputText = /** @class */ (function (_super) {
     return InputText;
 }(_control__WEBPACK_IMPORTED_MODULE_2__["Control"]));
 
+babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["_TypeStore"].RegisteredTypes["BABYLON.GUI.InputText"] = InputText;
 
 
 /***/ }),
@@ -8101,9 +8345,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /** Class used to render 2D lines */
 var Line = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Line, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Line, _super);
     /**
      * Creates a new Line
      * @param name defines the control name
@@ -8117,6 +8362,7 @@ var Line = /** @class */ (function (_super) {
         _this._x2 = new _valueAndUnit__WEBPACK_IMPORTED_MODULE_3__["ValueAndUnit"](0);
         _this._y2 = new _valueAndUnit__WEBPACK_IMPORTED_MODULE_3__["ValueAndUnit"](0);
         _this._dash = new Array();
+        _this._automaticSize = true;
         _this.isHitTestVisible = false;
         _this._horizontalAlignment = _control__WEBPACK_IMPORTED_MODULE_2__["Control"].HORIZONTAL_ALIGNMENT_LEFT;
         _this._verticalAlignment = _control__WEBPACK_IMPORTED_MODULE_2__["Control"].VERTICAL_ALIGNMENT_TOP;
@@ -8285,8 +8531,8 @@ var Line = /** @class */ (function (_super) {
         context.lineWidth = this._lineWidth;
         context.setLineDash(this._dash);
         context.beginPath();
-        context.moveTo(this._cachedParentMeasure.left + this._x1.getValue(this._host), this._cachedParentMeasure.left + this._y1.getValue(this._host));
-        context.lineTo(this._cachedParentMeasure.left + this._effectiveX2, this._cachedParentMeasure.left + this._effectiveY2);
+        context.moveTo(this._cachedParentMeasure.left + this._x1.getValue(this._host), this._cachedParentMeasure.top + this._y1.getValue(this._host));
+        context.lineTo(this._cachedParentMeasure.left + this._effectiveX2, this._cachedParentMeasure.top + this._effectiveY2);
         context.stroke();
         context.restore();
     };
@@ -8345,6 +8591,7 @@ var Line = /** @class */ (function (_super) {
     return Line;
 }(_control__WEBPACK_IMPORTED_MODULE_2__["Control"]));
 
+babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_1__["_TypeStore"].RegisteredTypes["BABYLON.GUI.Line"] = Line;
 
 
 /***/ }),
@@ -8368,11 +8615,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Class used to create multi line control
  */
 var MultiLine = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](MultiLine, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(MultiLine, _super);
     /**
      * Creates a new MultiLine
      * @param name defines the control name
@@ -8385,6 +8633,7 @@ var MultiLine = /** @class */ (function (_super) {
         _this.onPointUpdate = function () {
             _this._markAsDirty();
         };
+        _this._automaticSize = true;
         _this.isHitTestVisible = false;
         _this._horizontalAlignment = _control__WEBPACK_IMPORTED_MODULE_2__["Control"].HORIZONTAL_ALIGNMENT_LEFT;
         _this._verticalAlignment = _control__WEBPACK_IMPORTED_MODULE_2__["Control"].VERTICAL_ALIGNMENT_TOP;
@@ -8525,7 +8774,7 @@ var MultiLine = /** @class */ (function (_super) {
     MultiLine.prototype._getTypeName = function () {
         return "MultiLine";
     };
-    MultiLine.prototype._draw = function (context) {
+    MultiLine.prototype._draw = function (context, invalidatedRectangle) {
         context.save();
         if (this.shadowBlur || this.shadowOffsetX || this.shadowOffsetY) {
             context.shadowColor = this.shadowColor;
@@ -8612,6 +8861,7 @@ var MultiLine = /** @class */ (function (_super) {
     return MultiLine;
 }(_control__WEBPACK_IMPORTED_MODULE_2__["Control"]));
 
+babylonjs_Meshes_abstractMesh__WEBPACK_IMPORTED_MODULE_1__["_TypeStore"].RegisteredTypes["BABYLON.GUI.MultiLine"] = MultiLine;
 
 
 /***/ }),
@@ -8637,11 +8887,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Class used to create radio button controls
  */
 var RadioButton = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](RadioButton, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(RadioButton, _super);
     /**
      * Creates a new RadioButton
      * @param name defines the control name
@@ -8816,6 +9067,7 @@ var RadioButton = /** @class */ (function (_super) {
     return RadioButton;
 }(_control__WEBPACK_IMPORTED_MODULE_2__["Control"]));
 
+babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["_TypeStore"].RegisteredTypes["BABYLON.GUI.RadioButton"] = RadioButton;
 
 
 /***/ }),
@@ -8832,11 +9084,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Rectangle", function() { return Rectangle; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./container */ "./2D/controls/container.ts");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! babylonjs/Misc/typeStore */ "babylonjs/Misc/observable");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /** Class used to create rectangle container */
 var Rectangle = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Rectangle, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Rectangle, _super);
     /**
      * Creates a new Rectangle
      * @param name defines the control name
@@ -8957,6 +9212,7 @@ var Rectangle = /** @class */ (function (_super) {
     return Rectangle;
 }(_container__WEBPACK_IMPORTED_MODULE_1__["Container"]));
 
+babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2__["_TypeStore"].RegisteredTypes["BABYLON.GUI.Rectangle"] = Rectangle;
 
 
 /***/ }),
@@ -8979,6 +9235,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../control */ "./2D/controls/control.ts");
 /* harmony import */ var _scrollViewerWindow__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scrollViewerWindow */ "./2D/controls/scrollViewers/scrollViewerWindow.ts");
 /* harmony import */ var _sliders_scrollBar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../sliders/scrollBar */ "./2D/controls/sliders/scrollBar.ts");
+/* harmony import */ var _sliders_imageScrollBar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../sliders/imageScrollBar */ "./2D/controls/sliders/imageScrollBar.ts");
+
+
 
 
 
@@ -8990,16 +9249,24 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to hold a viewer window and sliders in a grid
 */
 var ScrollViewer = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](ScrollViewer, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(ScrollViewer, _super);
     /**
     * Creates a new ScrollViewer
     * @param name of ScrollViewer
     */
-    function ScrollViewer(name) {
+    function ScrollViewer(name, isImageBased) {
         var _this = _super.call(this, name) || this;
         _this._barSize = 20;
         _this._pointerIsOver = false;
         _this._wheelPrecision = 0.05;
+        _this._thumbLength = 0.5;
+        _this._thumbHeight = 1;
+        _this._barImageHeight = 1;
+        _this._horizontalBarImageHeight = 1;
+        _this._verticalBarImageHeight = 1;
+        _this._forceHorizontalBar = false;
+        _this._forceVerticalBar = false;
+        _this._useImageBar = isImageBased ? isImageBased : false;
         _this.onDirtyObservable.add(function () {
             _this._horizontalBarSpace.color = _this.color;
             _this._verticalBarSpace.color = _this.color;
@@ -9012,9 +9279,15 @@ var ScrollViewer = /** @class */ (function (_super) {
             _this._pointerIsOver = false;
         });
         _this._grid = new _grid__WEBPACK_IMPORTED_MODULE_3__["Grid"]();
-        _this._horizontalBar = new _sliders_scrollBar__WEBPACK_IMPORTED_MODULE_6__["ScrollBar"]();
-        _this._verticalBar = new _sliders_scrollBar__WEBPACK_IMPORTED_MODULE_6__["ScrollBar"]();
-        _this._window = new _scrollViewerWindow__WEBPACK_IMPORTED_MODULE_5__["_ScrollViewerWindow"]();
+        if (_this._useImageBar) {
+            _this._horizontalBar = new _sliders_imageScrollBar__WEBPACK_IMPORTED_MODULE_7__["ImageScrollBar"]();
+            _this._verticalBar = new _sliders_imageScrollBar__WEBPACK_IMPORTED_MODULE_7__["ImageScrollBar"]();
+        }
+        else {
+            _this._horizontalBar = new _sliders_scrollBar__WEBPACK_IMPORTED_MODULE_6__["ScrollBar"]();
+            _this._verticalBar = new _sliders_scrollBar__WEBPACK_IMPORTED_MODULE_6__["ScrollBar"]();
+        }
+        _this._window = new _scrollViewerWindow__WEBPACK_IMPORTED_MODULE_5__["_ScrollViewerWindow"]("scrollViewer_window");
         _this._window.horizontalAlignment = _control__WEBPACK_IMPORTED_MODULE_4__["Control"].HORIZONTAL_ALIGNMENT_LEFT;
         _this._window.verticalAlignment = _control__WEBPACK_IMPORTED_MODULE_4__["Control"].VERTICAL_ALIGNMENT_TOP;
         _this._grid.addColumnDefinition(1);
@@ -9023,50 +9296,26 @@ var ScrollViewer = /** @class */ (function (_super) {
         _this._grid.addRowDefinition(0, true);
         _super.prototype.addControl.call(_this, _this._grid);
         _this._grid.addControl(_this._window, 0, 0);
-        _this._verticalBar.paddingLeft = 0;
-        _this._verticalBar.width = "100%";
-        _this._verticalBar.height = "100%";
-        _this._verticalBar.barOffset = 0;
-        _this._verticalBar.value = 0;
-        _this._verticalBar.maximum = 1;
-        _this._verticalBar.horizontalAlignment = _control__WEBPACK_IMPORTED_MODULE_4__["Control"].HORIZONTAL_ALIGNMENT_CENTER;
-        _this._verticalBar.verticalAlignment = _control__WEBPACK_IMPORTED_MODULE_4__["Control"].VERTICAL_ALIGNMENT_CENTER;
-        _this._verticalBar.isVertical = true;
-        _this._verticalBar.rotation = Math.PI;
-        _this._verticalBar.isVisible = false;
         _this._verticalBarSpace = new _rectangle__WEBPACK_IMPORTED_MODULE_2__["Rectangle"]();
         _this._verticalBarSpace.horizontalAlignment = _control__WEBPACK_IMPORTED_MODULE_4__["Control"].HORIZONTAL_ALIGNMENT_LEFT;
         _this._verticalBarSpace.verticalAlignment = _control__WEBPACK_IMPORTED_MODULE_4__["Control"].VERTICAL_ALIGNMENT_TOP;
         _this._verticalBarSpace.thickness = 1;
         _this._grid.addControl(_this._verticalBarSpace, 0, 1);
-        _this._verticalBarSpace.addControl(_this._verticalBar);
-        _this._verticalBar.onValueChangedObservable.add(function (value) {
-            _this._window.top = value * _this._endTop + "px";
-        });
-        _this._horizontalBar.paddingLeft = 0;
-        _this._horizontalBar.width = "100%";
-        _this._horizontalBar.height = "100%";
-        _this._horizontalBar.barOffset = 0;
-        _this._horizontalBar.value = 0;
-        _this._horizontalBar.maximum = 1;
-        _this._horizontalBar.horizontalAlignment = _control__WEBPACK_IMPORTED_MODULE_4__["Control"].HORIZONTAL_ALIGNMENT_CENTER;
-        _this._horizontalBar.verticalAlignment = _control__WEBPACK_IMPORTED_MODULE_4__["Control"].VERTICAL_ALIGNMENT_CENTER;
-        _this._horizontalBar.isVisible = false;
+        _this._addBar(_this._verticalBar, _this._verticalBarSpace, true, Math.PI);
         _this._horizontalBarSpace = new _rectangle__WEBPACK_IMPORTED_MODULE_2__["Rectangle"]();
         _this._horizontalBarSpace.horizontalAlignment = _control__WEBPACK_IMPORTED_MODULE_4__["Control"].HORIZONTAL_ALIGNMENT_LEFT;
         _this._horizontalBarSpace.verticalAlignment = _control__WEBPACK_IMPORTED_MODULE_4__["Control"].VERTICAL_ALIGNMENT_TOP;
         _this._horizontalBarSpace.thickness = 1;
         _this._grid.addControl(_this._horizontalBarSpace, 1, 0);
-        _this._horizontalBarSpace.addControl(_this._horizontalBar);
-        _this._horizontalBar.onValueChangedObservable.add(function (value) {
-            _this._window.left = value * _this._endLeft + "px";
-        });
+        _this._addBar(_this._horizontalBar, _this._horizontalBarSpace, false, 0);
         _this._dragSpace = new _rectangle__WEBPACK_IMPORTED_MODULE_2__["Rectangle"]();
         _this._dragSpace.thickness = 1;
         _this._grid.addControl(_this._dragSpace, 1, 1);
         // Colors
-        _this.barColor = "grey";
-        _this.barBackground = "transparent";
+        if (!_this._useImageBar) {
+            _this.barColor = "grey";
+            _this.barBackground = "transparent";
+        }
         return _this;
     }
     Object.defineProperty(ScrollViewer.prototype, "horizontalBar", {
@@ -9124,6 +9373,81 @@ var ScrollViewer = /** @class */ (function (_super) {
             child._markMatrixAsDirty();
         }
     };
+    Object.defineProperty(ScrollViewer.prototype, "freezeControls", {
+        /**
+         * Freezes or unfreezes the controls in the window.
+         * When controls are frozen, the scroll viewer can render a lot more quickly but updates to positions/sizes of controls
+         * are not taken into account. If you want to change positions/sizes, unfreeze, perform the changes then freeze again
+         */
+        get: function () {
+            return this._window.freezeControls;
+        },
+        set: function (value) {
+            this._window.freezeControls = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ScrollViewer.prototype, "bucketWidth", {
+        /** Gets the bucket width */
+        get: function () {
+            return this._window.bucketWidth;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ScrollViewer.prototype, "bucketHeight", {
+        /** Gets the bucket height */
+        get: function () {
+            return this._window.bucketHeight;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * Sets the bucket sizes.
+     * When freezeControls is true, setting a non-zero bucket size will improve performances by updating only
+     * controls that are visible. The bucket sizes is used to subdivide (internally) the window area to smaller areas into which
+     * controls are dispatched. So, the size should be roughly equals to the mean size of all the controls of
+     * the window. To disable the usage of buckets, sets either width or height (or both) to 0.
+     * Please note that using this option will raise the memory usage (the higher the bucket sizes, the less memory
+     * used), that's why it is not enabled by default.
+     * @param width width of the bucket
+     * @param height height of the bucket
+     */
+    ScrollViewer.prototype.setBucketSizes = function (width, height) {
+        this._window.setBucketSizes(width, height);
+    };
+    Object.defineProperty(ScrollViewer.prototype, "forceHorizontalBar", {
+        /**
+         * Forces the horizontal scroll bar to be displayed
+         */
+        get: function () {
+            return this._forceHorizontalBar;
+        },
+        set: function (value) {
+            this._grid.setRowDefinition(1, value ? this._barSize : 0, true);
+            this._horizontalBar.isVisible = value;
+            this._forceHorizontalBar = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ScrollViewer.prototype, "forceVerticalBar", {
+        /**
+         * Forces the vertical scroll bar to be displayed
+         */
+        get: function () {
+            return this._forceVerticalBar;
+        },
+        set: function (value) {
+            this._grid.setColumnDefinition(1, value ? this._barSize : 0, true);
+            this._verticalBar.isVisible = value;
+            this._forceVerticalBar = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     /** Reset the scroll viewer window to initial size */
     ScrollViewer.prototype.resetWindow = function () {
         this._window.width = "100%";
@@ -9133,8 +9457,9 @@ var ScrollViewer = /** @class */ (function (_super) {
         return "ScrollViewer";
     };
     ScrollViewer.prototype._buildClientSizes = function () {
-        this._window.parentClientWidth = this._currentMeasure.width - (this._verticalBar.isVisible ? this._barSize : 0) - 2 * this.thickness;
-        this._window.parentClientHeight = this._currentMeasure.height - (this._horizontalBar.isVisible ? this._barSize : 0) - 2 * this.thickness;
+        var ratio = this.host.idealRatio;
+        this._window.parentClientWidth = this._currentMeasure.width - (this._verticalBar.isVisible || this.forceVerticalBar ? this._barSize * ratio : 0) - 2 * this.thickness;
+        this._window.parentClientHeight = this._currentMeasure.height - (this._horizontalBar.isVisible || this.forceHorizontalBar ? this._barSize * ratio : 0) - 2 * this.thickness;
         this._clientWidth = this._window.parentClientWidth;
         this._clientHeight = this._window.parentClientHeight;
     };
@@ -9169,6 +9494,21 @@ var ScrollViewer = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ScrollViewer.prototype, "scrollBackground", {
+        /** Gets or sets the scroll bar container background color */
+        get: function () {
+            return this._horizontalBarSpace.background;
+        },
+        set: function (color) {
+            if (this._horizontalBarSpace.background === color) {
+                return;
+            }
+            this._horizontalBarSpace.background = color;
+            this._verticalBarSpace.background = color;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(ScrollViewer.prototype, "barColor", {
         /** Gets or sets the bar color */
         get: function () {
@@ -9181,6 +9521,56 @@ var ScrollViewer = /** @class */ (function (_super) {
             this._barColor = color;
             this._horizontalBar.color = color;
             this._verticalBar.color = color;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ScrollViewer.prototype, "thumbImage", {
+        /** Gets or sets the bar image */
+        get: function () {
+            return this._barImage;
+        },
+        set: function (value) {
+            if (this._barImage === value) {
+                return;
+            }
+            this._barImage = value;
+            var hb = this._horizontalBar;
+            var vb = this._verticalBar;
+            hb.thumbImage = value;
+            vb.thumbImage = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ScrollViewer.prototype, "horizontalThumbImage", {
+        /** Gets or sets the horizontal bar image */
+        get: function () {
+            return this._horizontalBarImage;
+        },
+        set: function (value) {
+            if (this._horizontalBarImage === value) {
+                return;
+            }
+            this._horizontalBarImage = value;
+            var hb = this._horizontalBar;
+            hb.thumbImage = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ScrollViewer.prototype, "verticalThumbImage", {
+        /** Gets or sets the vertical bar image */
+        get: function () {
+            return this._verticalBarImage;
+        },
+        set: function (value) {
+            if (this._verticalBarImage === value) {
+                return;
+            }
+            this._verticalBarImage = value;
+            var vb = this._verticalBar;
+            vb.thumbImage = value;
         },
         enumerable: true,
         configurable: true
@@ -9206,6 +9596,127 @@ var ScrollViewer = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ScrollViewer.prototype, "thumbLength", {
+        /** Gets or sets the length of the thumb */
+        get: function () {
+            return this._thumbLength;
+        },
+        set: function (value) {
+            if (this._thumbLength === value) {
+                return;
+            }
+            if (value <= 0) {
+                value = 0.1;
+            }
+            if (value > 1) {
+                value = 1;
+            }
+            this._thumbLength = value;
+            var hb = this._horizontalBar;
+            var vb = this._verticalBar;
+            hb.thumbLength = value;
+            vb.thumbLength = value;
+            this._markAsDirty();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ScrollViewer.prototype, "thumbHeight", {
+        /** Gets or sets the height of the thumb */
+        get: function () {
+            return this._thumbHeight;
+        },
+        set: function (value) {
+            if (this._thumbHeight === value) {
+                return;
+            }
+            if (value <= 0) {
+                value = 0.1;
+            }
+            if (value > 1) {
+                value = 1;
+            }
+            this._thumbHeight = value;
+            var hb = this._horizontalBar;
+            var vb = this._verticalBar;
+            hb.thumbHeight = value;
+            vb.thumbHeight = value;
+            this._markAsDirty();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ScrollViewer.prototype, "barImageHeight", {
+        /** Gets or sets the height of the bar image */
+        get: function () {
+            return this._barImageHeight;
+        },
+        set: function (value) {
+            if (this._barImageHeight === value) {
+                return;
+            }
+            if (value <= 0) {
+                value = 0.1;
+            }
+            if (value > 1) {
+                value = 1;
+            }
+            this._barImageHeight = value;
+            var hb = this._horizontalBar;
+            var vb = this._verticalBar;
+            hb.barImageHeight = value;
+            vb.barImageHeight = value;
+            this._markAsDirty();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ScrollViewer.prototype, "horizontalBarImageHeight", {
+        /** Gets or sets the height of the horizontal bar image */
+        get: function () {
+            return this._horizontalBarImageHeight;
+        },
+        set: function (value) {
+            if (this._horizontalBarImageHeight === value) {
+                return;
+            }
+            if (value <= 0) {
+                value = 0.1;
+            }
+            if (value > 1) {
+                value = 1;
+            }
+            this._horizontalBarImageHeight = value;
+            var hb = this._horizontalBar;
+            hb.barImageHeight = value;
+            this._markAsDirty();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ScrollViewer.prototype, "verticalBarImageHeight", {
+        /** Gets or sets the height of the vertical bar image */
+        get: function () {
+            return this._verticalBarImageHeight;
+        },
+        set: function (value) {
+            if (this._verticalBarImageHeight === value) {
+                return;
+            }
+            if (value <= 0) {
+                value = 0.1;
+            }
+            if (value > 1) {
+                value = 1;
+            }
+            this._verticalBarImageHeight = value;
+            var vb = this._verticalBar;
+            vb.barImageHeight = value;
+            this._markAsDirty();
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(ScrollViewer.prototype, "barBackground", {
         /** Gets or sets the bar background */
         get: function () {
@@ -9216,60 +9727,136 @@ var ScrollViewer = /** @class */ (function (_super) {
                 return;
             }
             this._barBackground = color;
-            this._horizontalBar.background = color;
-            this._verticalBar.background = color;
+            var hb = this._horizontalBar;
+            var vb = this._verticalBar;
+            hb.background = color;
+            vb.background = color;
             this._dragSpace.background = color;
         },
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ScrollViewer.prototype, "barImage", {
+        /** Gets or sets the bar background image */
+        get: function () {
+            return this._barBackgroundImage;
+        },
+        set: function (value) {
+            if (this._barBackgroundImage === value) {
+            }
+            this._barBackgroundImage = value;
+            var hb = this._horizontalBar;
+            var vb = this._verticalBar;
+            hb.backgroundImage = value;
+            vb.backgroundImage = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ScrollViewer.prototype, "horizontalBarImage", {
+        /** Gets or sets the horizontal bar background image */
+        get: function () {
+            return this._horizontalBarBackgroundImage;
+        },
+        set: function (value) {
+            if (this._horizontalBarBackgroundImage === value) {
+            }
+            this._horizontalBarBackgroundImage = value;
+            var hb = this._horizontalBar;
+            hb.backgroundImage = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ScrollViewer.prototype, "verticalBarImage", {
+        /** Gets or sets the vertical bar background image */
+        get: function () {
+            return this._verticalBarBackgroundImage;
+        },
+        set: function (value) {
+            if (this._verticalBarBackgroundImage === value) {
+            }
+            this._verticalBarBackgroundImage = value;
+            var vb = this._verticalBar;
+            vb.backgroundImage = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ScrollViewer.prototype._setWindowPosition = function () {
+        var ratio = this.host.idealRatio;
+        var windowContentsWidth = this._window._currentMeasure.width;
+        var windowContentsHeight = this._window._currentMeasure.height;
+        var _endLeft = this._clientWidth - windowContentsWidth;
+        var _endTop = this._clientHeight - windowContentsHeight;
+        var newLeft = (this._horizontalBar.value / ratio) * _endLeft + "px";
+        var newTop = (this._verticalBar.value / ratio) * _endTop + "px";
+        if (newLeft !== this._window.left) {
+            this._window.left = newLeft;
+            if (!this.freezeControls) {
+                this._rebuildLayout = true;
+            }
+        }
+        if (newTop !== this._window.top) {
+            this._window.top = newTop;
+            if (!this.freezeControls) {
+                this._rebuildLayout = true;
+            }
+        }
+    };
     /** @hidden */
     ScrollViewer.prototype._updateScroller = function () {
         var windowContentsWidth = this._window._currentMeasure.width;
         var windowContentsHeight = this._window._currentMeasure.height;
-        if (this._horizontalBar.isVisible && windowContentsWidth <= this._clientWidth) {
+        if (this._horizontalBar.isVisible && windowContentsWidth <= this._clientWidth && !this.forceHorizontalBar) {
             this._grid.setRowDefinition(1, 0, true);
             this._horizontalBar.isVisible = false;
             this._horizontalBar.value = 0;
             this._rebuildLayout = true;
         }
-        else if (!this._horizontalBar.isVisible && windowContentsWidth > this._clientWidth) {
+        else if (!this._horizontalBar.isVisible && (windowContentsWidth > this._clientWidth || this.forceHorizontalBar)) {
             this._grid.setRowDefinition(1, this._barSize, true);
             this._horizontalBar.isVisible = true;
             this._rebuildLayout = true;
         }
-        if (this._verticalBar.isVisible && windowContentsHeight <= this._clientHeight) {
+        if (this._verticalBar.isVisible && windowContentsHeight <= this._clientHeight && !this.forceVerticalBar) {
             this._grid.setColumnDefinition(1, 0, true);
             this._verticalBar.isVisible = false;
             this._verticalBar.value = 0;
             this._rebuildLayout = true;
         }
-        else if (!this._verticalBar.isVisible && windowContentsHeight > this._clientHeight) {
+        else if (!this._verticalBar.isVisible && (windowContentsHeight > this._clientHeight || this.forceVerticalBar)) {
             this._grid.setColumnDefinition(1, this._barSize, true);
             this._verticalBar.isVisible = true;
             this._rebuildLayout = true;
         }
         this._buildClientSizes();
-        this._endLeft = this._clientWidth - windowContentsWidth;
-        this._endTop = this._clientHeight - windowContentsHeight;
-        var newLeft = this._horizontalBar.value * this._endLeft + "px";
-        var newTop = this._verticalBar.value * this._endTop + "px";
-        if (newLeft !== this._window.left) {
-            this._window.left = newLeft;
-            this._rebuildLayout = true;
-        }
-        if (newTop !== this._window.top) {
-            this._window.top = newTop;
-            this._rebuildLayout = true;
-        }
-        var horizontalMultiplicator = this._clientWidth / windowContentsWidth;
-        var verticalMultiplicator = this._clientHeight / windowContentsHeight;
-        this._horizontalBar.thumbWidth = (this._clientWidth * horizontalMultiplicator) + "px";
-        this._verticalBar.thumbWidth = (this._clientHeight * verticalMultiplicator) + "px";
+        var ratio = this.host.idealRatio;
+        this._horizontalBar.thumbWidth = this._thumbLength * 0.9 * (this._clientWidth / ratio) + "px";
+        this._verticalBar.thumbWidth = this._thumbLength * 0.9 * (this._clientHeight / ratio) + "px";
     };
     ScrollViewer.prototype._link = function (host) {
         _super.prototype._link.call(this, host);
         this._attachWheel();
+    };
+    /** @hidden */
+    ScrollViewer.prototype._addBar = function (barControl, barContainer, isVertical, rotation) {
+        var _this = this;
+        barControl.paddingLeft = 0;
+        barControl.width = "100%";
+        barControl.height = "100%";
+        barControl.barOffset = 0;
+        barControl.value = 0;
+        barControl.maximum = 1;
+        barControl.horizontalAlignment = _control__WEBPACK_IMPORTED_MODULE_4__["Control"].HORIZONTAL_ALIGNMENT_CENTER;
+        barControl.verticalAlignment = _control__WEBPACK_IMPORTED_MODULE_4__["Control"].VERTICAL_ALIGNMENT_CENTER;
+        barControl.isVertical = isVertical;
+        barControl.rotation = rotation;
+        barControl.isVisible = false;
+        barContainer.addControl(barControl);
+        barControl.onValueChangedObservable.add(function (value) {
+            _this._setWindowPosition();
+        });
     };
     /** @hidden */
     ScrollViewer.prototype._attachWheel = function () {
@@ -9320,6 +9907,7 @@ var ScrollViewer = /** @class */ (function (_super) {
     return ScrollViewer;
 }(_rectangle__WEBPACK_IMPORTED_MODULE_2__["Rectangle"]));
 
+babylonjs_Events_pointerEvents__WEBPACK_IMPORTED_MODULE_1__["_TypeStore"].RegisteredTypes["BABYLON.GUI.ScrollViewer"] = ScrollViewer;
 
 
 /***/ }),
@@ -9335,9 +9923,11 @@ var ScrollViewer = /** @class */ (function (_super) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_ScrollViewerWindow", function() { return _ScrollViewerWindow; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../container */ "./2D/controls/container.ts");
-/* harmony import */ var _valueAndUnit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../valueAndUnit */ "./2D/valueAndUnit.ts");
-/* harmony import */ var _control__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../control */ "./2D/controls/control.ts");
+/* harmony import */ var _measure__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../measure */ "./2D/measure.ts");
+/* harmony import */ var _container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../container */ "./2D/controls/container.ts");
+/* harmony import */ var _valueAndUnit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../valueAndUnit */ "./2D/valueAndUnit.ts");
+/* harmony import */ var _control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../control */ "./2D/controls/control.ts");
+
 
 
 
@@ -9347,26 +9937,205 @@ __webpack_require__.r(__webpack_exports__);
  * @hidden
 */
 var _ScrollViewerWindow = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](_ScrollViewerWindow, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(_ScrollViewerWindow, _super);
     /**
     * Creates a new ScrollViewerWindow
     * @param name of ScrollViewerWindow
     */
     function _ScrollViewerWindow(name) {
-        return _super.call(this, name) || this;
+        var _this = _super.call(this, name) || this;
+        _this._freezeControls = false;
+        _this._bucketWidth = 0;
+        _this._bucketHeight = 0;
+        _this._buckets = {};
+        return _this;
     }
+    Object.defineProperty(_ScrollViewerWindow.prototype, "freezeControls", {
+        get: function () {
+            return this._freezeControls;
+        },
+        set: function (value) {
+            if (this._freezeControls === value) {
+                return;
+            }
+            // trigger a full normal layout calculation to be sure all children have their measures up to date
+            this._freezeControls = false;
+            var textureSize = this.host.getSize();
+            var renderWidth = textureSize.width;
+            var renderHeight = textureSize.height;
+            var context = this.host.getContext();
+            var measure = new _measure__WEBPACK_IMPORTED_MODULE_1__["Measure"](0, 0, renderWidth, renderHeight);
+            this.host._numLayoutCalls = 0;
+            this.host._rootContainer._layout(measure, context);
+            // in freeze mode, prepare children measures accordingly
+            if (value) {
+                this._updateMeasures();
+                if (this._useBuckets()) {
+                    this._makeBuckets();
+                }
+            }
+            this._freezeControls = value;
+            this.host.markAsDirty(); // redraw with the (new) current settings
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(_ScrollViewerWindow.prototype, "bucketWidth", {
+        get: function () {
+            return this._bucketWidth;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(_ScrollViewerWindow.prototype, "bucketHeight", {
+        get: function () {
+            return this._bucketHeight;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    _ScrollViewerWindow.prototype.setBucketSizes = function (width, height) {
+        this._bucketWidth = width;
+        this._bucketHeight = height;
+        if (this._useBuckets()) {
+            if (this._freezeControls) {
+                this._makeBuckets();
+            }
+        }
+        else {
+            this._buckets = {};
+        }
+    };
+    _ScrollViewerWindow.prototype._useBuckets = function () {
+        return this._bucketWidth > 0 && this._bucketHeight > 0;
+    };
+    _ScrollViewerWindow.prototype._makeBuckets = function () {
+        this._buckets = {};
+        this._bucketLen = Math.ceil(this.widthInPixels / this._bucketWidth);
+        this._dispatchInBuckets(this._children);
+    };
+    _ScrollViewerWindow.prototype._dispatchInBuckets = function (children) {
+        for (var i = 0; i < children.length; ++i) {
+            var child = children[i];
+            var bStartX = Math.max(0, Math.floor((child._currentMeasure.left - this._currentMeasure.left) / this._bucketWidth)), bEndX = Math.floor((child._currentMeasure.left - this._currentMeasure.left + child._currentMeasure.width - 1) / this._bucketWidth), bStartY = Math.max(0, Math.floor((child._currentMeasure.top - this._currentMeasure.top) / this._bucketHeight)), bEndY = Math.floor((child._currentMeasure.top - this._currentMeasure.top + child._currentMeasure.height - 1) / this._bucketHeight);
+            while (bStartY <= bEndY) {
+                for (var x = bStartX; x <= bEndX; ++x) {
+                    var bucket = bStartY * this._bucketLen + x, lstc = this._buckets[bucket];
+                    if (!lstc) {
+                        lstc = [];
+                        this._buckets[bucket] = lstc;
+                    }
+                    lstc.push(child);
+                }
+                bStartY++;
+            }
+            if (child instanceof _container__WEBPACK_IMPORTED_MODULE_2__["Container"] && child._children.length > 0) {
+                this._dispatchInBuckets(child._children);
+            }
+        }
+    };
+    // reset left and top measures for the window and all its children
+    _ScrollViewerWindow.prototype._updateMeasures = function () {
+        var left = this.leftInPixels | 0, top = this.topInPixels | 0;
+        this._measureForChildren.left -= left;
+        this._measureForChildren.top -= top;
+        this._currentMeasure.left -= left;
+        this._currentMeasure.top -= top;
+        this._updateChildrenMeasures(this._children, left, top);
+    };
+    _ScrollViewerWindow.prototype._updateChildrenMeasures = function (children, left, top) {
+        for (var i = 0; i < children.length; ++i) {
+            var child = children[i];
+            child._currentMeasure.left -= left;
+            child._currentMeasure.top -= top;
+            child._customData._origLeft = child._currentMeasure.left; // save the original left and top values for each child
+            child._customData._origTop = child._currentMeasure.top;
+            if (child instanceof _container__WEBPACK_IMPORTED_MODULE_2__["Container"] && child._children.length > 0) {
+                this._updateChildrenMeasures(child._children, left, top);
+            }
+        }
+    };
     _ScrollViewerWindow.prototype._getTypeName = function () {
         return "ScrollViewerWindow";
     };
     /** @hidden */
     _ScrollViewerWindow.prototype._additionalProcessing = function (parentMeasure, context) {
         _super.prototype._additionalProcessing.call(this, parentMeasure, context);
+        this._parentMeasure = parentMeasure;
         this._measureForChildren.left = this._currentMeasure.left;
         this._measureForChildren.top = this._currentMeasure.top;
         this._measureForChildren.width = parentMeasure.width;
         this._measureForChildren.height = parentMeasure.height;
     };
+    /** @hidden */
+    _ScrollViewerWindow.prototype._layout = function (parentMeasure, context) {
+        if (this._freezeControls) {
+            this.invalidateRect(); // will trigger a redraw of the window
+            return false;
+        }
+        return _super.prototype._layout.call(this, parentMeasure, context);
+    };
+    _ScrollViewerWindow.prototype._scrollChildren = function (children, left, top) {
+        for (var i = 0; i < children.length; ++i) {
+            var child = children[i];
+            child._currentMeasure.left = child._customData._origLeft + left;
+            child._currentMeasure.top = child._customData._origTop + top;
+            child._isClipped = false; // clipping will be handled by _draw and the call to _intersectsRect()
+            if (child instanceof _container__WEBPACK_IMPORTED_MODULE_2__["Container"] && child._children.length > 0) {
+                this._scrollChildren(child._children, left, top);
+            }
+        }
+    };
+    _ScrollViewerWindow.prototype._scrollChildrenWithBuckets = function (left, top, scrollLeft, scrollTop) {
+        var bStartX = Math.max(0, Math.floor(-left / this._bucketWidth)), bEndX = Math.floor((-left + this._parentMeasure.width - 1) / this._bucketWidth), bStartY = Math.max(0, Math.floor(-top / this._bucketHeight)), bEndY = Math.floor((-top + this._parentMeasure.height - 1) / this._bucketHeight);
+        while (bStartY <= bEndY) {
+            for (var x = bStartX; x <= bEndX; ++x) {
+                var bucket = bStartY * this._bucketLen + x, lstc = this._buckets[bucket];
+                if (lstc) {
+                    for (var i = 0; i < lstc.length; ++i) {
+                        var child = lstc[i];
+                        child._currentMeasure.left = child._customData._origLeft + scrollLeft;
+                        child._currentMeasure.top = child._customData._origTop + scrollTop;
+                        child._isClipped = false; // clipping will be handled by _draw and the call to _intersectsRect()
+                    }
+                }
+            }
+            bStartY++;
+        }
+    };
+    /** @hidden */
+    _ScrollViewerWindow.prototype._draw = function (context, invalidatedRectangle) {
+        if (!this._freezeControls) {
+            _super.prototype._draw.call(this, context, invalidatedRectangle);
+            return;
+        }
+        this._localDraw(context);
+        if (this.clipChildren) {
+            this._clipForChildren(context);
+        }
+        var left = this.leftInPixels, top = this.topInPixels;
+        if (this._useBuckets()) {
+            this._scrollChildrenWithBuckets(this._oldLeft, this._oldTop, left, top);
+            this._scrollChildrenWithBuckets(left, top, left, top);
+        }
+        else {
+            this._scrollChildren(this._children, left, top);
+        }
+        this._oldLeft = left;
+        this._oldTop = top;
+        for (var _i = 0, _a = this._children; _i < _a.length; _i++) {
+            var child = _a[_i];
+            if (!child._intersectsRect(this._parentMeasure)) {
+                continue;
+            }
+            child._render(context, this._parentMeasure);
+        }
+    };
     _ScrollViewerWindow.prototype._postMeasure = function () {
+        if (this._freezeControls) {
+            _super.prototype._postMeasure.call(this);
+            return;
+        }
         var maxWidth = this.parentClientWidth;
         var maxHeight = this.parentClientHeight;
         for (var _i = 0, _a = this.children; _i < _a.length; _i++) {
@@ -9374,23 +10143,23 @@ var _ScrollViewerWindow = /** @class */ (function (_super) {
             if (!child.isVisible || child.notRenderable) {
                 continue;
             }
-            if (child.horizontalAlignment === _control__WEBPACK_IMPORTED_MODULE_3__["Control"].HORIZONTAL_ALIGNMENT_CENTER) {
+            if (child.horizontalAlignment === _control__WEBPACK_IMPORTED_MODULE_4__["Control"].HORIZONTAL_ALIGNMENT_CENTER) {
                 child._offsetLeft(this._currentMeasure.left - child._currentMeasure.left);
             }
-            if (child.verticalAlignment === _control__WEBPACK_IMPORTED_MODULE_3__["Control"].VERTICAL_ALIGNMENT_CENTER) {
+            if (child.verticalAlignment === _control__WEBPACK_IMPORTED_MODULE_4__["Control"].VERTICAL_ALIGNMENT_CENTER) {
                 child._offsetTop(this._currentMeasure.top - child._currentMeasure.top);
             }
             maxWidth = Math.max(maxWidth, child._currentMeasure.left - this._currentMeasure.left + child._currentMeasure.width);
             maxHeight = Math.max(maxHeight, child._currentMeasure.top - this._currentMeasure.top + child._currentMeasure.height);
         }
         if (this._currentMeasure.width !== maxWidth) {
-            this._width.updateInPlace(maxWidth, _valueAndUnit__WEBPACK_IMPORTED_MODULE_2__["ValueAndUnit"].UNITMODE_PIXEL);
+            this._width.updateInPlace(maxWidth, _valueAndUnit__WEBPACK_IMPORTED_MODULE_3__["ValueAndUnit"].UNITMODE_PIXEL);
             this._currentMeasure.width = maxWidth;
             this._rebuildLayout = true;
             this._isDirty = true;
         }
         if (this._currentMeasure.height !== maxHeight) {
-            this._height.updateInPlace(maxHeight, _valueAndUnit__WEBPACK_IMPORTED_MODULE_2__["ValueAndUnit"].UNITMODE_PIXEL);
+            this._height.updateInPlace(maxHeight, _valueAndUnit__WEBPACK_IMPORTED_MODULE_3__["ValueAndUnit"].UNITMODE_PIXEL);
             this._currentMeasure.height = maxHeight;
             this._rebuildLayout = true;
             this._isDirty = true;
@@ -9398,7 +10167,7 @@ var _ScrollViewerWindow = /** @class */ (function (_super) {
         _super.prototype._postMeasure.call(this);
     };
     return _ScrollViewerWindow;
-}(_container__WEBPACK_IMPORTED_MODULE_1__["Container"]));
+}(_container__WEBPACK_IMPORTED_MODULE_2__["Container"]));
 
 
 
@@ -9521,7 +10290,7 @@ var SelectorGroup = /** @class */ (function () {
  * which contains groups of checkbox buttons
 */
 var CheckboxGroup = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](CheckboxGroup, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(CheckboxGroup, _super);
     function CheckboxGroup() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
@@ -9578,7 +10347,7 @@ var CheckboxGroup = /** @class */ (function (_super) {
  * which contains groups of radio buttons
 */
 var RadioGroup = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](RadioGroup, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(RadioGroup, _super);
     function RadioGroup() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this._selectNb = 0;
@@ -9641,7 +10410,7 @@ var RadioGroup = /** @class */ (function (_super) {
  * which contains groups of slider buttons
 */
 var SliderGroup = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](SliderGroup, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(SliderGroup, _super);
     function SliderGroup() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
@@ -9715,7 +10484,7 @@ var SliderGroup = /** @class */ (function (_super) {
  * @see http://doc.babylonjs.com/how_to/selector
 */
 var SelectionPanel = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](SelectionPanel, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(SelectionPanel, _super);
     /**
     * Creates a new SelectionPanel
     * @param name of SelectionPanel
@@ -10075,7 +10844,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to create slider controls
  */
 var BaseSlider = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](BaseSlider, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(BaseSlider, _super);
     /**
      * Creates a new BaseSlider
      * @param name defines the control name
@@ -10393,6 +11162,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _baseSlider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./baseSlider */ "./2D/controls/sliders/baseSlider.ts");
 /* harmony import */ var _measure__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../measure */ "./2D/measure.ts");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! babylonjs/Misc/typeStore */ "babylonjs/Misc/observable");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -10400,7 +11172,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to create slider controls based on images
  */
 var ImageBasedSlider = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](ImageBasedSlider, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(ImageBasedSlider, _super);
     /**
      * Creates a new ImageBasedSlider
      * @param name defines the control name
@@ -10491,7 +11263,7 @@ var ImageBasedSlider = /** @class */ (function (_super) {
     ImageBasedSlider.prototype._getTypeName = function () {
         return "ImageBasedSlider";
     };
-    ImageBasedSlider.prototype._draw = function (context) {
+    ImageBasedSlider.prototype._draw = function (context, invalidatedRectangle) {
         context.save();
         this._applyStates(context);
         this._prepareRenderingData("rectangle");
@@ -10551,6 +11323,276 @@ var ImageBasedSlider = /** @class */ (function (_super) {
     return ImageBasedSlider;
 }(_baseSlider__WEBPACK_IMPORTED_MODULE_1__["BaseSlider"]));
 
+babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_3__["_TypeStore"].RegisteredTypes["BABYLON.GUI.ImageBasedSlider"] = ImageBasedSlider;
+
+
+/***/ }),
+
+/***/ "./2D/controls/sliders/imageScrollBar.ts":
+/*!***********************************************!*\
+  !*** ./2D/controls/sliders/imageScrollBar.ts ***!
+  \***********************************************/
+/*! exports provided: ImageScrollBar */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImageScrollBar", function() { return ImageScrollBar; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _baseSlider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./baseSlider */ "./2D/controls/sliders/baseSlider.ts");
+/* harmony import */ var _measure__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../measure */ "./2D/measure.ts");
+
+
+
+/**
+ * Class used to create slider controls
+ */
+var ImageScrollBar = /** @class */ (function (_super) {
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(ImageScrollBar, _super);
+    /**
+     * Creates a new ImageScrollBar
+     * @param name defines the control name
+     */
+    function ImageScrollBar(name) {
+        var _this = _super.call(this, name) || this;
+        _this.name = name;
+        _this._thumbLength = 0.5;
+        _this._thumbHeight = 1;
+        _this._barImageHeight = 1;
+        _this._tempMeasure = new _measure__WEBPACK_IMPORTED_MODULE_2__["Measure"](0, 0, 0, 0);
+        /** Number of 90° rotation to apply on the images when in vertical mode */
+        _this.num90RotationInVerticalMode = 1;
+        return _this;
+    }
+    Object.defineProperty(ImageScrollBar.prototype, "backgroundImage", {
+        /**
+         * Gets or sets the image used to render the background for horizontal bar
+         */
+        get: function () {
+            return this._backgroundBaseImage;
+        },
+        set: function (value) {
+            var _this = this;
+            if (this._backgroundBaseImage === value) {
+                return;
+            }
+            this._backgroundBaseImage = value;
+            if (this.isVertical && this.num90RotationInVerticalMode !== 0) {
+                if (!value.isLoaded) {
+                    value.onImageLoadedObservable.addOnce(function () {
+                        var rotatedValue = value._rotate90(_this.num90RotationInVerticalMode, true);
+                        _this._backgroundImage = rotatedValue;
+                        if (!rotatedValue.isLoaded) {
+                            rotatedValue.onImageLoadedObservable.addOnce(function () {
+                                _this._markAsDirty();
+                            });
+                        }
+                        _this._markAsDirty();
+                    });
+                }
+                else {
+                    this._backgroundImage = value._rotate90(this.num90RotationInVerticalMode, true);
+                    this._markAsDirty();
+                }
+            }
+            else {
+                this._backgroundImage = value;
+                if (value && !value.isLoaded) {
+                    value.onImageLoadedObservable.addOnce(function () {
+                        _this._markAsDirty();
+                    });
+                }
+                this._markAsDirty();
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ImageScrollBar.prototype, "thumbImage", {
+        /**
+         * Gets or sets the image used to render the thumb
+         */
+        get: function () {
+            return this._thumbBaseImage;
+        },
+        set: function (value) {
+            var _this = this;
+            if (this._thumbBaseImage === value) {
+                return;
+            }
+            this._thumbBaseImage = value;
+            if (this.isVertical && this.num90RotationInVerticalMode !== 0) {
+                if (!value.isLoaded) {
+                    value.onImageLoadedObservable.addOnce(function () {
+                        var rotatedValue = value._rotate90(-_this.num90RotationInVerticalMode, true);
+                        _this._thumbImage = rotatedValue;
+                        if (!rotatedValue.isLoaded) {
+                            rotatedValue.onImageLoadedObservable.addOnce(function () {
+                                _this._markAsDirty();
+                            });
+                        }
+                        _this._markAsDirty();
+                    });
+                }
+                else {
+                    this._thumbImage = value._rotate90(-this.num90RotationInVerticalMode, true);
+                    this._markAsDirty();
+                }
+            }
+            else {
+                this._thumbImage = value;
+                if (value && !value.isLoaded) {
+                    value.onImageLoadedObservable.addOnce(function () {
+                        _this._markAsDirty();
+                    });
+                }
+                this._markAsDirty();
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ImageScrollBar.prototype, "thumbLength", {
+        /**
+         * Gets or sets the length of the thumb
+         */
+        get: function () {
+            return this._thumbLength;
+        },
+        set: function (value) {
+            if (this._thumbLength === value) {
+                return;
+            }
+            this._thumbLength = value;
+            this._markAsDirty();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ImageScrollBar.prototype, "thumbHeight", {
+        /**
+         * Gets or sets the height of the thumb
+         */
+        get: function () {
+            return this._thumbHeight;
+        },
+        set: function (value) {
+            if (this._thumbLength === value) {
+                return;
+            }
+            this._thumbHeight = value;
+            this._markAsDirty();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ImageScrollBar.prototype, "barImageHeight", {
+        /**
+         * Gets or sets the height of the bar image
+         */
+        get: function () {
+            return this._barImageHeight;
+        },
+        set: function (value) {
+            if (this._barImageHeight === value) {
+                return;
+            }
+            this._barImageHeight = value;
+            this._markAsDirty();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ImageScrollBar.prototype._getTypeName = function () {
+        return "ImageScrollBar";
+    };
+    ImageScrollBar.prototype._getThumbThickness = function () {
+        var thumbThickness = 0;
+        if (this._thumbWidth.isPixel) {
+            thumbThickness = this._thumbWidth.getValue(this._host);
+        }
+        else {
+            thumbThickness = this._backgroundBoxThickness * this._thumbWidth.getValue(this._host);
+        }
+        return thumbThickness;
+    };
+    ImageScrollBar.prototype._draw = function (context) {
+        context.save();
+        this._applyStates(context);
+        this._prepareRenderingData("rectangle");
+        var thumbPosition = this._getThumbPosition();
+        var left = this._renderLeft;
+        var top = this._renderTop;
+        var width = this._renderWidth;
+        var height = this._renderHeight;
+        // Background
+        if (this._backgroundImage) {
+            this._tempMeasure.copyFromFloats(left, top, width, height);
+            if (this.isVertical) {
+                this._tempMeasure.copyFromFloats(left + width * (1 - this._barImageHeight) * 0.5, this._currentMeasure.top, width * this._barImageHeight, height);
+                this._tempMeasure.height += this._effectiveThumbThickness;
+                this._backgroundImage._currentMeasure.copyFrom(this._tempMeasure);
+            }
+            else {
+                this._tempMeasure.copyFromFloats(this._currentMeasure.left, top + height * (1 - this._barImageHeight) * 0.5, width, height * this._barImageHeight);
+                this._tempMeasure.width += this._effectiveThumbThickness;
+                this._backgroundImage._currentMeasure.copyFrom(this._tempMeasure);
+            }
+            this._backgroundImage._draw(context);
+        }
+        // Thumb
+        if (this.isVertical) {
+            this._tempMeasure.copyFromFloats(left - this._effectiveBarOffset + this._currentMeasure.width * (1 - this._thumbHeight) * 0.5, this._currentMeasure.top + thumbPosition, this._currentMeasure.width * this._thumbHeight, this._effectiveThumbThickness);
+        }
+        else {
+            this._tempMeasure.copyFromFloats(this._currentMeasure.left + thumbPosition, this._currentMeasure.top + this._currentMeasure.height * (1 - this._thumbHeight) * 0.5, this._effectiveThumbThickness, this._currentMeasure.height * this._thumbHeight);
+        }
+        if (this._thumbImage) {
+            this._thumbImage._currentMeasure.copyFrom(this._tempMeasure);
+            this._thumbImage._draw(context);
+        }
+        context.restore();
+    };
+    /** @hidden */
+    ImageScrollBar.prototype._updateValueFromPointer = function (x, y) {
+        if (this.rotation != 0) {
+            this._invertTransformMatrix.transformCoordinates(x, y, this._transformedPosition);
+            x = this._transformedPosition.x;
+            y = this._transformedPosition.y;
+        }
+        if (this._first) {
+            this._first = false;
+            this._originX = x;
+            this._originY = y;
+            // Check if move is required
+            if (x < this._tempMeasure.left || x > this._tempMeasure.left + this._tempMeasure.width || y < this._tempMeasure.top || y > this._tempMeasure.top + this._tempMeasure.height) {
+                if (this.isVertical) {
+                    this.value = this.minimum + (1 - ((y - this._currentMeasure.top) / this._currentMeasure.height)) * (this.maximum - this.minimum);
+                }
+                else {
+                    this.value = this.minimum + ((x - this._currentMeasure.left) / this._currentMeasure.width) * (this.maximum - this.minimum);
+                }
+            }
+        }
+        // Delta mode
+        var delta = 0;
+        if (this.isVertical) {
+            delta = -((y - this._originY) / (this._currentMeasure.height - this._effectiveThumbThickness));
+        }
+        else {
+            delta = (x - this._originX) / (this._currentMeasure.width - this._effectiveThumbThickness);
+        }
+        this.value += delta * (this.maximum - this.minimum);
+        this._originX = x;
+        this._originY = y;
+    };
+    ImageScrollBar.prototype._onPointerDown = function (target, coordinates, pointerId, buttonIndex) {
+        this._first = true;
+        return _super.prototype._onPointerDown.call(this, target, coordinates, pointerId, buttonIndex);
+    };
+    return ImageScrollBar;
+}(_baseSlider__WEBPACK_IMPORTED_MODULE_1__["BaseSlider"]));
+
 
 
 /***/ }),
@@ -10575,7 +11617,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to create slider controls
  */
 var ScrollBar = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](ScrollBar, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(ScrollBar, _super);
     /**
      * Creates a new Slider
      * @param name defines the control name
@@ -10585,7 +11627,7 @@ var ScrollBar = /** @class */ (function (_super) {
         _this.name = name;
         _this._background = "black";
         _this._borderColor = "white";
-        _this._thumbMeasure = new _measure__WEBPACK_IMPORTED_MODULE_2__["Measure"](0, 0, 0, 0);
+        _this._tempMeasure = new _measure__WEBPACK_IMPORTED_MODULE_2__["Measure"](0, 0, 0, 0);
         return _this;
     }
     Object.defineProperty(ScrollBar.prototype, "borderColor", {
@@ -10643,18 +11685,18 @@ var ScrollBar = /** @class */ (function (_super) {
         context.fillStyle = this.color;
         // Thumb
         if (this.isVertical) {
-            this._thumbMeasure.left = left - this._effectiveBarOffset;
-            this._thumbMeasure.top = this._currentMeasure.top + thumbPosition;
-            this._thumbMeasure.width = this._currentMeasure.width;
-            this._thumbMeasure.height = this._effectiveThumbThickness;
+            this._tempMeasure.left = left - this._effectiveBarOffset;
+            this._tempMeasure.top = this._currentMeasure.top + thumbPosition;
+            this._tempMeasure.width = this._currentMeasure.width;
+            this._tempMeasure.height = this._effectiveThumbThickness;
         }
         else {
-            this._thumbMeasure.left = this._currentMeasure.left + thumbPosition;
-            this._thumbMeasure.top = this._currentMeasure.top;
-            this._thumbMeasure.width = this._effectiveThumbThickness;
-            this._thumbMeasure.height = this._currentMeasure.height;
+            this._tempMeasure.left = this._currentMeasure.left + thumbPosition;
+            this._tempMeasure.top = this._currentMeasure.top;
+            this._tempMeasure.width = this._effectiveThumbThickness;
+            this._tempMeasure.height = this._currentMeasure.height;
         }
-        context.fillRect(this._thumbMeasure.left, this._thumbMeasure.top, this._thumbMeasure.width, this._thumbMeasure.height);
+        context.fillRect(this._tempMeasure.left, this._tempMeasure.top, this._tempMeasure.width, this._tempMeasure.height);
         context.restore();
     };
     /** @hidden */
@@ -10669,7 +11711,7 @@ var ScrollBar = /** @class */ (function (_super) {
             this._originX = x;
             this._originY = y;
             // Check if move is required
-            if (x < this._thumbMeasure.left || x > this._thumbMeasure.left + this._thumbMeasure.width || y < this._thumbMeasure.top || y > this._thumbMeasure.top + this._thumbMeasure.height) {
+            if (x < this._tempMeasure.left || x > this._tempMeasure.left + this._tempMeasure.width || y < this._tempMeasure.top || y > this._tempMeasure.top + this._tempMeasure.height) {
                 if (this.isVertical) {
                     this.value = this.minimum + (1 - ((y - this._currentMeasure.top) / this._currentMeasure.height)) * (this.maximum - this.minimum);
                 }
@@ -10713,13 +11755,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Slider", function() { return Slider; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _baseSlider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./baseSlider */ "./2D/controls/sliders/baseSlider.ts");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! babylonjs/Misc/typeStore */ "babylonjs/Misc/observable");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /**
  * Class used to create slider controls
  */
 var Slider = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Slider, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Slider, _super);
     /**
      * Creates a new Slider
      * @param name defines the control name
@@ -10796,7 +11841,7 @@ var Slider = /** @class */ (function (_super) {
     Slider.prototype._getTypeName = function () {
         return "Slider";
     };
-    Slider.prototype._draw = function (context) {
+    Slider.prototype._draw = function (context, invalidatedRectangle) {
         context.save();
         this._applyStates(context);
         this._prepareRenderingData(this.isThumbCircle ? "circle" : "rectangle");
@@ -10949,6 +11994,7 @@ var Slider = /** @class */ (function (_super) {
     return Slider;
 }(_baseSlider__WEBPACK_IMPORTED_MODULE_1__["BaseSlider"]));
 
+babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_2__["_TypeStore"].RegisteredTypes["BABYLON.GUI.Slider"] = Slider;
 
 
 /***/ }),
@@ -10972,11 +12018,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Class used to create a 2D stack panel container
  */
 var StackPanel = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](StackPanel, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(StackPanel, _super);
     /**
      * Creates a new StackPanel
      * @param name defines control name
@@ -10988,6 +12035,10 @@ var StackPanel = /** @class */ (function (_super) {
         _this._manualWidth = false;
         _this._manualHeight = false;
         _this._doNotTrackManualChanges = false;
+        /**
+         * Gets or sets a boolean indicating that layou warnings should be ignored
+         */
+        _this.ignoreLayoutWarnings = false;
         return _this;
     }
     Object.defineProperty(StackPanel.prototype, "isVertical", {
@@ -11091,8 +12142,10 @@ var StackPanel = /** @class */ (function (_super) {
                     this._rebuildLayout = true;
                     child._top.ignoreAdaptiveScaling = true;
                 }
-                if (child._height.isPercentage) {
-                    babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tools"].Warn("Control (Name:" + child.name + ", UniqueId:" + child.uniqueId + ") is using height in percentage mode inside a vertical StackPanel");
+                if (child._height.isPercentage && !child._automaticSize) {
+                    if (!this.ignoreLayoutWarnings) {
+                        babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tools"].Warn("Control (Name:" + child.name + ", UniqueId:" + child.uniqueId + ") is using height in percentage mode inside a vertical StackPanel");
+                    }
                 }
                 else {
                     stackHeight += child._currentMeasure.height + child.paddingTopInPixels + child.paddingBottomInPixels;
@@ -11104,8 +12157,10 @@ var StackPanel = /** @class */ (function (_super) {
                     this._rebuildLayout = true;
                     child._left.ignoreAdaptiveScaling = true;
                 }
-                if (child._width.isPercentage) {
-                    babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tools"].Warn("Control (Name:" + child.name + ", UniqueId:" + child.uniqueId + ") is using width in percentage mode inside a horizontal StackPanel");
+                if (child._width.isPercentage && !child._automaticSize) {
+                    if (!this.ignoreLayoutWarnings) {
+                        babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tools"].Warn("Control (Name:" + child.name + ", UniqueId:" + child.uniqueId + ") is using width in percentage mode inside a horizontal StackPanel");
+                    }
                 }
                 else {
                     stackWidth += child._currentMeasure.width + child.paddingLeftInPixels + child.paddingRightInPixels;
@@ -11142,6 +12197,7 @@ var StackPanel = /** @class */ (function (_super) {
     return StackPanel;
 }(_container__WEBPACK_IMPORTED_MODULE_2__["Container"]));
 
+babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["_TypeStore"].RegisteredTypes["BABYLON.GUI.StackPanel"] = StackPanel;
 
 
 /***/ }),
@@ -11230,6 +12286,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Enum that determines the text-wrapping mode to use.
  */
@@ -11252,7 +12309,7 @@ var TextWrapping;
  * Class used to create text block control
  */
 var TextBlock = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](TextBlock, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(TextBlock, _super);
     /**
      * Creates a new TextBlock object
      * @param name defines the name of the control
@@ -11485,6 +12542,16 @@ var TextBlock = /** @class */ (function (_super) {
                 }
             }
             var newHeight = this.paddingTopInPixels + this.paddingBottomInPixels + this._fontOffset.height * this._lines.length;
+            if (this._lines.length > 0 && this._lineSpacing.internalValue !== 0) {
+                var lineSpacing = 0;
+                if (this._lineSpacing.isPixel) {
+                    lineSpacing = this._lineSpacing.getValue(this._host);
+                }
+                else {
+                    lineSpacing = (this._lineSpacing.getValue(this._host) * this._height.getValueInPixel(this._host, this._cachedParentMeasure.height));
+                }
+                newHeight += (this._lines.length - 1) * lineSpacing;
+            }
             if (newHeight !== this._height.internalValue) {
                 this._height.updateInPlace(newHeight, _valueAndUnit__WEBPACK_IMPORTED_MODULE_2__["ValueAndUnit"].UNITMODE_PIXEL);
                 this._rebuildLayout = true;
@@ -11517,7 +12584,7 @@ var TextBlock = /** @class */ (function (_super) {
         context.fillText(text, this._currentMeasure.left + x, y);
     };
     /** @hidden */
-    TextBlock.prototype._draw = function (context) {
+    TextBlock.prototype._draw = function (context, invalidatedRectangle) {
         context.save();
         this._applyStates(context);
         // Render lines
@@ -11634,7 +12701,18 @@ var TextBlock = /** @class */ (function (_super) {
                     this._fontOffset = _control__WEBPACK_IMPORTED_MODULE_3__["Control"]._GetFontOffset(context_1.font);
                 }
                 var lines = this._lines ? this._lines : this._breakLines(this.widthInPixels - this.paddingLeftInPixels - this.paddingRightInPixels, context_1);
-                return this.paddingTopInPixels + this.paddingBottomInPixels + this._fontOffset.height * lines.length;
+                var newHeight = this.paddingTopInPixels + this.paddingBottomInPixels + this._fontOffset.height * lines.length;
+                if (lines.length > 0 && this._lineSpacing.internalValue !== 0) {
+                    var lineSpacing = 0;
+                    if (this._lineSpacing.isPixel) {
+                        lineSpacing = this._lineSpacing.getValue(this._host);
+                    }
+                    else {
+                        lineSpacing = (this._lineSpacing.getValue(this._host) * this._height.getValueInPixel(this._host, this._cachedParentMeasure.height));
+                    }
+                    newHeight += (lines.length - 1) * lineSpacing;
+                }
+                return newHeight;
             }
         }
         return 0;
@@ -11646,6 +12724,7 @@ var TextBlock = /** @class */ (function (_super) {
     return TextBlock;
 }(_control__WEBPACK_IMPORTED_MODULE_3__["Control"]));
 
+babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["_TypeStore"].RegisteredTypes["BABYLON.GUI.TextBlock"] = TextBlock;
 
 
 /***/ }),
@@ -11670,6 +12749,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Class used to store key control properties
  */
@@ -11683,7 +12763,7 @@ var KeyPropertySet = /** @class */ (function () {
  * Class used to create virtual keyboard
  */
 var VirtualKeyboard = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](VirtualKeyboard, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(VirtualKeyboard, _super);
     function VirtualKeyboard() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         /** Observable raised when a key is pressed */
@@ -11920,6 +13000,7 @@ var VirtualKeyboard = /** @class */ (function (_super) {
     return VirtualKeyboard;
 }(_stackPanel__WEBPACK_IMPORTED_MODULE_2__["StackPanel"]));
 
+babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["_TypeStore"].RegisteredTypes["BABYLON.GUI.VirtualKeyboard"] = VirtualKeyboard;
 
 
 /***/ }),
@@ -11928,7 +13009,7 @@ var VirtualKeyboard = /** @class */ (function (_super) {
 /*!*********************!*\
   !*** ./2D/index.ts ***!
   \*********************/
-/*! exports provided: AdvancedDynamicTexture, AdvancedDynamicTextureInstrumentation, Vector2WithInfo, Matrix2D, Measure, MultiLinePoint, Style, ValueAndUnit, Button, Checkbox, ColorPicker, Container, Control, Ellipse, Grid, Image, InputText, InputPassword, Line, MultiLine, RadioButton, StackPanel, SelectorGroup, CheckboxGroup, RadioGroup, SliderGroup, SelectionPanel, ScrollViewer, TextWrapping, TextBlock, KeyPropertySet, VirtualKeyboard, Rectangle, DisplayGrid, BaseSlider, Slider, ImageBasedSlider, ScrollBar, name */
+/*! exports provided: AdvancedDynamicTexture, AdvancedDynamicTextureInstrumentation, Vector2WithInfo, Matrix2D, Measure, MultiLinePoint, Style, ValueAndUnit, XmlLoader, Button, Checkbox, ColorPicker, Container, Control, Ellipse, Grid, Image, InputText, InputPassword, Line, MultiLine, RadioButton, StackPanel, SelectorGroup, CheckboxGroup, RadioGroup, SliderGroup, SelectionPanel, ScrollViewer, TextWrapping, TextBlock, KeyPropertySet, VirtualKeyboard, Rectangle, DisplayGrid, BaseSlider, Slider, ImageBasedSlider, ScrollBar, ImageScrollBar, name */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11994,6 +13075,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ScrollBar", function() { return _controls__WEBPACK_IMPORTED_MODULE_0__["ScrollBar"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImageScrollBar", function() { return _controls__WEBPACK_IMPORTED_MODULE_0__["ImageScrollBar"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "name", function() { return _controls__WEBPACK_IMPORTED_MODULE_0__["name"]; });
 
 /* harmony import */ var _advancedDynamicTexture__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./advancedDynamicTexture */ "./2D/advancedDynamicTexture.ts");
@@ -12018,6 +13101,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _valueAndUnit__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./valueAndUnit */ "./2D/valueAndUnit.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ValueAndUnit", function() { return _valueAndUnit__WEBPACK_IMPORTED_MODULE_7__["ValueAndUnit"]; });
+
+/* harmony import */ var _xmlLoader__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./xmlLoader */ "./2D/xmlLoader.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "XmlLoader", function() { return _xmlLoader__WEBPACK_IMPORTED_MODULE_8__["XmlLoader"]; });
+
 
 
 
@@ -12051,7 +13138,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to transport Vector2 information for pointer events
  */
 var Vector2WithInfo = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Vector2WithInfo, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Vector2WithInfo, _super);
     /**
      * Creates a new Vector2WithInfo
      * @param source defines the vector2 data to transport
@@ -12270,7 +13357,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babylonjs/Maths/math */ "babylonjs/Misc/observable");
 /* harmony import */ var babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__);
 
-
+var tmpRect = [
+    new babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Vector2"](0, 0),
+    new babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Vector2"](0, 0),
+    new babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Vector2"](0, 0),
+    new babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Vector2"](0, 0),
+];
+var tmpRect2 = [
+    new babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Vector2"](0, 0),
+    new babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Vector2"](0, 0),
+    new babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Vector2"](0, 0),
+    new babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Vector2"](0, 0),
+];
+var tmpV1 = new babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Vector2"](0, 0);
+var tmpV2 = new babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Vector2"](0, 0);
 /**
  * Class used to store 2D control sizes
  */
@@ -12341,20 +13441,23 @@ var Measure = /** @class */ (function () {
      * @param result the resulting AABB
      */
     Measure.prototype.transformToRef = function (transform, result) {
-        var rectanglePoints = babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Polygon"].Rectangle(this.left, this.top, this.left + this.width, this.top + this.height);
-        var min = new babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Vector2"](Number.MAX_VALUE, Number.MAX_VALUE);
-        var max = new babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_0__["Vector2"](0, 0);
+        tmpRect[0].copyFromFloats(this.left, this.top);
+        tmpRect[1].copyFromFloats(this.left + this.width, this.top);
+        tmpRect[2].copyFromFloats(this.left + this.width, this.top + this.height);
+        tmpRect[3].copyFromFloats(this.left, this.top + this.height);
+        tmpV1.copyFromFloats(Number.MAX_VALUE, Number.MAX_VALUE);
+        tmpV2.copyFromFloats(0, 0);
         for (var i = 0; i < 4; i++) {
-            transform.transformCoordinates(rectanglePoints[i].x, rectanglePoints[i].y, rectanglePoints[i]);
-            min.x = Math.floor(Math.min(min.x, rectanglePoints[i].x));
-            min.y = Math.floor(Math.min(min.y, rectanglePoints[i].y));
-            max.x = Math.ceil(Math.max(max.x, rectanglePoints[i].x));
-            max.y = Math.ceil(Math.max(max.y, rectanglePoints[i].y));
+            transform.transformCoordinates(tmpRect[i].x, tmpRect[i].y, tmpRect2[i]);
+            tmpV1.x = Math.floor(Math.min(tmpV1.x, tmpRect2[i].x));
+            tmpV1.y = Math.floor(Math.min(tmpV1.y, tmpRect2[i].y));
+            tmpV2.x = Math.ceil(Math.max(tmpV2.x, tmpRect2[i].x));
+            tmpV2.y = Math.ceil(Math.max(tmpV2.y, tmpRect2[i].y));
         }
-        result.left = min.x;
-        result.top = min.y;
-        result.width = max.x - min.x;
-        result.height = max.y - min.y;
+        result.left = tmpV1.x;
+        result.top = tmpV1.y;
+        result.width = tmpV2.x - tmpV1.x;
+        result.height = tmpV2.y - tmpV1.y;
     };
     /**
      * Check equality between this measure and another one
@@ -12839,6 +13942,324 @@ var ValueAndUnit = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./2D/xmlLoader.ts":
+/*!*************************!*\
+  !*** ./2D/xmlLoader.ts ***!
+  \*************************/
+/*! exports provided: XmlLoader */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "XmlLoader", function() { return XmlLoader; });
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babylonjs/Misc/typeStore */ "babylonjs/Misc/observable");
+/* harmony import */ var babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_0__);
+
+/**
+* Class used to load GUI via XML.
+*/
+var XmlLoader = /** @class */ (function () {
+    /**
+    * Create a new xml loader
+    * @param parentClass Sets the class context. Used when the loader is instanced inside a class and not in a global context
+    */
+    function XmlLoader(parentClass) {
+        if (parentClass === void 0) { parentClass = null; }
+        this._nodes = {};
+        this._nodeTypes = {
+            element: 1,
+            attribute: 2,
+            text: 3
+        };
+        this._isLoaded = false;
+        this._objectAttributes = {
+            "textHorizontalAlignment": 1,
+            "textVerticalAlignment": 2,
+            "horizontalAlignment": 3,
+            "verticalAlignment": 4,
+            "stretch": 5,
+        };
+        if (parentClass) {
+            this._parentClass = parentClass;
+        }
+    }
+    XmlLoader.prototype._getChainElement = function (attributeValue) {
+        var element = window;
+        if (this._parentClass) {
+            element = this._parentClass;
+        }
+        var value = attributeValue;
+        value = value.split(".");
+        for (var i = 0; i < value.length; i++) {
+            element = element[value[i]];
+        }
+        return element;
+    };
+    XmlLoader.prototype._getClassAttribute = function (attributeName) {
+        var attribute = attributeName.split(".");
+        var className = babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_0__["_TypeStore"].GetClass("BABYLON.GUI." + attribute[0]);
+        return className[attribute[1]];
+    };
+    XmlLoader.prototype._createGuiElement = function (node, parent, linkParent) {
+        if (linkParent === void 0) { linkParent = true; }
+        try {
+            var className = babylonjs_Misc_typeStore__WEBPACK_IMPORTED_MODULE_0__["_TypeStore"].GetClass("BABYLON.GUI." + node.nodeName);
+            var guiNode = new className();
+            if (parent && linkParent) {
+                parent.addControl(guiNode);
+            }
+            for (var i = 0; i < node.attributes.length; i++) {
+                if (node.attributes[i].name.toLowerCase().includes("datasource")) {
+                    continue;
+                }
+                if (node.attributes[i].name.toLowerCase().includes("observable")) {
+                    var element = this._getChainElement(node.attributes[i].value);
+                    guiNode[node.attributes[i].name].add(element);
+                    continue;
+                }
+                else if (node.attributes[i].name == "linkWithMesh") {
+                    if (this._parentClass) {
+                        guiNode.linkWithMesh(this._parentClass[node.attributes[i].value]);
+                    }
+                    else {
+                        guiNode.linkWithMesh(window[node.attributes[i].value]);
+                    }
+                }
+                else if (node.attributes[i].value.startsWith("{{") && node.attributes[i].value.endsWith("}}")) {
+                    var element = this._getChainElement(node.attributes[i].value.substring(2, node.attributes[i].value.length - 2));
+                    guiNode[node.attributes[i].name] = element;
+                }
+                else if (!this._objectAttributes[node.attributes[i].name]) {
+                    if (node.attributes[i].value == "true" || node.attributes[i].value == "false") {
+                        guiNode[node.attributes[i].name] = (node.attributes[i].value == 'true');
+                    }
+                    else {
+                        guiNode[node.attributes[i].name] = !isNaN(Number(node.attributes[i].value)) ? Number(node.attributes[i].value) : node.attributes[i].value;
+                    }
+                }
+                else {
+                    guiNode[node.attributes[i].name] = this._getClassAttribute(node.attributes[i].value);
+                }
+            }
+            if (!node.attributes.getNamedItem("id")) {
+                this._nodes[node.nodeName + Object.keys(this._nodes).length + "_gen"] = guiNode;
+                return guiNode;
+            }
+            var id = node.attributes.getNamedItem("id").value;
+            if (id.startsWith("{{") && id.endsWith("}}")) {
+                id = this._getChainElement(id.substring(2, id.length - 2));
+            }
+            if (!this._nodes[id]) {
+                this._nodes[id] = guiNode;
+            }
+            else {
+                throw "XmlLoader Exception : Duplicate ID, every element should have an unique ID attribute";
+            }
+            return guiNode;
+        }
+        catch (e) {
+            throw "XmlLoader Exception : Error parsing Control " + node.nodeName + "," + e + ".";
+        }
+    };
+    XmlLoader.prototype._parseGrid = function (node, guiNode, parent) {
+        var width;
+        var height;
+        var columns;
+        var rows = node.children;
+        var cells;
+        var isPixel = false;
+        var cellNode;
+        var rowNumber = -1;
+        var columnNumber = -1;
+        var totalColumnsNumber = 0;
+        for (var i = 0; i < rows.length; i++) {
+            if (rows[i].nodeType != this._nodeTypes.element) {
+                continue;
+            }
+            if (rows[i].nodeName != "Row") {
+                throw "XmlLoader Exception : Expecting Row node, received " + rows[i].nodeName;
+            }
+            rowNumber += 1;
+            columns = rows[i].children;
+            if (!rows[i].attributes.getNamedItem("height")) {
+                throw "XmlLoader Exception : Height must be defined for grid rows";
+            }
+            height = Number(rows[i].attributes.getNamedItem("height").nodeValue);
+            isPixel = rows[i].attributes.getNamedItem("isPixel") ? JSON.parse(rows[i].attributes.getNamedItem("isPixel").nodeValue) : false;
+            guiNode.addRowDefinition(height, isPixel);
+            for (var j = 0; j < columns.length; j++) {
+                if (columns[j].nodeType != this._nodeTypes.element) {
+                    continue;
+                }
+                if (columns[j].nodeName != "Column") {
+                    throw "XmlLoader Exception : Expecting Column node, received " + columns[j].nodeName;
+                }
+                columnNumber += 1;
+                if (rowNumber > 0 && columnNumber > totalColumnsNumber) {
+                    throw "XmlLoader Exception : In the Grid element, the number of columns is defined in the first row, do not add more columns in the subsequent rows.";
+                }
+                if (rowNumber == 0) {
+                    if (!columns[j].attributes.getNamedItem("width")) {
+                        throw "XmlLoader Exception : Width must be defined for all the grid columns in the first row";
+                    }
+                    width = Number(columns[j].attributes.getNamedItem("width").nodeValue);
+                    isPixel = columns[j].attributes.getNamedItem("isPixel") ? JSON.parse(columns[j].attributes.getNamedItem("isPixel").nodeValue) : false;
+                    guiNode.addColumnDefinition(width, isPixel);
+                }
+                cells = columns[j].children;
+                for (var k = 0; k < cells.length; k++) {
+                    if (cells[k].nodeType != this._nodeTypes.element) {
+                        continue;
+                    }
+                    cellNode = this._createGuiElement(cells[k], guiNode, false);
+                    guiNode.addControl(cellNode, rowNumber, columnNumber);
+                    if (cells[k].firstChild) {
+                        this._parseXml(cells[k].firstChild, cellNode);
+                    }
+                }
+            }
+            if (rowNumber == 0) {
+                totalColumnsNumber = columnNumber;
+            }
+            columnNumber = -1;
+        }
+        if (node.nextSibling) {
+            this._parseXml(node.nextSibling, parent);
+        }
+    };
+    XmlLoader.prototype._parseElement = function (node, guiNode, parent) {
+        if (node.firstChild) {
+            this._parseXml(node.firstChild, guiNode);
+        }
+        if (node.nextSibling) {
+            this._parseXml(node.nextSibling, parent);
+        }
+    };
+    XmlLoader.prototype._prepareSourceElement = function (node, guiNode, variable, source, iterator) {
+        if (this._parentClass) {
+            this._parentClass[variable] = source[iterator];
+        }
+        else {
+            window[variable] = source[iterator];
+        }
+        if (node.firstChild) {
+            this._parseXml(node.firstChild, guiNode, true);
+        }
+    };
+    XmlLoader.prototype._parseElementsFromSource = function (node, guiNode, parent) {
+        var dataSource = node.attributes.getNamedItem("dataSource").value;
+        if (!dataSource.includes(" in ")) {
+            throw "XmlLoader Exception : Malformed XML, Data Source must include an in";
+        }
+        else {
+            var isArray = true;
+            var splittedSource = dataSource.split(" in ");
+            if (splittedSource.length < 2) {
+                throw "XmlLoader Exception : Malformed XML, Data Source must an iterator and a source";
+            }
+            var source = splittedSource[1];
+            if (source.startsWith("{") && source.endsWith("}")) {
+                isArray = false;
+            }
+            if (!isArray || (source.startsWith("[") && source.endsWith("]"))) {
+                source = source.substring(1, source.length - 1);
+            }
+            if (this._parentClass) {
+                source = this._parentClass[source];
+            }
+            else {
+                source = window[source];
+            }
+            if (isArray) {
+                for (var i = 0; i < source.length; i++) {
+                    this._prepareSourceElement(node, guiNode, splittedSource[0], source, i);
+                }
+            }
+            else {
+                for (var i in source) {
+                    this._prepareSourceElement(node, guiNode, splittedSource[0], source, i);
+                }
+            }
+            if (node.nextSibling) {
+                this._parseXml(node.nextSibling, parent);
+            }
+        }
+    };
+    XmlLoader.prototype._parseXml = function (node, parent, generated) {
+        if (generated === void 0) { generated = false; }
+        if (node.nodeType != this._nodeTypes.element) {
+            if (node.nextSibling) {
+                this._parseXml(node.nextSibling, parent, generated);
+            }
+            return;
+        }
+        if (generated) {
+            node.setAttribute("id", parent.id + (parent._children.length + 1));
+        }
+        var guiNode = this._createGuiElement(node, parent);
+        if (node.nodeName == "Grid") {
+            this._parseGrid(node, guiNode, parent);
+        }
+        else if (!node.attributes.getNamedItem("dataSource")) {
+            this._parseElement(node, guiNode, parent);
+        }
+        else {
+            this._parseElementsFromSource(node, guiNode, parent);
+        }
+    };
+    /**
+     * Gets if the loading has finished.
+     * @returns whether the loading has finished or not
+    */
+    XmlLoader.prototype.isLoaded = function () {
+        return this._isLoaded;
+    };
+    /**
+     * Gets a loaded node / control by id.
+     * @param id the Controls id set in the xml
+     * @returns element of type Control
+    */
+    XmlLoader.prototype.getNodeById = function (id) {
+        return this._nodes[id];
+    };
+    /**
+     * Gets all loaded nodes / controls
+     * @returns Array of controls
+    */
+    XmlLoader.prototype.getNodes = function () {
+        return this._nodes;
+    };
+    /**
+     * Initiates the xml layout loading
+     * @param xmlFile defines the xml layout to load
+     * @param rootNode defines the node / control to use as a parent for the loaded layout controls.
+     * @param callback defines the callback called on layout load.
+     */
+    XmlLoader.prototype.loadLayout = function (xmlFile, rootNode, callback) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                if (!xhttp.responseXML) {
+                    throw "XmlLoader Exception : XML file is malformed or corrupted.";
+                }
+                var xmlDoc = xhttp.responseXML.documentElement;
+                this._parseXml(xmlDoc.firstChild, rootNode);
+                this._isLoaded = true;
+                if (callback) {
+                    callback();
+                }
+            }
+        }.bind(this);
+        xhttp.open("GET", xmlFile, true);
+        xhttp.send();
+    };
+    return XmlLoader;
+}());
+
+
+
+/***/ }),
+
 /***/ "./3D/controls/abstractButton3D.ts":
 /*!*****************************************!*\
   !*** ./3D/controls/abstractButton3D.ts ***!
@@ -12860,7 +14281,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used as a root to all buttons
  */
 var AbstractButton3D = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](AbstractButton3D, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(AbstractButton3D, _super);
     /**
      * Creates a new button
      * @param name defines the control name
@@ -12908,7 +14329,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to create a button in 3D
  */
 var Button3D = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Button3D, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Button3D, _super);
     /**
      * Creates a new button
      * @param name defines the control name
@@ -13003,6 +14424,9 @@ var Button3D = /** @class */ (function (_super) {
                 this._facadeTexture.rootContainer.scaleY = this._contentScaleRatio;
                 this._facadeTexture.premulAlpha = true;
             }
+            else {
+                this._facadeTexture.rootContainer.clearControls();
+            }
             this._facadeTexture.addControl(value);
             this._applyFacade(this._facadeTexture);
         },
@@ -13080,7 +14504,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to create containers for controls
  */
 var Container3D = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Container3D, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Container3D, _super);
     /**
      * Creates a new container
      * @param name defines the container name
@@ -13642,11 +15066,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Class used to create a container panel deployed on the surface of a cylinder
  */
 var CylinderPanel = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](CylinderPanel, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(CylinderPanel, _super);
     function CylinderPanel() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this._radius = 5.0;
@@ -13696,8 +15121,8 @@ var CylinderPanel = /** @class */ (function (_super) {
     CylinderPanel.prototype._cylindricalMapping = function (source) {
         var newPos = new babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Vector3"](0, source.y, this._radius);
         var yAngle = (source.x / this._radius);
-        babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Matrix"].RotationYawPitchRollToRef(yAngle, 0, 0, babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Matrix[0]);
-        return babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Vector3"].TransformNormal(newPos, babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Matrix[0]);
+        babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Matrix"].RotationYawPitchRollToRef(yAngle, 0, 0, babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Matrix[0]);
+        return babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Vector3"].TransformNormal(newPos, babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Matrix[0]);
     };
     return CylinderPanel;
 }(_volumeBasedPanel__WEBPACK_IMPORTED_MODULE_2__["VolumeBasedPanel"]));
@@ -13742,7 +15167,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to create a holographic button in 3D
  */
 var HolographicButton = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](HolographicButton, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(HolographicButton, _super);
     /**
      * Creates a new button
      * @param name defines the control name
@@ -13781,6 +15206,24 @@ var HolographicButton = /** @class */ (function (_super) {
         this.onPointerEnterObservable.remove(this._tooltipHoverObserver);
         this.onPointerOutObservable.remove(this._tooltipOutObserver);
     };
+    Object.defineProperty(HolographicButton.prototype, "renderingGroupId", {
+        get: function () {
+            return this._backPlate.renderingGroupId;
+        },
+        /**
+         * Rendering ground id of all the mesh in the button
+         */
+        set: function (id) {
+            this._backPlate.renderingGroupId = id;
+            this._textPlate.renderingGroupId = id;
+            this._frontPlate.renderingGroupId = id;
+            if (this._tooltipMesh) {
+                this._tooltipMesh.renderingGroupId = id;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(HolographicButton.prototype, "tooltipText", {
         get: function () {
             if (this._tooltipTextBlock) {
@@ -14124,7 +15567,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to create an interactable object. It's a 3D button using a mesh coming from the current scene
  */
 var MeshButton3D = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](MeshButton3D, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(MeshButton3D, _super);
     /**
      * Creates a new 3D button based on a mesh
      * @param mesh mesh to become a 3D button
@@ -14206,7 +15649,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to create a container panel deployed on the surface of a plane
  */
 var PlanePanel = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](PlanePanel, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(PlanePanel, _super);
     function PlanePanel() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
@@ -14216,7 +15659,7 @@ var PlanePanel = /** @class */ (function (_super) {
             return;
         }
         control.position = nodePosition.clone();
-        var target = babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Vector3[0];
+        var target = babylonjs_Maths_math__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Vector3[0];
         target.copyFrom(nodePosition);
         switch (this.orientation) {
             case _container3D__WEBPACK_IMPORTED_MODULE_2__["Container3D"].FACEORIGIN_ORIENTATION:
@@ -14262,7 +15705,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to create a container panel where items get randomized planar mapping
  */
 var ScatterPanel = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](ScatterPanel, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(ScatterPanel, _super);
     function ScatterPanel() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this._iteration = 100.0;
@@ -14334,8 +15777,8 @@ var ScatterPanel = /** @class */ (function (_super) {
             });
             var radiusPaddingSquared = Math.pow(this.margin, 2.0);
             var cellSize = Math.max(this._cellWidth, this._cellHeight);
-            var difference2D = babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Vector2[0];
-            var difference = babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Vector3[0];
+            var difference2D = babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Vector2[0];
+            var difference = babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Vector3[0];
             for (var i = 0; i < meshes.length - 1; i++) {
                 for (var j = i + 1; j < meshes.length; j++) {
                     if (i != j) {
@@ -14389,7 +15832,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to create a container panel deployed on the surface of a sphere
  */
 var SpherePanel = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](SpherePanel, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(SpherePanel, _super);
     function SpherePanel() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this._radius = 5.0;
@@ -14440,8 +15883,8 @@ var SpherePanel = /** @class */ (function (_super) {
         var newPos = new babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Vector3"](0, 0, this._radius);
         var xAngle = (source.y / this._radius);
         var yAngle = -(source.x / this._radius);
-        babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Matrix"].RotationYawPitchRollToRef(yAngle, xAngle, 0, babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Matrix[0]);
-        return babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Vector3"].TransformNormal(newPos, babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Matrix[0]);
+        babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Matrix"].RotationYawPitchRollToRef(yAngle, xAngle, 0, babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Matrix[0]);
+        return babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Vector3"].TransformNormal(newPos, babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Matrix[0]);
     };
     return SpherePanel;
 }(_volumeBasedPanel__WEBPACK_IMPORTED_MODULE_2__["VolumeBasedPanel"]));
@@ -14472,7 +15915,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to create a stack panel in 3D on XY plane
  */
 var StackPanel3D = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](StackPanel3D, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(StackPanel3D, _super);
     /**
      * Creates new StackPanel
      * @param isVertical
@@ -14522,9 +15965,9 @@ var StackPanel3D = /** @class */ (function (_super) {
             }
             controlCount++;
             child.mesh.computeWorldMatrix(true);
-            child.mesh.getWorldMatrix().multiplyToRef(currentInverseWorld, babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Matrix[0]);
+            child.mesh.getWorldMatrix().multiplyToRef(currentInverseWorld, babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Matrix[0]);
             var boundingBox = child.mesh.getBoundingInfo().boundingBox;
-            var extendSize = babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Vector3"].TransformNormal(boundingBox.extendSize, babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Matrix[0]);
+            var extendSize = babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Vector3"].TransformNormal(boundingBox.extendSize, babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Matrix[0]);
             extendSizes.push(extendSize);
             if (this._isVertical) {
                 height += extendSize.y;
@@ -14597,7 +16040,7 @@ __webpack_require__.r(__webpack_exports__);
  * Abstract class used to create a container panel deployed on the surface of a volume
  */
 var VolumeBasedPanel = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](VolumeBasedPanel, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(VolumeBasedPanel, _super);
     /**
      * Creates new VolumeBasedPanel
      */
@@ -14701,8 +16144,8 @@ var VolumeBasedPanel = /** @class */ (function (_super) {
             child.mesh.computeWorldMatrix(true);
             //   child.mesh.getWorldMatrix().multiplyToRef(currentInverseWorld, Tmp.Matrix[0]);
             var boundingBox = child.mesh.getHierarchyBoundingVectors();
-            var extendSize = babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Vector3[0];
-            var diff = babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Vector3[1];
+            var extendSize = babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Vector3[0];
+            var diff = babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Vector3[1];
             boundingBox.max.subtractToRef(boundingBox.min, diff);
             diff.scaleInPlace(0.5);
             babylonjs_Misc_tools__WEBPACK_IMPORTED_MODULE_1__["Vector3"].TransformNormalToRef(diff, currentInverseWorld, extendSize);
@@ -14868,7 +16311,7 @@ var GUI3DManager = /** @class */ (function () {
         this.onPickedPointChangedObservable.notifyObservers(null);
     };
     GUI3DManager.prototype._doPicking = function (pi) {
-        if (!this._utilityLayer || !this._utilityLayer.utilityLayerScene.activeCamera) {
+        if (!this._utilityLayer || !this._utilityLayer.shouldRender || !this._utilityLayer.utilityLayerScene.activeCamera) {
             return false;
         }
         var pointerEvent = (pi.event);
@@ -15060,7 +16503,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /** @hidden */
 var FluentMaterialDefines = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](FluentMaterialDefines, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(FluentMaterialDefines, _super);
     function FluentMaterialDefines() {
         var _this = _super.call(this) || this;
         _this.INNERGLOW = false;
@@ -15077,7 +16520,7 @@ var FluentMaterialDefines = /** @class */ (function (_super) {
  * Class used to render controls with fluent desgin
  */
 var FluentMaterial = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](FluentMaterial, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(FluentMaterial, _super);
     /**
      * Creates a new Fluent material
      * @param name defines the name of the material
@@ -15146,7 +16589,7 @@ var FluentMaterial = /** @class */ (function (_super) {
     };
     FluentMaterial.prototype.isReadyForSubMesh = function (mesh, subMesh, useInstances) {
         if (this.isFrozen) {
-            if (this._wasPreviouslyReady && subMesh.effect) {
+            if (subMesh.effect && subMesh.effect._wasPreviouslyReady) {
                 return true;
             }
         }
@@ -15215,7 +16658,7 @@ var FluentMaterial = /** @class */ (function (_super) {
             return false;
         }
         defines._renderId = scene.getRenderId();
-        this._wasPreviouslyReady = true;
+        subMesh.effect._wasPreviouslyReady = true;
         return true;
     };
     FluentMaterial.prototype.bindForSubMesh = function (world, mesh, subMesh) {
@@ -15241,8 +16684,8 @@ var FluentMaterial = /** @class */ (function (_super) {
                 this._activeEffect.setFloat("borderWidth", this.borderWidth);
                 this._activeEffect.setFloat("edgeSmoothingValue", this.edgeSmoothingValue);
                 this._activeEffect.setFloat("borderMinValue", this.borderMinValue);
-                mesh.getBoundingInfo().boundingBox.extendSize.multiplyToRef(mesh.scaling, babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Vector3[0]);
-                this._activeEffect.setVector3("scaleFactor", babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["Tmp"].Vector3[0]);
+                mesh.getBoundingInfo().boundingBox.extendSize.multiplyToRef(mesh.scaling, babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Vector3[0]);
+                this._activeEffect.setVector3("scaleFactor", babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["TmpVectors"].Vector3[0]);
             }
             if (defines.HOVERLIGHT) {
                 this._activeEffect.setDirectColor4("hoverColor", this.hoverColor);
@@ -15284,49 +16727,49 @@ var FluentMaterial = /** @class */ (function (_super) {
     FluentMaterial.Parse = function (source, scene, rootUrl) {
         return babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["SerializationHelper"].Parse(function () { return new FluentMaterial(source.name, scene); }, source, scene, rootUrl);
     };
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serialize"])(),
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["expandToProperty"])("_markAllSubMeshesAsTexturesDirty")
     ], FluentMaterial.prototype, "innerGlowColorIntensity", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serializeAsColor3"])()
     ], FluentMaterial.prototype, "innerGlowColor", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serialize"])()
     ], FluentMaterial.prototype, "alpha", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serializeAsColor3"])()
     ], FluentMaterial.prototype, "albedoColor", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serialize"])(),
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["expandToProperty"])("_markAllSubMeshesAsTexturesDirty")
     ], FluentMaterial.prototype, "renderBorders", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serialize"])()
     ], FluentMaterial.prototype, "borderWidth", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serialize"])()
     ], FluentMaterial.prototype, "edgeSmoothingValue", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serialize"])()
     ], FluentMaterial.prototype, "borderMinValue", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serialize"])(),
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["expandToProperty"])("_markAllSubMeshesAsTexturesDirty")
     ], FluentMaterial.prototype, "renderHoverLight", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serialize"])()
     ], FluentMaterial.prototype, "hoverRadius", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serializeAsColor4"])()
     ], FluentMaterial.prototype, "hoverColor", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serializeAsVector3"])()
     ], FluentMaterial.prototype, "hoverPosition", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["serializeAsTexture"])("albedoTexture")
     ], FluentMaterial.prototype, "_albedoTexture", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(babylonjs_Misc_decorators__WEBPACK_IMPORTED_MODULE_1__["expandToProperty"])("_markAllSubMeshesAsTexturesAndMiscDirty")
     ], FluentMaterial.prototype, "albedoTexture", void 0);
     return FluentMaterial;
@@ -15419,7 +16862,7 @@ __webpack_require__.r(__webpack_exports__);
  * Class used to transport Vector3 information for pointer events
  */
 var Vector3WithInfo = /** @class */ (function (_super) {
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](Vector3WithInfo, _super);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Vector3WithInfo, _super);
     /**
      * Creates a new Vector3WithInfo
      * @param source defines the vector3 data to transport
@@ -15444,7 +16887,7 @@ var Vector3WithInfo = /** @class */ (function (_super) {
 /*!******************!*\
   !*** ./index.ts ***!
   \******************/
-/*! exports provided: AdvancedDynamicTexture, AdvancedDynamicTextureInstrumentation, Vector2WithInfo, Matrix2D, Measure, MultiLinePoint, Style, ValueAndUnit, GUI3DManager, Vector3WithInfo, Button, Checkbox, ColorPicker, Container, Control, Ellipse, Grid, Image, InputText, InputPassword, Line, MultiLine, RadioButton, StackPanel, SelectorGroup, CheckboxGroup, RadioGroup, SliderGroup, SelectionPanel, ScrollViewer, TextWrapping, TextBlock, KeyPropertySet, VirtualKeyboard, Rectangle, DisplayGrid, BaseSlider, Slider, ImageBasedSlider, ScrollBar, name, AbstractButton3D, Button3D, Container3D, Control3D, CylinderPanel, HolographicButton, MeshButton3D, PlanePanel, ScatterPanel, SpherePanel, StackPanel3D, VolumeBasedPanel, FluentMaterialDefines, FluentMaterial */
+/*! exports provided: AdvancedDynamicTexture, AdvancedDynamicTextureInstrumentation, Vector2WithInfo, Matrix2D, Measure, MultiLinePoint, Style, ValueAndUnit, XmlLoader, GUI3DManager, Vector3WithInfo, Button, Checkbox, ColorPicker, Container, Control, Ellipse, Grid, Image, InputText, InputPassword, Line, MultiLine, RadioButton, StackPanel, SelectorGroup, CheckboxGroup, RadioGroup, SliderGroup, SelectionPanel, ScrollViewer, TextWrapping, TextBlock, KeyPropertySet, VirtualKeyboard, Rectangle, DisplayGrid, BaseSlider, Slider, ImageBasedSlider, ScrollBar, ImageScrollBar, name, AbstractButton3D, Button3D, Container3D, Control3D, CylinderPanel, HolographicButton, MeshButton3D, PlanePanel, ScatterPanel, SpherePanel, StackPanel3D, VolumeBasedPanel, FluentMaterialDefines, FluentMaterial */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15465,6 +16908,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Style", function() { return _2D__WEBPACK_IMPORTED_MODULE_0__["Style"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ValueAndUnit", function() { return _2D__WEBPACK_IMPORTED_MODULE_0__["ValueAndUnit"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "XmlLoader", function() { return _2D__WEBPACK_IMPORTED_MODULE_0__["XmlLoader"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return _2D__WEBPACK_IMPORTED_MODULE_0__["Button"]; });
 
@@ -15526,6 +16971,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ScrollBar", function() { return _2D__WEBPACK_IMPORTED_MODULE_0__["ScrollBar"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImageScrollBar", function() { return _2D__WEBPACK_IMPORTED_MODULE_0__["ImageScrollBar"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "name", function() { return _2D__WEBPACK_IMPORTED_MODULE_0__["name"]; });
 
 /* harmony import */ var _3D__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./3D */ "./3D/index.ts");
@@ -15571,7 +17018,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./legacy/legacy.ts ***!
   \**************************/
-/*! exports provided: AdvancedDynamicTexture, AdvancedDynamicTextureInstrumentation, Vector2WithInfo, Matrix2D, Measure, MultiLinePoint, Style, ValueAndUnit, GUI3DManager, Vector3WithInfo, Button, Checkbox, ColorPicker, Container, Control, Ellipse, Grid, Image, InputText, InputPassword, Line, MultiLine, RadioButton, StackPanel, SelectorGroup, CheckboxGroup, RadioGroup, SliderGroup, SelectionPanel, ScrollViewer, TextWrapping, TextBlock, KeyPropertySet, VirtualKeyboard, Rectangle, DisplayGrid, BaseSlider, Slider, ImageBasedSlider, ScrollBar, name, AbstractButton3D, Button3D, Container3D, Control3D, CylinderPanel, HolographicButton, MeshButton3D, PlanePanel, ScatterPanel, SpherePanel, StackPanel3D, VolumeBasedPanel, FluentMaterialDefines, FluentMaterial */
+/*! exports provided: AdvancedDynamicTexture, AdvancedDynamicTextureInstrumentation, Vector2WithInfo, Matrix2D, Measure, MultiLinePoint, Style, ValueAndUnit, XmlLoader, GUI3DManager, Vector3WithInfo, Button, Checkbox, ColorPicker, Container, Control, Ellipse, Grid, Image, InputText, InputPassword, Line, MultiLine, RadioButton, StackPanel, SelectorGroup, CheckboxGroup, RadioGroup, SliderGroup, SelectionPanel, ScrollViewer, TextWrapping, TextBlock, KeyPropertySet, VirtualKeyboard, Rectangle, DisplayGrid, BaseSlider, Slider, ImageBasedSlider, ScrollBar, ImageScrollBar, name, AbstractButton3D, Button3D, Container3D, Control3D, CylinderPanel, HolographicButton, MeshButton3D, PlanePanel, ScatterPanel, SpherePanel, StackPanel3D, VolumeBasedPanel, FluentMaterialDefines, FluentMaterial */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15592,6 +17039,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Style", function() { return _index__WEBPACK_IMPORTED_MODULE_0__["Style"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ValueAndUnit", function() { return _index__WEBPACK_IMPORTED_MODULE_0__["ValueAndUnit"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "XmlLoader", function() { return _index__WEBPACK_IMPORTED_MODULE_0__["XmlLoader"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GUI3DManager", function() { return _index__WEBPACK_IMPORTED_MODULE_0__["GUI3DManager"]; });
 
@@ -15656,6 +17105,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImageBasedSlider", function() { return _index__WEBPACK_IMPORTED_MODULE_0__["ImageBasedSlider"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ScrollBar", function() { return _index__WEBPACK_IMPORTED_MODULE_0__["ScrollBar"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImageScrollBar", function() { return _index__WEBPACK_IMPORTED_MODULE_0__["ImageScrollBar"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "name", function() { return _index__WEBPACK_IMPORTED_MODULE_0__["name"]; });
 

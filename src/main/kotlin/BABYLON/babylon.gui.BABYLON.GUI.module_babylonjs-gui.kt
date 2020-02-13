@@ -1,8 +1,11 @@
-@file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION", "NESTED_CLASS_IN_EXTERNAL_INTERFACE")
+@file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION")
 @file:JsNonModule()
 @file:JsModule("babylonjs-gui")
 package BABYLON.GUI
 
+import BABYLON.AbstractMesh
+import BABYLON.Node
+import BABYLON.Number
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*
@@ -18,1411 +21,1376 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external open class ValueAndUnit(value: Number, unit: Number? = definedExternally /* null */, negativeValueAllowed: Boolean? = definedExternally /* null */) {
-    open var unit: Number = definedExternally
-    open var negativeValueAllowed: Boolean = definedExternally
-    open var _value: Any = definedExternally
-    open var _originalUnit: Any = definedExternally
-    open var ignoreAdaptiveScaling: Boolean = definedExternally
-    open var isPercentage: Boolean = definedExternally
-    open var isPixel: Boolean = definedExternally
-    open var internalValue: Number = definedExternally
-    open fun getValueInPixel(host: AdvancedDynamicTexture, refValue: Number): Number = definedExternally
-    open fun updateInPlace(value: Number, unit: Number? = definedExternally /* null */): ValueAndUnit = definedExternally
-    open fun getValue(host: AdvancedDynamicTexture): Number = definedExternally
-    open fun toString(host: AdvancedDynamicTexture, decimals: Number? = definedExternally /* null */): String = definedExternally
-    open fun fromString(source: String): Boolean = definedExternally
-    open fun fromString(source: Number): Boolean = definedExternally
+external open class ValueAndUnit(value: Number, unit: Number = definedExternally, negativeValueAllowed: Boolean = definedExternally) {
+    open var unit: Number
+    open var negativeValueAllowed: Boolean
+//    private var _value: Any
+//    private var _originalUnit: Any
+    open var ignoreAdaptiveScaling: Boolean
+    open fun getValueInPixel(host: AdvancedDynamicTexture, refValue: Number): Number
+    open fun updateInPlace(value: Number, unit: Number = definedExternally): ValueAndUnit
+    open fun getValue(host: AdvancedDynamicTexture): Number
+    open fun toString(host: AdvancedDynamicTexture, decimals: Number = definedExternally): String
+    open fun fromString(source: String): Boolean
+    open fun fromString(source: Number): Boolean
+
     companion object {
-        var _Regex: Any = definedExternally
-        var _UNITMODE_PERCENTAGE: Any = definedExternally
-        var _UNITMODE_PIXEL: Any = definedExternally
-        var UNITMODE_PERCENTAGE: Number = definedExternally
-        var UNITMODE_PIXEL: Number = definedExternally
+        var _Regex: Any
+        var _UNITMODE_PERCENTAGE: Any
+        var _UNITMODE_PIXEL: Any
     }
 }
+
 external open class Style(host: AdvancedDynamicTexture) : BABYLON.IDisposable {
-    open var _fontFamily: Any = definedExternally
-    open var _fontStyle: Any = definedExternally
-    open var _fontWeight: Any = definedExternally
-    open var _host: AdvancedDynamicTexture = definedExternally
-    open var _fontSize: ValueAndUnit = definedExternally
-    open var onChangedObservable: BABYLON.Observable<Style> = definedExternally
-    open var fontSize: dynamic /* String | Number */ = definedExternally
-    open var fontFamily: String = definedExternally
-    open var fontStyle: String = definedExternally
-    open var fontWeight: String = definedExternally
-	override fun dispose(): Unit = definedExternally
+//    private var _fontFamily: Any
+//    private var _fontStyle: Any
+//    private var _fontWeight: Any
+//    private var _host: AdvancedDynamicTexture
+//    private var _fontSize: ValueAndUnit
+    open var onChangedObservable: Any
+    override fun dispose()
 }
-external open class Vector2WithInfo(source: BABYLON.Vector2, buttonIndex: Number? = definedExternally /* null */) : BABYLON.Vector2 {
-    open var buttonIndex: BABYLON.Number = definedExternally
+
+external open class Vector2WithInfo(source: BABYLON.Vector2, buttonIndex: Number = definedExternally) : BABYLON.Vector2 {
+    open var buttonIndex: Number
 }
+
 external open class Matrix2D(m00: Number, m01: Number, m10: Number, m11: Number, m20: Number, m21: Number) {
-    open var m: Float32Array = definedExternally
-    open fun fromValues(m00: Number, m01: Number, m10: Number, m11: Number, m20: Number, m21: Number): Matrix2D = definedExternally
-    open fun determinant(): Number = definedExternally
-    open fun invertToRef(result: Matrix2D): Matrix2D = definedExternally
-    open fun multiplyToRef(other: Matrix2D, result: Matrix2D): Matrix2D = definedExternally
-    open fun transformCoordinates(x: Number, y: Number, result: BABYLON.Vector2): Matrix2D = definedExternally
+    open var m: Float32Array
+    open fun fromValues(m00: Number, m01: Number, m10: Number, m11: Number, m20: Number, m21: Number): Matrix2D
+    open fun determinant(): Number
+    open fun invertToRef(result: Matrix2D): Matrix2D
+    open fun multiplyToRef(other: Matrix2D, result: Matrix2D): Matrix2D
+    open fun transformCoordinates(x: Number, y: Number, result: BABYLON.Vector2): Matrix2D
+
     companion object {
-        fun Identity(): Matrix2D = definedExternally
-        fun TranslationToRef(x: Number, y: Number, result: Matrix2D): Unit = definedExternally
-        fun ScalingToRef(x: Number, y: Number, result: Matrix2D): Unit = definedExternally
-        fun RotationToRef(angle: Number, result: Matrix2D): Unit = definedExternally
-        var _TempPreTranslationMatrix: Any = definedExternally
-        var _TempPostTranslationMatrix: Any = definedExternally
-        var _TempRotationMatrix: Any = definedExternally
-        var _TempScalingMatrix: Any = definedExternally
-        var _TempCompose0: Any = definedExternally
-        var _TempCompose1: Any = definedExternally
-        var _TempCompose2: Any = definedExternally
-        fun ComposeToRef(tx: Number, ty: Number, angle: Number, scaleX: Number, scaleY: Number, parentMatrix: Matrix2D?, result: Matrix2D): Unit = definedExternally
+        fun Identity(): Matrix2D
+        fun TranslationToRef(x: Number, y: Number, result: Matrix2D)
+        fun ScalingToRef(x: Number, y: Number, result: Matrix2D)
+        fun RotationToRef(angle: Number, result: Matrix2D)
+        var _TempPreTranslationMatrix: Any
+        var _TempPostTranslationMatrix: Any
+        var _TempRotationMatrix: Any
+        var _TempScalingMatrix: Any
+        var _TempCompose0: Any
+        var _TempCompose1: Any
+        var _TempCompose2: Any
+        fun ComposeToRef(tx: Number, ty: Number, angle: Number, scaleX: Number, scaleY: Number, parentMatrix: Matrix2D?, result: Matrix2D)
     }
 }
+
 external open class Measure(left: Number, top: Number, width: Number, height: Number) {
-    open var left: Number = definedExternally
-    open var top: Number = definedExternally
-    open var width: Number = definedExternally
-    open var height: Number = definedExternally
-    open fun copyFrom(other: Measure): Unit = definedExternally
-    open fun copyFromFloats(left: Number, top: Number, width: Number, height: Number): Unit = definedExternally
-    open fun transformToRef(transform: Matrix2D, result: Measure): Unit = definedExternally
-    open fun isEqualsTo(other: Measure): Boolean = definedExternally
+    open var left: Number
+    open var top: Number
+    open var width: Number
+    open var height: Number
+    open fun copyFrom(other: Measure)
+    open fun copyFromFloats(left: Number, top: Number, width: Number, height: Number)
+    open fun transformToRef(transform: Matrix2D, result: Measure)
+    open fun isEqualsTo(other: Measure): Boolean
+
     companion object {
-        fun CombineToRef(a: Measure, b: Measure, result: Measure): Unit = definedExternally
-        fun Empty(): Measure = definedExternally
+        fun CombineToRef(a: Measure, b: Measure, result: Measure)
+        fun Empty(): Measure
     }
 }
+
 external interface IFocusableControl {
     fun onFocus()
     fun onBlur()
     fun processKeyboard(evt: KeyboardEvent)
     fun keepsFocusWith(): Array<Control>?
 }
+
 external interface `T$0` {
     @nativeGetter
     operator fun get(pointerId: Number): Control?
     @nativeSetter
     operator fun set(pointerId: Number, value: Control)
 }
-external open class AdvancedDynamicTexture(name: String, width: Number?, height: Number?, scene: BABYLON.Scene?, generateMipMaps: Boolean? = definedExternally /* null */, samplingMode: Number? = definedExternally /* null */) : BABYLON.DynamicTexture {
-    open var _isDirty: Any = definedExternally
-    open var _renderObserver: Any = definedExternally
-    open var _resizeObserver: Any = definedExternally
-    open var _preKeyboardObserver: Any = definedExternally
-    open var _pointerMoveObserver: Any = definedExternally
-    open var _pointerObserver: Any = definedExternally
-    open var _canvasPointerOutObserver: Any = definedExternally
-    open var _background: Any = definedExternally
-    open var _rootContainer: Container = definedExternally
-    open var _lastPickedControl: Control = definedExternally
-    open var _lastControlOver: `T$0` = definedExternally
-    open var _lastControlDown: `T$0` = definedExternally
-    open var _capturingControl: `T$0` = definedExternally
-    open var _shouldBlockPointer: Boolean = definedExternally
-    open var _layerToDispose: BABYLON.Layer? = definedExternally
-    open var _linkedControls: Array<Control> = definedExternally
-    open var _isFullscreen: Any = definedExternally
-    open var _fullscreenViewport: Any = definedExternally
-    open var _idealWidth: Any = definedExternally
-    open var _idealHeight: Any = definedExternally
-    open var _useSmallestIdeal: Any = definedExternally
-    open var _renderAtIdealSize: Any = definedExternally
-    open var _focusedControl: Any = definedExternally
-    open var _blockNextFocusCheck: Any = definedExternally
-    open var _renderScale: Any = definedExternally
-    open var _rootCanvas: Any = definedExternally
-    open var _cursorChanged: Any = definedExternally
-    open var _clipboardData: Any = definedExternally
-    open var onClipboardObservable: BABYLON.Observable<BABYLON.ClipboardInfo> = definedExternally
-    open var onControlPickedObservable: BABYLON.Observable<Control> = definedExternally
-    open var onBeginLayoutObservable: BABYLON.Observable<AdvancedDynamicTexture> = definedExternally
-    open var onEndLayoutObservable: BABYLON.Observable<AdvancedDynamicTexture> = definedExternally
-    open var onBeginRenderObservable: BABYLON.Observable<AdvancedDynamicTexture> = definedExternally
-    open var onEndRenderObservable: BABYLON.Observable<AdvancedDynamicTexture> = definedExternally
-    open var premulAlpha: Boolean = definedExternally
-    open var renderScale: Number = definedExternally
-    open var background: String = definedExternally
-    open var idealWidth: Number = definedExternally
-    open var idealHeight: Number = definedExternally
-    open var useSmallestIdeal: Boolean = definedExternally
-    open var renderAtIdealSize: Boolean = definedExternally
-    open var layer: BABYLON.Layer? = definedExternally
-    open var rootContainer: Container = definedExternally
-    open fun getChildren(): Array<Container> = definedExternally
-    open fun getDescendants(directDescendantsOnly: Boolean? = definedExternally /* null */, predicate: ((control: Control) -> Boolean)? = definedExternally /* null */): Array<Control> = definedExternally
-    open var focusedControl: IFocusableControl? = definedExternally
-    open var isForeground: Boolean = definedExternally
-    open var clipboardData: String = definedExternally
-	override fun getClassName(): String = definedExternally
-    open fun executeOnAllControls(func: (control: Control) -> Unit, container: Container? = definedExternally /* null */): Unit = definedExternally
-    open var _useInvalidateRectOptimization: Any = definedExternally
-    open var useInvalidateRectOptimization: Boolean = definedExternally
-    open var _invalidatedRectangle: Any = definedExternally
-    open fun invalidateRect(invalidMinX: Number, invalidMinY: Number, invalidMaxX: Number, invalidMaxY: Number): Unit = definedExternally
-    open fun markAsDirty(): Unit = definedExternally
-    open fun createStyle(): Style = definedExternally
-    open fun addControl(control: Control): AdvancedDynamicTexture = definedExternally
-    open fun removeControl(control: Control): AdvancedDynamicTexture = definedExternally
-	override fun dispose(): Unit = definedExternally
-    open var _onResize: Any = definedExternally
-    open fun _getGlobalViewport(scene: BABYLON.Scene): BABYLON.Viewport = definedExternally
-    open fun getProjectedPosition(position: BABYLON.Vector3, worldMatrix: BABYLON.Matrix): BABYLON.Vector2 = definedExternally
-    open var _checkUpdate: Any = definedExternally
-    open var _clearMeasure: Any = definedExternally
-    open var _render: Any = definedExternally
-    open fun _changeCursor(cursor: String): Unit = definedExternally
-    open fun _registerLastControlDown(control: Control, pointerId: Number): Unit = definedExternally
-    open var _doPicking: Any = definedExternally
-    open fun _cleanControlAfterRemovalFromList(list: `T$0`, control: Control): Unit = definedExternally
-    open fun _cleanControlAfterRemoval(control: Control): Unit = definedExternally
-    open fun attach(): Unit = definedExternally
-    open var onClipboardCopy: Any = definedExternally
-    open var onClipboardCut: Any = definedExternally
-    open var onClipboardPaste: Any = definedExternally
-    open fun registerClipboardEvents(): Unit = definedExternally
-    open fun unRegisterClipboardEvents(): Unit = definedExternally
-    open fun attachToMesh(mesh: BABYLON.AbstractMesh, supportPointerMove: Boolean? = definedExternally /* null */): Unit = definedExternally
-    open fun moveFocusToControl(control: IFocusableControl): Unit = definedExternally
-    open var _manageFocus: Any = definedExternally
-    open var _attachToOnPointerOut: Any = definedExternally
+
+external open class AdvancedDynamicTexture(name: String, width: Number?, height: Number?, scene: BABYLON.Scene?, generateMipMaps: Boolean = definedExternally, samplingMode: Number = definedExternally) : BABYLON.DynamicTexture {
+//    private var _isDirty: Any
+//    private var _renderObserver: Any
+//    private var _resizeObserver: Any
+//    private var _preKeyboardObserver: Any
+//    private var _pointerMoveObserver: Any
+//    private var _pointerObserver: Any
+//    private var _canvasPointerOutObserver: Any
+//    private var _background: Any
+//    private var _rootContainer: Container
+//    private var _lastPickedControl: Control
+//    private var _lastControlOver: `T$0`
+//    private var _lastControlDown: `T$0`
+//    private var _capturingControl: `T$0`
+//    private var _shouldBlockPointer: Boolean
+//    private var _layerToDispose: Any
+//    private var _linkedControls: Array<Control>
+//    private var _isFullscreen: Any
+//    private var _fullscreenViewport: Any
+//    private var _idealWidth: Any
+//    private var _idealHeight: Any
+//    private var _useSmallestIdeal: Any
+//    private var _renderAtIdealSize: Any
+//    private var _focusedControl: Any
+//    private var _blockNextFocusCheck: Any
+//    private var _renderScale: Any
+//    private var _rootElement: Any
+//    private var _cursorChanged: Any
+//    private var _numLayoutCalls: Number
+//    private var _numRenderCalls: Number
+//    private var _clipboardData: Any
+    open var onClipboardObservable: Any
+    open var onControlPickedObservable: Any
+    open var onBeginLayoutObservable: Any
+    open var onEndLayoutObservable: Any
+    open var onBeginRenderObservable: Any
+    open var onEndRenderObservable: Any
+    open var premulAlpha: Boolean
+    open fun getChildren(): Array<Container>
+    open fun getDescendants(directDescendantsOnly: Boolean = definedExternally, predicate: (control: Control) -> Boolean = definedExternally): Array<Control>
+	override fun getClassName(): String
+    open fun executeOnAllControls(func: (control: Control) -> Unit, container: Container = definedExternally)
+//    private var _useInvalidateRectOptimization: Any
+//    private var _invalidatedRectangle: Any
+    open fun invalidateRect(invalidMinX: Number, invalidMinY: Number, invalidMaxX: Number, invalidMaxY: Number)
+    open fun markAsDirty()
+    open fun createStyle(): Style
+    open fun addControl(control: Control): AdvancedDynamicTexture
+    open fun removeControl(control: Control): AdvancedDynamicTexture
+	override fun dispose()
+//    private var _onResize: Any
+//    private fun _getGlobalViewport(scene: BABYLON.Scene): BABYLON.Viewport
+    open fun getProjectedPosition(position: BABYLON.Vector3, worldMatrix: BABYLON.Matrix): BABYLON.Vector2
+//    private var _checkUpdate: Any
+//    private var _clearMeasure: Any
+//    private var _render: Any
+//    private fun _changeCursor(cursor: String)
+//    private fun _registerLastControlDown(control: Control, pointerId: Number)
+//    private var _doPicking: Any
+//    private fun _cleanControlAfterRemovalFromList(list: `T$0`, control: Control)
+//    private fun _cleanControlAfterRemoval(control: Control)
+    open fun attach()
+    open var onClipboardCopy: Any
+    open var onClipboardCut: Any
+    open var onClipboardPaste: Any
+    open fun registerClipboardEvents()
+    open fun unRegisterClipboardEvents()
+    open fun attachToMesh(mesh: BABYLON.AbstractMesh, supportPointerMove: Boolean = definedExternally)
+    open fun moveFocusToControl(control: IFocusableControl)
+//    private var _manageFocus: Any
+//    private var _attachToOnPointerOut: Any
+
     companion object {
-        fun CreateForMesh(mesh: BABYLON.AbstractMesh, width: Number? = definedExternally /* null */, height: Number? = definedExternally /* null */, supportPointerMove: Boolean? = definedExternally /* null */, onlyAlphaTesting: Boolean? = definedExternally /* null */): AdvancedDynamicTexture = definedExternally
-        fun CreateFullscreenUI(name: String, foreground: Boolean? = definedExternally /* null */, scene: BABYLON.Scene? = definedExternally /* null */, sampling: Number? = definedExternally /* null */): AdvancedDynamicTexture = definedExternally
+        fun CreateForMesh(mesh: BABYLON.AbstractMesh, width: Number = definedExternally, height: Number = definedExternally, supportPointerMove: Boolean = definedExternally, onlyAlphaTesting: Boolean = definedExternally): AdvancedDynamicTexture
+        fun CreateFullscreenUI(name: String, foreground: Boolean = definedExternally, scene: BABYLON.Scene? = definedExternally, sampling: Number = definedExternally): AdvancedDynamicTexture
     }
 }
+
 external interface `T$1` {
     var ascent: Number
     var height: Number
     var descent: Number
 }
+
 external interface `T$2` {
     var isHorizontal: Boolean
     var controlFirst: Boolean
 }
-external open class Control(name: String? = definedExternally /* null */) {
-    open var name: String? = definedExternally
-    open var _alpha: Any = definedExternally
-    open var _alphaSet: Any = definedExternally
-    open var _zIndex: Any = definedExternally
-    open var _host: AdvancedDynamicTexture = definedExternally
-    open var parent: Container? = definedExternally
-    open var _currentMeasure: Measure = definedExternally
-    open var _fontFamily: Any = definedExternally
-    open var _fontStyle: Any = definedExternally
-    open var _fontWeight: Any = definedExternally
-    open var _fontSize: Any = definedExternally
-    open var _font: Any = definedExternally
-    open var _width: ValueAndUnit = definedExternally
-    open var _height: ValueAndUnit = definedExternally
-    open var _fontOffset: `T$1` = definedExternally
-    open var _color: Any = definedExternally
-    open var _style: Any = definedExternally
-    open var _styleObserver: Any = definedExternally
-    open var _horizontalAlignment: Number = definedExternally
-    open var _verticalAlignment: Number = definedExternally
-    open var _isDirty: Boolean = definedExternally
-    open var _wasDirty: Boolean = definedExternally
-    open var _tempParentMeasure: Measure = definedExternally
-    open var _prevCurrentMeasureTransformedIntoGlobalSpace: Measure = definedExternally
-    open var _cachedParentMeasure: Measure = definedExternally
-    open var _paddingLeft: Any = definedExternally
-    open var _paddingRight: Any = definedExternally
-    open var _paddingTop: Any = definedExternally
-    open var _paddingBottom: Any = definedExternally
-    open var _left: ValueAndUnit = definedExternally
-    open var _top: ValueAndUnit = definedExternally
-    open var _scaleX: Any = definedExternally
-    open var _scaleY: Any = definedExternally
-    open var _rotation: Any = definedExternally
-    open var _transformCenterX: Any = definedExternally
-    open var _transformCenterY: Any = definedExternally
-    open var _transformMatrix: Matrix2D = definedExternally
-    open var _invertTransformMatrix: Matrix2D = definedExternally
-    open var _transformedPosition: BABYLON.Vector2 = definedExternally
-    open var _isMatrixDirty: Any = definedExternally
-    open var _cachedOffsetX: Any = definedExternally
-    open var _cachedOffsetY: Any = definedExternally
-    open var _isVisible: Any = definedExternally
-    open var _isHighlighted: Any = definedExternally
-    open var _linkedMesh: BABYLON.AbstractMesh? = definedExternally
-    open var _fontSet: Any = definedExternally
-    open var _dummyVector2: Any = definedExternally
-    open var _downCount: Any = definedExternally
-    open var _enterCount: Any = definedExternally
-    open var _doNotRender: Any = definedExternally
-    open var _downPointerIds: Any = definedExternally
-    open var _isEnabled: Boolean = definedExternally
-    open var _disabledColor: String = definedExternally
-    open var _rebuildLayout: Boolean = definedExternally
-    open var _isClipped: Boolean = definedExternally
-    open var _tag: Any = definedExternally
-    open var uniqueId: Number = definedExternally
-    open var metadata: Any = definedExternally
-    open var isHitTestVisible: Boolean = definedExternally
-    open var isPointerBlocker: Boolean = definedExternally
-    open var isFocusInvisible: Boolean = definedExternally
-    open var clipChildren: Boolean = definedExternally
-    open var clipContent: Boolean = definedExternally
-    open var useBitmapCache: Boolean = definedExternally
-    open var _cacheData: Any = definedExternally
-    open var _shadowOffsetX: Any = definedExternally
-    open var shadowOffsetX: Number = definedExternally
-    open var _shadowOffsetY: Any = definedExternally
-    open var shadowOffsetY: Number = definedExternally
-    open var _shadowBlur: Any = definedExternally
-    open var shadowBlur: Number = definedExternally
-    open var _shadowColor: Any = definedExternally
-    open var shadowColor: String = definedExternally
-    open var hoverCursor: String = definedExternally
-    open var _linkOffsetX: ValueAndUnit = definedExternally
-    open var _linkOffsetY: ValueAndUnit = definedExternally
-    open var typeName: String = definedExternally
-    open fun getClassName(): String = definedExternally
-    open var onPointerMoveObservable: BABYLON.Observable<BABYLON.Vector2> = definedExternally
-    open var onPointerOutObservable: BABYLON.Observable<Control> = definedExternally
-    open var onPointerDownObservable: BABYLON.Observable<Vector2WithInfo> = definedExternally
-    open var onPointerUpObservable: BABYLON.Observable<Vector2WithInfo> = definedExternally
-    open var onPointerClickObservable: BABYLON.Observable<Vector2WithInfo> = definedExternally
-    open var onPointerEnterObservable: BABYLON.Observable<Control> = definedExternally
-    open var onDirtyObservable: BABYLON.Observable<Control> = definedExternally
-    open var onBeforeDrawObservable: BABYLON.Observable<Control> = definedExternally
-    open var onAfterDrawObservable: BABYLON.Observable<Control> = definedExternally
-    open var host: AdvancedDynamicTexture = definedExternally
-    open var fontOffset: `T$1` = definedExternally
-    open var alpha: Number = definedExternally
-    open var isHighlighted: Boolean = definedExternally
-    open var scaleX: Number = definedExternally
-    open var scaleY: Number = definedExternally
-    open var rotation: Number = definedExternally
-    open var transformCenterY: Number = definedExternally
-    open var transformCenterX: Number = definedExternally
-    open var horizontalAlignment: Number = definedExternally
-    open var verticalAlignment: Number = definedExternally
-    open var width: dynamic /* String | Number */ = definedExternally
-    open var widthInPixels: Number = definedExternally
-    open var height: dynamic /* String | Number */ = definedExternally
-    open var heightInPixels: Number = definedExternally
-    open var fontFamily: String = definedExternally
-    open var fontStyle: String = definedExternally
-    open var fontWeight: String = definedExternally
-    open var style: Style? = definedExternally
-    open var _isFontSizeInPercentage: Boolean = definedExternally
-    open var fontSizeInPixels: Number = definedExternally
-    open var fontSize: dynamic /* String | Number */ = definedExternally
-    open var color: String = definedExternally
-    open var zIndex: Number = definedExternally
-    open var notRenderable: Boolean = definedExternally
-    open var isVisible: Boolean = definedExternally
-    open var isDirty: Boolean = definedExternally
-    open var linkedMesh: BABYLON.AbstractMesh? = definedExternally
-    open var paddingLeft: dynamic /* String | Number */ = definedExternally
-    open var paddingLeftInPixels: Number = definedExternally
-    open var paddingRight: dynamic /* String | Number */ = definedExternally
-    open var paddingRightInPixels: Number = definedExternally
-    open var paddingTop: dynamic /* String | Number */ = definedExternally
-    open var paddingTopInPixels: Number = definedExternally
-    open var paddingBottom: dynamic /* String | Number */ = definedExternally
-    open var paddingBottomInPixels: Number = definedExternally
-    open var left: dynamic /* String | Number */ = definedExternally
-    open var leftInPixels: Number = definedExternally
-    open var top: dynamic /* String | Number */ = definedExternally
-    open var topInPixels: Number = definedExternally
-    open var linkOffsetX: dynamic /* String | Number */ = definedExternally
-    open var linkOffsetXInPixels: Number = definedExternally
-    open var linkOffsetY: dynamic /* String | Number */ = definedExternally
-    open var linkOffsetYInPixels: Number = definedExternally
-    open var centerX: Number = definedExternally
-    open var centerY: Number = definedExternally
-    open var isEnabled: Boolean = definedExternally
-    open var disabledColor: String = definedExternally
-    open fun _getTypeName(): String = definedExternally
-    open fun getAscendantOfClass(className: String): Control? = definedExternally
-    open fun _resetFontCache(): Unit = definedExternally
-    open fun isAscendant(container: Control): Boolean = definedExternally
-    open fun getLocalCoordinates(globalCoordinates: BABYLON.Vector2): BABYLON.Vector2 = definedExternally
-    open fun getLocalCoordinatesToRef(globalCoordinates: BABYLON.Vector2, result: BABYLON.Vector2): Control = definedExternally
-    open fun getParentLocalCoordinates(globalCoordinates: BABYLON.Vector2): BABYLON.Vector2 = definedExternally
-    open fun moveToVector3(position: BABYLON.Vector3, scene: BABYLON.Scene): Unit = definedExternally
-    open fun _getDescendants(results: Array<Control>, directDescendantsOnly: Boolean? = definedExternally /* null */, predicate: ((control: Control) -> Boolean)? = definedExternally /* null */): Unit = definedExternally
-    open fun getDescendants(directDescendantsOnly: Boolean? = definedExternally /* null */, predicate: ((control: Control) -> Boolean)? = definedExternally /* null */): Array<Control> = definedExternally
-    open fun linkWithMesh(mesh: BABYLON.AbstractMesh?): Unit = definedExternally
-    open fun _moveToProjectedPosition(projectedPosition: BABYLON.Vector3): Unit = definedExternally
-    open fun _offsetLeft(offset: Number): Unit = definedExternally
-    open fun _offsetTop(offset: Number): Unit = definedExternally
-    open fun _markMatrixAsDirty(): Unit = definedExternally
-    open fun _flagDescendantsAsMatrixDirty(): Unit = definedExternally
-    open fun _intersectsRect(rect: Measure): Boolean = definedExternally
-    open fun invalidateRect(): Unit = definedExternally
-    open fun _markAsDirty(force: Boolean? = definedExternally /* null */): Unit = definedExternally
-    open fun _markAllAsDirty(): Unit = definedExternally
-    open fun _link(host: AdvancedDynamicTexture): Unit = definedExternally
-    open fun _transform(context: CanvasRenderingContext2D? = definedExternally /* null */): Unit = definedExternally
-    open fun _renderHighlight(context: CanvasRenderingContext2D): Unit = definedExternally
-    open fun _renderHighlightSpecific(context: CanvasRenderingContext2D): Unit = definedExternally
-    open fun _applyStates(context: CanvasRenderingContext2D): Unit = definedExternally
-    open fun _layout(parentMeasure: Measure, context: CanvasRenderingContext2D): Boolean = definedExternally
-    open fun _processMeasures(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    open fun _evaluateClippingState(parentMeasure: Measure): Unit = definedExternally
-    open fun _measure(): Unit = definedExternally
-    open fun _computeAlignment(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    open fun _preMeasure(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    open fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    open fun _clipForChildren(context: CanvasRenderingContext2D): Unit = definedExternally
-    open var _tmpMeasureA: Any = definedExternally
-    open var _clip: Any = definedExternally
-    open fun _render(context: CanvasRenderingContext2D, invalidatedRectangle: Measure? = definedExternally /* null */): Boolean = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: Measure? = definedExternally /* null */): Unit = definedExternally
-    open fun contains(x: Number, y: Number): Boolean = definedExternally
-    open fun _processPicking(x: Number, y: Number, type: Number, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
-    open fun _onPointerMove(target: Control, coordinates: BABYLON.Vector2, pointerId: Number): Unit = definedExternally
-    open fun _onPointerEnter(target: Control): Boolean = definedExternally
-    open fun _onPointerOut(target: Control, force: Boolean? = definedExternally /* null */): Unit = definedExternally
-    open fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
-    open fun _onPointerUp(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean): Unit = definedExternally
-    open fun _forcePointerUp(pointerId: BABYLON.Number?? = definedExternally /* null */): Unit = definedExternally
-    open fun _processObservables(type: Number, x: Number, y: Number, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
-    open var _prepareFont: Any = definedExternally
-    open fun dispose(): Unit = definedExternally
+
+external open class Control(name: String? = definedExternally) {
+    open var name: String?
+	var alpha:Number = definedExternally
+	var zIndex:Number = definedExternally
+	var host: AdvancedDynamicTexture = definedExternally
+	var fontFamily: String = definedExternally
+    var fontStyle: String = definedExternally
+    var fontWeight: String = definedExternally
+	var fontSize: Any = definedExternally
+	var width: Any = definedExternally
+	var height: Any = definedExternally
+	var fontOffset:`T$1`= definedExternally
+	var color: String = definedExternally
+	var style:Style? = definedExternally
+	var horizontalAlignment:Number = definedExternally
+	var verticalAlignment:Number = definedExternally
+	val isDirty:Boolean = definedExternally
+    var paddingLeft: Any = definedExternally
+    var paddingRight: Any = definedExternally
+    var paddingTop: Any = definedExternally
+    var paddingBottom: Any = definedExternally
+	var isVisible:Boolean = definedExternally
+	var isEnabled:Boolean = definedExternally
+	var disabledColor: String = definedExternally
+	var scaleX:Number = definedExternally
+	var scaleY:Number = definedExternally
+
+	//    private var _alpha: Any
+//    private var _alphaSet: Any
+//    private var _zIndex: Any
+//    private var _host: AdvancedDynamicTexture
+    open var parent: Node?
+//    private var _currentMeasure: Measure
+//    private var _fontFamily: Any
+//    private var _fontStyle: Any
+//    private var _fontWeight: Any
+//    private var _fontSize: Any
+//    private var _font: Any
+//    private var _width: ValueAndUnit
+//    private var _height: ValueAndUnit
+//    private var _fontOffset: `T$1`
+//    private var _color: Any
+//    private var _style: Any
+//    private var _styleObserver: Any
+//    private var _horizontalAlignment: Number
+//    private var _verticalAlignment: Number
+//    private var _isDirty: Boolean
+//    private var _wasDirty: Boolean
+//    private var _tempParentMeasure: Measure
+//    private var _prevCurrentMeasureTransformedIntoGlobalSpace: Measure
+//    private var _cachedParentMeasure: Measure
+//    private var _paddingLeft: Any
+//    private var _paddingRight: Any
+//    private var _paddingTop: Any
+//    private var _paddingBottom: Any
+//    private var _left: ValueAndUnit
+//    private var _top: ValueAndUnit
+//    private var _scaleX: Any
+//    private var _scaleY: Any
+//    private var _rotation: Any
+//    private var _transformCenterX: Any
+//    private var _transformCenterY: Any
+//    private var _transformMatrix: Matrix2D
+//    private var _invertTransformMatrix: Matrix2D
+//    private var _transformedPosition: Any
+//    private var _isMatrixDirty: Any
+//    private var _cachedOffsetX: Any
+//    private var _cachedOffsetY: Any
+//    private var _isVisible: Any
+//    private var _isHighlighted: Any
+//    private var _linkedMesh: Any
+//    private var _fontSet: Any
+//    private var _dummyVector2: Any
+//    private var _downCount: Any
+//    private var _enterCount: Any
+//    private var _doNotRender: Any
+//    private var _downPointerIds: Any
+//    private var _isEnabled: Boolean
+//    private var _disabledColor: String
+//    private var _rebuildLayout: Boolean
+//    private var _customData: Any
+//    private var _isClipped: Boolean
+//    private var _automaticSize: Boolean
+//    private var _tag: Any
+    open var uniqueId: Number
+    open var metadata: Any
+    open var isHitTestVisible: Boolean
+    open var isPointerBlocker: Boolean
+    open var isFocusInvisible: Boolean
+    open var clipChildren: Boolean
+    open var clipContent: Boolean
+    open var useBitmapCache: Boolean
+//    private var _cacheData: Any
+//    private var _shadowOffsetX: Any
+//    private var _shadowOffsetY: Any
+//    private var _shadowBlur: Any
+//    private var _shadowColor: Any
+    open var hoverCursor: String
+//    private var _linkOffsetX: ValueAndUnit
+//    private var _linkOffsetY: ValueAndUnit
+    open fun getClassName(): String
+    open var onPointerMoveObservable: Any
+    open var onPointerOutObservable: Any
+    open var onPointerDownObservable: Any
+    open var onPointerUpObservable: Any
+    open var onPointerClickObservable: Any
+    open var onPointerEnterObservable: Any
+    open var onDirtyObservable: Any
+    open var onBeforeDrawObservable: Any
+    open var onAfterDrawObservable: Any
+//    private fun _getTypeName(): String
+    open fun getAscendantOfClass(className: String): Control?
+//    private fun _resetFontCache()
+    open fun isAscendant(container: Control): Boolean
+    open fun getLocalCoordinates(globalCoordinates: BABYLON.Vector2): BABYLON.Vector2
+    open fun getLocalCoordinatesToRef(globalCoordinates: BABYLON.Vector2, result: BABYLON.Vector2): Control
+    open fun getParentLocalCoordinates(globalCoordinates: BABYLON.Vector2): BABYLON.Vector2
+    open fun moveToVector3(position: BABYLON.Vector3, scene: BABYLON.Scene)
+    open fun getDescendantsToRef(results: Array<Control>, directDescendantsOnly: Boolean = definedExternally, predicate: (control: Control) -> Boolean = definedExternally)
+    open fun getDescendants(directDescendantsOnly: Boolean = definedExternally, predicate: (control: Control) -> Boolean = definedExternally): Array<Control>
+    open fun linkWithMesh(mesh: BABYLON.AbstractMesh?)
+//    private fun _moveToProjectedPosition(projectedPosition: BABYLON.Vector3)
+//    private fun _offsetLeft(offset: Number)
+//    private fun _offsetTop(offset: Number)
+//    private fun _markMatrixAsDirty()
+//    private fun _flagDescendantsAsMatrixDirty()
+//    private fun _intersectsRect(rect: Measure): Boolean
+    open fun invalidateRect()
+//    private fun _markAsDirty(force: Boolean = definedExternally)
+//    private fun _markAllAsDirty()
+//    private fun _link(host: AdvancedDynamicTexture)
+//    private fun _transform(context: CanvasRenderingContext2D = definedExternally)
+//    private fun _renderHighlight(context: CanvasRenderingContext2D)
+//    private fun _renderHighlightSpecific(context: CanvasRenderingContext2D)
+//    private fun _applyStates(context: CanvasRenderingContext2D)
+//    private fun _layout(parentMeasure: Measure, context: CanvasRenderingContext2D): Boolean
+//    private fun _processMeasures(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private fun _evaluateClippingState(parentMeasure: Measure)
+//    private fun _measure()
+//    private fun _computeAlignment(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private fun _preMeasure(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private fun _clipForChildren(context: CanvasRenderingContext2D)
+//    private var _tmpMeasureA: Any
+//    private var _clip: Any
+//    private fun _render(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure? = definedExternally): Boolean
+//    private fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure? = definedExternally)
+    open fun contains(x: Number, y: Number): Boolean
+//    private fun _processPicking(x: Number, y: Number, type: Number, pointerId: Number, buttonIndex: Number): Boolean
+//    private fun _onPointerMove(target: Control, coordinates: BABYLON.Vector2, pointerId: Number)
+//    private fun _onPointerEnter(target: Control): Boolean
+//    private fun _onPointerOut(target: Control, force: Boolean = definedExternally)
+//    private fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean
+//    private fun _onPointerUp(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean)
+//    private fun _forcePointerUp(pointerId: BABYLON.Number? = definedExternally)
+//    private fun _processObservables(type: Number, x: Number, y: Number, pointerId: Number, buttonIndex: Number): Boolean
+//    private var _prepareFont: Any
+    open fun dispose()
+
     companion object {
-        var AllowAlphaInheritance: Boolean = definedExternally
-        var _ClipMeasure: Any = definedExternally
-        var _HORIZONTAL_ALIGNMENT_LEFT: Any = definedExternally
-        var _HORIZONTAL_ALIGNMENT_RIGHT: Any = definedExternally
-        var _HORIZONTAL_ALIGNMENT_CENTER: Any = definedExternally
-        var _VERTICAL_ALIGNMENT_TOP: Any = definedExternally
-        var _VERTICAL_ALIGNMENT_BOTTOM: Any = definedExternally
-        var _VERTICAL_ALIGNMENT_CENTER: Any = definedExternally
-        var HORIZONTAL_ALIGNMENT_LEFT: Number = definedExternally
-        var HORIZONTAL_ALIGNMENT_RIGHT: Number = definedExternally
-        var HORIZONTAL_ALIGNMENT_CENTER: Number = definedExternally
-        var VERTICAL_ALIGNMENT_TOP: Number = definedExternally
-        var VERTICAL_ALIGNMENT_BOTTOM: Number = definedExternally
-        var VERTICAL_ALIGNMENT_CENTER: Number = definedExternally
-        var _FontHeightSizes: Any = definedExternally
-        fun _GetFontOffset(font: String): `T$1` = definedExternally
-        var AddHeader: (control: Control, text: String, size: dynamic /* String | Number */, options: `T$2`) -> Any = definedExternally
-        fun drawEllipse(x: Number, y: Number, width: Number, height: Number, context: CanvasRenderingContext2D): Unit = definedExternally
+        var AllowAlphaInheritance: Boolean
+        var _ClipMeasure: Any
+        var _HORIZONTAL_ALIGNMENT_LEFT: Any
+        var _HORIZONTAL_ALIGNMENT_RIGHT: Any
+        var _HORIZONTAL_ALIGNMENT_CENTER: Any
+        var _VERTICAL_ALIGNMENT_TOP: Any
+        var _VERTICAL_ALIGNMENT_BOTTOM: Any
+        var _VERTICAL_ALIGNMENT_CENTER: Any
+        var _FontHeightSizes: Any
+        fun _GetFontOffset(font: String): `T$1`
+        var AddHeader: (control: Control, text: String, size: dynamic /* String | Number */, options: `T$2`) -> Any
+        fun drawEllipse(x: Number, y: Number, width: Number, height: Number, context: CanvasRenderingContext2D)
     }
 }
-external open class Container(name: String? = definedExternally /* null */) : Control {
-    override var name: String? = definedExternally
-    open var _children: Array<Control> = definedExternally
-    open var _measureForChildren: Measure = definedExternally
-    open var _background: String = definedExternally
-    open var _adaptWidthToChildren: Boolean = definedExternally
-    open var _adaptHeightToChildren: Boolean = definedExternally
-    open var adaptHeightToChildren: Boolean = definedExternally
-    open var adaptWidthToChildren: Boolean = definedExternally
-    open var background: String = definedExternally
-    open var children: Array<Control> = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    override fun _flagDescendantsAsMatrixDirty(): Unit = definedExternally
-    open fun getChildByName(name: String): Control? = definedExternally
-    open fun getChildByType(name: String, type: String): Control? = definedExternally
-    open fun containsControl(control: Control): Boolean = definedExternally
-    open fun addControl(control: Control?): Container = definedExternally
-    open fun clearControls(): Container = definedExternally
-    open fun removeControl(control: Control): Container = definedExternally
-    open fun _reOrderControl(control: Control): Unit = definedExternally
-    override fun _offsetLeft(offset: Number): Unit = definedExternally
-    override fun _offsetTop(offset: Number): Unit = definedExternally
-    override fun _markAllAsDirty(): Unit = definedExternally
-    open fun _localDraw(context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _link(host: AdvancedDynamicTexture): Unit = definedExternally
-    open fun _beforeLayout(): Unit = definedExternally
-    override fun _processMeasures(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _layout(parentMeasure: Measure, context: CanvasRenderingContext2D): Boolean = definedExternally
-    open fun _postMeasure(): Unit = definedExternally
-	override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: Measure?  /* null */): Unit = definedExternally
-	override fun _getDescendants(results: Array<Control>, directDescendantsOnly: Boolean?  /* null */, predicate: ((control: Control) -> Boolean)?  /* null */): Unit = definedExternally
-    override fun _processPicking(x: Number, y: Number, type: Number, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
-    override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun dispose(): Unit = definedExternally
+
+external open class Container(name: String? = definedExternally) : Control {
+    override var name: String?
+//    private var _children: Array<Control>
+//    private var _measureForChildren: Measure
+//    private var _background: String
+//    private var _adaptWidthToChildren: Boolean
+//    private var _adaptHeightToChildren: Boolean
+    open var logLayoutCycleErrors: Boolean
+    open var maxLayoutCycle: Number
+//    private override fun _getTypeName(): String
+//    private override fun _flagDescendantsAsMatrixDirty()
+    open fun getChildByName(name: String): Control?
+    open fun getChildByType(name: String, type: String): Control?
+    open fun containsControl(control: Control): Boolean
+    open fun addControl(control: Control?): Container
+    open fun clearControls(): Container
+    open fun removeControl(control: Control): Container
+//    private fun _reOrderControl(control: Control)
+//    private override fun _offsetLeft(offset: Number)
+//    private override fun _offsetTop(offset: Number)
+//    private override fun _markAllAsDirty()
+//    private fun _localDraw(context: CanvasRenderingContext2D)
+//    private override fun _link(host: AdvancedDynamicTexture)
+//    private fun _beforeLayout()
+//    private override fun _processMeasures(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private override fun _layout(parentMeasure: Measure, context: CanvasRenderingContext2D): Boolean
+//    private fun _postMeasure()
+//    private fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: Measure = definedExternally)
+    override fun getDescendantsToRef(results: Array<Control>, directDescendantsOnly: Boolean, predicate: (control: Control) -> Boolean)
+//    private override fun _processPicking(x: Number, y: Number, type: Number, pointerId: Number, buttonIndex: Number): Boolean
+//    private override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D)
+    override fun dispose()
 }
-external open class Rectangle(name: String? = definedExternally /* null */) : Container {
-    override var name: String? = definedExternally
-    open var _thickness: Any = definedExternally
-    open var _cornerRadius: Any = definedExternally
-    open var thickness: Number = definedExternally
-    open var cornerRadius: Number = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    override fun _localDraw(context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    open var _drawRoundedRect: Any = definedExternally
-    override fun _clipForChildren(context: CanvasRenderingContext2D): Unit = definedExternally
+
+external open class Rectangle(name: String? = definedExternally) : Container {
+    override var name: String?
+//    private var _thickness: Any
+//    private var _cornerRadius: Any
+//    private override fun _getTypeName(): String
+//    private override fun _localDraw(context: CanvasRenderingContext2D)
+//    private override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private var _drawRoundedRect: Any
+//    private override fun _clipForChildren(context: CanvasRenderingContext2D)
 }
+
 external enum class TextWrapping {
     Clip /* = 0 */,
     WordWrap /* = 1 */,
     Ellipsis /* = 2 */
 }
-external open class TextBlock(name: String? = definedExternally /* null */, text: String? = definedExternally /* null */) : Control {
-    override var name: String? = definedExternally
-    open var _text: Any = definedExternally
-    open var _textWrapping: Any = definedExternally
-    open var _textHorizontalAlignment: Any = definedExternally
-    open var _textVerticalAlignment: Any = definedExternally
-    open var _lines: Any = definedExternally
-    open var _resizeToFit: Any = definedExternally
-    open var _lineSpacing: Any = definedExternally
-    open var _outlineWidth: Any = definedExternally
-    open var _outlineColor: Any = definedExternally
-    open var onTextChangedObservable: BABYLON.Observable<TextBlock> = definedExternally
-    open var onLinesReadyObservable: BABYLON.Observable<TextBlock> = definedExternally
-    open var lines: Array<Any> = definedExternally
-    open var resizeToFit: Boolean = definedExternally
-    open var textWrapping: dynamic /* Boolean | Number /* 0 */ | Number /* 1 */ | Number /* 2 */ */ = definedExternally
-    open var text: String = definedExternally
-    open var textHorizontalAlignment: Number = definedExternally
-    open var textVerticalAlignment: Number = definedExternally
-    open var lineSpacing: dynamic /* String | Number */ = definedExternally
-    open var outlineWidth: Number = definedExternally
-    open var outlineColor: String = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    override fun _processMeasures(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    open var _drawText: Any = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _applyStates(context: CanvasRenderingContext2D): Unit = definedExternally
-    open fun _breakLines(refWidth: Number, context: CanvasRenderingContext2D): Array<Any?> = definedExternally
-    open fun _parseLine(line: String?, context: CanvasRenderingContext2D): Any = definedExternally
-    open fun _parseLineEllipsis(line: String?, width: Number, context: CanvasRenderingContext2D): Any = definedExternally
-    open fun _parseLineWordWrap(line: String?, width: Number, context: CanvasRenderingContext2D): Array<Any?> = definedExternally
-    open fun _renderLines(context: CanvasRenderingContext2D): Unit = definedExternally
-    open fun computeExpectedHeight(): Number = definedExternally
-    override fun dispose(): Unit = definedExternally
+
+external open class TextBlock(name: String? = definedExternally, text: String = definedExternally) : Control {
+    override var name: String?
+	var textHorizontalAlignment:Number = definedExternally
+	var textVerticalAlignment:Number = definedExternally
+	var resizeToFit:Boolean = definedExternally
+	var textWrapping:Boolean = definedExternally
+	var text:String = definedExternally
+	var lineSpacing:Number = definedExternally
+	var outlineWidth:String = definedExternally
+	var outlineColor:String = definedExternally
+
+//    private var _text: Any
+//    private var _textWrapping: Any
+//    private var _textHorizontalAlignment: Any
+//    private var _textVerticalAlignment: Any
+//    private var _lines: Any
+//    private var _resizeToFit: Any
+//    private var _lineSpacing: Any
+//    private var _outlineWidth: Any
+//    private var _outlineColor: Any
+    open var onTextChangedObservable: Any
+    open var onLinesReadyObservable: Any
+//    private override fun _getTypeName(): String
+//    private override fun _processMeasures(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private var _drawText: Any
+//    private override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure?)
+//    private override fun _applyStates(context: CanvasRenderingContext2D)
+//    private fun _breakLines(refWidth: Number, context: CanvasRenderingContext2D): Array<Any?>
+//    private fun _parseLine(line: String?, context: CanvasRenderingContext2D): Any?
+//    private fun _parseLineEllipsis(line: String?, width: Number, context: CanvasRenderingContext2D): Any?
+//    private fun _parseLineWordWrap(line: String?, width: Number, context: CanvasRenderingContext2D): Array<Any?>
+//    private fun _renderLines(context: CanvasRenderingContext2D)
+    open fun computeExpectedHeight(): Number
+    override fun dispose()
 }
-external open class Image(name: String? = definedExternally /* null */, url: String? = definedExternally /* null */) : Control {
-    override var name: String? = definedExternally
-    open var _domImage: Any = definedExternally
-    open var _imageWidth: Any = definedExternally
-    open var _imageHeight: Any = definedExternally
-    open var _loaded: Any = definedExternally
-    open var _stretch: Any = definedExternally
-    open var _source: Any = definedExternally
-    open var _autoScale: Any = definedExternally
-    open var _sourceLeft: Any = definedExternally
-    open var _sourceTop: Any = definedExternally
-    open var _sourceWidth: Any = definedExternally
-    open var _sourceHeight: Any = definedExternally
-    open var _cellWidth: Any = definedExternally
-    open var _cellHeight: Any = definedExternally
-    open var _cellId: Any = definedExternally
-    open var _populateNinePatchSlicesFromImage: Any = definedExternally
-    open var _sliceLeft: Any = definedExternally
-    open var _sliceRight: Any = definedExternally
-    open var _sliceTop: Any = definedExternally
-    open var _sliceBottom: Any = definedExternally
-    open var _detectPointerOnOpaqueOnly: Any = definedExternally
-    open var onImageLoadedObservable: BABYLON.Observable<Image> = definedExternally
-    open var isLoaded: Boolean = definedExternally
-    open var populateNinePatchSlicesFromImage: Boolean = definedExternally
-    open var detectPointerOnOpaqueOnly: Boolean = definedExternally
-    open var sliceLeft: Number = definedExternally
-    open var sliceRight: Number = definedExternally
-    open var sliceTop: Number = definedExternally
-    open var sliceBottom: Number = definedExternally
-    open var sourceLeft: Number = definedExternally
-    open var sourceTop: Number = definedExternally
-    open var sourceWidth: Number = definedExternally
-    open var sourceHeight: Number = definedExternally
-    open var autoScale: Boolean = definedExternally
-    open var stretch: Number = definedExternally
-    open var domImage: HTMLImageElement = definedExternally
-    open var _onImageLoaded: Any = definedExternally
-    open var _extractNinePatchSliceDataFromImage: Any = definedExternally
-    open var source: String? = definedExternally
-    open var cellWidth: Number = definedExternally
-    open var cellHeight: Number = definedExternally
-    open var cellId: Number = definedExternally
-    override fun contains(x: Number, y: Number): Boolean = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open fun synchronizeSizeWithContent(): Unit = definedExternally
-    override fun _processMeasures(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    open var _prepareWorkingCanvasForOpaqueDetection: Any = definedExternally
-    open var _drawImage: Any = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D): Unit = definedExternally
-    open var _renderCornerPatch: Any = definedExternally
-    open var _renderNinePatch: Any = definedExternally
-    override fun dispose(): Unit = definedExternally
+
+external open class Image(name: String? = definedExternally, url: String? = definedExternally) : Control {
+    override var name: String?
+//    private var _workingCanvas: Any
+//    private var _domImage: Any
+//    private var _imageWidth: Any
+//    private var _imageHeight: Any
+//    private var _loaded: Any
+//    private var _stretch: Any
+//    private var _source: Any
+//    private var _autoScale: Any
+//    private var _sourceLeft: Any
+//    private var _sourceTop: Any
+//    private var _sourceWidth: Any
+//    private var _sourceHeight: Any
+//    private var _svgAttributesComputationCompleted: Any
+//    private var _isSVG: Any
+//    private var _cellWidth: Any
+//    private var _cellHeight: Any
+//    private var _cellId: Any
+//    private var _populateNinePatchSlicesFromImage: Any
+//    private var _sliceLeft: Any
+//    private var _sliceRight: Any
+//    private var _sliceTop: Any
+//    private var _sliceBottom: Any
+//    private var _detectPointerOnOpaqueOnly: Any
+    open var onImageLoadedObservable: Any
+    open var onSVGAttributesComputedObservable: Any
+//    private fun _rotate90(n: Number, preserveProperties: Boolean = definedExternally): Image
+//    private var _handleRotationForSVGImage: Any
+//    private var _rotate90SourceProperties: Any
+//    private var _onImageLoaded: Any
+//    private var _extractNinePatchSliceDataFromImage: Any
+//    private var _svgCheck: Any
+//    private var _getSVGAttribs: Any
+    override fun contains(x: Number, y: Number): Boolean
+//    private override fun _getTypeName(): String
+    open fun synchronizeSizeWithContent()
+//    private override fun _processMeasures(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private var _prepareWorkingCanvasForOpaqueDetection: Any
+//    private var _drawImage: Any
+//    private fun _draw(context: CanvasRenderingContext2D)
+//    private var _renderCornerPatch: Any
+//    private var _renderNinePatch: Any
+    override fun dispose()
+
     companion object {
-        var _WorkingCanvas: Any = definedExternally
-        var STRETCH_NONE: Number = definedExternally
-        var STRETCH_FILL: Number = definedExternally
-        var STRETCH_UNIFORM: Number = definedExternally
-        var STRETCH_EXTEND: Number = definedExternally
-        var STRETCH_NINE_PATCH: Number = definedExternally
+        var STRETCH_NONE: Number
+        var STRETCH_FILL: Number
+        var STRETCH_UNIFORM: Number
+        var STRETCH_EXTEND: Number
+        var STRETCH_NINE_PATCH: Number
     }
 }
-external open class Button(name: String? = definedExternally /* null */) : Rectangle {
-    override var name: String? = definedExternally
-    open var pointerEnterAnimation: () -> Unit = definedExternally
-    open var pointerOutAnimation: () -> Unit = definedExternally
-    open var pointerDownAnimation: () -> Unit = definedExternally
-    open var pointerUpAnimation: () -> Unit = definedExternally
-    open var _image: Any = definedExternally
-    open var image: Image? = definedExternally
-    open var _textBlock: Any = definedExternally
-    open var textBlock: TextBlock? = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    override fun _processPicking(x: Number, y: Number, type: Number, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
-    override fun _onPointerEnter(target: Control): Boolean = definedExternally
-    override fun _onPointerOut(target: Control, force: Boolean?): Unit = definedExternally
-    override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
-    override fun _onPointerUp(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean): Unit = definedExternally
+
+external open class Button(name: String? = definedExternally) : Rectangle {
+    override var name: String?
+    open var pointerEnterAnimation: () -> Unit
+    open var pointerOutAnimation: () -> Unit
+    open var pointerDownAnimation: () -> Unit
+    open var pointerUpAnimation: () -> Unit
+    open var delegatePickingToChildren: Boolean
+//    private var _image: Any
+//    private var _textBlock: Any
+//    private override fun _getTypeName(): String
+//    private override fun _processPicking(x: Number, y: Number, type: Number, pointerId: Number, buttonIndex: Number): Boolean
+//    private override fun _onPointerEnter(target: Control): Boolean
+//    private override fun _onPointerOut(target: Control, force: Boolean)
+//    private override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean
+//    private override fun _onPointerUp(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean)
+
     companion object {
-        fun CreateImageButton(name: String, text: String, imageUrl: String): Button = definedExternally
-        fun CreateImageOnlyButton(name: String, imageUrl: String): Button = definedExternally
-        fun CreateSimpleButton(name: String, text: String): Button = definedExternally
-        fun CreateImageWithCenterTextButton(name: String, text: String, imageUrl: String): Button = definedExternally
+        fun CreateImageButton(name: String, text: String, imageUrl: String): Button
+        fun CreateImageOnlyButton(name: String, imageUrl: String): Button
+        fun CreateSimpleButton(name: String, text: String): Button
+        fun CreateImageWithCenterTextButton(name: String, text: String, imageUrl: String): Button
     }
 }
-external open class StackPanel(name: String? = definedExternally /* null */) : Container {
-    override var name: String? = definedExternally
-    open var _isVertical: Any = definedExternally
-    open var _manualWidth: Any = definedExternally
-    open var _manualHeight: Any = definedExternally
-    open var _doNotTrackManualChanges: Any = definedExternally
-    open var isVertical: Boolean = definedExternally
-    override var width: dynamic /* String | Number */ = definedExternally
-    override var height: dynamic /* String | Number */ = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    override fun _preMeasure(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _postMeasure(): Unit = definedExternally
+
+external open class StackPanel(name: String? = definedExternally) : Container {
+    override var name: String?
+//    private var _isVertical: Any
+//    private var _manualWidth: Any
+//    private var _manualHeight: Any
+//    private var _doNotTrackManualChanges: Any
+    open var ignoreLayoutWarnings: Boolean
+//    private override fun _getTypeName(): String
+//    private override fun _preMeasure(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private override fun _postMeasure()
 }
-external open class Checkbox(name: String? = definedExternally /* null */) : Control {
-    override var name: String? = definedExternally
-    open var _isChecked: Any = definedExternally
-    open var _background: Any = definedExternally
-    open var _checkSizeRatio: Any = definedExternally
-    open var _thickness: Any = definedExternally
-    open var thickness: Number = definedExternally
-    open var onIsCheckedChangedObservable: BABYLON.Observable<Boolean> = definedExternally
-    open var checkSizeRatio: Number = definedExternally
-    open var background: String = definedExternally
-    open var isChecked: Boolean = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
+
+external open class Checkbox(name: String? = definedExternally) : Control {
+    override var name: String?
+//    private var _isChecked: Any
+//    private var _background: Any
+//    private var _checkSizeRatio: Any
+//    private var _thickness: Any
+    open var onIsCheckedChangedObservable: Any
+//    private override fun _getTypeName(): String
+//    private override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure?)
+//    private override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean
+
     companion object {
-        fun AddCheckBoxWithHeader(title: String, onValueChanged: (value: Boolean) -> Unit): StackPanel = definedExternally
+        fun AddCheckBoxWithHeader(title: String, onValueChanged: (value: Boolean) -> Unit): StackPanel
     }
 }
+
 external open class KeyPropertySet {
-    open var width: String = definedExternally
-    open var height: String = definedExternally
-    open var paddingLeft: String = definedExternally
-    open var paddingRight: String = definedExternally
-    open var paddingTop: String = definedExternally
-    open var paddingBottom: String = definedExternally
-    open var color: String = definedExternally
-    open var background: String = definedExternally
+    open var width: String
+    open var height: String
+    open var paddingLeft: String
+    open var paddingRight: String
+    open var paddingTop: String
+    open var paddingBottom: String
+    open var color: String
+    open var background: String
 }
+
 external open class VirtualKeyboard : StackPanel {
-    open var onKeyPressObservable: BABYLON.Observable<String> = definedExternally
-    open var defaultButtonWidth: String = definedExternally
-    open var defaultButtonHeight: String = definedExternally
-    open var defaultButtonPaddingLeft: String = definedExternally
-    open var defaultButtonPaddingRight: String = definedExternally
-    open var defaultButtonPaddingTop: String = definedExternally
-    open var defaultButtonPaddingBottom: String = definedExternally
-    open var defaultButtonColor: String = definedExternally
-    open var defaultButtonBackground: String = definedExternally
-    open var shiftButtonColor: String = definedExternally
-    open var selectedShiftThickness: Number = definedExternally
-    open var shiftState: Number = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open var _createKey: Any = definedExternally
-    open fun addKeysRow(keys: Array<String>, propertySets: Array<KeyPropertySet>? = definedExternally /* null */): Unit = definedExternally
-    open fun applyShiftState(shiftState: Number): Unit = definedExternally
-    open var _currentlyConnectedInputText: Any = definedExternally
-    open var _connectedInputTexts: Any = definedExternally
-    open var _onKeyPressObserver: Any = definedExternally
-    open var connectedInputText: InputText? = definedExternally
-    open fun connect(input: InputText): Unit = definedExternally
-    open fun disconnect(input: InputText? = definedExternally /* null */): Unit = definedExternally
-    open var _removeConnectedInputObservables: Any = definedExternally
-    override fun dispose(): Unit = definedExternally
+    open var onKeyPressObservable: Any
+    open var defaultButtonWidth: String
+    open var defaultButtonHeight: String
+    open var defaultButtonPaddingLeft: String
+    open var defaultButtonPaddingRight: String
+    open var defaultButtonPaddingTop: String
+    open var defaultButtonPaddingBottom: String
+    open var defaultButtonColor: String
+    open var defaultButtonBackground: String
+    open var shiftButtonColor: String
+    open var selectedShiftThickness: Number
+    open var shiftState: Number
+//    private override fun _getTypeName(): String
+//    private var _createKey: Any
+    open fun addKeysRow(keys: Array<String>, propertySets: Array<KeyPropertySet> = definedExternally)
+    open fun applyShiftState(shiftState: Number)
+//    private var _currentlyConnectedInputText: Any
+//    private var _connectedInputTexts: Any
+//    private var _onKeyPressObserver: Any
+    open fun connect(input: InputText)
+    open fun disconnect(input: InputText = definedExternally)
+//    private var _removeConnectedInputObservables: Any
+    override fun dispose()
+
     companion object {
-        fun CreateDefaultLayout(name: String? = definedExternally /* null */): VirtualKeyboard = definedExternally
+        fun CreateDefaultLayout(name: String = definedExternally): VirtualKeyboard
     }
 }
-external open class InputText(name: String? = definedExternally /* null */, text: String? = definedExternally /* null */) : Control, IFocusableControl {
-    override var name: String? = definedExternally
-    open var _text: Any = definedExternally
-    open var _placeholderText: Any = definedExternally
-    open var _background: Any = definedExternally
-    open var _focusedBackground: Any = definedExternally
-    open var _focusedColor: Any = definedExternally
-    open var _placeholderColor: Any = definedExternally
-    open var _thickness: Any = definedExternally
-    open var _margin: Any = definedExternally
-    open var _autoStretchWidth: Any = definedExternally
-    open var _maxWidth: Any = definedExternally
-    open var _isFocused: Any = definedExternally
-    open var _blinkTimeout: Any = definedExternally
-    open var _blinkIsEven: Any = definedExternally
-    open var _cursorOffset: Any = definedExternally
-    open var _scrollLeft: Any = definedExternally
-    open var _textWidth: Any = definedExternally
-    open var _clickedCoordinate: Any = definedExternally
-    open var _deadKey: Any = definedExternally
-    open var _addKey: Any = definedExternally
-    open var _currentKey: Any = definedExternally
-    open var _isTextHighlightOn: Any = definedExternally
-    open var _textHighlightColor: Any = definedExternally
-    open var _highligherOpacity: Any = definedExternally
-    open var _highlightedText: Any = definedExternally
-    open var _startHighlightIndex: Any = definedExternally
-    open var _endHighlightIndex: Any = definedExternally
-    open var _cursorIndex: Any = definedExternally
-    open var _onFocusSelectAll: Any = definedExternally
-    open var _isPointerDown: Any = definedExternally
-    open var _onClipboardObserver: Any = definedExternally
-    open var _onPointerDblTapObserver: Any = definedExternally
-    open var _connectedVirtualKeyboard: VirtualKeyboard? = definedExternally
-    open var promptMessage: String = definedExternally
-    open var onTextChangedObservable: BABYLON.Observable<InputText> = definedExternally
-    open var onBeforeKeyAddObservable: BABYLON.Observable<InputText> = definedExternally
-    open var onFocusObservable: BABYLON.Observable<InputText> = definedExternally
-    open var onBlurObservable: BABYLON.Observable<InputText> = definedExternally
-    open var onTextHighlightObservable: BABYLON.Observable<InputText> = definedExternally
-    open var onTextCopyObservable: BABYLON.Observable<InputText> = definedExternally
-    open var onTextCutObservable: BABYLON.Observable<InputText> = definedExternally
-    open var onTextPasteObservable: BABYLON.Observable<InputText> = definedExternally
-    open var onKeyboardEventProcessedObservable: BABYLON.Observable<KeyboardEvent> = definedExternally
-    open var maxWidth: dynamic /* String | Number */ = definedExternally
-    open var maxWidthInPixels: Number = definedExternally
-    open var highligherOpacity: Number = definedExternally
-    open var onFocusSelectAll: Boolean = definedExternally
-    open var textHighlightColor: String = definedExternally
-    open var margin: String = definedExternally
-    open var marginInPixels: Number = definedExternally
-    open var autoStretchWidth: Boolean = definedExternally
-    open var thickness: Number = definedExternally
-    open var focusedBackground: String = definedExternally
-    open var focusedColor: String = definedExternally
-    open var background: String = definedExternally
-    open var placeholderColor: String = definedExternally
-    open var placeholderText: String = definedExternally
-    open var deadKey: Boolean = definedExternally
-    open var highlightedText: String = definedExternally
-    open var addKey: Boolean = definedExternally
-    open var currentKey: String = definedExternally
-    open var text: String = definedExternally
-    override var width: dynamic /* String | Number */ = definedExternally
-    override fun onBlur(): Unit = definedExternally
-    override fun onFocus(): Unit = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    override fun keepsFocusWith(): Array<Control>? = definedExternally
-    open fun processKey(keyCode: Number, key: String? = definedExternally /* null */, evt: KeyboardEvent? = definedExternally /* null */): Unit = definedExternally
-    open var _updateValueFromCursorIndex: Any = definedExternally
-    open var _processDblClick: Any = definedExternally
-    open var _selectAllText: Any = definedExternally
-    override fun processKeyboard(evt: KeyboardEvent): Unit = definedExternally
-    open var _onCopyText: Any = definedExternally
-    open var _onCutText: Any = definedExternally
-    open var _onPasteText: Any = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
-    override fun _onPointerMove(target: Control, coordinates: BABYLON.Vector2, pointerId: Number): Unit = definedExternally
-    override fun _onPointerUp(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean): Unit = definedExternally
-    open fun _beforeRenderText(text: String): String = definedExternally
-    override fun dispose(): Unit = definedExternally
+
+external open class InputText(name: String? = definedExternally, text: String = definedExternally) : Control, IFocusableControl {
+    override var name: String?
+//    private var _text: Any
+//    private var _placeholderText: Any
+//    private var _background: Any
+//    private var _focusedBackground: Any
+//    private var _focusedColor: Any
+//    private var _placeholderColor: Any
+//    private var _thickness: Any
+//    private var _margin: Any
+//    private var _autoStretchWidth: Any
+//    private var _maxWidth: Any
+//    private var _isFocused: Any
+//    private var _blinkTimeout: Any
+//    private var _blinkIsEven: Any
+//    private var _cursorOffset: Any
+//    private var _scrollLeft: Any
+//    private var _textWidth: Any
+//    private var _clickedCoordinate: Any
+//    private var _deadKey: Any
+//    private var _addKey: Any
+//    private var _currentKey: Any
+//    private var _isTextHighlightOn: Any
+//    private var _textHighlightColor: Any
+//    private var _highligherOpacity: Any
+//    private var _highlightedText: Any
+//    private var _startHighlightIndex: Any
+//    private var _endHighlightIndex: Any
+//    private var _cursorIndex: Any
+//    private var _onFocusSelectAll: Any
+//    private var _isPointerDown: Any
+//    private var _onClipboardObserver: Any
+//    private var _onPointerDblTapObserver: Any
+//    private var _connectedVirtualKeyboard: Any
+    open var promptMessage: String
+    open var disableMobilePrompt: Boolean
+    open var onTextChangedObservable: Any
+    open var onBeforeKeyAddObservable: Any
+    open var onFocusObservable: Any
+    open var onBlurObservable: Any
+    open var onTextHighlightObservable: Any
+    open var onTextCopyObservable: Any
+    open var onTextCutObservable: Any
+    open var onTextPasteObservable: Any
+    open var onKeyboardEventProcessedObservable: Any
+    override fun onBlur()
+    override fun onFocus()
+//    private override fun _getTypeName(): String
+    override fun keepsFocusWith(): Array<Control>?
+    open fun processKey(keyCode: Number, key: String = definedExternally, evt: KeyboardEvent = definedExternally)
+//    private var _updateValueFromCursorIndex: Any
+//    private var _processDblClick: Any
+//    private var _selectAllText: Any
+    override fun processKeyboard(evt: KeyboardEvent)
+//    private var _onCopyText: Any
+//    private var _onCutText: Any
+//    private var _onPasteText: Any
+//    private override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure?)
+//    private override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean
+//    private override fun _onPointerMove(target: Control, coordinates: BABYLON.Vector2, pointerId: Number)
+//    private override fun _onPointerUp(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean)
+//    private fun _beforeRenderText(text: String): String
+    override fun dispose()
 }
+
+external open class Grid(name: String? = definedExternally) : Container {
+    override var name: String?
+//    private var _rowDefinitions: Any
+//    private var _columnDefinitions: Any
+//    private var _cells: Any
+//    private var _childControls: Any
+    open fun getRowDefinition(index: Number): ValueAndUnit?
+    open fun getColumnDefinition(index: Number): ValueAndUnit?
+    open fun addRowDefinition(height: Number, isPixel: Boolean = definedExternally): Grid
+    open fun addColumnDefinition(width: Number, isPixel: Boolean = definedExternally): Grid
+    open fun setRowDefinition(index: Number, height: Number, isPixel: Boolean = definedExternally): Grid
+    open fun setColumnDefinition(index: Number, width: Number, isPixel: Boolean = definedExternally): Grid
+    open fun getChildrenAt(row: Number, column: Number): Array<Control>?
+    open fun getChildCellInfo(child: Control): String
+//    private var _removeCell: Any
+//    private var _offsetCell: Any
+    open fun removeColumnDefinition(index: Number): Grid
+    open fun removeRowDefinition(index: Number): Grid
+    open fun addControl(control: Control, row: Number = definedExternally, column: Number = definedExternally): Grid
+    override fun removeControl(control: Control): Container
+//    private override fun _getTypeName(): String
+//    private fun _getGridDefinitions(definitionCallback: (lefts: Array<Number>, tops: Array<Number>, widths: Array<Number>, heights: Array<Number>) -> Unit)
+//    private override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private override fun _flagDescendantsAsMatrixDirty()
+//    private override fun _renderHighlightSpecific(context: CanvasRenderingContext2D)
+    override fun dispose()
+}
+
 external interface `T$3` {
-    @nativeGetter
-    operator fun get(key: String): Container?
-    @nativeSetter
-    operator fun set(key: String, value: Container)
+    var pickerWidth: String?
+        get() = definedExternally
+        set(value) = definedExternally
+    var pickerHeight: String?
+        get() = definedExternally
+        set(value) = definedExternally
+    var headerHeight: String?
+        get() = definedExternally
+        set(value) = definedExternally
+    var lastColor: String?
+        get() = definedExternally
+        set(value) = definedExternally
+    var swatchLimit: Number?
+        get() = definedExternally
+        set(value) = definedExternally
+    var numSwatchesPerLine: Number?
+        get() = definedExternally
+        set(value) = definedExternally
+    var savedColors: Array<String>?
+        get() = definedExternally
+        set(value) = definedExternally
 }
-external open class Grid(name: String? = definedExternally /* null */) : Container {
-    override var name: String? = definedExternally
-    open var _rowDefinitions: Any = definedExternally
-    open var _columnDefinitions: Any = definedExternally
-    open var _cells: Any = definedExternally
-    open var _childControls: Any = definedExternally
-    open var columnCount: Number = definedExternally
-    open var rowCount: Number = definedExternally
-    override var children: Array<Control> = definedExternally
-    open var cells: `T$3` = definedExternally
-    open fun getRowDefinition(index: Number): ValueAndUnit? = definedExternally
-    open fun getColumnDefinition(index: Number): ValueAndUnit? = definedExternally
-    open fun addRowDefinition(height: Number, isPixel: Boolean? = definedExternally /* null */): Grid = definedExternally
-    open fun addColumnDefinition(width: Number, isPixel: Boolean? = definedExternally /* null */): Grid = definedExternally
-    open fun setRowDefinition(index: Number, height: Number, isPixel: Boolean? = definedExternally /* null */): Grid = definedExternally
-    open fun setColumnDefinition(index: Number, width: Number, isPixel: Boolean? = definedExternally /* null */): Grid = definedExternally
-    open fun getChildrenAt(row: Number, column: Number): Array<Control>? = definedExternally
-    open fun getChildCellInfo(child: Control): String = definedExternally
-    open var _removeCell: Any = definedExternally
-    open var _offsetCell: Any = definedExternally
-    open fun removeColumnDefinition(index: Number): Grid = definedExternally
-    open fun removeRowDefinition(index: Number): Grid = definedExternally
-    open fun addControl(control: Control, row: Number? = definedExternally /* null */, column: Number? = definedExternally /* null */): Grid = definedExternally
-    override fun removeControl(control: Control): Container = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open fun _getGridDefinitions(definitionCallback: (lefts: Array<Number>, tops: Array<Number>, widths: Array<Number>, heights: Array<Number>) -> Unit): Unit = definedExternally
-    override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _flagDescendantsAsMatrixDirty(): Unit = definedExternally
-    override fun _renderHighlightSpecific(context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun dispose(): Unit = definedExternally
-}
+
 external interface `T$4` {
-    var pickerWidth: String? get() = definedExternally; set(value) = definedExternally
-    var pickerHeight: String? get() = definedExternally; set(value) = definedExternally
-    var headerHeight: String? get() = definedExternally; set(value) = definedExternally
-    var lastColor: String? get() = definedExternally; set(value) = definedExternally
-    var swatchLimit: Number? get() = definedExternally; set(value) = definedExternally
-    var numSwatchesPerLine: Number? get() = definedExternally; set(value) = definedExternally
-    var savedColors: Array<String>? get() = definedExternally; set(value) = definedExternally
-}
-external interface `T$5` {
-    var savedColors: Array<String>? get() = definedExternally; set(value) = definedExternally
+    var savedColors: Array<String>?
+        get() = definedExternally
+        set(value) = definedExternally
     var pickedColor: String
 }
-external open class ColorPicker(name: String? = definedExternally /* null */) : Control {
-    override var name: String? = definedExternally
-    open var _colorWheelCanvas: Any = definedExternally
-    open var _value: Any = definedExternally
-    open var _tmpColor: Any = definedExternally
-    open var _pointerStartedOnSquare: Any = definedExternally
-    open var _pointerStartedOnWheel: Any = definedExternally
-    open var _squareLeft: Any = definedExternally
-    open var _squareTop: Any = definedExternally
-    open var _squareSize: Any = definedExternally
-    open var _h: Any = definedExternally
-    open var _s: Any = definedExternally
-    open var _v: Any = definedExternally
-    open var _lastPointerDownID: Any = definedExternally
-    open var onValueChangedObservable: BABYLON.Observable<BABYLON.Color3> = definedExternally
-    open var value: BABYLON.Color3 = definedExternally
-    override var width: dynamic /* String | Number */ = definedExternally
-    override var height: dynamic /* String | Number */ = definedExternally
-    open var size: dynamic /* String | Number */ = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    override fun _preMeasure(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    open var _updateSquareProps: Any = definedExternally
-    open var _drawGradientSquare: Any = definedExternally
-    open var _drawCircle: Any = definedExternally
-    open var _createColorWheelCanvas: Any = definedExternally
-    open var _RGBtoHSV: Any = definedExternally
-    open var _HSVtoRGB: Any = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D): Unit = definedExternally
-    open var _pointerIsDown: Any = definedExternally
-    open var _updateValueFromPointer: Any = definedExternally
-    open var _isPointOnSquare: Any = definedExternally
-    open var _isPointOnWheel: Any = definedExternally
-    override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
-    override fun _onPointerMove(target: Control, coordinates: BABYLON.Vector2, pointerId: Number): Unit = definedExternally
-    override fun _onPointerUp(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean): Unit = definedExternally
+
+external open class ColorPicker(name: String? = definedExternally) : Control {
+    override var name: String?
+//    private var _colorWheelCanvas: Any
+//    private var _value: Any
+//    private var _tmpColor: Any
+//    private var _pointerStartedOnSquare: Any
+//    private var _pointerStartedOnWheel: Any
+//    private var _squareLeft: Any
+//    private var _squareTop: Any
+//    private var _squareSize: Any
+//    private var _h: Any
+//    private var _s: Any
+//    private var _v: Any
+//    private var _lastPointerDownID: Any
+    open var onValueChangedObservable: Any
+//    private override fun _getTypeName(): String
+//    private override fun _preMeasure(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private var _updateSquareProps: Any
+//    private var _drawGradientSquare: Any
+//    private var _drawCircle: Any
+//    private var _createColorWheelCanvas: Any
+//    private fun _draw(context: CanvasRenderingContext2D)
+//    private var _pointerIsDown: Any
+//    private var _updateValueFromPointer: Any
+//    private var _isPointOnSquare: Any
+//    private var _isPointOnWheel: Any
+//    private override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean
+//    private override fun _onPointerMove(target: Control, coordinates: BABYLON.Vector2, pointerId: Number)
+//    private override fun _onPointerUp(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean)
+
     companion object {
-        var _Epsilon: Any = definedExternally
-        fun ShowPickerDialogAsync(advancedTexture: AdvancedDynamicTexture, options: `T$4`): Promise<`T$5`> = definedExternally
+        var _Epsilon: Any
+        fun ShowPickerDialogAsync(advancedTexture: AdvancedDynamicTexture, options: `T$3`): Promise<`T$4`>
     }
 }
-external open class Ellipse(name: String? = definedExternally /* null */) : Container {
-    override var name: String? = definedExternally
-    open var _thickness: Any = definedExternally
-    open var thickness: Number = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    override fun _localDraw(context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _clipForChildren(context: CanvasRenderingContext2D): Unit = definedExternally
+
+external open class Ellipse(name: String? = definedExternally) : Container {
+    override var name: String?
+//    private var _thickness: Any
+//    private override fun _getTypeName(): String
+//    private override fun _localDraw(context: CanvasRenderingContext2D)
+//    private override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private override fun _clipForChildren(context: CanvasRenderingContext2D)
 }
+
 external open class InputPassword : InputText {
-    override fun _beforeRenderText(text: String): String = definedExternally
+//    private override fun _beforeRenderText(text: String): String
 }
-external open class Line(name: String? = definedExternally /* null */) : Control {
-    override var name: String? = definedExternally
-    open var _lineWidth: Any = definedExternally
-    open var _x1: Any = definedExternally
-    open var _y1: Any = definedExternally
-    open var _x2: Any = definedExternally
-    open var _y2: Any = definedExternally
-    open var _dash: Any = definedExternally
-    open var _connectedControl: Any = definedExternally
-    open var _connectedControlDirtyObserver: Any = definedExternally
-    open var dash: Array<Number> = definedExternally
-    open var connectedControl: Control = definedExternally
-    open var x1: dynamic /* String | Number */ = definedExternally
-    open var y1: dynamic /* String | Number */ = definedExternally
-    open var x2: dynamic /* String | Number */ = definedExternally
-    open var y2: dynamic /* String | Number */ = definedExternally
-    open var lineWidth: Number = definedExternally
-    override var horizontalAlignment: Number = definedExternally
-    override var verticalAlignment: Number = definedExternally
-    open var _effectiveX2: Any = definedExternally
-    open var _effectiveY2: Any = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _measure(): Unit = definedExternally
-    override fun _computeAlignment(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    open fun moveToVector3(position: BABYLON.Vector3, scene: BABYLON.Scene, end: Boolean? = definedExternally /* null */): Unit = definedExternally
-    open fun _moveToProjectedPosition(projectedPosition: BABYLON.Vector3, end: Boolean? = definedExternally /* null */): Unit = definedExternally
+
+external open class Line(name: String? = definedExternally) : Control {
+    override var name: String?
+//    private var _lineWidth: Any
+//    private var _x1: Any
+//    private var _y1: Any
+//    private var _x2: Any
+//    private var _y2: Any
+//    private var _dash: Any
+//    private var _connectedControl: Any
+//    private var _connectedControlDirtyObserver: Any
+//    private override fun _getTypeName(): String
+//    private fun _draw(context: CanvasRenderingContext2D)
+//    private override fun _measure()
+//    private override fun _computeAlignment(parentMeasure: Measure, context: CanvasRenderingContext2D)
+    open fun moveToVector3(position: BABYLON.Vector3, scene: BABYLON.Scene, end: Boolean = definedExternally)
+//    private fun _moveToProjectedPosition(projectedPosition: BABYLON.Vector3, end: Boolean = definedExternally)
 }
+
 external open class MultiLinePoint(multiLine: MultiLine) {
-    open var _multiLine: Any = definedExternally
-    open var _x: Any = definedExternally
-    open var _y: Any = definedExternally
-    open var _control: Any = definedExternally
-    open var _mesh: Any = definedExternally
-    open var _controlObserver: Any = definedExternally
-    open var _meshObserver: Any = definedExternally
-    open var _point: BABYLON.Vector2 = definedExternally
-    open var x: dynamic /* String | Number */ = definedExternally
-    open var y: dynamic /* String | Number */ = definedExternally
-    open var control: Control? = definedExternally
-    open var mesh: BABYLON.AbstractMesh? = definedExternally
-    open fun resetLinks(): Unit = definedExternally
-    open fun translate(): BABYLON.Vector2 = definedExternally
-    open var _translatePoint: Any = definedExternally
-    open fun dispose(): Unit = definedExternally
+//    private var _multiLine: Any
+//    private var _x: Any
+//    private var _y: Any
+//    private var _control: Any
+//    private var _mesh: Any
+//    private var _controlObserver: Any
+//    private var _meshObserver: Any
+//    private var _point: Any
+    open fun resetLinks()
+    open fun translate(): BABYLON.Vector2
+//    private var _translatePoint: Any
+    open fun dispose()
 }
-external interface `T$6` {
+
+external interface `T$5` {
     var x: dynamic /* String | Number */
+        get() = definedExternally
+        set(value) = definedExternally
     var y: dynamic /* String | Number */
+        get() = definedExternally
+        set(value) = definedExternally
 }
-external open class MultiLine(name: String? = definedExternally /* null */) : Control {
-    override var name: String? = definedExternally
-    open var _lineWidth: Any = definedExternally
-    open var _dash: Any = definedExternally
-    open var _points: Any = definedExternally
-    open var _minX: Any = definedExternally
-    open var _minY: Any = definedExternally
-    open var _maxX: Any = definedExternally
-    open var _maxY: Any = definedExternally
-    open var dash: Array<Number> = definedExternally
-    open fun getAt(index: Number): MultiLinePoint = definedExternally
-    open var onPointUpdate: () -> Unit = definedExternally
-    open fun add(vararg items: dynamic /* AbstractMesh | Control | `T$6` */): Array<MultiLinePoint> = definedExternally
-    open fun push(item: dynamic /* AbstractMesh | Control | `T$6` */ = definedExternally /* null */): MultiLinePoint = definedExternally
-    open fun remove(value: Number): Unit = definedExternally
-    open fun remove(value: MultiLinePoint): Unit = definedExternally
-    open fun reset(): Unit = definedExternally
-    open fun resetLinks(): Unit = definedExternally
-    open var lineWidth: Number = definedExternally
-    override var horizontalAlignment: Number = definedExternally
-    override var verticalAlignment: Number = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _measure(): Unit = definedExternally
-    override fun _computeAlignment(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun dispose(): Unit = definedExternally
+
+external open class MultiLine(name: String? = definedExternally) : Control {
+    override var name: String?
+//    private var _lineWidth: Any
+//    private var _dash: Any
+//    private var _points: Any
+//    private var _minX: Any
+//    private var _minY: Any
+//    private var _maxX: Any
+//    private var _maxY: Any
+    open fun getAt(index: Number): MultiLinePoint
+    open var onPointUpdate: () -> Unit
+    open fun add(vararg items: AbstractMesh): Array<MultiLinePoint>
+    open fun add(vararg items: Control): Array<MultiLinePoint>
+    open fun add(vararg items: `T$5`): Array<MultiLinePoint>
+    open fun push(item: AbstractMesh = definedExternally): MultiLinePoint
+    open fun push(item: Control = definedExternally): MultiLinePoint
+    open fun push(item: `T$5` = definedExternally): MultiLinePoint
+    open fun remove(value: Number)
+    open fun remove(value: MultiLinePoint)
+    open fun reset()
+    open fun resetLinks()
+//    private override fun _getTypeName(): String
+//    private override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure?)
+//    private override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private override fun _measure()
+//    private override fun _computeAlignment(parentMeasure: Measure, context: CanvasRenderingContext2D)
+    override fun dispose()
+    open fun push(): MultiLinePoint
 }
-external open class RadioButton(name: String? = definedExternally /* null */) : Control {
-    override var name: String? = definedExternally
-    open var _isChecked: Any = definedExternally
-    open var _background: Any = definedExternally
-    open var _checkSizeRatio: Any = definedExternally
-    open var _thickness: Any = definedExternally
-    open var thickness: Number = definedExternally
-    open var group: String = definedExternally
-    open var onIsCheckedChangedObservable: BABYLON.Observable<Boolean> = definedExternally
-    open var checkSizeRatio: Number = definedExternally
-    open var background: String = definedExternally
-    open var isChecked: Boolean = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
+
+external open class RadioButton(name: String? = definedExternally) : Control {
+    override var name: String?
+//    private var _isChecked: Any
+//    private var _background: Any
+//    private var _checkSizeRatio: Any
+//    private var _thickness: Any
+    open var group: String
+    open var onIsCheckedChangedObservable: Any
+//    private override fun _getTypeName(): String
+//    private fun _draw(context: CanvasRenderingContext2D)
+//    private override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean
+
     companion object {
-        fun AddRadioButtonWithHeader(title: String, group: String, isChecked: Boolean, onValueChanged: (button: RadioButton, value: Boolean) -> Unit): StackPanel = definedExternally
+        fun AddRadioButtonWithHeader(title: String, group: String, isChecked: Boolean, onValueChanged: (button: RadioButton, value: Boolean) -> Unit): StackPanel
     }
 }
-external open class BaseSlider(name: String? = definedExternally /* null */) : Control {
-    override var name: String? = definedExternally
-    open var _thumbWidth: ValueAndUnit = definedExternally
-    open var _minimum: Any = definedExternally
-    open var _maximum: Any = definedExternally
-    open var _value: Any = definedExternally
-    open var _isVertical: Any = definedExternally
-    open var _barOffset: ValueAndUnit = definedExternally
-    open var _isThumbClamped: Any = definedExternally
-    open var _displayThumb: Boolean = definedExternally
-    open var _step: Any = definedExternally
-    open var _lastPointerDownID: Any = definedExternally
-    open var _effectiveBarOffset: Number = definedExternally
-    open var _renderLeft: Number = definedExternally
-    open var _renderTop: Number = definedExternally
-    open var _renderWidth: Number = definedExternally
-    open var _renderHeight: Number = definedExternally
-    open var _backgroundBoxLength: Number = definedExternally
-    open var _backgroundBoxThickness: Number = definedExternally
-    open var _effectiveThumbThickness: Number = definedExternally
-    open var onValueChangedObservable: BABYLON.Observable<Number> = definedExternally
-    open var displayThumb: Boolean = definedExternally
-    open var step: Number = definedExternally
-    open var barOffset: dynamic /* String | Number */ = definedExternally
-    open var barOffsetInPixels: Number = definedExternally
-    open var thumbWidth: dynamic /* String | Number */ = definedExternally
-    open var thumbWidthInPixels: Number = definedExternally
-    open var minimum: Number = definedExternally
-    open var maximum: Number = definedExternally
-    open var value: Number = definedExternally
-    open var isVertical: Boolean = definedExternally
-    open var isThumbClamped: Boolean = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open fun _getThumbPosition(): Number = definedExternally
-    open fun _getThumbThickness(type: String): Number = definedExternally
-    open fun _prepareRenderingData(type: String): Unit = definedExternally
-    open var _pointerIsDown: Any = definedExternally
-    open fun _updateValueFromPointer(x: Number, y: Number): Unit = definedExternally
-    override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
-    override fun _onPointerMove(target: Control, coordinates: BABYLON.Vector2, pointerId: Number): Unit = definedExternally
-    override fun _onPointerUp(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean): Unit = definedExternally
+
+external open class BaseSlider(name: String? = definedExternally) : Control {
+    override var name: String?
+//    private var _thumbWidth: ValueAndUnit
+//    private var _minimum: Any
+//    private var _maximum: Any
+//    private var _value: Any
+//    private var _isVertical: Any
+//    private var _barOffset: ValueAndUnit
+//    private var _isThumbClamped: Any
+//    private var _displayThumb: Boolean
+//    private var _step: Any
+//    private var _lastPointerDownID: Any
+//    private var _effectiveBarOffset: Number
+//    private var _renderLeft: Number
+//    private var _renderTop: Number
+//    private var _renderWidth: Number
+//    private var _renderHeight: Number
+//    private var _backgroundBoxLength: Number
+//    private var _backgroundBoxThickness: Number
+//    private var _effectiveThumbThickness: Number
+    open var onValueChangedObservable: Any
+//    private override fun _getTypeName(): String
+//    private fun _getThumbPosition(): Number
+//    private fun _getThumbThickness(type: String): Number
+//    private fun _prepareRenderingData(type: String)
+//    private var _pointerIsDown: Any
+//    private fun _updateValueFromPointer(x: Number, y: Number)
+//    private override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean
+//    private override fun _onPointerMove(target: Control, coordinates: BABYLON.Vector2, pointerId: Number)
+//    private override fun _onPointerUp(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean)
 }
-external open class Slider(name: String? = definedExternally /* null */) : BaseSlider {
-    override var name: String? = definedExternally
-    open var _background: Any = definedExternally
-    open var _borderColor: Any = definedExternally
-    open var _isThumbCircle: Any = definedExternally
-    open var _displayValueBar: Boolean = definedExternally
-    open var displayValueBar: Boolean = definedExternally
-    open var borderColor: String = definedExternally
-    open var background: String = definedExternally
-    open var isThumbCircle: Boolean = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D): Unit = definedExternally
+
+external open class Slider(name: String? = definedExternally) : BaseSlider {
+    override var name: String?
+//    private var _background: Any
+//    private var _borderColor: Any
+//    private var _isThumbCircle: Any
+//    private var _displayValueBar: Boolean
+//    private override fun _getTypeName(): String
+//    private override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure?)
 }
+
 external open class SelectorGroup(name: String) {
-    open var name: String = definedExternally
-    open var _groupPanel: Any = definedExternally
-    open var _selectors: Any = definedExternally
-    open var _groupHeader: Any = definedExternally
-    open var groupPanel: StackPanel = definedExternally
-    open var selectors: Array<StackPanel> = definedExternally
-    open var header: String = definedExternally
-    open var _addGroupHeader: Any = definedExternally
-    open fun _getSelector(selectorNb: Number): StackPanel? = definedExternally
-    open fun removeSelector(selectorNb: Number): Unit = definedExternally
+    open var name: String
+//    private var _groupPanel: Any
+//    private var _selectors: Any
+//    private var _groupHeader: Any
+//    private var _addGroupHeader: Any
+//    private fun _getSelector(selectorNb: Number): StackPanel?
+    open fun removeSelector(selectorNb: Number)
 }
+
 external open class CheckboxGroup : SelectorGroup {
-    open fun addCheckbox(text: String, func: ((s: Boolean) -> Unit)? = definedExternally /* null */, checked: Boolean? = definedExternally /* null */): Unit = definedExternally
-    open fun _setSelectorLabel(selectorNb: Number, label: String): Unit = definedExternally
-    open fun _setSelectorLabelColor(selectorNb: Number, color: String): Unit = definedExternally
-    open fun _setSelectorButtonColor(selectorNb: Number, color: String): Unit = definedExternally
-    open fun _setSelectorButtonBackground(selectorNb: Number, color: String): Unit = definedExternally
+    open fun addCheckbox(text: String, func: (s: Boolean) -> Unit = definedExternally, checked: Boolean = definedExternally)
+//    private fun _setSelectorLabel(selectorNb: Number, label: String)
+//    private fun _setSelectorLabelColor(selectorNb: Number, color: String)
+//    private fun _setSelectorButtonColor(selectorNb: Number, color: String)
+//    private fun _setSelectorButtonBackground(selectorNb: Number, color: String)
 }
+
 external open class RadioGroup : SelectorGroup {
-    open var _selectNb: Any = definedExternally
-    open fun addRadio(label: String, func: ((n: Number) -> Unit)? = definedExternally /* null */, checked: Boolean? = definedExternally /* null */): Unit = definedExternally
-    open fun _setSelectorLabel(selectorNb: Number, label: String): Unit = definedExternally
-    open fun _setSelectorLabelColor(selectorNb: Number, color: String): Unit = definedExternally
-    open fun _setSelectorButtonColor(selectorNb: Number, color: String): Unit = definedExternally
-    open fun _setSelectorButtonBackground(selectorNb: Number, color: String): Unit = definedExternally
+//    private var _selectNb: Any
+    open fun addRadio(label: String, func: (n: Number) -> Unit = definedExternally, checked: Boolean = definedExternally)
+//    private fun _setSelectorLabel(selectorNb: Number, label: String)
+//    private fun _setSelectorLabelColor(selectorNb: Number, color: String)
+//    private fun _setSelectorButtonColor(selectorNb: Number, color: String)
+//    private fun _setSelectorButtonBackground(selectorNb: Number, color: String)
 }
+
 external open class SliderGroup : SelectorGroup {
-    open fun addSlider(label: String, func: ((v: Number) -> Unit)? = definedExternally /* null */, unit: String? = definedExternally /* null */, min: Number? = definedExternally /* null */, max: Number? = definedExternally /* null */, value: Number? = definedExternally /* null */, onValueChange: ((v: Number) -> Number)? = definedExternally /* null */): Unit = definedExternally
-    open fun _setSelectorLabel(selectorNb: Number, label: String): Unit = definedExternally
-    open fun _setSelectorLabelColor(selectorNb: Number, color: String): Unit = definedExternally
-    open fun _setSelectorButtonColor(selectorNb: Number, color: String): Unit = definedExternally
-    open fun _setSelectorButtonBackground(selectorNb: Number, color: String): Unit = definedExternally
+    open fun addSlider(label: String, func: (v: Number) -> Unit = definedExternally, unit: String = definedExternally, min: Number = definedExternally, max: Number = definedExternally, value: Number = definedExternally, onValueChange: (v: Number) -> Number = definedExternally)
+//    private fun _setSelectorLabel(selectorNb: Number, label: String)
+//    private fun _setSelectorLabelColor(selectorNb: Number, color: String)
+//    private fun _setSelectorButtonColor(selectorNb: Number, color: String)
+//    private fun _setSelectorButtonBackground(selectorNb: Number, color: String)
 }
-external open class SelectionPanel(name: String, groups: Array<SelectorGroup>? = definedExternally /* null */) : Rectangle {
-    open var groups: Array<SelectorGroup> = definedExternally
-    open var _panel: Any = definedExternally
-    open var _buttonColor: Any = definedExternally
-    open var _buttonBackground: Any = definedExternally
-    open var _headerColor: Any = definedExternally
-    open var _barColor: Any = definedExternally
-    open var _barHeight: Any = definedExternally
-    open var _spacerHeight: Any = definedExternally
-    open var _labelColor: Any = definedExternally
-    open var _groups: Any = definedExternally
-    open var _bars: Any = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open var headerColor: String = definedExternally
-    open var _setHeaderColor: Any = definedExternally
-    open var buttonColor: String = definedExternally
-    open var _setbuttonColor: Any = definedExternally
-    open var labelColor: String = definedExternally
-    open var _setLabelColor: Any = definedExternally
-    open var buttonBackground: String = definedExternally
-    open var _setButtonBackground: Any = definedExternally
-    open var barColor: String = definedExternally
-    open var _setBarColor: Any = definedExternally
-    open var barHeight: String = definedExternally
-    open var _setBarHeight: Any = definedExternally
-    open var spacerHeight: String = definedExternally
-    open var _setSpacerHeight: Any = definedExternally
-    open var _addSpacer: Any = definedExternally
-    open fun addGroup(group: SelectorGroup): Unit = definedExternally
-    open fun removeGroup(groupNb: Number): Unit = definedExternally
-    open fun setHeaderName(label: String, groupNb: Number): Unit = definedExternally
-    open fun relabel(label: String, groupNb: Number, selectorNb: Number): Unit = definedExternally
-    open fun removeFromGroupSelector(groupNb: Number, selectorNb: Number): Unit = definedExternally
-    open fun addToGroupCheckbox(groupNb: Number, label: String, func: (() -> Unit)? = definedExternally /* null */, checked: Boolean? = definedExternally /* null */): Unit = definedExternally
-    open fun addToGroupRadio(groupNb: Number, label: String, func: (() -> Unit)? = definedExternally /* null */, checked: Boolean? = definedExternally /* null */): Unit = definedExternally
-    open fun addToGroupSlider(groupNb: Number, label: String, func: (() -> Unit)? = definedExternally /* null */, unit: String? = definedExternally /* null */, min: Number? = definedExternally /* null */, max: Number? = definedExternally /* null */, value: Number? = definedExternally /* null */, onVal: ((v: Number) -> Number)? = definedExternally /* null */): Unit = definedExternally
+
+external open class SelectionPanel(name: String, groups: Array<SelectorGroup> = definedExternally) : Rectangle {
+    open var groups: Array<SelectorGroup>
+//    private var _panel: Any
+//    private var _buttonColor: Any
+//    private var _buttonBackground: Any
+//    private var _headerColor: Any
+//    private var _barColor: Any
+//    private var _barHeight: Any
+//    private var _spacerHeight: Any
+//    private var _labelColor: Any
+//    private var _groups: Any
+//    private var _bars: Any
+//    private override fun _getTypeName(): String
+//    private var _setHeaderColor: Any
+//    private var _setbuttonColor: Any
+//    private var _setLabelColor: Any
+//    private var _setButtonBackground: Any
+//    private var _setBarColor: Any
+//    private var _setBarHeight: Any
+//    private var _setSpacerHeight: Any
+//    private var _addSpacer: Any
+    open fun addGroup(group: SelectorGroup)
+    open fun removeGroup(groupNb: Number)
+    open fun setHeaderName(label: String, groupNb: Number)
+    open fun relabel(label: String, groupNb: Number, selectorNb: Number)
+    open fun removeFromGroupSelector(groupNb: Number, selectorNb: Number)
+    open fun addToGroupCheckbox(groupNb: Number, label: String, func: () -> Unit = definedExternally, checked: Boolean = definedExternally)
+    open fun addToGroupRadio(groupNb: Number, label: String, func: () -> Unit = definedExternally, checked: Boolean = definedExternally)
+    open fun addToGroupSlider(groupNb: Number, label: String, func: () -> Unit = definedExternally, unit: String = definedExternally, min: Number = definedExternally, max: Number = definedExternally, value: Number = definedExternally, onVal: (v: Number) -> Number = definedExternally)
 }
-external open class _ScrollViewerWindow(name: String? = definedExternally /* null */) : Container {
-    open var parentClientWidth: Number = definedExternally
-    open var parentClientHeight: Number = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _postMeasure(): Unit = definedExternally
+
+external open class _ScrollViewerWindow(name: String = definedExternally) : Container {
+    open var parentClientWidth: Number
+    open var parentClientHeight: Number
+//    private var _freezeControls: Any
+//    private var _parentMeasure: Any
+//    private var _oldLeft: Any
+//    private var _oldTop: Any
+//    private var _bucketWidth: Any
+//    private var _bucketHeight: Any
+//    private var _buckets: Any
+//    private var _bucketLen: Any
+    open fun setBucketSizes(width: Number, height: Number)
+//    private var _useBuckets: Any
+//    private var _makeBuckets: Any
+//    private var _dispatchInBuckets: Any
+//    private var _updateMeasures: Any
+//    private var _updateChildrenMeasures: Any
+//    private override fun _getTypeName(): String
+//    private override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private override fun _layout(parentMeasure: Measure, context: CanvasRenderingContext2D): Boolean
+//    private var _scrollChildren: Any
+//    private var _scrollChildrenWithBuckets: Any
+//    private override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: Measure)
+//    private override fun _postMeasure()
 }
-external open class ScrollBar(name: String? = definedExternally /* null */) : BaseSlider {
-    override var name: String? = definedExternally
-    open var _background: Any = definedExternally
-    open var _borderColor: Any = definedExternally
-    open var _thumbMeasure: Any = definedExternally
-    open var borderColor: String = definedExternally
-    open var background: String = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open fun _getThumbThickness(): Number = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D): Unit = definedExternally
-    open var _first: Any = definedExternally
-    open var _originX: Any = definedExternally
-    open var _originY: Any = definedExternally
-    override fun _updateValueFromPointer(x: Number, y: Number): Unit = definedExternally
-    override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
+
+external open class ScrollBar(name: String? = definedExternally) : BaseSlider {
+    override var name: String?
+//    private var _background: Any
+//    private var _borderColor: Any
+//    private var _tempMeasure: Any
+//    private override fun _getTypeName(): String
+//    private fun _getThumbThickness(): Number
+//    private fun _draw(context: CanvasRenderingContext2D)
+//    private var _first: Any
+//    private var _originX: Any
+//    private var _originY: Any
+//    private override fun _updateValueFromPointer(x: Number, y: Number)
+//    private override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean
 }
-external open class ScrollViewer(name: String? = definedExternally /* null */) : Rectangle {
-    open var _grid: Any = definedExternally
-    open var _horizontalBarSpace: Any = definedExternally
-    open var _verticalBarSpace: Any = definedExternally
-    open var _dragSpace: Any = definedExternally
-    open var _horizontalBar: Any = definedExternally
-    open var _verticalBar: Any = definedExternally
-    open var _barColor: Any = definedExternally
-    open var _barBackground: Any = definedExternally
-    open var _barSize: Any = definedExternally
-    open var _endLeft: Any = definedExternally
-    open var _endTop: Any = definedExternally
-    open var _window: Any = definedExternally
-    open var _pointerIsOver: Any = definedExternally
-    open var _wheelPrecision: Any = definedExternally
-    open var _onPointerObserver: Any = definedExternally
-    open var _clientWidth: Any = definedExternally
-    open var _clientHeight: Any = definedExternally
-    open var horizontalBar: ScrollBar = definedExternally
-    open var verticalBar: ScrollBar = definedExternally
-    override fun addControl(control: Control?): Container = definedExternally
-    override fun removeControl(control: Control): Container = definedExternally
-    override var children: Array<Control> = definedExternally
-    override fun _flagDescendantsAsMatrixDirty(): Unit = definedExternally
-    open fun resetWindow(): Unit = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open var _buildClientSizes: Any = definedExternally
-    override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _postMeasure(): Unit = definedExternally
-    open var wheelPrecision: Number = definedExternally
-    open var barColor: String = definedExternally
-    open var barSize: Number = definedExternally
-    open var barBackground: String = definedExternally
-    open var _updateScroller: Any = definedExternally
-    override fun _link(host: AdvancedDynamicTexture): Unit = definedExternally
-    open var _attachWheel: Any = definedExternally
-    override fun _renderHighlightSpecific(context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun dispose(): Unit = definedExternally
+
+external open class ImageScrollBar(name: String? = definedExternally) : BaseSlider {
+    override var name: String?
+//    private var _backgroundBaseImage: Any
+//    private var _backgroundImage: Any
+//    private var _thumbImage: Any
+//    private var _thumbBaseImage: Any
+//    private var _thumbLength: Any
+//    private var _thumbHeight: Any
+//    private var _barImageHeight: Any
+//    private var _tempMeasure: Any
+    open var num90RotationInVerticalMode: Number
+//    private override fun _getTypeName(): String
+//    private fun _getThumbThickness(): Number
+//    private fun _draw(context: CanvasRenderingContext2D)
+//    private var _first: Any
+//    private var _originX: Any
+//    private var _originY: Any
+//    private override fun _updateValueFromPointer(x: Number, y: Number)
+//    private override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean
 }
-external open class DisplayGrid(name: String? = definedExternally /* null */) : Control {
-    override var name: String? = definedExternally
-    open var _cellWidth: Any = definedExternally
-    open var _cellHeight: Any = definedExternally
-    open var _minorLineTickness: Any = definedExternally
-    open var _minorLineColor: Any = definedExternally
-    open var _majorLineTickness: Any = definedExternally
-    open var _majorLineColor: Any = definedExternally
-    open var _majorLineFrequency: Any = definedExternally
-    open var _background: Any = definedExternally
-    open var _displayMajorLines: Any = definedExternally
-    open var _displayMinorLines: Any = definedExternally
-    open var displayMinorLines: Boolean = definedExternally
-    open var displayMajorLines: Boolean = definedExternally
-    open var background: String = definedExternally
-    open var cellWidth: Number = definedExternally
-    open var cellHeight: Number = definedExternally
-    open var minorLineTickness: Number = definedExternally
-    open var minorLineColor: String = definedExternally
-    open var majorLineTickness: Number = definedExternally
-    open var majorLineColor: String = definedExternally
-    open var majorLineFrequency: Number = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D): Unit = definedExternally
-    override fun _getTypeName(): String = definedExternally
+
+external open class ScrollViewer(name: String = definedExternally, isImageBased: Boolean = definedExternally) : Rectangle {
+//    private var _grid: Any
+//    private var _horizontalBarSpace: Any
+//    private var _verticalBarSpace: Any
+//    private var _dragSpace: Any
+//    private var _horizontalBar: Any
+//    private var _verticalBar: Any
+//    private var _barColor: Any
+//    private var _barBackground: Any
+//    private var _barImage: Any
+//    private var _horizontalBarImage: Any
+//    private var _verticalBarImage: Any
+//    private var _barBackgroundImage: Any
+//    private var _horizontalBarBackgroundImage: Any
+//    private var _verticalBarBackgroundImage: Any
+//    private var _barSize: Any
+//    private var _window: Any
+//    private var _pointerIsOver: Any
+//    private var _wheelPrecision: Any
+//    private var _onPointerObserver: Any
+//    private var _clientWidth: Any
+//    private var _clientHeight: Any
+//    private var _useImageBar: Any
+//    private var _thumbLength: Any
+//    private var _thumbHeight: Any
+//    private var _barImageHeight: Any
+//    private var _horizontalBarImageHeight: Any
+//    private var _verticalBarImageHeight: Any
+    override fun addControl(control: Control?): Container
+    override fun removeControl(control: Control): Container
+//    private override fun _flagDescendantsAsMatrixDirty()
+    open fun setBucketSizes(width: Number, height: Number)
+//    private var _forceHorizontalBar: Any
+//    private var _forceVerticalBar: Any
+    open fun resetWindow()
+//    private override fun _getTypeName(): String
+//    private var _buildClientSizes: Any
+//    private override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D)
+//    private override fun _postMeasure()
+//    private var _setWindowPosition: Any
+//    private var _updateScroller: Any
+//    private override fun _link(host: AdvancedDynamicTexture)
+//    private var _addBar: Any
+//    private var _attachWheel: Any
+//    private override fun _renderHighlightSpecific(context: CanvasRenderingContext2D)
+    override fun dispose()
 }
-external open class ImageBasedSlider(name: String? = definedExternally /* null */) : BaseSlider {
-    override var name: String? = definedExternally
-    open var _backgroundImage: Any = definedExternally
-    open var _thumbImage: Any = definedExternally
-    open var _valueBarImage: Any = definedExternally
-    open var _tempMeasure: Any = definedExternally
-    override var displayThumb: Boolean = definedExternally
-    open var backgroundImage: Image = definedExternally
-    open var valueBarImage: Image = definedExternally
-    open var thumbImage: Image = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open fun _draw(context: CanvasRenderingContext2D): Unit = definedExternally
+
+external open class DisplayGrid(name: String? = definedExternally) : Control {
+    override var name: String?
+//    private var _cellWidth: Any
+//    private var _cellHeight: Any
+//    private var _minorLineTickness: Any
+//    private var _minorLineColor: Any
+//    private var _majorLineTickness: Any
+//    private var _majorLineColor: Any
+//    private var _majorLineFrequency: Any
+//    private var _background: Any
+//    private var _displayMajorLines: Any
+//    private var _displayMinorLines: Any
+//    private override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure?)
+//    private override fun _getTypeName(): String
 }
-external var name: Any = definedExternally
+
+external open class ImageBasedSlider(name: String? = definedExternally) : BaseSlider {
+    override var name: String?
+//    private var _backgroundImage: Any
+//    private var _thumbImage: Any
+//    private var _valueBarImage: Any
+//    private var _tempMeasure: Any
+//    private override fun _getTypeName(): String
+//    private override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure?)
+}
+
+external var name: Any
+
 external open class AdvancedDynamicTextureInstrumentation(texture: AdvancedDynamicTexture) : BABYLON.IDisposable {
-    open var texture: AdvancedDynamicTexture = definedExternally
-    open var _captureRenderTime: Any = definedExternally
-    open var _renderTime: Any = definedExternally
-    open var _captureLayoutTime: Any = definedExternally
-    open var _layoutTime: Any = definedExternally
-    open var _onBeginRenderObserver: Any = definedExternally
-    open var _onEndRenderObserver: Any = definedExternally
-    open var _onBeginLayoutObserver: Any = definedExternally
-    open var _onEndLayoutObserver: Any = definedExternally
-    open var renderTimeCounter: BABYLON.PerfCounter = definedExternally
-    open var layoutTimeCounter: BABYLON.PerfCounter = definedExternally
-    open var captureRenderTime: Boolean = definedExternally
-    open var captureLayoutTime: Boolean = definedExternally
-	override fun dispose(): Unit = definedExternally
+    open var texture: AdvancedDynamicTexture
+//    private var _captureRenderTime: Any
+//    private var _renderTime: Any
+//    private var _captureLayoutTime: Any
+//    private var _layoutTime: Any
+//    private var _onBeginRenderObserver: Any
+//    private var _onEndRenderObserver: Any
+//    private var _onBeginLayoutObserver: Any
+//    private var _onEndLayoutObserver: Any
+    override fun dispose()
 }
-external open class Container3D(name: String? = definedExternally /* null */) : Control3D {
-    open var _blockLayout: Any = definedExternally
-    open var _children: Array<Control3D> = definedExternally
-    open var children: Array<Control3D> = definedExternally
-    open var blockLayout: Boolean = definedExternally
-    open fun updateLayout(): Container3D = definedExternally
-    open fun containsControl(control: Control3D): Boolean = definedExternally
-    open fun addControl(control: Control3D): Container3D = definedExternally
-    open fun _arrangeChildren(): Unit = definedExternally
-    override fun _createNode(scene: BABYLON.Scene): BABYLON.TransformNode? = definedExternally
-    open fun removeControl(control: Control3D): Container3D = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    override fun dispose(): Unit = definedExternally
+
+external open class XmlLoader(parentClass: Nothing? = definedExternally) {
+//    private var _nodes: Any
+//    private var _nodeTypes: Any
+//    private var _isLoaded: Any
+//    private var _objectAttributes: Any
+//    private var _parentClass: Any
+//    private var _getChainElement: Any
+//    private var _getClassAttribute: Any
+//    private var _createGuiElement: Any
+//    private var _parseGrid: Any
+//    private var _parseElement: Any
+//    private var _prepareSourceElement: Any
+//    private var _parseElementsFromSource: Any
+//    private var _parseXml: Any
+    open fun isLoaded(): Boolean
+    open fun getNodeById(id: String): Any
+    open fun getNodes(): Any
+    open fun loadLayout(xmlFile: Any, rootNode: Any, callback: Any)
+}
+
+external open class Container3D(name: String = definedExternally) : Control3D {
+//    private var _blockLayout: Any
+//    private var _children: Array<Control3D>
+    open fun updateLayout(): Container3D
+    open fun containsControl(control: Control3D): Boolean
+    open fun addControl(control: Control3D): Container3D
+//    private fun _arrangeChildren()
+//    private override fun _createNode(scene: BABYLON.Scene): BABYLON.TransformNode?
+    open fun removeControl(control: Control3D): Container3D
+//    private override fun _getTypeName(): String
+    override fun dispose()
+
     companion object {
-        var UNSET_ORIENTATION: Number = definedExternally
-        var FACEORIGIN_ORIENTATION: Number = definedExternally
-        var FACEORIGINREVERSED_ORIENTATION: Number = definedExternally
-        var FACEFORWARD_ORIENTATION: Number = definedExternally
-        var FACEFORWARDREVERSED_ORIENTATION: Number = definedExternally
+        var UNSET_ORIENTATION: Number
+        var FACEORIGIN_ORIENTATION: Number
+        var FACEORIGINREVERSED_ORIENTATION: Number
+        var FACEFORWARD_ORIENTATION: Number
+        var FACEFORWARDREVERSED_ORIENTATION: Number
     }
 }
-external interface `T$7` {
+
+external interface `T$6` {
     @nativeGetter
     operator fun get(pointerId: Number): Control3D?
     @nativeSetter
     operator fun set(pointerId: Number, value: Control3D)
 }
-external interface `T$8` {
+
+external interface `T$7` {
     @nativeGetter
     operator fun get(key: String): BABYLON.Material?
     @nativeSetter
     operator fun set(key: String, value: BABYLON.Material)
 }
-external open class GUI3DManager(scene: BABYLON.Scene? = definedExternally /* null */) : BABYLON.IDisposable {
-    open var _scene: Any = definedExternally
-    open var _sceneDisposeObserver: Any = definedExternally
-    open var _utilityLayer: Any = definedExternally
-    open var _rootContainer: Any = definedExternally
-    open var _pointerObserver: Any = definedExternally
-    open var _pointerOutObserver: Any = definedExternally
-    open var _lastPickedControl: Control3D = definedExternally
-    open var _lastControlOver: `T$7` = definedExternally
-    open var _lastControlDown: `T$7` = definedExternally
-    open var onPickedPointChangedObservable: BABYLON.Observable<BABYLON.Vector3?> = definedExternally
-    open var _sharedMaterials: `T$8` = definedExternally
-    open var scene: BABYLON.Scene = definedExternally
-    open var utilityLayer: BABYLON.UtilityLayerRenderer? = definedExternally
-    open var _handlePointerOut: Any = definedExternally
-    open var _doPicking: Any = definedExternally
-    open var rootContainer: Container3D = definedExternally
-    open fun containsControl(control: Control3D): Boolean = definedExternally
-    open fun addControl(control: Control3D): GUI3DManager = definedExternally
-    open fun removeControl(control: Control3D): GUI3DManager = definedExternally
-	override fun dispose(): Unit = definedExternally
-}
-external open class Vector3WithInfo(source: BABYLON.Vector3, buttonIndex: Number? = definedExternally /* null */) : BABYLON.Vector3 {
-    open var buttonIndex: Number = definedExternally
-}
-external open class Control3D(name: String? = definedExternally /* null */) : BABYLON.IDisposable, BABYLON.IBehaviorAware<Control3D> {
-    open var name: String? = definedExternally
-    open var _host: GUI3DManager = definedExternally
-    open var _node: Any = definedExternally
-    open var _downCount: Any = definedExternally
-    open var _enterCount: Any = definedExternally
-    open var _downPointerIds: Any = definedExternally
-    open var _isVisible: Any = definedExternally
-    open var position: BABYLON.Vector3 = definedExternally
-    open var scaling: BABYLON.Vector3 = definedExternally
-    open var pointerEnterAnimation: () -> Unit = definedExternally
-    open var pointerOutAnimation: () -> Unit = definedExternally
-    open var pointerDownAnimation: () -> Unit = definedExternally
-    open var pointerUpAnimation: () -> Unit = definedExternally
-    open var onPointerMoveObservable: BABYLON.Observable<BABYLON.Vector3> = definedExternally
-    open var onPointerOutObservable: BABYLON.Observable<Control3D> = definedExternally
-    open var onPointerDownObservable: BABYLON.Observable<Vector3WithInfo> = definedExternally
-    open var onPointerUpObservable: BABYLON.Observable<Vector3WithInfo> = definedExternally
-    open var onPointerClickObservable: BABYLON.Observable<Vector3WithInfo> = definedExternally
-    open var onPointerEnterObservable: BABYLON.Observable<Control3D> = definedExternally
-    open var parent: Container3D? = definedExternally
-    open var _behaviors: Any = definedExternally
-    open var behaviors: Array<BABYLON.Behavior<Control3D>> = definedExternally
-    override fun addBehavior(behavior: BABYLON.Behavior<Control3D>): Control3D = definedExternally
-	override fun removeBehavior(behavior: BABYLON.Behavior<Control3D>): Control3D = definedExternally
-	override fun getBehaviorByName(name: String): BABYLON.Behavior<Control3D>? = definedExternally
-    open var isVisible: Boolean = definedExternally
-    open var typeName: String = definedExternally
-    open fun getClassName(): String = definedExternally
-    open fun _getTypeName(): String = definedExternally
-    open var node: BABYLON.TransformNode? = definedExternally
-    open var mesh: BABYLON.AbstractMesh? = definedExternally
-    open fun linkToTransformNode(node: BABYLON.TransformNode?): Control3D = definedExternally
-    open fun _prepareNode(scene: BABYLON.Scene): Unit = definedExternally
-    open fun _createNode(scene: BABYLON.Scene): BABYLON.TransformNode? = definedExternally
-    open fun _affectMaterial(mesh: BABYLON.AbstractMesh): Unit = definedExternally
-    open fun _onPointerMove(target: Control3D, coordinates: BABYLON.Vector3): Unit = definedExternally
-    open fun _onPointerEnter(target: Control3D): Boolean = definedExternally
-    open fun _onPointerOut(target: Control3D): Unit = definedExternally
-    open fun _onPointerDown(target: Control3D, coordinates: BABYLON.Vector3, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
-    open fun _onPointerUp(target: Control3D, coordinates: BABYLON.Vector3, pointerId: Number, buttonIndex: Number, notifyClick: Boolean): Unit = definedExternally
-    open fun forcePointerUp(pointerId: BABYLON.Number?? = definedExternally /* null */): Unit = definedExternally
-    open fun _processObservables(type: Number, pickedPoint: BABYLON.Vector3, pointerId: Number, buttonIndex: Number): Boolean = definedExternally
-    open fun _disposeNode(): Unit = definedExternally
-	override fun dispose(): Unit = definedExternally
-}
-external open class AbstractButton3D(name: String? = definedExternally /* null */) : Control3D {
-    override fun _getTypeName(): String = definedExternally
-    override fun _createNode(scene: BABYLON.Scene): BABYLON.TransformNode = definedExternally
-}
-external open class Button3D(name: String? = definedExternally /* null */) : AbstractButton3D {
-    open var _currentMaterial: BABYLON.Material = definedExternally
-    open var _facadeTexture: Any = definedExternally
-    open var _content: Any = definedExternally
-    open var _contentResolution: Any = definedExternally
-    open var _contentScaleRatio: Any = definedExternally
-    open var contentResolution: BABYLON.int = definedExternally
-    open var contentScaleRatio: Number = definedExternally
-    open fun _disposeFacadeTexture(): Unit = definedExternally
-    open fun _resetContent(): Unit = definedExternally
-    open var content: Control = definedExternally
-    open fun _applyFacade(facadeTexture: AdvancedDynamicTexture): Unit = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    override fun _createNode(scene: BABYLON.Scene): BABYLON.TransformNode = definedExternally
-    override fun _affectMaterial(mesh: BABYLON.AbstractMesh): Unit = definedExternally
-    override fun dispose(): Unit = definedExternally
-}
-external open class VolumeBasedPanel : Container3D {
-    open var _columns: Any = definedExternally
-    open var _rows: Any = definedExternally
-    open var _rowThenColum: Any = definedExternally
-    open var _orientation: Any = definedExternally
-    open var _cellWidth: Number = definedExternally
-    open var _cellHeight: Number = definedExternally
-    open var margin: Number = definedExternally
-    open var orientation: Number = definedExternally
-    open var columns: BABYLON.int = definedExternally
-    open var rows: BABYLON.int = definedExternally
-    override fun _arrangeChildren(): Unit = definedExternally
-    open fun _mapGridNode(control: Control3D, nodePosition: BABYLON.Vector3): Unit = definedExternally
-    open fun _finalProcessing(): Unit = definedExternally
-}
-external open class CylinderPanel : VolumeBasedPanel {
-    open var _radius: Any = definedExternally
-    open var radius: BABYLON.float = definedExternally
-    override fun _mapGridNode(control: Control3D, nodePosition: BABYLON.Vector3): Unit = definedExternally
-    open var _cylindricalMapping: Any = definedExternally
-}
-external object fluentVertexShader {
-    var name: String = definedExternally
-    var shader: String = definedExternally
-}
-external object fluentPixelShader {
-    var name: String = definedExternally
-    var shader: String = definedExternally
-}
-external open class FluentMaterialDefines : BABYLON.MaterialDefines {
-    open var INNERGLOW: Boolean = definedExternally
-    open var BORDER: Boolean = definedExternally
-    open var HOVERLIGHT: Boolean = definedExternally
-    open var TEXTURE: Boolean = definedExternally
-}
-external open class FluentMaterial(name: String, scene: BABYLON.Scene) : BABYLON.PushMaterial {
-    open var innerGlowColorIntensity: Number = definedExternally
-    open var innerGlowColor: BABYLON.Color3 = definedExternally
-    open var albedoColor: BABYLON.Color3 = definedExternally
-    open var renderBorders: Boolean = definedExternally
-    open var borderWidth: Number = definedExternally
-    open var edgeSmoothingValue: Number = definedExternally
-    open var borderMinValue: Number = definedExternally
-    open var renderHoverLight: Boolean = definedExternally
-    open var hoverRadius: Number = definedExternally
-    open var hoverColor: BABYLON.Color4 = definedExternally
-    open var hoverPosition: BABYLON.Vector3 = definedExternally
-    open var _albedoTexture: Any = definedExternally
-    open var albedoTexture: BABYLON.BaseTexture? = definedExternally
-    override fun needAlphaBlending(): Boolean = definedExternally
-	override fun needAlphaTesting(): Boolean = definedExternally
-	override fun getAlphaTestTexture(): BABYLON.BaseTexture? = definedExternally
-    open fun isReadyForSubMesh(mesh: BABYLON.AbstractMesh, subMesh: BABYLON.SubMesh, useInstances: Boolean? = definedExternally /* null */): Boolean = definedExternally
-	override fun bindForSubMesh(world: BABYLON.Matrix, mesh: BABYLON.Mesh, subMesh: BABYLON.SubMesh): Unit = definedExternally
-	override fun getActiveTextures(): Array<BABYLON.BaseTexture> = definedExternally
-	override fun hasTexture(texture: BABYLON.BaseTexture): Boolean = definedExternally
-    open fun dispose(forceDisposeEffect: Boolean? = definedExternally /* null */): Unit = definedExternally
-	override fun clone(name: String): FluentMaterial = definedExternally
-	override fun serialize(): Any = definedExternally
-	override fun getClassName(): String = definedExternally
-    companion object {
-        fun Parse(source: Any, scene: BABYLON.Scene, rootUrl: String): FluentMaterial = definedExternally
-    }
-}
-external open class HolographicButton(name: String? = definedExternally /* null */, shareMaterials: Boolean? = definedExternally /* null */) : Button3D {
-    open var _backPlate: Any = definedExternally
-    open var _textPlate: Any = definedExternally
-    open var _frontPlate: Any = definedExternally
-    open var _text: Any = definedExternally
-    open var _imageUrl: Any = definedExternally
-    open var _shareMaterials: Any = definedExternally
-    open var _frontMaterial: Any = definedExternally
-    open var _backMaterial: Any = definedExternally
-    open var _plateMaterial: Any = definedExternally
-    open var _pickedPointObserver: Any = definedExternally
-    open var _tooltipFade: Any = definedExternally
-    open var _tooltipTextBlock: Any = definedExternally
-    open var _tooltipTexture: Any = definedExternally
-    open var _tooltipMesh: Any = definedExternally
-    open var _tooltipHoverObserver: Any = definedExternally
-    open var _tooltipOutObserver: Any = definedExternally
-    open var _disposeTooltip: Any = definedExternally
-    open var tooltipText: String? = definedExternally
-    open var text: String = definedExternally
-    open var imageUrl: String = definedExternally
-    open var backMaterial: FluentMaterial = definedExternally
-    open var frontMaterial: FluentMaterial = definedExternally
-    open var plateMaterial: BABYLON.StandardMaterial = definedExternally
-    open var shareMaterials: Boolean = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    open var _rebuildContent: Any = definedExternally
-    override fun _createNode(scene: BABYLON.Scene): BABYLON.TransformNode = definedExternally
-    override fun _applyFacade(facadeTexture: AdvancedDynamicTexture): Unit = definedExternally
-    open var _createBackMaterial: Any = definedExternally
-    open var _createFrontMaterial: Any = definedExternally
-    open var _createPlateMaterial: Any = definedExternally
-    override fun _affectMaterial(mesh: BABYLON.AbstractMesh): Unit = definedExternally
-    override fun dispose(): Unit = definedExternally
+
+external open class GUI3DManager(scene: BABYLON.Scene = definedExternally) : BABYLON.IDisposable {
+//    private var _scene: Any
+//    private var _sceneDisposeObserver: Any
+//    private var _utilityLayer: Any
+//    private var _rootContainer: Any
+//    private var _pointerObserver: Any
+//    private var _pointerOutObserver: Any
+//    private var _lastPickedControl: Control3D
+//    private var _lastControlOver: `T$6`
+//    private var _lastControlDown: `T$6`
+    open var onPickedPointChangedObservable: Any
+//    private var _sharedMaterials: `T$7`
+//    private var _handlePointerOut: Any
+//    private var _doPicking: Any
+    open fun containsControl(control: Control3D): Boolean
+    open fun addControl(control: Control3D): GUI3DManager
+    open fun removeControl(control: Control3D): GUI3DManager
+	override fun dispose()
 }
 
-external open class MeshButton3D(mesh: BABYLON.Mesh, name: String? = definedExternally /* null */) : Button3D {
-    open var _currentMesh: BABYLON.Mesh = definedExternally
-    override fun _getTypeName(): String = definedExternally
-    override fun _createNode(scene: BABYLON.Scene): BABYLON.TransformNode = definedExternally
-    override fun _affectMaterial(mesh: BABYLON.AbstractMesh): Unit = definedExternally
+external open class Vector3WithInfo(source: BABYLON.Vector3, buttonIndex: Number = definedExternally) : BABYLON.Vector3 {
+    open var buttonIndex: Number
 }
+
+external open class Control3D(name: String? = definedExternally) : BABYLON.IDisposable, BABYLON.IBehaviorAware<Control3D> {
+    open var name: String?
+//    private var _host: GUI3DManager
+//    private var _node: Any
+//    private var _downCount: Any
+//    private var _enterCount: Any
+//    private var _downPointerIds: Any
+//    private var _isVisible: Any
+    open var pointerEnterAnimation: () -> Unit
+    open var pointerOutAnimation: () -> Unit
+    open var pointerDownAnimation: () -> Unit
+    open var pointerUpAnimation: () -> Unit
+    open var onPointerMoveObservable: Any
+    open var onPointerOutObservable: Any
+    open var onPointerDownObservable: Any
+    open var onPointerUpObservable: Any
+    open var onPointerClickObservable: Any
+    open var onPointerEnterObservable: Any
+    open var parent: Any
+//    private var _behaviors: Any
+	override fun addBehavior(behavior: BABYLON.Behavior<Control3D>): Control3D
+	override fun removeBehavior(behavior: BABYLON.Behavior<Control3D>): Control3D
+	override fun getBehaviorByName(name: String): BABYLON.Behavior<Control3D>?
+    open fun getClassName(): String
+//    private fun _getTypeName(): String
+    open fun linkToTransformNode(node: BABYLON.TransformNode?): Control3D
+//    private fun _prepareNode(scene: BABYLON.Scene)
+//    private fun _createNode(scene: BABYLON.Scene): BABYLON.TransformNode?
+//    private fun _affectMaterial(mesh: BABYLON.AbstractMesh)
+//    private fun _onPointerMove(target: Control3D, coordinates: BABYLON.Vector3)
+//    private fun _onPointerEnter(target: Control3D): Boolean
+//    private fun _onPointerOut(target: Control3D)
+//    private fun _onPointerDown(target: Control3D, coordinates: BABYLON.Vector3, pointerId: Number, buttonIndex: Number): Boolean
+//    private fun _onPointerUp(target: Control3D, coordinates: BABYLON.Vector3, pointerId: Number, buttonIndex: Number, notifyClick: Boolean)
+    open fun forcePointerUp(pointerId: BABYLON.Number? = definedExternally)
+//    private fun _processObservables(type: Number, pickedPoint: BABYLON.Vector3, pointerId: Number, buttonIndex: Number): Boolean
+//    private fun _disposeNode()
+	override fun dispose()
+}
+
+external open class AbstractButton3D(name: String = definedExternally) : Control3D {
+//    private override fun _getTypeName(): String
+//    private override fun _createNode(scene: BABYLON.Scene): BABYLON.TransformNode
+}
+
+external open class Button3D(name: String = definedExternally) : AbstractButton3D {
+//    private var _currentMaterial: Any
+//    private var _facadeTexture: Any
+//    private var _content: Any
+//    private var _contentResolution: Any
+//    private var _contentScaleRatio: Any
+//    private fun _disposeFacadeTexture()
+//    private fun _resetContent()
+//    private fun _applyFacade(facadeTexture: AdvancedDynamicTexture)
+//    private override fun _getTypeName(): String
+//    private override fun _createNode(scene: BABYLON.Scene): BABYLON.TransformNode
+//    private override fun _affectMaterial(mesh: BABYLON.AbstractMesh)
+    override fun dispose()
+}
+
+external open class VolumeBasedPanel : Container3D {
+//    private var _columns: Any
+//    private var _rows: Any
+//    private var _rowThenColum: Any
+//    private var _orientation: Any
+//    private var _cellWidth: Number
+//    private var _cellHeight: Number
+    open var margin: Number
+//    private override fun _arrangeChildren()
+//    private fun _mapGridNode(control: Control3D, nodePosition: BABYLON.Vector3)
+//    private fun _finalProcessing()
+}
+
+external open class CylinderPanel : VolumeBasedPanel {
+//    private var _radius: Any
+//    private override fun _mapGridNode(control: Control3D, nodePosition: BABYLON.Vector3)
+//    private var _cylindricalMapping: Any
+}
+
+external object fluentVertexShader {
+    var name: String
+    var shader: String
+}
+
+external object fluentPixelShader {
+    var name: String
+    var shader: String
+}
+
+external open class FluentMaterialDefines : BABYLON.MaterialDefines {
+    open var INNERGLOW: Boolean
+    open var BORDER: Boolean
+    open var HOVERLIGHT: Boolean
+    open var TEXTURE: Boolean
+}
+
+external open class FluentMaterial(name: String, scene: BABYLON.Scene) : BABYLON.PushMaterial {
+    open var innerGlowColorIntensity: Number
+    open var innerGlowColor: Any
+    open var alpha: Number
+    open var albedoColor: Any
+    open var renderBorders: Boolean
+    open var borderWidth: Number
+    open var edgeSmoothingValue: Number
+    open var borderMinValue: Number
+    open var renderHoverLight: Boolean
+    open var hoverRadius: Number
+    open var hoverColor: Any
+    open var hoverPosition: Any
+//    private var _albedoTexture: Any
+    open var albedoTexture: Any
+    override fun needAlphaBlending(): Boolean
+    override fun needAlphaTesting(): Boolean
+    override fun getAlphaTestTexture(): BABYLON.BaseTexture?
+    open fun isReadyForSubMesh(mesh: BABYLON.AbstractMesh, subMesh: BABYLON.SubMesh, useInstances: Boolean = definedExternally): Boolean
+	override fun bindForSubMesh(world: BABYLON.Matrix, mesh: BABYLON.Mesh, subMesh: BABYLON.SubMesh)
+	override fun getActiveTextures(): Array<BABYLON.BaseTexture>
+	override fun hasTexture(texture: BABYLON.BaseTexture): Boolean
+    open fun dispose(forceDisposeEffect: Boolean = definedExternally)
+	override fun clone(name: String): FluentMaterial
+	override fun serialize(): Any
+	override fun getClassName(): String
+
+    companion object {
+        fun Parse(source: Any, scene: BABYLON.Scene, rootUrl: String): FluentMaterial
+    }
+}
+
+external open class HolographicButton(name: String = definedExternally, shareMaterials: Boolean = definedExternally) : Button3D {
+//    private var _backPlate: Any
+//    private var _textPlate: Any
+//    private var _frontPlate: Any
+//    private var _text: Any
+//    private var _imageUrl: Any
+//    private var _shareMaterials: Any
+//    private var _frontMaterial: Any
+//    private var _backMaterial: Any
+//    private var _plateMaterial: Any
+//    private var _pickedPointObserver: Any
+//    private var _tooltipFade: Any
+//    private var _tooltipTextBlock: Any
+//    private var _tooltipTexture: Any
+//    private var _tooltipMesh: Any
+//    private var _tooltipHoverObserver: Any
+//    private var _tooltipOutObserver: Any
+//    private var _disposeTooltip: Any
+//    private override fun _getTypeName(): String
+//    private var _rebuildContent: Any
+//    private override fun _createNode(scene: BABYLON.Scene): BABYLON.TransformNode
+//    private override fun _applyFacade(facadeTexture: AdvancedDynamicTexture)
+//    private var _createBackMaterial: Any
+//    private var _createFrontMaterial: Any
+//    private var _createPlateMaterial: Any
+//    private override fun _affectMaterial(mesh: BABYLON.Mesh)
+    override fun dispose()
+}
+
+external open class MeshButton3D(mesh: BABYLON.Mesh, name: String = definedExternally) : Button3D {
+//    private var _currentMesh: Any
+//    private override fun _getTypeName(): String
+//    private override fun _createNode(scene: BABYLON.Scene): BABYLON.TransformNode
+//    private override fun _affectMaterial(mesh: BABYLON.AbstractMesh)
+}
+
 external open class PlanePanel : VolumeBasedPanel {
-    override fun _mapGridNode(control: Control3D, nodePosition: BABYLON.Vector3): Unit = definedExternally
+//    private override fun _mapGridNode(control: Control3D, nodePosition: BABYLON.Vector3)
 }
+
 external open class ScatterPanel : VolumeBasedPanel {
-    open var _iteration: Any = definedExternally
-    open var iteration: BABYLON.float = definedExternally
-    override fun _mapGridNode(control: Control3D, nodePosition: BABYLON.Vector3): Unit = definedExternally
-    open var _scatterMapping: Any = definedExternally
-    override fun _finalProcessing(): Unit = definedExternally
+//    private var _iteration: Any
+//    private override fun _mapGridNode(control: Control3D, nodePosition: BABYLON.Vector3)
+//    private var _scatterMapping: Any
+//    private override fun _finalProcessing()
 }
+
 external open class SpherePanel : VolumeBasedPanel {
-    open var _radius: Any = definedExternally
-    open var radius: BABYLON.float = definedExternally
-    override fun _mapGridNode(control: Control3D, nodePosition: BABYLON.Vector3): Unit = definedExternally
-    open var _sphericalMapping: Any = definedExternally
+//    private var _radius: Any
+//    private override fun _mapGridNode(control: Control3D, nodePosition: BABYLON.Vector3)
+//    private var _sphericalMapping: Any
 }
-external open class StackPanel3D(isVertical: Boolean? = definedExternally /* null */) : Container3D {
-    open var _isVertical: Any = definedExternally
-    open var isVertical: Boolean = definedExternally
-    open var margin: Number = definedExternally
-    override fun _arrangeChildren(): Unit = definedExternally
+
+external open class StackPanel3D(isVertical: Boolean = definedExternally) : Container3D {
+//    private var _isVertical: Any
+    open var margin: Number
+//    private override fun _arrangeChildren()
 }

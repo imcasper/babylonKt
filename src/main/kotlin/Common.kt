@@ -1,0 +1,23 @@
+
+
+
+external class VRStageParameters
+external class VRDisplayCapabilities
+external class VREyeParameters
+external class VRFrameData
+external class VRFieldOfView
+external class VRPose
+external class VRLayer
+external class Gamepad
+external class NavigatorUserMediaSuccessCallback
+external class NavigatorUserMediaErrorCallback
+external class Uint8ArrayConstructor
+external class Float32ArrayConstructor
+external class MediaStreamConstraints
+external class DeviceOrientationEvent
+external class PointerEventInit
+external class WEBGL_compressed_texture_s3tc
+external class EXT_texture_filter_anisotropic
+external class IDBFactory
+external class FrameRequestCallback
+external class MSGesture
