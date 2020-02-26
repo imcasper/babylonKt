@@ -3,6 +3,7 @@
 @file:JsModule("babylonjs")
 package BABYLON.Debug
 
+import platform.*
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*
@@ -25,8 +26,9 @@ external open class AxesViewer(scene: Scene, scaleLines: Number = definedExterna
 //    private var _zAxis: Any
 //    private var _scaleLinesFactor: Any
 //    private var _instanced: Any
-    open var scene: Any
-    open var scaleLines: Number
+	protected var scene: Scene
+
+	open var scaleLines: Number
     open fun update(position: BABYLON.Vector3, xaxis: BABYLON.Vector3, yaxis: BABYLON.Vector3, zaxis: BABYLON.Vector3)
     open fun createInstance(): AxesViewer
     open fun dispose()

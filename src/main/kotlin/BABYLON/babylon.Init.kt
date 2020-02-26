@@ -1,5 +1,7 @@
 package BABYLON
 
+import org.w3c.dom.HTMLElement
+
 external class ClientRect
 
 external class AudioNode
@@ -95,3 +97,17 @@ class IcoSphereOptions (
 	var backUVs: Vector4? = null,
 	var updatable: Boolean? = null
 )
+
+class IInspectorOptions (
+	var embedMode: Boolean? = null,
+	var enableClose: Boolean? = null,
+	var enablePopup: Boolean? = null,
+	var explorerExtensibility: Array<IExplorerExtensibilityGroup>? = null,
+	var globalRoot: HTMLElement? = null,
+	var handleResize: Boolean? = null,
+	var initialTab: DebugLayerTab? = null,
+	var inspectorURL: String? = null,
+	var overlay: Boolean? = null,
+	var showExplorer: Boolean? = null,
+	var showInspector: Boolean? = null
+	)

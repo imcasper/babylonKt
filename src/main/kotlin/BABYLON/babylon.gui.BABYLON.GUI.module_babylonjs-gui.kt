@@ -3,6 +3,7 @@
 @file:JsModule("babylonjs-gui")
 package BABYLON.GUI
 
+import platform.*
 import BABYLON.AbstractMesh
 import BABYLON.Node
 import BABYLON.Number
@@ -1307,7 +1308,7 @@ external open class FluentMaterialDefines : BABYLON.MaterialDefines {
 external open class FluentMaterial(name: String, scene: BABYLON.Scene) : BABYLON.PushMaterial {
     open var innerGlowColorIntensity: Number
     open var innerGlowColor: Any
-    open var alpha: Number
+    override var alpha: Number
     open var albedoColor: Any
     open var renderBorders: Boolean
     open var borderWidth: Number

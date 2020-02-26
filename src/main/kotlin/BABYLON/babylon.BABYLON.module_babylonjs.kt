@@ -3,6 +3,7 @@
 @file:JsModule("babylonjs")
 package BABYLON
 
+import platform.*
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*
@@ -240,154 +241,154 @@ external interface RenderTargetCreationOptionsPartial {
 
 external open class Constants {
     companion object {
-        var ALPHA_DISABLE: Number
-        var ALPHA_ADD: Number
-        var ALPHA_COMBINE: Number
-        var ALPHA_SUBTRACT: Number
-        var ALPHA_MULTIPLY: Number
-        var ALPHA_MAXIMIZED: Number
-        var ALPHA_ONEONE: Number
-        var ALPHA_PREMULTIPLIED: Number
-        var ALPHA_PREMULTIPLIED_PORTERDUFF: Number
-        var ALPHA_INTERPOLATE: Number
-        var ALPHA_SCREENMODE: Number
-        var ALPHA_ONEONE_ONEONE: Number
-        var ALPHA_ALPHATOCOLOR: Number
-        var ALPHA_REVERSEONEMINUS: Number
-        var ALPHA_SRC_DSTONEMINUSSRCALPHA: Number
-        var ALPHA_ONEONE_ONEZERO: Number
-        var ALPHA_EXCLUSION: Number
-        var ALPHA_EQUATION_ADD: Number
-        var ALPHA_EQUATION_SUBSTRACT: Number
-        var ALPHA_EQUATION_REVERSE_SUBTRACT: Number
-        var ALPHA_EQUATION_MAX: Number
-        var ALPHA_EQUATION_MIN: Number
-        var ALPHA_EQUATION_DARKEN: Number
-        var DELAYLOADSTATE_NONE: Number
-        var DELAYLOADSTATE_LOADED: Number
-        var DELAYLOADSTATE_LOADING: Number
-        var DELAYLOADSTATE_NOTLOADED: Number
-        var NEVER: Number
-        var ALWAYS: Number
-        var LESS: Number
-        var EQUAL: Number
-        var LEQUAL: Number
-        var GREATER: Number
-        var GEQUAL: Number
-        var NOTEQUAL: Number
-        var KEEP: Number
-        var REPLACE: Number
-        var INCR: Number
-        var DECR: Number
-        var INVERT: Number
-        var INCR_WRAP: Number
-        var DECR_WRAP: Number
-        var TEXTURE_CLAMP_ADDRESSMODE: Number
-        var TEXTURE_WRAP_ADDRESSMODE: Number
-        var TEXTURE_MIRROR_ADDRESSMODE: Number
-        var TEXTUREFORMAT_ALPHA: Number
-        var TEXTUREFORMAT_LUMINANCE: Number
-        var TEXTUREFORMAT_LUMINANCE_ALPHA: Number
-        var TEXTUREFORMAT_RGB: Number
-        var TEXTUREFORMAT_RGBA: Number
-        var TEXTUREFORMAT_RED: Number
-        var TEXTUREFORMAT_R: Number
-        var TEXTUREFORMAT_RG: Number
-        var TEXTUREFORMAT_RED_INTEGER: Number
-        var TEXTUREFORMAT_R_INTEGER: Number
-        var TEXTUREFORMAT_RG_INTEGER: Number
-        var TEXTUREFORMAT_RGB_INTEGER: Number
-        var TEXTUREFORMAT_RGBA_INTEGER: Number
-        var TEXTURETYPE_UNSIGNED_BYTE: Number
-        var TEXTURETYPE_UNSIGNED_INT: Number
-        var TEXTURETYPE_FLOAT: Number
-        var TEXTURETYPE_HALF_FLOAT: Number
-        var TEXTURETYPE_BYTE: Number
-        var TEXTURETYPE_SHORT: Number
-        var TEXTURETYPE_UNSIGNED_SHORT: Number
-        var TEXTURETYPE_INT: Number
-        var TEXTURETYPE_UNSIGNED_INTEGER: Number
-        var TEXTURETYPE_UNSIGNED_SHORT_4_4_4_4: Number
-        var TEXTURETYPE_UNSIGNED_SHORT_5_5_5_1: Number
-        var TEXTURETYPE_UNSIGNED_SHORT_5_6_5: Number
-        var TEXTURETYPE_UNSIGNED_INT_2_10_10_10_REV: Number
-        var TEXTURETYPE_UNSIGNED_INT_24_8: Number
-        var TEXTURETYPE_UNSIGNED_INT_10F_11F_11F_REV: Number
-        var TEXTURETYPE_UNSIGNED_INT_5_9_9_9_REV: Number
-        var TEXTURETYPE_FLOAT_32_UNSIGNED_INT_24_8_REV: Number
-        var TEXTURE_NEAREST_SAMPLINGMODE: Number
-        var TEXTURE_NEAREST_NEAREST: Number
-        var TEXTURE_BILINEAR_SAMPLINGMODE: Number
-        var TEXTURE_LINEAR_LINEAR: Number
-        var TEXTURE_TRILINEAR_SAMPLINGMODE: Number
-        var TEXTURE_LINEAR_LINEAR_MIPLINEAR: Number
-        var TEXTURE_NEAREST_NEAREST_MIPNEAREST: Number
-        var TEXTURE_NEAREST_LINEAR_MIPNEAREST: Number
-        var TEXTURE_NEAREST_LINEAR_MIPLINEAR: Number
-        var TEXTURE_NEAREST_LINEAR: Number
-        var TEXTURE_NEAREST_NEAREST_MIPLINEAR: Number
-        var TEXTURE_LINEAR_NEAREST_MIPNEAREST: Number
-        var TEXTURE_LINEAR_NEAREST_MIPLINEAR: Number
-        var TEXTURE_LINEAR_LINEAR_MIPNEAREST: Number
-        var TEXTURE_LINEAR_NEAREST: Number
-        var TEXTURE_EXPLICIT_MODE: Number
-        var TEXTURE_SPHERICAL_MODE: Number
-        var TEXTURE_PLANAR_MODE: Number
-        var TEXTURE_CUBIC_MODE: Number
-        var TEXTURE_PROJECTION_MODE: Number
-        var TEXTURE_SKYBOX_MODE: Number
-        var TEXTURE_INVCUBIC_MODE: Number
-        var TEXTURE_EQUIRECTANGULAR_MODE: Number
-        var TEXTURE_FIXED_EQUIRECTANGULAR_MODE: Number
-        var TEXTURE_FIXED_EQUIRECTANGULAR_MIRRORED_MODE: Number
-        var SCALEMODE_FLOOR: Number
-        var SCALEMODE_NEAREST: Number
-        var SCALEMODE_CEILING: Number
-        var MATERIAL_TextureDirtyFlag: Number
-        var MATERIAL_LightDirtyFlag: Number
-        var MATERIAL_FresnelDirtyFlag: Number
-        var MATERIAL_AttributesDirtyFlag: Number
-        var MATERIAL_MiscDirtyFlag: Number
-        var MATERIAL_AllDirtyFlag: Number
-        var MATERIAL_TriangleFillMode: Number
-        var MATERIAL_WireFrameFillMode: Number
-        var MATERIAL_PointFillMode: Number
-        var MATERIAL_PointListDrawMode: Number
-        var MATERIAL_LineListDrawMode: Number
-        var MATERIAL_LineLoopDrawMode: Number
-        var MATERIAL_LineStripDrawMode: Number
-        var MATERIAL_TriangleStripDrawMode: Number
-        var MATERIAL_TriangleFanDrawMode: Number
-        var MATERIAL_ClockWiseSideOrientation: Number
-        var MATERIAL_CounterClockWiseSideOrientation: Number
-        var ACTION_NothingTrigger: Number
-        var ACTION_OnPickTrigger: Number
-        var ACTION_OnLeftPickTrigger: Number
-        var ACTION_OnRightPickTrigger: Number
-        var ACTION_OnCenterPickTrigger: Number
-        var ACTION_OnPickDownTrigger: Number
-        var ACTION_OnDoublePickTrigger: Number
-        var ACTION_OnPickUpTrigger: Number
-        var ACTION_OnPickOutTrigger: Number
-        var ACTION_OnLongPressTrigger: Number
-        var ACTION_OnPointerOverTrigger: Number
-        var ACTION_OnPointerOutTrigger: Number
-        var ACTION_OnEveryFrameTrigger: Number
-        var ACTION_OnIntersectionEnterTrigger: Number
-        var ACTION_OnIntersectionExitTrigger: Number
-        var ACTION_OnKeyDownTrigger: Number
-        var ACTION_OnKeyUpTrigger: Number
-        var PARTICLES_BILLBOARDMODE_Y: Number
-        var PARTICLES_BILLBOARDMODE_ALL: Number
-        var PARTICLES_BILLBOARDMODE_STRETCHED: Number
-        var MESHES_CULLINGSTRATEGY_STANDARD: Number
-        var MESHES_CULLINGSTRATEGY_BOUNDINGSPHERE_ONLY: Number
-        var MESHES_CULLINGSTRATEGY_OPTIMISTIC_INCLUSION: Number
-        var MESHES_CULLINGSTRATEGY_OPTIMISTIC_INCLUSION_THEN_BSPHERE_ONLY: Number
-        var SCENELOADER_NO_LOGGING: Number
-        var SCENELOADER_MINIMAL_LOGGING: Number
-        var SCENELOADER_SUMMARY_LOGGING: Number
-        var SCENELOADER_DETAILED_LOGGING: Number
+        var ALPHA_DISABLE: Int
+        var ALPHA_ADD: Int
+        var ALPHA_COMBINE: Int
+        var ALPHA_SUBTRACT: Int
+        var ALPHA_MULTIPLY: Int
+        var ALPHA_MAXIMIZED: Int
+        var ALPHA_ONEONE: Int
+        var ALPHA_PREMULTIPLIED: Int
+        var ALPHA_PREMULTIPLIED_PORTERDUFF: Int
+        var ALPHA_INTERPOLATE: Int
+        var ALPHA_SCREENMODE: Int
+        var ALPHA_ONEONE_ONEONE: Int
+        var ALPHA_ALPHATOCOLOR: Int
+        var ALPHA_REVERSEONEMINUS: Int
+        var ALPHA_SRC_DSTONEMINUSSRCALPHA: Int
+        var ALPHA_ONEONE_ONEZERO: Int
+        var ALPHA_EXCLUSION: Int
+        var ALPHA_EQUATION_ADD: Int
+        var ALPHA_EQUATION_SUBSTRACT: Int
+        var ALPHA_EQUATION_REVERSE_SUBTRACT: Int
+        var ALPHA_EQUATION_MAX: Int
+        var ALPHA_EQUATION_MIN: Int
+        var ALPHA_EQUATION_DARKEN: Int
+        var DELAYLOADSTATE_NONE: Int
+        var DELAYLOADSTATE_LOADED: Int
+        var DELAYLOADSTATE_LOADING: Int
+        var DELAYLOADSTATE_NOTLOADED: Int
+        var NEVER: Int
+        var ALWAYS: Int
+        var LESS: Int
+        var EQUAL: Int
+        var LEQUAL: Int
+        var GREATER: Int
+        var GEQUAL: Int
+        var NOTEQUAL: Int
+        var KEEP: Int
+        var REPLACE: Int
+        var INCR: Int
+        var DECR: Int
+        var INVERT: Int
+        var INCR_WRAP: Int
+        var DECR_WRAP: Int
+        var TEXTURE_CLAMP_ADDRESSMODE: Int
+        var TEXTURE_WRAP_ADDRESSMODE: Int
+        var TEXTURE_MIRROR_ADDRESSMODE: Int
+        var TEXTUREFORMAT_ALPHA: Int
+        var TEXTUREFORMAT_LUMINANCE: Int
+        var TEXTUREFORMAT_LUMINANCE_ALPHA: Int
+        var TEXTUREFORMAT_RGB: Int
+        var TEXTUREFORMAT_RGBA: Int
+        var TEXTUREFORMAT_RED: Int
+        var TEXTUREFORMAT_R: Int
+        var TEXTUREFORMAT_RG: Int
+        var TEXTUREFORMAT_RED_INTEGER: Int
+        var TEXTUREFORMAT_R_INTEGER: Int
+        var TEXTUREFORMAT_RG_INTEGER: Int
+        var TEXTUREFORMAT_RGB_INTEGER: Int
+        var TEXTUREFORMAT_RGBA_INTEGER: Int
+        var TEXTURETYPE_UNSIGNED_BYTE: Int
+        var TEXTURETYPE_UNSIGNED_INT: Int
+        var TEXTURETYPE_FLOAT: Int
+        var TEXTURETYPE_HALF_FLOAT: Int
+        var TEXTURETYPE_BYTE: Int
+        var TEXTURETYPE_SHORT: Int
+        var TEXTURETYPE_UNSIGNED_SHORT: Int
+        var TEXTURETYPE_INT: Int
+        var TEXTURETYPE_UNSIGNED_INTEGER: Int
+        var TEXTURETYPE_UNSIGNED_SHORT_4_4_4_4: Int
+        var TEXTURETYPE_UNSIGNED_SHORT_5_5_5_1: Int
+        var TEXTURETYPE_UNSIGNED_SHORT_5_6_5: Int
+        var TEXTURETYPE_UNSIGNED_INT_2_10_10_10_REV: Int
+        var TEXTURETYPE_UNSIGNED_INT_24_8: Int
+        var TEXTURETYPE_UNSIGNED_INT_10F_11F_11F_REV: Int
+        var TEXTURETYPE_UNSIGNED_INT_5_9_9_9_REV: Int
+        var TEXTURETYPE_FLOAT_32_UNSIGNED_INT_24_8_REV: Int
+        var TEXTURE_NEAREST_SAMPLINGMODE: Int
+        var TEXTURE_NEAREST_NEAREST: Int
+        var TEXTURE_BILINEAR_SAMPLINGMODE: Int
+        var TEXTURE_LINEAR_LINEAR: Int
+        var TEXTURE_TRILINEAR_SAMPLINGMODE: Int
+        var TEXTURE_LINEAR_LINEAR_MIPLINEAR: Int
+        var TEXTURE_NEAREST_NEAREST_MIPNEAREST: Int
+        var TEXTURE_NEAREST_LINEAR_MIPNEAREST: Int
+        var TEXTURE_NEAREST_LINEAR_MIPLINEAR: Int
+        var TEXTURE_NEAREST_LINEAR: Int
+        var TEXTURE_NEAREST_NEAREST_MIPLINEAR: Int
+        var TEXTURE_LINEAR_NEAREST_MIPNEAREST: Int
+        var TEXTURE_LINEAR_NEAREST_MIPLINEAR: Int
+        var TEXTURE_LINEAR_LINEAR_MIPNEAREST: Int
+        var TEXTURE_LINEAR_NEAREST: Int
+        var TEXTURE_EXPLICIT_MODE: Int
+        var TEXTURE_SPHERICAL_MODE: Int
+        var TEXTURE_PLANAR_MODE: Int
+        var TEXTURE_CUBIC_MODE: Int
+        var TEXTURE_PROJECTION_MODE: Int
+        var TEXTURE_SKYBOX_MODE: Int
+        var TEXTURE_INVCUBIC_MODE: Int
+        var TEXTURE_EQUIRECTANGULAR_MODE: Int
+        var TEXTURE_FIXED_EQUIRECTANGULAR_MODE: Int
+        var TEXTURE_FIXED_EQUIRECTANGULAR_MIRRORED_MODE: Int
+        var SCALEMODE_FLOOR: Int
+        var SCALEMODE_NEAREST: Int
+        var SCALEMODE_CEILING: Int
+        var MATERIAL_TextureDirtyFlag: Int
+        var MATERIAL_LightDirtyFlag: Int
+        var MATERIAL_FresnelDirtyFlag: Int
+        var MATERIAL_AttributesDirtyFlag: Int
+        var MATERIAL_MiscDirtyFlag: Int
+        var MATERIAL_AllDirtyFlag: Int
+        var MATERIAL_TriangleFillMode: Int
+        var MATERIAL_WireFrameFillMode: Int
+        var MATERIAL_PointFillMode: Int
+        var MATERIAL_PointListDrawMode: Int
+        var MATERIAL_LineListDrawMode: Int
+        var MATERIAL_LineLoopDrawMode: Int
+        var MATERIAL_LineStripDrawMode: Int
+        var MATERIAL_TriangleStripDrawMode: Int
+        var MATERIAL_TriangleFanDrawMode: Int
+        var MATERIAL_ClockWiseSideOrientation: Int
+        var MATERIAL_CounterClockWiseSideOrientation: Int
+        var ACTION_NothingTrigger: Int
+        var ACTION_OnPickTrigger: Int
+        var ACTION_OnLeftPickTrigger: Int
+        var ACTION_OnRightPickTrigger: Int
+        var ACTION_OnCenterPickTrigger: Int
+        var ACTION_OnPickDownTrigger: Int
+        var ACTION_OnDoublePickTrigger: Int
+        var ACTION_OnPickUpTrigger: Int
+        var ACTION_OnPickOutTrigger: Int
+        var ACTION_OnLongPressTrigger: Int
+        var ACTION_OnPointerOverTrigger: Int
+        var ACTION_OnPointerOutTrigger: Int
+        var ACTION_OnEveryFrameTrigger: Int
+        var ACTION_OnIntersectionEnterTrigger: Int
+        var ACTION_OnIntersectionExitTrigger: Int
+        var ACTION_OnKeyDownTrigger: Int
+        var ACTION_OnKeyUpTrigger: Int
+        var PARTICLES_BILLBOARDMODE_Y: Int
+        var PARTICLES_BILLBOARDMODE_ALL: Int
+        var PARTICLES_BILLBOARDMODE_STRETCHED: Int
+        var MESHES_CULLINGSTRATEGY_STANDARD: Int
+        var MESHES_CULLINGSTRATEGY_BOUNDINGSPHERE_ONLY: Int
+        var MESHES_CULLINGSTRATEGY_OPTIMISTIC_INCLUSION: Int
+        var MESHES_CULLINGSTRATEGY_OPTIMISTIC_INCLUSION_THEN_BSPHERE_ONLY: Int
+        var SCENELOADER_NO_LOGGING: Int
+        var SCENELOADER_MINIMAL_LOGGING: Int
+        var SCENELOADER_SUMMARY_LOGGING: Int
+        var SCENELOADER_DETAILED_LOGGING: Int
     }
 }
 
@@ -1046,7 +1047,7 @@ external open class Matrix {
 //    private var _isIdentity3x2: Any
 //    private var _isIdentity3x2Dirty: Any
     open var updateFlag: Number
-//    private var _m: Any
+    val m: Float32Array
 //    private fun _markAsUpdated()
 //    private var _updateIdentityStatus: Any
     open fun isIdentity(): Boolean
@@ -1535,7 +1536,7 @@ external interface ICameraInput<TCamera : Camera> {
     var camera: TCamera?
     fun getClassName(): String
     fun getSimpleName(): String
-    fun attachControl(element: HTMLElement, noPreventDefault: Boolean = definedExternally)
+    fun attachControl(element: HTMLElement, noPreventDefault: Boolean)
     fun detachControl(element: HTMLElement?)
     var checkInputs: (() -> Unit)?
         get() = definedExternally
@@ -1699,7 +1700,7 @@ external open class Plane(a: Number, b: Number, c: Number, d: Number) {
     }
 }
 
-external open class BoundingSphere(min: DeepImmutable<Vector3>, max: DeepImmutable<Vector3>, worldMatrix: DeepImmutable<Matrix> = definedExternally) {
+external open class BoundingSphere(min: DeepImmutable<Vector3>, max: DeepImmutable<Vector3>, In: DeepImmutable<Matrix> = definedExternally) {
     open var center: Vector3
     open var radius: Number
     open var centerWorld: Vector3
@@ -2768,7 +2769,7 @@ external interface `T$8` {
 }
 
 external open class ProceduralTexture(name: String, size: Any, fragment: Any, scene: Scene?, fallbackTexture: Texture? = definedExternally, generateMipMaps: Boolean = definedExternally, isCube: Boolean = definedExternally) : Texture {
-    open var isCube: Boolean
+	override var isCube: Boolean
     open var isEnabled: Boolean
     open var autoClear: Boolean
     open var onGenerated: () -> Unit
@@ -3767,38 +3768,47 @@ external open class Skeleton(name: String, id: String, scene: Scene) : IAnimatab
 }
 
 external open class InstancedMesh(name: String, source: Mesh) : AbstractMesh {
-//    private var _sourceMesh: Any
-//    private var _currentLOD: Any
-//    private var _indexInSourceMeshInstanceArray: Number
+//     open var _sourceMesh: Any
+//     open var _currentLOD: Any
+//     open var _indexInSourceMeshInstanceArray: Number
     override fun getClassName(): String
+    override val lightSources: Any
 //    private override fun _resyncLightSources()
 //    private override fun _resyncLightSource(light: Light)
 //    private override fun _removeLightSource(light: Light, dispose: Boolean)
+    override var receiveShadows: Boolean
+    override var material: Material?
+    override var visibility: Number
+    override var skeleton: Skeleton?
+    override var renderingGroupId: Number
     override fun getTotalVertices(): Number
     override fun getTotalIndices(): Number
+    open val sourceMesh: Mesh
     override fun isReady(completeCheck: Boolean): Boolean
-	override fun isVerticesDataPresent(kind: String): Boolean
-	override fun getIndices(copyWhenShared: Boolean?, forceCopy: Boolean?): Any /*  Array<Number> | Int32Array | Uint32Array | Uint16Array  */
-	override fun getVerticesData(kind: String, copyWhenShared: Boolean?  /* null */, forceCopy: Boolean?  /* null */): Any /*  Array<Number> | Float32Array  */
-    override fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean?, stride: Int?): Mesh
-    override fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean?, stride: Int?): Mesh
-    override fun updateVerticesData(kind: String, data: Array<Number>, updateExtends: Boolean?, makeItUnique: Boolean?): Mesh
-    override fun updateVerticesData(kind: String, data: Float32Array, updateExtends: Boolean?, makeItUnique: Boolean?): Mesh
-    override fun setIndices(indices: Array<Number>, totalVertices: Int?, updatable: Boolean?): Mesh
-    override fun setIndices(indices: Int32Array, totalVertices: Int?, updatable: Boolean?): Mesh
-    override fun setIndices(indices: Uint32Array, totalVertices: Int?, updatable: Boolean?): Mesh
-    override fun setIndices(indices: Uint16Array, totalVertices: Int?, updatable: Boolean?): Mesh
+//    override val _positions: Nullable<@@ArraySugar<Vector3>>
     override fun refreshBoundingInfo(applySkeleton: Boolean): InstancedMesh
 //    private fun _preActivate(): InstancedMesh
 //    private override fun _activate(renderId: Number, intermediateRendering: Boolean): Boolean
 //    private override fun _postActivate()
     override fun getWorldMatrix(): Matrix
-	override fun getLOD(camera: Camera): AbstractMesh
+    override val isAnInstance: Boolean
+//    private fun _preActivateForIntermediateRendering(renderId: Number): Mesh
 //    private fun _syncSubMeshes(): InstancedMesh
 //    private override fun _generatePointsArray(): Boolean
-	override fun clone(name: String, newParent: Node? , doNotCloneChildren: Boolean ): InstancedMesh
-	override fun dispose()
-	override fun dispose(doNotRecurse: Boolean, disposeMaterialAndTextures: Boolean)
+    override fun dispose(doNotRecurse: Boolean, disposeMaterialAndTextures: Boolean)
+
+//	override fun isVerticesDataPresent(kind: String): Boolean
+//	override fun getVerticesData(kind: String, copyWhenShared: Boolean, forceCopy: Boolean): Any /*  Array<Number> | Float32Array  */
+//	override fun getIndices(copyWhenShared: Boolean, forceCopy: Boolean): Any /*  Array<Number> | Int32Array | Uint32Array | Uint16Array  */
+//	override fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean, stride:Int)
+//	override fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean, stride:Int)
+//	override fun updateVerticesData(kind: String, data: Array<Number>, updateExtends: Boolean, makeItUnique: Boolean)
+//	override fun updateVerticesData(kind: String, data: Float32Array, updateExtends: Boolean, makeItUnique: Boolean)
+//	override fun setIndices(indices: Array<Number>, totalVertices:Int?, updatable: Boolean)
+//	override fun setIndices(indices: Int32Array, totalVertices:Int?, updatable: Boolean)
+//	override fun setIndices(indices: Uint32Array, totalVertices:Int?, updatable: Boolean)
+//	override fun setIndices(indices: Uint16Array, totalVertices:Int?, updatable: Boolean)
+
 }
 
 external interface `T$12` {
@@ -4133,53 +4143,72 @@ external open class ShadowGenerator(mapSize: Number, light: IShadowLight, useful
     open var onAfterShadowMapRenderObservable: Observable<Effect>
     open var onBeforeShadowMapRenderMeshObservable: Observable<Mesh>
     open var onAfterShadowMapRenderMeshObservable: Observable<Mesh>
-//    private var _bias: Number
-//    private var _normalBias: Number
-//    private var _blurBoxOffset: Number
-//    private var _blurScale: Number
-//    private var _blurKernel: Number
-//    private var _useKernelBlur: Boolean
-//    private var _depthScale: Number
+//     open var _bias: Number
+    open var bias: Number
+//     open var _normalBias: Number
+    open var normalBias: Number
+//     open var _blurBoxOffset: Number
+    open var blurBoxOffset: Number
+//     open var _blurScale: Number
+    open var blurScale: Number
+//     open var _blurKernel: Number
+    open var blurKernel: Number
+//     open var _useKernelBlur: Boolean
+    open var useKernelBlur: Boolean
+//     open var _depthScale: Number
+    open var depthScale: Number
 //    private fun _validateFilter(filter: Number): Number
-//    private var _filter: Number
-//    private var _filteringQuality: Number
-//    private var _contactHardeningLightSizeUVRatio: Number
-//    private var _darkness: Number
+//     open var _filter: Number
+    open var filter: Number
+    open var usePoissonSampling: Boolean
+    open var useExponentialShadowMap: Boolean
+    open var useBlurExponentialShadowMap: Boolean
+    open var useCloseExponentialShadowMap: Boolean
+    open var useBlurCloseExponentialShadowMap: Boolean
+    open var usePercentageCloserFiltering: Boolean
+//     open var _filteringQuality: Number
+    open var filteringQuality: Number
+    open var useContactHardeningShadow: Boolean
+//     open var _contactHardeningLightSizeUVRatio: Number
+    open var contactHardeningLightSizeUVRatio: Number
+//     open var _darkness: Number
+    open var darkness: Number
     open fun getDarkness(): Number
     open fun setDarkness(darkness: Number): ShadowGenerator
-//    private var _transparencyShadow: Boolean
+//     open var _transparencyShadow: Boolean
+    open var transparencyShadow: Boolean
     open fun setTransparencyShadow(transparent: Boolean): ShadowGenerator
-//    private var _shadowMap: RenderTargetTexture?
-//    private var _shadowMap2: RenderTargetTexture?
+//     open var _shadowMap: RenderTargetTexture?
+//     open var _shadowMap2: RenderTargetTexture?
     override fun getShadowMap(): RenderTargetTexture?
     open fun getShadowMapForRendering(): RenderTargetTexture?
     open fun getClassName(): String
     open fun addShadowCaster(mesh: AbstractMesh, includeDescendants: Boolean = definedExternally): ShadowGenerator
     open fun removeShadowCaster(mesh: AbstractMesh, includeDescendants: Boolean = definedExternally): ShadowGenerator
     open var frustumEdgeFalloff: Number
-//    private var _light: IShadowLight
+//     open var _light: IShadowLight
     open fun getLight(): IShadowLight
     open var forceBackFacesOnly: Boolean
-//    private var _scene: Scene
-//    private var _lightDirection: Vector3
-//    private var _effect: Effect
-//    private var _viewMatrix: Matrix
-//    private var _projectionMatrix: Matrix
-//    private var _transformMatrix: Matrix
-//    private var _cachedPosition: Vector3
-//    private var _cachedDirection: Vector3
-//    private var _cachedDefines: String
-//    private var _currentRenderID: Number
-//    private var _boxBlurPostprocess: PostProcess?
-//    private var _kernelBlurXPostprocess: PostProcess?
-//    private var _kernelBlurYPostprocess: PostProcess?
-//    private var _blurPostProcesses: Array<PostProcess>
-//    private var _mapSize: Number
-//    private var _currentFaceIndex: Number
-//    private var _currentFaceIndexCache: Number
-//    private var _textureType: Number
-//    private var _defaultTextureMatrix: Matrix
-//    private var _storedUniqueId: Number?
+//     open var _scene: Scene
+//     open var _lightDirection: Vector3
+//     open var _effect: Effect
+//     open var _viewMatrix: Matrix
+//     open var _projectionMatrix: Matrix
+//     open var _transformMatrix: Matrix
+//     open var _cachedPosition: Vector3
+//     open var _cachedDirection: Vector3
+//     open var _cachedDefines: String
+//     open var _currentRenderID: Number
+//     open var _boxBlurPostprocess: PostProcess?
+//     open var _kernelBlurXPostprocess: PostProcess?
+//     open var _kernelBlurYPostprocess: PostProcess?
+//     open var _blurPostProcesses: Array<PostProcess>
+//     open var _mapSize: Number
+//     open var _currentFaceIndex: Number
+//     open var _currentFaceIndexCache: Number
+//     open var _textureType: Number
+//     open var _defaultTextureMatrix: Matrix
+//     open var _storedUniqueId: Number?
 //    private fun _initializeGenerator()
 //    private fun _createTargetRenderTexture()
 //    private fun _initializeShadowMap()
@@ -4215,7 +4244,7 @@ external open class ShadowGenerator(mapSize: Number, light: IShadowLight, useful
         var QUALITY_HIGH: Number
         var QUALITY_MEDIUM: Number
         var QUALITY_LOW: Number
-        var _SceneComponentInitialization: (scene: Scene) -> Unit
+//         var _SceneComponentInitialization: (scene: Scene) -> Unit
         fun Parse(parsedShadowGenerator: Any, scene: Scene, constr: (mapSize: Number, light: IShadowLight) -> ShadowGenerator = definedExternally): ShadowGenerator
     }
 }
@@ -5124,7 +5153,7 @@ external open class MirrorTexture : RenderTargetTexture {
     override fun dispose()
 }
 
-external open class Texture(url: String?, sceneOrEngine: dynamic /*  Scene | ThinEngine  */, noMipmap: Boolean = definedExternally, invertY: Boolean = definedExternally, samplingMode: Number = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally, buffer: dynamic /*  String | ArrayBuffer | ArrayBufferView | HTMLImageElement | Blob | ImageBitmap  */ = definedExternally, deleteBuffer: Boolean = definedExternally, format: Number = definedExternally, mimeType: String = definedExternally) : BaseTexture {
+external open class Texture(url: String?, sceneOrEngine: dynamic /*  Scene | ThinEngine  */, noMipmap: Boolean = definedExternally, invertY: Boolean = definedExternally, samplingMode: Int = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally, buffer: dynamic /*  String | ArrayBuffer | ArrayBufferView | HTMLImageElement | Blob | ImageBitmap  */ = definedExternally, deleteBuffer: Boolean = definedExternally, format: Number = definedExternally, mimeType: String = definedExternally) : BaseTexture {
     open var url: String?
     open var uOffset: Number
     open var vOffset: Number
@@ -5178,34 +5207,34 @@ external open class Texture(url: String?, sceneOrEngine: dynamic /*  Scene | Thi
         var _CubeTextureParser: (jsonTexture: Any, scene: Scene, rootUrl: String) -> CubeTexture
         var _CreateMirror: (name: String, renderTargetSize: Number, scene: Scene, generateMipMaps: Boolean) -> MirrorTexture
         var _CreateRenderTargetTexture: (name: String, renderTargetSize: Number, scene: Scene, generateMipMaps: Boolean) -> RenderTargetTexture
-        var NEAREST_SAMPLINGMODE: Number
-        var NEAREST_NEAREST_MIPLINEAR: Number
-        var BILINEAR_SAMPLINGMODE: Number
-        var LINEAR_LINEAR_MIPNEAREST: Number
-        var TRILINEAR_SAMPLINGMODE: Number
-        var LINEAR_LINEAR_MIPLINEAR: Number
-        var NEAREST_NEAREST_MIPNEAREST: Number
-        var NEAREST_LINEAR_MIPNEAREST: Number
-        var NEAREST_LINEAR_MIPLINEAR: Number
-        var NEAREST_LINEAR: Number
-        var NEAREST_NEAREST: Number
-        var LINEAR_NEAREST_MIPNEAREST: Number
-        var LINEAR_NEAREST_MIPLINEAR: Number
-        var LINEAR_LINEAR: Number
-        var LINEAR_NEAREST: Number
-        var EXPLICIT_MODE: Number
-        var SPHERICAL_MODE: Number
-        var PLANAR_MODE: Number
-        var CUBIC_MODE: Number
-        var PROJECTION_MODE: Number
-        var SKYBOX_MODE: Number
-        var INVCUBIC_MODE: Number
-        var EQUIRECTANGULAR_MODE: Number
-        var FIXED_EQUIRECTANGULAR_MODE: Number
-        var FIXED_EQUIRECTANGULAR_MIRRORED_MODE: Number
-        var CLAMP_ADDRESSMODE: Number
-        var WRAP_ADDRESSMODE: Number
-        var MIRROR_ADDRESSMODE: Number
+        var NEAREST_SAMPLINGMODE:Int
+        var NEAREST_NEAREST_MIPLINEAR:Int
+        var BILINEAR_SAMPLINGMODE:Int
+        var LINEAR_LINEAR_MIPNEAREST:Int
+        var TRILINEAR_SAMPLINGMODE:Int
+        var LINEAR_LINEAR_MIPLINEAR:Int
+        var NEAREST_NEAREST_MIPNEAREST:Int
+        var NEAREST_LINEAR_MIPNEAREST:Int
+        var NEAREST_LINEAR_MIPLINEAR:Int
+        var NEAREST_LINEAR:Int
+        var NEAREST_NEAREST:Int
+        var LINEAR_NEAREST_MIPNEAREST:Int
+        var LINEAR_NEAREST_MIPLINEAR:Int
+        var LINEAR_LINEAR:Int
+        var LINEAR_NEAREST:Int
+        var EXPLICIT_MODE:Int
+        var SPHERICAL_MODE:Int
+        var PLANAR_MODE:Int
+        var CUBIC_MODE:Int
+        var PROJECTION_MODE:Int
+        var SKYBOX_MODE:Int
+        var INVCUBIC_MODE:Int
+        var EQUIRECTANGULAR_MODE:Int
+        var FIXED_EQUIRECTANGULAR_MODE:Int
+        var FIXED_EQUIRECTANGULAR_MIRRORED_MODE:Int
+        var CLAMP_ADDRESSMODE:Int
+        var WRAP_ADDRESSMODE:Int
+        var MIRROR_ADDRESSMODE:Int
         var UseSerializedUrlIfAny: Boolean
         fun Parse(parsedTexture: Any, scene: Scene, rootUrl: String): BaseTexture?
         fun CreateFromBase64String(data: String, name: String, scene: Scene, noMipmap: Boolean = definedExternally, invertY: Boolean = definedExternally, samplingMode: Number = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: (() -> Unit)? = definedExternally, format: Number = definedExternally): Texture
@@ -5230,14 +5259,14 @@ external open class RenderTargetTexture : Texture {
     constructor(name: String, size: Number, scene: Scene?, generateMipMaps: Boolean, doNotChangeAspectRatio: Boolean, type: Number, isCube: Boolean, samplingMode: Number, generateDepthBuffer: Boolean, generateStencilBuffer: Boolean, isMulti: Boolean, format: Number, delayAllocation: Boolean)
     constructor(name: String, size: `T$6`, scene: Scene?, generateMipMaps: Boolean, doNotChangeAspectRatio: Boolean, type: Number, isCube: Boolean, samplingMode: Number, generateDepthBuffer: Boolean, generateStencilBuffer: Boolean, isMulti: Boolean, format: Number, delayAllocation: Boolean)
     constructor(name: String, size: `T$20`, scene: Scene?, generateMipMaps: Boolean, doNotChangeAspectRatio: Boolean, type: Number, isCube: Boolean, samplingMode: Number, generateDepthBuffer: Boolean, generateStencilBuffer: Boolean, isMulti: Boolean, format: Number, delayAllocation: Boolean)
-    open var isCube: Boolean
+	override var isCube: Boolean
     open var renderListPredicate: (AbstractMesh: AbstractMesh) -> Boolean
 //    private var _renderList: Any
     open var getCustomRenderList: (layerOrFace: Number, renderList: Immutable<Array<AbstractMesh>>?) -> Array<AbstractMesh>?
 //    private var _hookArray: Any
     open var renderParticles: Boolean
     open var renderSprites: Boolean
-    open var coordinatesMode: Number
+    override var coordinatesMode: Int
     open var activeCamera: Camera?
     open var customRenderFunction: (opaqueSubMeshes: SmartArray<SubMesh>, alphaTestSubMeshes: SmartArray<SubMesh>, transparentSubMeshes: SmartArray<SubMesh>, depthOnlySubMeshes: SmartArray<SubMesh>, beforeTransparents: () -> Unit) -> Unit
     open var useCameraPostProcesses: Boolean
@@ -5342,41 +5371,53 @@ external open class Material(name: String, scene: Scene, doNotAdd: Boolean = def
     open var checkReadyOnEveryCall: Boolean
     open var checkReadyOnlyOnce: Boolean
     open var state: String
-//    private var _alpha: Number
+//     open var _alpha: Number
     open var inspectableCustomProperties: Array<IInspectable>
-//    private var _backFaceCulling: Boolean
+    open var alpha: Number
+//     open var _backFaceCulling: Boolean
+    open var backFaceCulling: Boolean
     open var sideOrientation: Number
     open var onCompiled: ((effect: Effect) -> Unit)?
     open var onError: ((effect: Effect, errors: String) -> Unit)?
     open var getRenderTargetTextures: (() -> SmartArray<RenderTargetTexture>)?
+    open val hasRenderTargetTextures: Boolean
     open var doNotSerialize: Boolean
-//    private var _storeEffectOnSubMeshes: Boolean
+//     open var _storeEffectOnSubMeshes: Boolean
     override var animations: Array<Animation>?
     open var onDisposeObservable: Observable<Material>
-//    private var _onDisposeObserver: Any
-//    private var _onUnBindObservable: Any
-//    private var _onBindObservable: Any
-//    private var _onBindObserver: Any
-//    private var _alphaMode: Any
-//    private var _needDepthPrePass: Any
+//     open var _onDisposeObserver: Any
+//     open var _onUnBindObservable: Any
+//     open var _onBindObservable: Any
+    open val onBindObservable: Observable<AbstractMesh>
+//     open var _onBindObserver: Any
+    open val onUnBindObservable: Observable<Material>
+//     open var _alphaMode: Any
+    open var alphaMode: Number
+//     open var _needDepthPrePass: Any
+    open var needDepthPrePass: Boolean
     open var disableDepthWrite: Boolean
     open var forceDepthWrite: Boolean
     open var depthFunction: Number
     open var separateCullingPass: Boolean
-//    private var _fogEnabled: Any
+//     open var _fogEnabled: Any
+    open var fogEnabled: Boolean
     open var pointSize: Number
     open var zOffset: Number
-//    private var _effect: Effect?
-//    private var _useUBO: Any
-//    private var _scene: Any
-//    private var _fillMode: Any
-//    private var _cachedDepthWriteState: Any
-//    private var _cachedDepthFunctionState: Any
-//    private var _uniformBuffer: UniformBuffer
-//    private var _indexInSceneMaterialArray: Number
+    open var wireframe: Boolean
+    open var pointsCloud: Boolean
+    open var fillMode: Number
+//     open var _effect: Effect?
+//     open var _useUBO: Any
+//     open var _scene: Any
+//     open var _fillMode: Any
+//     open var _cachedDepthWriteState: Any
+//     open var _cachedDepthFunctionState: Any
+//     open var _uniformBuffer: UniformBuffer
+//     open var _indexInSceneMaterialArray: Number
     open var meshMap: `T$21`?
     open fun toString(fullDetails: Boolean = definedExternally): String
     open fun getClassName(): String
+    open val isFrozen: Boolean
     open fun freeze()
     open fun unfreeze()
     open fun isReady(mesh: AbstractMesh = definedExternally, useInstances: Boolean = definedExternally): Boolean
@@ -5437,17 +5478,17 @@ external open class Material(name: String, scene: Scene, doNotAdd: Boolean = def
         var AttributesDirtyFlag: Number
         var MiscDirtyFlag: Number
         var AllDirtyFlag: Number
-        var _AllDirtyCallBack: Any
-        var _ImageProcessingDirtyCallBack: Any
-        var _TextureDirtyCallBack: Any
-        var _FresnelDirtyCallBack: Any
-        var _MiscDirtyCallBack: Any
-        var _LightsDirtyCallBack: Any
-        var _AttributeDirtyCallBack: Any
-        var _FresnelAndMiscDirtyCallBack: Any
-        var _TextureAndMiscDirtyCallBack: Any
-        var _DirtyCallbackArray: Any
-        var _RunDirtyCallBacks: Any
+//         var _AllDirtyCallBack: Any
+//         var _ImageProcessingDirtyCallBack: Any
+//         var _TextureDirtyCallBack: Any
+//         var _FresnelDirtyCallBack: Any
+//         var _MiscDirtyCallBack: Any
+//         var _LightsDirtyCallBack: Any
+//         var _AttributeDirtyCallBack: Any
+//         var _FresnelAndMiscDirtyCallBack: Any
+//         var _TextureAndMiscDirtyCallBack: Any
+//         var _DirtyCallbackArray: Any
+//         var _RunDirtyCallBacks: Any
         fun Parse(parsedMaterial: Any, scene: Scene, rootUrl: String): Material?
     }
 }
@@ -5574,34 +5615,36 @@ external open class Geometry(id: String, scene: Scene, vertexData: VertexData = 
     open fun isReady(): Boolean
 //    private fun _rebuild()
     open fun setAllVerticesData(vertexData: VertexData, updatable: Boolean)
-	override fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean?, stride: Int?)
-	override fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean?, stride: Int?)
+
+	override fun isVerticesDataPresent(kind: String): Boolean
+	override fun getVerticesData(kind: String, copyWhenShared: Boolean, forceCopy: Boolean): Any /*  Array<Number> | Float32Array  */
+	override fun getIndices(copyWhenShared: Boolean, forceCopy: Boolean): Any /*  Array<Number> | Int32Array | Uint32Array | Uint16Array  */
+	override fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean, stride:Int)
+	override fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean, stride:Int)
+	override fun updateVerticesData(kind: String, data: Array<Number>, updateExtends: Boolean, makeItUnique: Boolean)
+	override fun updateVerticesData(kind: String, data: Float32Array, updateExtends: Boolean, makeItUnique: Boolean)
+	override fun setIndices(indices: Array<Number>, totalVertices:Int?, updatable: Boolean)
+	override fun setIndices(indices: Int32Array, totalVertices:Int?, updatable: Boolean)
+	override fun setIndices(indices: Uint32Array, totalVertices:Int?, updatable: Boolean)
+	override fun setIndices(indices: Uint16Array, totalVertices:Int?, updatable: Boolean)
+
     open fun removeVerticesData(kind: String)
     open fun setVerticesBuffer(buffer: VertexBuffer, totalVertices: Number? = definedExternally)
     open fun updateVerticesDataDirectly(kind: String, data: Array<Number>, offset: Number, useBytes: Boolean = definedExternally)
     open fun updateVerticesDataDirectly(kind: String, data: ArrayBuffer, offset: Number, useBytes: Boolean = definedExternally)
     open fun updateVerticesDataDirectly(kind: String, data: ArrayBufferView, offset: Number, useBytes: Boolean = definedExternally)
-    override fun updateVerticesData(kind: String, data: Array<Number>, updateExtends: Boolean? , makeItUnique: Boolean?)
-    override fun updateVerticesData(kind: String, data: Float32Array, updateExtends: Boolean?, makeItUnique: Boolean?)
 //    private var _updateBoundingInfo: Any
 //    private fun _bind(effect: Effect?, indexToBind: DataBuffer? = definedExternally)
     open fun getTotalVertices(): Number
-    override fun getVerticesData(kind: String, copyWhenShared: Boolean?, forceCopy: Boolean?): Any /*  Array<Number> | Float32Array  */
     open fun isVertexBufferUpdatable(kind: String): Boolean
     open fun getVertexBuffer(kind: String): VertexBuffer?
     open fun getVertexBuffers(): `T$22`?
-    override fun isVerticesDataPresent(kind: String): Boolean
     open fun getVerticesDataKinds(): Array<String>
     open fun updateIndices(indices: Array<Number>, offset: Number = definedExternally, gpuMemoryOnly: Boolean = definedExternally)
     open fun updateIndices(indices: Int32Array, offset: Number = definedExternally, gpuMemoryOnly: Boolean = definedExternally)
     open fun updateIndices(indices: Uint32Array, offset: Number = definedExternally, gpuMemoryOnly: Boolean = definedExternally)
     open fun updateIndices(indices: Uint16Array, offset: Number = definedExternally, gpuMemoryOnly: Boolean = definedExternally)
-    override fun setIndices(indices: Array<Number>, totalVertices: Int?, updatable: Boolean?)
-    override fun setIndices(indices: Int32Array, totalVertices: Int?, updatable: Boolean?)
-    override fun setIndices(indices: Uint32Array, totalVertices: Int?, updatable: Boolean?)
-    override fun setIndices(indices: Uint16Array, totalVertices: Int?, updatable: Boolean?)
     open fun getTotalIndices(): Number
-	override fun getIndices(copyWhenShared: Boolean?, forceCopy: Boolean?): Any /*  Array<Number> | Int32Array | Uint32Array | Uint16Array  */
     open fun getIndexBuffer(): DataBuffer?
 //    private fun _releaseVertexArrayObject(effect: Effect? = definedExternally)
     open fun releaseForMesh(mesh: Mesh, shouldDispose: Boolean = definedExternally)
@@ -5621,14 +5664,6 @@ external open class Geometry(id: String, scene: Scene, vertexData: VertexData = 
     open fun serialize(): Any
     open var toNumberArray: Any
     open fun serializeVerticeData(): Any
-    override fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean?, stride:Int?)
-    override fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean?, stride:Int?)
-    override fun updateVerticesData(kind: String, data: Array<Number>, updateExtends: Boolean?, makeItUnique: Boolean?)
-    override fun updateVerticesData(kind: String, data: Float32Array, updateExtends: Boolean?, makeItUnique: Boolean?)
-    override fun setIndices(indices: Array<Number>, totalVertices: Int?, updatable: Boolean?)
-    override fun setIndices(indices: Int32Array, totalVertices: Int?, updatable: Boolean?)
-    override fun setIndices(indices: Uint32Array, totalVertices: Int?, updatable: Boolean?)
-    override fun setIndices(indices: Uint16Array, totalVertices: Int?, updatable: Boolean?)
 
     companion object {
         fun CreateGeometryForMesh(mesh: Mesh): Geometry
@@ -5642,16 +5677,16 @@ external open class Geometry(id: String, scene: Scene, vertexData: VertexData = 
 
 external interface IGetSetVerticesData {
     fun isVerticesDataPresent(kind: String): Boolean
-    fun getVerticesData(kind: String, copyWhenShared: Boolean? = definedExternally /* null */, forceCopy: Boolean? = definedExternally /* null */): Any /*  Array<Number> | Float32Array  */
-    fun getIndices(copyWhenShared: Boolean? = definedExternally, forceCopy: Boolean? = definedExternally): Any /*  Array<Number> | Int32Array | Uint32Array | Uint16Array  */
-    fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean?, stride:Int?):Mesh
-    fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean?, stride:Int?):Mesh
-    fun updateVerticesData(kind: String, data: Array<Number>, updateExtends: Boolean? = definedExternally, makeItUnique: Boolean? = definedExternally):Mesh
-    fun updateVerticesData(kind: String, data: Float32Array, updateExtends: Boolean? = definedExternally, makeItUnique: Boolean? = definedExternally):Mesh
-    fun setIndices(indices: Array<Number>, totalVertices: Int?, updatable: Boolean? = definedExternally):Mesh
-    fun setIndices(indices: Int32Array, totalVertices: Int?, updatable: Boolean? = definedExternally):Mesh
-    fun setIndices(indices: Uint32Array, totalVertices: Int?, updatable: Boolean? = definedExternally):Mesh
-    fun setIndices(indices: Uint16Array, totalVertices: Int?, updatable: Boolean? = definedExternally):Mesh
+    fun getVerticesData(kind: String, copyWhenShared: Boolean = definedExternally, forceCopy: Boolean = definedExternally): Any /*  Array<Number> | Float32Array  */
+    fun getIndices(copyWhenShared: Boolean = definedExternally, forceCopy: Boolean = definedExternally): Any /*  Array<Number> | Int32Array | Uint32Array | Uint16Array  */
+    fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean, stride:Int= definedExternally)
+    fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean, stride:Int= definedExternally)
+    fun updateVerticesData(kind: String, data: Array<Number>, updateExtends: Boolean = definedExternally, makeItUnique: Boolean = definedExternally)
+    fun updateVerticesData(kind: String, data: Float32Array, updateExtends: Boolean = definedExternally, makeItUnique: Boolean = definedExternally)
+    fun setIndices(indices: Array<Number>, totalVertices:Int?, updatable: Boolean = definedExternally)
+    fun setIndices(indices: Int32Array, totalVertices:Int?, updatable: Boolean = definedExternally)
+    fun setIndices(indices: Uint32Array, totalVertices:Int?, updatable: Boolean = definedExternally)
+    fun setIndices(indices: Uint16Array, totalVertices:Int?, updatable: Boolean = definedExternally)
 }
 
 external interface `T$23` {
@@ -6764,11 +6799,9 @@ external interface `T$48` {
 }
 
 external open class Camera(name: String, position: Vector3, scene: Scene, setActiveOnSceneIfNoneActive: Boolean = definedExternally) : Node {
-//    private var _useMultiviewToSingleView: Boolean
-//    private var _multiviewTexture: RenderTargetTexture?
-//    private fun _resizeOrCreateMultiviewTexture(width: Number, height: Number)
     open var inputs: CameraInputsManager<Camera>
-//    private var _position: Vector3
+//     open var _position: Vector3
+    open var position: Vector3
     open var upVector: Vector3
     open var orthoLeft: Number?
     open var orthoRight: Number?
@@ -6786,7 +6819,7 @@ external open class Camera(name: String, position: Vector3, scene: Scene, setAct
     open var cameraRigMode: Number
     open var interaxialDistance: Number
     open var isStereoscopicSideBySide: Boolean
-    open var customRenderTargets: Array<RenderTargetTexture>
+    open var customRenderTargets: Array<Any>
     open var outputRenderTarget: RenderTargetTexture?
     open var onViewMatrixChangedObservable: Observable<Camera>
     open var onProjectionMatrixChangedObservable: Observable<Camera>
@@ -6794,28 +6827,29 @@ external open class Camera(name: String, position: Vector3, scene: Scene, setAct
     open var onRestoreStateObservable: Observable<Camera>
     open var isRigCamera: Boolean
     open var rigParent: Camera
-//    private var _cameraRigParams: Any
-//    private var _rigCameras: Array<Camera>
-//    private var _rigPostProcess: PostProcess?
-//    private var _webvrViewMatrix: Matrix
-//    private var _skipRendering: Boolean
-//    private var _projectionMatrix: Matrix
-//    private var _postProcesses: Array<PostProcess?>
-//    private var _activeMeshes: SmartArray<AbstractMesh>
-//    private var _globalPosition: Vector3
-//    private var _computedViewMatrix: Matrix
-//    private var _doNotComputeProjectionMatrix: Any
-//    private var _transformMatrix: Any
-//    private var _frustumPlanes: Any
-//    private var _refreshFrustumPlanes: Any
-//    private var _storedFov: Any
-//    private var _stateStored: Any
+//     open var _cameraRigParams: Any
+//     open var _rigCameras: Array<Camera>
+//     open var _rigPostProcess: PostProcess?
+//     open var _webvrViewMatrix: Matrix
+//     open var _skipRendering: Boolean
+//     open var _projectionMatrix: Matrix
+//     open var _postProcesses: Array<Any?>
+//     open var _activeMeshes: SmartArray<AbstractMesh>
+//     open var _globalPosition: Vector3
+//     open var _computedViewMatrix: Matrix
+//     open var _doNotComputeProjectionMatrix: Any
+//     open var _transformMatrix: Any
+//     open var _frustumPlanes: Any
+//     open var _refreshFrustumPlanes: Any
+//     open var _storedFov: Any
+//     open var _stateStored: Any
     open fun storeState(): Camera
 //    private fun _restoreStateValues(): Boolean
     open fun restoreState(): Boolean
     override fun getClassName(): String
-//    private var _isCamera: Boolean
+//     open var _isCamera: Boolean
     open fun toString(fullDetails: Boolean = definedExternally): String
+    open val globalPosition: Vector3
     open fun getActiveMeshes(): SmartArray<AbstractMesh>
     open fun isActiveMesh(mesh: Mesh): Boolean
     override fun isReady(completeCheck: Boolean): Boolean
@@ -6828,8 +6862,10 @@ external open class Camera(name: String, position: Vector3, scene: Scene, setAct
     open fun detachControl(element: HTMLElement)
     open fun update()
 //    private fun _checkInputs()
+    open val rigCameras: Any
+    open val rigPostProcess: PostProcess?
 //    private fun _getFirstPostProcess(): PostProcess?
-//    private var _cascadePostProcessesToRigCams: Any
+//     open var _cascadePostProcessesToRigCams: Any
     open fun attachPostProcess(postProcess: PostProcess, insertAt: Number? = definedExternally): Number
     open fun detachPostProcess(postProcess: PostProcess)
     override fun getWorldMatrix(): Matrix
@@ -6839,13 +6875,17 @@ external open class Camera(name: String, position: Vector3, scene: Scene, setAct
     open fun unfreezeProjectionMatrix()
     open fun getProjectionMatrix(force: Boolean = definedExternally): Matrix
     open fun getTransformationMatrix(): Matrix
-//    private var _updateFrustumPlanes: Any
+//     open var _updateFrustumPlanes: Any
     open fun isInFrustum(target: ICullable, checkRigCameras: Boolean = definedExternally): Boolean
     open fun isCompletelyInFrustum(target: ICullable): Boolean
     open fun getForwardRay(length: Number = definedExternally, transform: Matrix = definedExternally, origin: Vector3 = definedExternally): Ray
     override fun dispose(doNotRecurse: Boolean, disposeMaterialAndTextures: Boolean)
-//    private var _isLeftCamera: Boolean
-//    private var _isRightCamera: Boolean
+//     open var _isLeftCamera: Boolean
+    open val isLeftCamera: Boolean
+//     open var _isRightCamera: Boolean
+    open val isRightCamera: Boolean
+    open val leftCamera: FreeCamera?
+    open val rightCamera: FreeCamera?
     open fun getLeftTarget(): Vector3?
     open fun getRightTarget(): Vector3?
     open fun setCameraRigMode(mode: Number, rigParams: Any)
@@ -6861,11 +6901,12 @@ external open class Camera(name: String, position: Vector3, scene: Scene, setAct
     open fun serialize(): Any
     open fun clone(name: String): Camera
     open fun getDirection(localAxis: Vector3): Vector3
+    open val absoluteRotation: Quaternion
     open fun getDirectionToRef(localAxis: Vector3, result: Vector3)
     open fun computeWorldMatrix(): Matrix
 
     companion object {
-        var _createDefaultParsedCamera: (name: String, scene: Scene) -> Camera
+//         var _createDefaultParsedCamera: (name: String, scene: Scene) -> Camera
         var PERSPECTIVE_CAMERA: Number
         var ORTHOGRAPHIC_CAMERA: Number
         var FOVMODE_VERTICAL_FIXED: Number
@@ -6880,10 +6921,10 @@ external open class Camera(name: String, position: Vector3, scene: Scene, setAct
         var RIG_MODE_WEBVR: Number
         var RIG_MODE_CUSTOM: Number
         var ForceAttachControlToAlwaysPreventDefault: Boolean
-        fun _setStereoscopicRigMode(camera: Camera)
-        fun _setStereoscopicAnaglyphRigMode(camera: Camera)
-        fun _setVRRigMode(camera: Camera, rigParams: Any)
-        fun _setWebVRRigMode(camera: Camera, rigParams: Any)
+//         fun _setStereoscopicRigMode(camera: Camera)
+//         fun _setStereoscopicAnaglyphRigMode(camera: Camera)
+//         fun _setVRRigMode(camera: Camera, rigParams: Any)
+//         fun _setWebVRRigMode(camera: Camera, rigParams: Any)
         fun GetConstructorFromName(type: String, name: String, scene: Scene, interaxial_distance: Number = definedExternally, isStereoscopicSideBySide: Boolean = definedExternally): () -> Camera
         fun Parse(parsedCamera: Any, scene: Scene): Camera
     }
@@ -9272,6 +9313,22 @@ external interface `T$68` {
 }
 
 external open class ArcRotateCamera(name: String, alpha: Number, beta: Number, radius: Number, target: Vector3, scene: Scene, setActiveOnSceneIfNoneActive: Boolean = definedExternally) : TargetCamera {
+	var target: Vector3
+	var angularSensibilityX: Number
+	var angularSensibilityY: Number
+	var pinchPrecision: Number
+	var pinchDeltaPercentage: Number
+	var useNaturalPinchZoom: Boolean
+	var panningSensibility: Number
+	var wheelPrecision: Number
+	var wheelDeltaPercentage: Number
+	val bouncingBehavior: BouncingBehavior?
+	var useBouncingBehavior: Boolean
+	val framingBehavior: FramingBehavior?
+	var useFramingBehavior: Boolean
+	val autoRotationBehavior: AutoRotationBehavior?
+	var useAutoRotationBehavior: Boolean
+
     open var alpha: Number
     open var beta: Number
     open var radius: Number
@@ -10826,6 +10883,10 @@ external enum class SceneLoaderAnimationGroupLoadingMode {
 
 external open class SceneLoader {
     companion object {
+		var ForceFullSceneLoadingForIncremental:Boolean
+		var ShowLoadingScreen:Boolean
+		var loggingLevel:Number
+		var CleanBoneMatrixWeights:Boolean
         var NO_LOGGING: Number
         var MINIMAL_LOGGING: Number
         var SUMMARY_LOGGING: Number
@@ -11764,41 +11825,7 @@ external interface IExplorerExtensibilityGroup {
     var entries: Array<IExplorerExtensibilityOption>
 }
 
-external interface IInspectorOptions {
-    var overlay: Boolean?
-        get() = definedExternally
-        set(value) = definedExternally
-    var globalRoot: HTMLElement?
-        get() = definedExternally
-        set(value) = definedExternally
-    var showExplorer: Boolean?
-        get() = definedExternally
-        set(value) = definedExternally
-    var showInspector: Boolean?
-        get() = definedExternally
-        set(value) = definedExternally
-    var embedMode: Boolean?
-        get() = definedExternally
-        set(value) = definedExternally
-    var handleResize: Boolean?
-        get() = definedExternally
-        set(value) = definedExternally
-    var enablePopup: Boolean?
-        get() = definedExternally
-        set(value) = definedExternally
-    var enableClose: Boolean?
-        get() = definedExternally
-        set(value) = definedExternally
-    var explorerExtensibility: Array<IExplorerExtensibilityGroup>?
-        get() = definedExternally
-        set(value) = definedExternally
-    var inspectorURL: String?
-        get() = definedExternally
-        set(value) = definedExternally
-    var initialTab: DebugLayerTab?
-        get() = definedExternally
-        set(value) = definedExternally
-}external enum class DebugLayerTab {
+external enum class DebugLayerTab {
     Properties /* = 0 */,
     Debug /* = 1 */,
     Statistics /* = 2 */,
@@ -12084,51 +12111,69 @@ external open class CubeMapToSphericalPolynomialTools {
 }
 
 external open class BaseTexture(scene: Scene?) : IAnimatable {
-    open var sphericalPolynomial: SphericalPolynomial?
     open var uniqueId: Number
     open var name: String
     open var metadata: Any
     open var reservedDataStore: Any
-//    private var _hasAlpha: Any
+//     open var _hasAlpha: Any
+    open var hasAlpha: Boolean
     open var getAlphaFromRGB: Boolean
     open var level: Number
-    open var coordinatesIndex: Number
-//    private var _coordinatesMode: Any
+    open var coordinatesIndex: Int
+//     open var _coordinatesMode: Any
+    open var coordinatesMode: Int
     open var wrapU: Number
     open var wrapV: Number
     open var wrapR: Number
     open var anisotropicFilteringLevel: Number
+    open var isCube: Boolean
+    open var is3D: Boolean
+    open var is2DArray: Boolean
     open var gammaSpace: Boolean
+    open var isRGBD: Boolean
     open var invertZ: Boolean
+    open val noMipmap: Boolean
     open var lodLevelInAlpha: Boolean
+    open var lodGenerationOffset: Number
+    open var lodGenerationScale: Number
+    open var linearSpecularLOD: Boolean
+    open var irradianceTexture: BaseTexture?
     open var isRenderTarget: Boolean
+    open val uid: String
     override fun toString(): String
     open fun getClassName(): String
     override var animations: Array<Animation>?
     open var onDisposeObservable: Observable<BaseTexture>
-//    private var _onDisposeObserver: Any
+//     open var _onDisposeObserver: Any
     open var delayLoadState: Number
-//    private var _scene: Any
-//    private var _texture: InternalTexture?
-//    private var _uid: Any
+//     open var _scene: Any
+//     open var _texture: InternalTexture?
+//     open var _uid: Any
+    open val isBlocking: Boolean
     open fun getScene(): Scene?
     open fun getTextureMatrix(): Matrix
     open fun getReflectionTextureMatrix(): Matrix
     open fun getInternalTexture(): InternalTexture?
     open fun isReadyOrNotBlocking(): Boolean
     open fun isReady(): Boolean
-//    private var _cachedSize: Any
+//     open var _cachedSize: Any
     open fun getSize(): ISize
     open fun getBaseSize(): ISize
-    open fun updateSamplingMode(samplingMode: Number)
+    open fun updateSamplingMode(samplingMode: Int)
     open fun scale(ratio: Number)
+    open val canRescale: Boolean
 //    private fun _getFromCache(url: String?, noMipmap: Boolean, sampling: Number = definedExternally, invertY: Boolean = definedExternally): InternalTexture?
 //    private fun _rebuild()
     open fun delayLoad()
     open fun clone(): BaseTexture?
+    open val textureType: Number
+    open val textureFormat: Number
 //    private fun _markAllSubMeshesAsTexturesDirty()
     open fun readPixels(faceIndex: Number = definedExternally, level: Number = definedExternally, buffer: ArrayBufferView? = definedExternally): ArrayBufferView?
     open fun releaseInternalTexture()
+//     open var _lodTextureHigh: BaseTexture?
+//     open var _lodTextureMid: BaseTexture?
+//     open var _lodTextureLow: BaseTexture?
     open fun dispose()
     open fun serialize(): Any
 
@@ -13509,74 +13554,74 @@ external open class PBRMaterialDefines : MaterialDefines, IImageProcessingConfig
 }
 
 external open class PBRBaseMaterial(name: String, scene: Scene) : PushMaterial {
-//    private var _directIntensity: Number
-//    private var _emissiveIntensity: Number
-//    private var _environmentIntensity: Number
-//    private var _specularIntensity: Number
-//    private var _lightingInfos: Any
-//    private var _disableBumpMap: Boolean
-//    private var _albedoTexture: BaseTexture?
-//    private var _ambientTexture: BaseTexture?
-//    private var _ambientTextureStrength: Number
-//    private var _ambientTextureImpactOnAnalyticalLights: Number
-//    private var _opacityTexture: BaseTexture?
-//    private var _reflectionTexture: BaseTexture?
-//    private var _emissiveTexture: BaseTexture?
-//    private var _reflectivityTexture: BaseTexture?
-//    private var _metallicTexture: BaseTexture?
-//    private var _metallic: Number?
-//    private var _roughness: Number?
-//    private var _metallicF0Factor: Number
-//    private var _useMetallicF0FactorFromMetallicTexture: Boolean
-//    private var _microSurfaceTexture: BaseTexture?
-//    private var _bumpTexture: BaseTexture?
-//    private var _lightmapTexture: BaseTexture?
-//    private var _ambientColor: Color3
-//    private var _albedoColor: Color3
-//    private var _reflectivityColor: Color3
-//    private var _reflectionColor: Color3
-//    private var _emissiveColor: Color3
-//    private var _microSurface: Number
-//    private var _useLightmapAsShadowmap: Boolean
-//    private var _useHorizonOcclusion: Boolean
-//    private var _useRadianceOcclusion: Boolean
-//    private var _useAlphaFromAlbedoTexture: Boolean
-//    private var _useSpecularOverAlpha: Boolean
-//    private var _useMicroSurfaceFromReflectivityMapAlpha: Boolean
-//    private var _useRoughnessFromMetallicTextureAlpha: Boolean
-//    private var _useRoughnessFromMetallicTextureGreen: Boolean
-//    private var _useMetallnessFromMetallicTextureBlue: Boolean
-//    private var _useAmbientOcclusionFromMetallicTextureRed: Boolean
-//    private var _useAmbientInGrayScale: Boolean
-//    private var _useAutoMicroSurfaceFromReflectivityMap: Boolean
-//    private var _lightFalloff: Number
-//    private var _useRadianceOverAlpha: Boolean
-//    private var _useObjectSpaceNormalMap: Boolean
-//    private var _useParallax: Boolean
-//    private var _useParallaxOcclusion: Boolean
-//    private var _parallaxScaleBias: Number
-//    private var _disableLighting: Boolean
-//    private var _maxSimultaneousLights: Number
-//    private var _invertNormalMapX: Boolean
-//    private var _invertNormalMapY: Boolean
-//    private var _twoSidedLighting: Boolean
-//    private var _alphaCutOff: Number
-//    private var _forceAlphaTest: Boolean
-//    private var _useAlphaFresnel: Boolean
-//    private var _useLinearAlphaFresnel: Boolean
-//    private var _transparencyMode: Number?
-//    private var _environmentBRDFTexture: BaseTexture?
-//    private var _forceIrradianceInFragment: Boolean
-//    private var _forceNormalForward: Boolean
-//    private var _enableSpecularAntiAliasing: Boolean
-//    private var _imageProcessingConfiguration: ImageProcessingConfiguration
-//    private var _imageProcessingObserver: Any
+//     open var _directIntensity: Number
+//     open var _emissiveIntensity: Number
+//     open var _environmentIntensity: Number
+//     open var _specularIntensity: Number
+//     open var _lightingInfos: Any
+//     open var _disableBumpMap: Boolean
+//     open var _albedoTexture: BaseTexture?
+//     open var _ambientTexture: BaseTexture?
+//     open var _ambientTextureStrength: Number
+//     open var _ambientTextureImpactOnAnalyticalLights: Number
+//     open var _opacityTexture: BaseTexture?
+//     open var _reflectionTexture: BaseTexture?
+//     open var _emissiveTexture: BaseTexture?
+//     open var _reflectivityTexture: BaseTexture?
+//     open var _metallicTexture: BaseTexture?
+//     open var _metallic: Number?
+//     open var _roughness: Number?
+//     open var _metallicF0Factor: Number
+//     open var _useMetallicF0FactorFromMetallicTexture: Boolean
+//     open var _microSurfaceTexture: BaseTexture?
+//     open var _bumpTexture: BaseTexture?
+//     open var _lightmapTexture: BaseTexture?
+//     open var _ambientColor: Color3
+//     open var _albedoColor: Color3
+//     open var _reflectivityColor: Color3
+//     open var _reflectionColor: Color3
+//     open var _emissiveColor: Color3
+//     open var _microSurface: Number
+//     open var _useLightmapAsShadowmap: Boolean
+//     open var _useHorizonOcclusion: Boolean
+//     open var _useRadianceOcclusion: Boolean
+//     open var _useAlphaFromAlbedoTexture: Boolean
+//     open var _useSpecularOverAlpha: Boolean
+//     open var _useMicroSurfaceFromReflectivityMapAlpha: Boolean
+//     open var _useRoughnessFromMetallicTextureAlpha: Boolean
+//     open var _useRoughnessFromMetallicTextureGreen: Boolean
+//     open var _useMetallnessFromMetallicTextureBlue: Boolean
+//     open var _useAmbientOcclusionFromMetallicTextureRed: Boolean
+//     open var _useAmbientInGrayScale: Boolean
+//     open var _useAutoMicroSurfaceFromReflectivityMap: Boolean
+//     open var _lightFalloff: Number
+//     open var _useRadianceOverAlpha: Boolean
+//     open var _useObjectSpaceNormalMap: Boolean
+//     open var _useParallax: Boolean
+//     open var _useParallaxOcclusion: Boolean
+//     open var _parallaxScaleBias: Number
+//     open var _disableLighting: Boolean
+//     open var _maxSimultaneousLights: Number
+//     open var _invertNormalMapX: Boolean
+//     open var _invertNormalMapY: Boolean
+//     open var _twoSidedLighting: Boolean
+//     open var _alphaCutOff: Number
+//     open var _forceAlphaTest: Boolean
+//     open var _useAlphaFresnel: Boolean
+//     open var _useLinearAlphaFresnel: Boolean
+//     open var _transparencyMode: Number?
+//     open var _environmentBRDFTexture: BaseTexture?
+//     open var _forceIrradianceInFragment: Boolean
+//     open var _forceNormalForward: Boolean
+//     open var _enableSpecularAntiAliasing: Boolean
+//     open var _imageProcessingConfiguration: ImageProcessingConfiguration
+//     open var _imageProcessingObserver: Any
 //    private fun _attachImageProcessingConfiguration(configuration: ImageProcessingConfiguration?)
-//    private var _renderTargets: Any
-//    private var _globalAmbientColor: Any
-//    private var _useLogarithmicDepth: Any
-//    private var _unlit: Any
-//    private var _debugMode: Any
+//     open var _renderTargets: Any
+//     open var _globalAmbientColor: Any
+//     open var _useLogarithmicDepth: Any
+//     open var _unlit: Any
+//     open var _debugMode: Any
     open var debugMode: Number
     open var debugLimit: Any
     open var debugFactor: Any
@@ -13586,8 +13631,12 @@ external open class PBRBaseMaterial(name: String, scene: Scene) : PushMaterial {
     open var sheen: PBRSheenConfiguration
     open var subSurface: PBRSubSurfaceConfiguration
     open var customShaderNameResolve: (shaderName: String, uniforms: Array<String>, uniformBuffers: Array<String>, samplers: Array<String>, defines: PBRMaterialDefines) -> String
-//    private var _rebuildInParallel: Boolean
+//     open var _rebuildInParallel: Boolean
+    override val hasRenderTargetTextures: Boolean
     override fun getClassName(): String
+    open var useLogarithmicDepth: Boolean
+    open var transparencyMode: Number?
+//     open var _disableAlphaBlending: Unit
     override fun needAlphaBlending(): Boolean
     override fun needAlphaBlendingForMesh(mesh: AbstractMesh): Boolean
     override fun needAlphaTesting(): Boolean
@@ -13596,14 +13645,14 @@ external open class PBRBaseMaterial(name: String, scene: Scene) : PushMaterial {
     open fun isReadyForSubMesh(mesh: AbstractMesh, subMesh: SubMesh, useInstances: Boolean = definedExternally): Boolean
     override fun isReadyForSubMesh(mesh: AbstractMesh, subMesh: BaseSubMesh, useInstances: Boolean): Boolean
     open fun isMetallicWorkflow(): Boolean
-//    private var _prepareEffect: Any
-//    private var _prepareDefines: Any
+//     open var _prepareEffect: Any
+//     open var _prepareDefines: Any
     open fun forceCompilation(mesh: AbstractMesh, onCompiled: (material: Material) -> Unit = definedExternally, options: IMaterialCompilationOptionsPartial = definedExternally)
     open fun buildUniformLayout()
     override fun unbind()
     override fun bindForSubMesh(world: Matrix, mesh: Mesh, subMesh: SubMesh)
     open fun getAnimatables(): Array<IAnimatable>
-//    private var _getReflectionTexture: Any
+//     open var _getReflectionTexture: Any
     override fun getActiveTextures(): Array<BaseTexture>
     override fun hasTexture(texture: BaseTexture): Boolean
     open fun dispose(forceDisposeEffect: Boolean = definedExternally, forceDisposeTextures: Boolean = definedExternally)
@@ -13626,28 +13675,32 @@ external open class PBRMaterial(name: String, scene: Scene) : PBRBaseMaterial {
     open var environmentIntensity: Number
     open var specularIntensity: Number
     open var disableBumpMap: Boolean
-    open var albedoTexture: BaseTexture
-    open var ambientTexture: BaseTexture
+    open var albedoTexture: BaseTexture?
+    open var ambientTexture: BaseTexture?
     open var ambientTextureStrength: Number
     open var ambientTextureImpactOnAnalyticalLights: Number
-    open var opacityTexture: BaseTexture
+    open var opacityTexture: BaseTexture?
     open var reflectionTexture: BaseTexture?
-    open var emissiveTexture: BaseTexture
-    open var reflectivityTexture: BaseTexture
-    open var metallicTexture: BaseTexture
+    open var emissiveTexture: BaseTexture?
+    open var reflectivityTexture: BaseTexture?
+    open var metallicTexture: BaseTexture?
     open var metallic: Number?
     open var roughness: Number?
     open var metallicF0Factor: Number
     open var useMetallicF0FactorFromMetallicTexture: Boolean
-    open var microSurfaceTexture: BaseTexture
-    open var bumpTexture: BaseTexture
-    open var lightmapTexture: BaseTexture
+    open var microSurfaceTexture: BaseTexture?
+    open var bumpTexture: BaseTexture?
+    open var lightmapTexture: BaseTexture?
+    open var refractionTexture: BaseTexture?
     open var ambientColor: Color3
     open var albedoColor: Color3
     open var reflectivityColor: Color3
     open var reflectionColor: Color3
     open var emissiveColor: Color3
     open var microSurface: Number
+    open var indexOfRefraction: Number
+    open var invertRefractionY: Boolean
+    open var linkRefractionWithTransparency: Boolean
     open var useLightmapAsShadowmap: Boolean
     open var useAlphaFromAlbedoTexture: Boolean
     open var forceAlphaTest: Boolean
@@ -13660,6 +13713,8 @@ external open class PBRMaterial(name: String, scene: Scene) : PBRBaseMaterial {
     open var useAmbientOcclusionFromMetallicTextureRed: Boolean
     open var useAmbientInGrayScale: Boolean
     open var useAutoMicroSurfaceFromReflectivityMap: Boolean
+    open var usePhysicalLightFalloff: Boolean
+    open var useGLTFLightFalloff: Boolean
     open var useRadianceOverAlpha: Boolean
     open var useObjectSpaceNormalMap: Boolean
     open var useParallax: Boolean
@@ -13679,6 +13734,14 @@ external open class PBRMaterial(name: String, scene: Scene) : PBRBaseMaterial {
     open var useHorizonOcclusion: Boolean
     open var useRadianceOcclusion: Boolean
     open var unlit: Boolean
+    open var imageProcessingConfiguration: ImageProcessingConfiguration
+    open var cameraColorCurvesEnabled: Boolean
+    open var cameraColorGradingEnabled: Boolean
+    open var cameraToneMappingEnabled: Boolean
+    open var cameraExposure: Number
+    open var cameraContrast: Number
+    open var cameraColorGradingTexture: BaseTexture?
+    open var cameraColorCurves: ColorCurves?
     override fun getClassName(): String
 	override fun clone(name: String): PBRMaterial
     override fun serialize(): Any
@@ -14846,7 +14909,7 @@ external open class HDRCubeTexture(url: String, scene: Scene, size: Number, noMi
 //    private var _onLoad: Any
 //    private var _onError: Any
     open var url: String
-    open var coordinatesMode: Number
+    override var coordinatesMode: Int
 //    private var _isBlocking: Boolean
 //    private var _rotationY: Number
     open var boundingBoxPosition: Vector3
@@ -15362,7 +15425,7 @@ external open class EquiRectangularCubeTexture(url: String, scene: Scene, size: 
 //    private var _width: Any
 //    private var _height: Any
     open var url: String
-    open var coordinatesMode: Number
+	override var coordinatesMode: Int
     open var loadImage: Any
     open var loadTexture: Any
     open var getFloat32ArrayFromArrayBuffer: Any
@@ -17188,42 +17251,56 @@ external open class Mesh(name: String, scene: Scene? = definedExternally, parent
     open fun getHierarchyEmittedParticleSystems(): Array<IParticleSystem>
     open fun simplify(settings: Array<ISimplificationSettings>, parallelProcessing: Boolean = definedExternally, simplificationType: SimplificationType = definedExternally, successCallback: (mesh: Mesh, submeshIndex: Number) -> Unit = definedExternally): Mesh
     open fun registerInstancedBuffer(kind: String, stride: Number)
-//    private var _userInstancedBuffersStorage: `T$15`
-//    private var _internalMeshDataInfo: Any
-//    private var _onBeforeDrawObserver: Any
+//     open var _userInstancedBuffersStorage: `T$162`
+//     open var _internalMeshDataInfo: Any
+    open val onBeforeRenderObservable: Observable<Mesh>
+    open val onBeforeBindObservable: Observable<Mesh>
+    open val onAfterRenderObservable: Observable<Mesh>
+    open val onBeforeDrawObservable: Observable<Mesh>
+//     open var _onBeforeDrawObserver: Any
+    override val hasInstances: Boolean
     open var delayLoadState: Number
     open var instances: Array<InstancedMesh>
     open var delayLoadingFile: String
-//    private var _binaryInfo: Any
+//     open var _binaryInfo: Any
     open var onLODLevelSelection: (distance: Number, mesh: Mesh, selectedLevel: Mesh?) -> Unit
-//    private var _creationDataStorage: _CreationDataStorage?
-//    private var _geometry: Geometry?
-//    private var _delayInfo: Array<String>
-//    private var _delayLoadingFunction: (any: Any, mesh: Mesh) -> Unit
-//    private var _instanceDataStorage: _InstanceDataStorage
-//    private var _effectiveMaterial: Any
-//    private var _shouldGenerateFlatShading: Boolean
-//    private var _originalBuilderSideOrientation: Number
+    open var morphTargetManager: MorphTargetManager?
+//     open var _creationDataStorage: _CreationDataStorage?
+//     open var _geometry: Geometry?
+//     open var _delayInfo: Array<String>
+//     open var _delayLoadingFunction: (any: Any, mesh: Mesh) -> Unit
+//     open var _instanceDataStorage: _InstanceDataStorage
+//     open var _effectiveMaterial: Any
+//     open var _shouldGenerateFlatShading: Boolean
+//     open var _originalBuilderSideOrientation: Number
     open var overrideMaterialSideOrientation: Number?
+    open val source: Mesh?
+    open var isUnIndexed: Boolean
+    open val worldMatrixInstancedBuffer: Float32Array
+    open var manualUpdateOfWorldMatrixInstancedBuffer: Boolean
     override fun instantiateHierarchy(newParent: TransformNode?, options: `T$9`, onNewNodeCreated: (source: TransformNode, clone: TransformNode) -> Unit): TransformNode?
     override fun getClassName(): String
+//     open var _isMesh: Boolean
     override fun toString(fullDetails: Boolean): String
 //    private override fun _unBindEffect()
+    open val hasLODLevels: Boolean
     open fun getLODLevels(): Array<MeshLODLevel>
-//    private var _sortLODLevels: Any
+//     open var _sortLODLevels: Any
     open fun addLODLevel(distance: Number, mesh: Mesh?): Mesh
     open fun getLODLevelAtDistance(distance: Number): Mesh?
     open fun removeLODLevel(mesh: Mesh): Mesh
     open fun getLOD(camera: Camera, boundingSphere: BoundingSphere = definedExternally): AbstractMesh?
+    open val geometry: Geometry?
     override fun getTotalVertices(): Number
-    override fun getVerticesData(kind: String, copyWhenShared: Boolean?, forceCopy: Boolean?): Any /*  Array<Number> | Float32Array  */
+    override fun getVerticesData(kind: String, copyWhenShared: Boolean, forceCopy: Boolean): dynamic /*  Array<Number> | Float32Array  */
     open fun getVertexBuffer(kind: String): VertexBuffer?
-    override fun isVerticesDataPresent(kind: String): Boolean
     open fun isVertexBufferUpdatable(kind: String): Boolean
     open fun getVerticesDataKinds(): Array<String>
     override fun getTotalIndices(): Number
-    override fun getIndices(copyWhenShared: Boolean?, forceCopy: Boolean?): Any /*  Array<Number> | Int32Array | Uint32Array | Uint16Array  */
+    override fun getIndices(copyWhenShared: Boolean, forceCopy: Boolean): dynamic /*  Array<Number> | Int32Array | Uint32Array | Uint16Array  */
+    override val isBlocked: Boolean
     open fun isReady(completeCheck: Boolean = definedExternally, forceInstanceSupport: Boolean = definedExternally): Boolean
+    open val areNormalsFrozen: Boolean
     open fun freezeNormals(): Mesh
     open fun unfreezeNormals(): Mesh
 //    private fun _preActivate(): Mesh
@@ -17232,23 +17309,11 @@ external open class Mesh(name: String, scene: Scene? = definedExternally, parent
     override fun refreshBoundingInfo(applySkeleton: Boolean): Mesh
 //    private fun _createGlobalSubMesh(force: Boolean): SubMesh?
     open fun subdivide(count: Number)
-    override fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean?, stride: Int?): AbstractMesh
-    override fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean?, stride: Int?): AbstractMesh
     open fun removeVerticesData(kind: String)
     open fun markVerticesDataAsUpdatable(kind: String, updatable: Boolean = definedExternally)
     open fun setVerticesBuffer(buffer: VertexBuffer): Mesh
-    override fun updateVerticesData(kind: String, data: Array<Number>, updateExtends: Boolean?, makeItUnique: Boolean?): AbstractMesh
-    override fun updateVerticesData(kind: String, data: Float32Array, updateExtends: Boolean?, makeItUnique: Boolean?): AbstractMesh
     open fun updateMeshPositions(positionFunction: (data: dynamic /* Array<Number> | Float32Array */) -> Unit, computeNormals: Boolean = definedExternally): Mesh
     open fun makeGeometryUnique(): Mesh
-	override fun setIndices(indices: Array<Number>, totalVertices:Int?, updatable: Boolean?): AbstractMesh
-	override fun setIndices(indices: Int32Array, totalVertices:Int?, updatable: Boolean?): AbstractMesh
-	override fun setIndices(indices: Uint32Array, totalVertices:Int?, updatable: Boolean?): AbstractMesh
-	override fun setIndices(indices: Uint16Array, totalVertices:Int?, updatable: Boolean?): AbstractMesh
-    override fun updateIndices(indices: Array<Number>, offset: Number, gpuMemoryOnly: Boolean): AbstractMesh
-    override fun updateIndices(indices: Int32Array, offset: Number, gpuMemoryOnly: Boolean): AbstractMesh
-    override fun updateIndices(indices: Uint32Array, offset: Number, gpuMemoryOnly: Boolean): AbstractMesh
-    override fun updateIndices(indices: Uint16Array, offset: Number, gpuMemoryOnly: Boolean): AbstractMesh
     open fun toLeftHanded(): Mesh
 //    private fun _bind(subMesh: SubMesh, effect: Effect, fillMode: Number): Mesh
 //    private fun _draw(subMesh: SubMesh, fillMode: Number, instancesCount: Number = definedExternally): Mesh
@@ -17264,22 +17329,22 @@ external open class Mesh(name: String, scene: Scene? = definedExternally, parent
 //    private override fun _freeze()
 //    private override fun _unFreeze()
     open fun render(subMesh: SubMesh, enableAlphaMode: Boolean, effectiveMeshReplacement: AbstractMesh = definedExternally): Mesh
-//    private var _onBeforeDraw: Any
+//     open var _onBeforeDraw: Any
     open fun cleanMatrixWeights()
     open var normalizeSkinFourWeights: Any
     open var normalizeSkinWeightsAndExtra: Any
     open fun validateSkinning(): `T$44`
 //    private fun _checkDelayState(): Mesh
-//    private var _queueLoad: Any
+//     open var _queueLoad: Any
     override fun isInFrustum(frustumPlanes: Array<Plane>): Boolean
     open fun setMaterialByID(id: String): Mesh
     open fun getAnimatables(): Array<IAnimatable>
     open fun bakeTransformIntoVertices(transform: Matrix): Mesh
     open fun bakeCurrentTransformIntoVertices(bakeIndependenlyOfChildren: Boolean = definedExternally): Mesh
+//    override val _positions: Nullable<@@ArraySugar<Vector3>>
 //    private fun _resetPointsArrayCache(): Mesh
 //    private override fun _generatePointsArray(): Boolean
     open fun clone(name: String = definedExternally, newParent: Node? = definedExternally, doNotCloneChildren: Boolean = definedExternally, clonePhysicsImpostor: Boolean = definedExternally): Mesh
-	override fun dispose()
     override fun dispose(doNotRecurse: Boolean, disposeMaterialAndTextures: Boolean)
 //    private fun _disposeInstanceSpecificData()
     open fun applyDisplacementMap(url: String, minHeight: Number, maxHeight: Number, onSuccess: (mesh: Mesh) -> Unit = definedExternally, uvOffset: Vector2 = definedExternally, uvScale: Vector2 = definedExternally, forceUpdate: Boolean = definedExternally): Mesh
@@ -17299,14 +17364,18 @@ external open class Mesh(name: String, scene: Scene? = definedExternally, parent
     open fun applySkeleton(skeleton: Skeleton): Mesh
     open fun addInstance(instance: InstancedMesh)
     open fun removeInstance(instance: InstancedMesh)
-    override fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean?, stride:Int?)
-    override fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean?, stride:Int?)
-    override fun updateVerticesData(kind: String, data: Array<Number>, updateExtends: Boolean?, makeItUnique: Boolean?)
-    override fun updateVerticesData(kind: String, data: Float32Array, updateExtends: Boolean?, makeItUnique: Boolean?)
-    override fun setIndices(indices: Array<Number>, totalVertices:Int?, updatable: Boolean?)
-    override fun setIndices(indices: Int32Array, totalVertices:Int?, updatable: Boolean?)
-    override fun setIndices(indices: Uint32Array, totalVertices:Int?, updatable: Boolean?)
-    override fun setIndices(indices: Uint16Array, totalVertices:Int?, updatable: Boolean?)
+
+//	override fun isVerticesDataPresent(kind: String): Boolean
+//	override fun getVerticesData(kind: String, copyWhenShared: Boolean, forceCopy: Boolean): Any /*  Array<Number> | Float32Array  */
+//	override fun getIndices(copyWhenShared: Boolean, forceCopy: Boolean): Any /*  Array<Number> | Int32Array | Uint32Array | Uint16Array  */
+//	override fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean, stride:Int)
+//	override fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean, stride:Int)
+//	override fun updateVerticesData(kind: String, data: Array<Number>, updateExtends: Boolean, makeItUnique: Boolean)
+//	override fun updateVerticesData(kind: String, data: Float32Array, updateExtends: Boolean, makeItUnique: Boolean)
+//	override fun setIndices(indices: Array<Number>, totalVertices:Int?, updatable: Boolean)
+//	override fun setIndices(indices: Int32Array, totalVertices:Int?, updatable: Boolean)
+//	override fun setIndices(indices: Uint32Array, totalVertices:Int?, updatable: Boolean)
+//	override fun setIndices(indices: Uint16Array, totalVertices:Int?, updatable: Boolean)
 
     companion object {
         var FRONTSIDE: Number
@@ -17329,10 +17398,10 @@ external open class Mesh(name: String, scene: Scene? = definedExternally, parent
         var RIGHT: Number
         var TOP: Number
         var BOTTOM: Number
-        fun _GetDefaultSideOrientation(orientation: Number = definedExternally): Number
-        fun _instancedMeshFactory(name: String, mesh: Mesh): InstancedMesh
-        fun _PhysicsImpostorParser(scene: Scene, physicObject: IPhysicsEnabledObject, jsonObject: Any): PhysicsImpostor
-        var _GroundMeshParser: (parsedMesh: Any, scene: Scene) -> Mesh
+//         fun _GetDefaultSideOrientation(orientation: Number = definedExternally): Number
+//         fun _instancedMeshFactory(name: String, mesh: Mesh): InstancedMesh
+//         fun _PhysicsImpostorParser(scene: Scene, physicObject: IPhysicsEnabledObject, jsonObject: Any): PhysicsImpostor
+//         var _GroundMeshParser: (parsedMesh: Any, scene: Scene) -> Mesh
         fun Parse(parsedMesh: Any, scene: Scene, rootUrl: String): Mesh
         fun CreateRibbon(name: String, pathArray: Array<Array<Vector3>>, closeArray: Boolean, closePath: Boolean, offset: Number, scene: Scene = definedExternally, updatable: Boolean = definedExternally, sideOrientation: Number = definedExternally, instance: Mesh = definedExternally): Mesh
         fun CreateDisc(name: String, radius: Number, tessellation: Number, scene: Scene? = definedExternally, updatable: Boolean = definedExternally, sideOrientation: Number = definedExternally): Mesh
@@ -19101,6 +19170,43 @@ external object outlineVertexShader {
 }
 
 external open class Scene(engine: Engine, options: SceneOptions = definedExternally) : AbstractScene, IAnimatable {
+	val frustumPlanes:Array<Plane>
+	val meshUnderPointer:AbstractMesh?
+	var pointerX:Number
+	var pointerY:Number
+	val totalVerticesPerfCounter: PerfCounter
+	val totalActiveIndicesPerfCounter: PerfCounter
+	val activeParticlesPerfCounter: PerfCounter
+	val activeBonesPerfCounter: PerfCounter
+	val isLoading:Boolean
+	val animatables:Array<Animatable>
+	val uid:String
+	val blockfreeActiveMeshesAndRenderingGroups:Boolean
+	val isDisposed:Boolean
+	val blockMaterialDirtyMechanism:Boolean
+//	val environmentTexture:BaseTexture?
+	val environmentIntensity:Number
+	val imageProcessingConfiguration: ImageProcessingConfiguration
+	var forceWireframe:Boolean
+	var skipFrustumClipping:Boolean
+	var forcePointsCloud:Boolean
+	var animationPropertiesOverride: AnimationPropertiesOverride?
+	val unTranslatedPointer:Vector2
+	var DragMovementThreshold:Number
+	var LongPressDelay:Number
+	var DoubleClickDelay:Number
+	var ExclusiveDoubleClickMode:Number
+	var useRightHandedSystem:Boolean
+	var fogEnabled:Boolean
+	var fogMode:Number
+	var shadowsEnabled:Boolean
+	val lightsEnabled:Boolean
+	var activeCamera:Camera?
+	var defaultMaterial:Material
+	var texturesEnabled:Boolean
+	var skeletonsEnabled:Boolean
+	val collisionCoordinator:ICollisionCoordinator
+
 	override var animations:Array<Animation>? = definedExternally
 	
 //    private var _outlineRenderer: OutlineRenderer
@@ -19589,38 +19695,46 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
 }
 
 external open class AbstractMesh(name: String, scene: Scene? = definedExternally) : TransformNode, IDisposable, ICullable, IGetSetVerticesData {
-//    private var _renderOutline: Boolean
+	override fun dispose()
+//     open var _renderOutline: Boolean
     open var renderOutline: Boolean
-//    private var _renderOverlay: Boolean
+//     open var _renderOverlay: Boolean
     open var renderOverlay: Boolean
-//    private var _showBoundingBox: Boolean
+//     open var _showBoundingBox: Boolean
     open var showBoundingBox: Boolean
-//    private var _physicsImpostor: PhysicsImpostor?
+//     open var _physicsImpostor: PhysicsImpostor?
     open var physicsImpostor: PhysicsImpostor?
     open fun getPhysicsImpostor(): PhysicsImpostor?
     open fun applyImpulse(force: Vector3, contactPoint: Vector3): AbstractMesh
     open fun setPhysicsLinkWith(otherMesh: Mesh, pivot1: Vector3, pivot2: Vector3, options: Any = definedExternally): AbstractMesh
-//    private var _disposePhysicsObserver: Observer<Node>?
-//    private var __occlusionDataStorage: _OcclusionDataStorage
-//    private var _occlusionDataStorage: _OcclusionDataStorage
+//     open var _disposePhysicsObserver: Observer<Node>?
+//     open var __occlusionDataStorage: _OcclusionDataStorage
+//     open var _occlusionDataStorage: _OcclusionDataStorage
     open var occlusionRetryCount: Number
     open var occlusionType: Number
     open var occlusionQueryAlgorithmType: Number
     open var isOccluded: Boolean
     open var isOcclusionQueryInProgress: Boolean
-//    private var _submeshesOctree: Octree<SubMesh>
+//     open var _submeshesOctree: Octree<SubMesh>
     open fun createOrUpdateSubmeshesOctree(maxCapacity: Number = definedExternally, maxDepth: Number = definedExternally): Octree<SubMesh>
     open var edgesRenderer: EdgesRenderer?
     open var instancedBuffers: Json
-//    private var _internalAbstractMeshDataInfo: _InternalAbstractMeshDataInfo
+//     open var _internalAbstractMeshDataInfo: _InternalAbstractMeshDataInfo
     open var cullingStrategy: Number
+    open val facetNb: Number
+    open var partitioningSubdivisions: Number
+    open var partitioningBBoxRatio: Number
+    open var mustDepthSortFacets: Boolean
+    open var facetDepthSortFrom: Vector3
+    open val isFacetDataEnabled: Boolean
 //    private override fun _updateNonUniformScalingState(value: Boolean): Boolean
     open var onCollideObservable: Observable<AbstractMesh>
     open var onCollisionPositionChangeObservable: Observable<Vector3>
     open var onMaterialChangedObservable: Observable<AbstractMesh>
     open var definedFacingForward: Boolean
-//    private var _occlusionQuery: WebGLQuery?
-//    private var _renderingGroup: RenderingGroup?
+//     open var _occlusionQuery: WebGLQuery?
+//     open var _renderingGroup: RenderingGroup?
+    open var visibility: Number
     open var alphaIndex: Number
     open var isVisible: Boolean
     open var isPickable: Boolean
@@ -19628,64 +19742,80 @@ external open class AbstractMesh(name: String, scene: Scene? = definedExternally
     open var isBlocker: Boolean
     open var enablePointerMoveEvents: Boolean
     open var renderingGroupId: Number
-//    private var _material: Any
+//     open var _material: Any
+    open var material: Material?
+    open var receiveShadows: Boolean
     open var outlineColor: Color3
     open var outlineWidth: Number
     open var overlayColor: Color3
     open var overlayAlpha: Number
+    open var hasVertexAlpha: Boolean
+    open var useVertexColors: Boolean
+    open var computeBonesUsingShaders: Boolean
+    open var numBoneInfluencers: Number
+    open var applyFog: Boolean
     open var useOctreeForRenderingSelection: Boolean
     open var useOctreeForPicking: Boolean
     open var useOctreeForCollisions: Boolean
+    open var layerMask: Number
     open var alwaysSelectAsActiveMesh: Boolean
     open var doNotSyncBoundingInfo: Boolean
     open var actionManager: AbstractActionManager?
-//    private var _meshCollisionData: Any
+//     open var _meshCollisionData: Any
     open var ellipsoid: Vector3
     open var ellipsoidOffset: Vector3
+    open var collisionMask: Number
+    open var collisionGroup: Number
     open var edgesWidth: Number
     open var edgesColor: Color4
-//    private var _edgesRenderer: IEdgesRenderer?
-//    private var _masterMesh: AbstractMesh?
-//    private var _boundingInfo: BoundingInfo?
-//    private var _renderId: Number
+//     open var _edgesRenderer: IEdgesRenderer?
+//     open var _masterMesh: AbstractMesh?
+//     open var _boundingInfo: BoundingInfo?
+//     open var _renderId: Number
     open var subMeshes: Array<SubMesh>
-//    private var _intersectionsInProgress: Array<AbstractMesh>
-//    private var _unIndexed: Boolean
-//    private var _lightSources: Array<Light>
-//    private var _waitingData: `T$56`
-//    private var _bonesTransformMatrices: Float32Array?
-//    private var _transformMatrixTexture: RawTexture?
+//     open var _intersectionsInProgress: Array<AbstractMesh>
+//     open var _unIndexed: Boolean
+//     open var _lightSources: Array<Light>
+    open val lightSources: Any
+//     open var _positions: Nullable<@@ArraySugar<Vector3>>
+//     open var _waitingData: `T$185`
+//     open var _bonesTransformMatrices: Float32Array?
+//     open var _transformMatrixTexture: RawTexture?
+    open var skeleton: Skeleton?
     open var onRebuildObservable: Observable<AbstractMesh>
     override fun getClassName(): String
     open fun toString(fullDetails: Boolean = definedExternally): String
 //    private override fun _getEffectiveParent(): Node?
 //    private override fun _getActionManagerForTrigger(trigger: Number, initialCall: Boolean): AbstractActionManager?
 //    private fun _rebuild()
-//    private fun _resyncLightSources()
+	open fun _resyncLightSources()
 //    private fun _resyncLightSource(light: Light)
 //    private fun _unBindEffect()
 //    private fun _removeLightSource(light: Light, dispose: Boolean)
-//    private var _markSubMeshesAsDirty: Any
+//     open var _markSubMeshesAsDirty: Any
 //    private fun _markSubMeshesAsLightDirty(dispose: Boolean = definedExternally)
 //    private fun _markSubMeshesAsAttributesDirty()
 //    private fun _markSubMeshesAsMiscDirty()
+    override var scaling: Vector3
+    open val isBlocked: Boolean
     open fun getLOD(camera: Camera): AbstractMesh?
     open fun getTotalVertices(): Number
     open fun getTotalIndices(): Number
-	override fun getIndices(copyWhenShared: Boolean?, forceCopy: Boolean?): Any /*  Array<Number> | Int32Array | Uint32Array | Uint16Array  */
-	override fun getVerticesData(kind: String, copyWhenShared: Boolean?  /* null */, forceCopy: Boolean?  /* null */): Any /*  Array<Number> | Float32Array  */
-	override fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean ?, stride: Int?): AbstractMesh
-	override fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean? , stride: Int?): AbstractMesh
-	override fun updateVerticesData(kind: String, data: Array<Number>, updateExtends: Boolean?, makeItUnique: Boolean?): AbstractMesh
-	override fun updateVerticesData(kind: String, data: Float32Array, updateExtends: Boolean?, makeItUnique: Boolean?): AbstractMesh
-	override fun setIndices(indices: Array<Number>, totalVertices: Int?, updatable:Boolean?): AbstractMesh
-	override fun setIndices(indices: Int32Array, totalVertices: Int?, updatable:Boolean?): AbstractMesh
-	override fun setIndices(indices: Uint32Array, totalVertices: Int?, updatable:Boolean?): AbstractMesh
-	override fun setIndices(indices: Uint16Array, totalVertices: Int?, updatable:Boolean?): AbstractMesh
-    override fun isVerticesDataPresent(kind: String): Boolean
+	override fun isVerticesDataPresent(kind: String): Boolean
+	override fun getVerticesData(kind: String, copyWhenShared: Boolean, forceCopy: Boolean): Any /*  Array<Number> | Float32Array  */
+	override fun getIndices(copyWhenShared: Boolean, forceCopy: Boolean): Any /*  Array<Number> | Int32Array | Uint32Array | Uint16Array  */
+	override fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean, stride:Int)
+	override fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean, stride:Int)
+	override fun updateVerticesData(kind: String, data: Array<Number>, updateExtends: Boolean, makeItUnique: Boolean)
+	override fun updateVerticesData(kind: String, data: Float32Array, updateExtends: Boolean, makeItUnique: Boolean)
+	override fun setIndices(indices: Array<Number>, totalVertices:Int?, updatable: Boolean)
+	override fun setIndices(indices: Int32Array, totalVertices:Int?, updatable: Boolean)
+	override fun setIndices(indices: Uint32Array, totalVertices:Int?, updatable: Boolean)
+	override fun setIndices(indices: Uint16Array, totalVertices:Int?, updatable: Boolean)
     open fun getBoundingInfo(): BoundingInfo
     override fun normalizeToUnitCube(includeDescendants: Boolean, ignoreRotation: Boolean, predicate: ((node: AbstractMesh) -> Boolean)?): AbstractMesh
     open fun setBoundingInfo(boundingInfo: BoundingInfo): AbstractMesh
+    open val useBones: Boolean
 //    private fun _preActivate()
 //    private fun _preActivateForIntermediateRendering(renderId: Number)
 //    private fun _activate(renderId: Number, intermediateRendering: Boolean): Boolean
@@ -19694,6 +19824,8 @@ external open class AbstractMesh(name: String, scene: Scene? = definedExternally
 //    private fun _unFreeze()
     override fun getWorldMatrix(): Matrix
 //    private override fun _getWorldMatrixDeterminant(): Number
+    open val isAnInstance: Boolean
+    open val hasInstances: Boolean
     open fun movePOV(amountRight: Number, amountUp: Number, amountForward: Number): AbstractMesh
     open fun calcMovePOV(amountRight: Number, amountUp: Number, amountForward: Number): Vector3
     open fun rotatePOV(flipBack: Number, twirlClockwise: Number, tiltRight: Number): AbstractMesh
@@ -19704,13 +19836,16 @@ external open class AbstractMesh(name: String, scene: Scene? = definedExternally
 //    private fun _updateBoundingInfo(): AbstractMesh
 //    private fun _updateSubMeshesBoundingInfo(matrix: DeepImmutable<Matrix>): AbstractMesh
 //    private override fun _afterComputeWorldMatrix()
+//     open var _effectiveMesh: AbstractMesh
     override fun isInFrustum(frustumPlanes: Array<Plane>): Boolean
     override fun isCompletelyInFrustum(frustumPlanes: Array<Plane>): Boolean
     open fun intersectsMesh(mesh: AbstractMesh, precise: Boolean = definedExternally, includeDescendants: Boolean = definedExternally): Boolean
     open fun intersectsMesh(mesh: SolidParticle, precise: Boolean = definedExternally, includeDescendants: Boolean = definedExternally): Boolean
     open fun intersectsPoint(point: Vector3): Boolean
+    open var checkCollisions: Boolean
+    open val collider: Collider?
     open fun moveWithCollisions(displacement: Vector3): AbstractMesh
-//    private var _onCollisionPositionChange: Any
+//     open var _onCollisionPositionChange: Any
 //    private fun _collideForSubMesh(subMesh: SubMesh, transformMatrix: Matrix, collider: Collider): AbstractMesh
 //    private fun _processCollisionsForSubMeshes(collider: Collider, transformMatrix: Matrix): AbstractMesh
 //    private fun _checkCollision(collider: Collider): AbstractMesh
@@ -19718,11 +19853,10 @@ external open class AbstractMesh(name: String, scene: Scene? = definedExternally
     open fun intersects(ray: Ray, fastCheck: Boolean = definedExternally, trianglePredicate: TrianglePickingPredicate = definedExternally): PickingInfo
     override fun clone(name: String, newParent: Node?, doNotCloneChildren: Boolean): AbstractMesh?
     open fun releaseSubMeshes(): AbstractMesh
-	override fun dispose()
     override fun dispose(doNotRecurse: Boolean, disposeMaterialAndTextures: Boolean)
     open fun addChild(mesh: AbstractMesh): AbstractMesh
     open fun removeChild(mesh: AbstractMesh): AbstractMesh
-//    private var _initFacetData: Any
+//     open var _initFacetData: Any
     open fun updateFacetData(): AbstractMesh
     open fun getFacetLocalNormals(): Array<Vector3>
     open fun getFacetLocalPositions(): Array<Vector3>
@@ -19756,6 +19890,12 @@ external open class AbstractMesh(name: String, scene: Scene? = definedExternally
         var CULLINGSTRATEGY_BOUNDINGSPHERE_ONLY: Number
         var CULLINGSTRATEGY_OPTIMISTIC_INCLUSION: Number
         var CULLINGSTRATEGY_OPTIMISTIC_INCLUSION_THEN_BSPHERE_ONLY: Number
+        val BILLBOARDMODE_NONE: Number
+        val BILLBOARDMODE_X: Number
+        val BILLBOARDMODE_Y: Number
+        val BILLBOARDMODE_Z: Number
+        val BILLBOARDMODE_ALL: Number
+        val BILLBOARDMODE_USE_POSITION: Number
     }
 }
 
