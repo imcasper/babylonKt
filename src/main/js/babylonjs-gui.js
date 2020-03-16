@@ -6797,12 +6797,16 @@ var Image = /** @class */ (function (_super) {
                 value = this._svgCheck(value);
             }
             this._domImage = document.createElement("img");
-            this._domImage.onload = function () {
-                _this._onImageLoaded();
-            };
             if (value) {
                 babylonjs_Misc_observable__WEBPACK_IMPORTED_MODULE_1__["Tools"].SetCorsBehavior(value, this._domImage);
                 this._domImage.src = value;
+            }
+            if (this._domImage.complete) {
+                _this._onImageLoaded();
+            } else {
+                this._domImage.onload = function () {
+                    _this._onImageLoaded();
+                };
             }
         },
         enumerable: true,

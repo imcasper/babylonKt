@@ -53,3 +53,6 @@ task copyBabylonJs(type: Copy, group: "Custom", description: "Copies original ba
     into "${buildDir}/classes/kotlin/js/main"
 }
 jsJar.dependsOn copyBabylonJs
+
+//  need clean source map every time
+compileKotlinJs.dependsOn cleanJsSourceMap

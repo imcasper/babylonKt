@@ -3776,8 +3776,8 @@ external open class InstancedMesh(name: String, source: Mesh) : AbstractMesh {
 //    private override fun _resyncLightSources()
 //    private override fun _resyncLightSource(light: Light)
 //    private override fun _removeLightSource(light: Light, dispose: Boolean)
-    override var receiveShadows: Boolean
-    override var material: Material?
+open var receiveShadows: Boolean
+	override val material: Material?
     override var visibility: Number
     override var skeleton: Skeleton?
     override var renderingGroupId: Number
@@ -12681,25 +12681,27 @@ external open class GizmoManager(scene: Scene) : IDisposable {
 }
 
 external open class DirectionalLight(name: String, direction: Vector3, scene: Scene) : ShadowLight {
-//    private var _shadowFrustumSize: Any
-//    private var _shadowOrthoScale: Any
-    open var autoUpdateExtends: Boolean
-    open var autoCalcShadowZBounds: Boolean
-//    private var _orthoLeft: Any
-//    private var _orthoRight: Any
-//    private var _orthoTop: Any
-//    private var _orthoBottom: Any
-    override fun getClassName(): String
-    override fun getTypeID(): Number
-//    private override fun _setDefaultShadowProjectionMatrix(matrix: Matrix, viewMatrix: Matrix, renderList: Array<AbstractMesh>)
+	//     open var _shadowFrustumSize: Any
+	open var shadowFrustumSize: Number
+	//     open var _shadowOrthoScale: Any
+	open var shadowOrthoScale: Number
+	open var autoUpdateExtends: Boolean
+	open var autoCalcShadowZBounds: Boolean
+	//     open var _orthoLeft: Any
+//     open var _orthoRight: Any
+//     open var _orthoTop: Any
+//     open var _orthoBottom: Any
+	override fun getClassName(): String
+	override fun getTypeID(): Number
+	//    private override fun _setDefaultShadowProjectionMatrix(matrix: Matrix, viewMatrix: Matrix, renderList: Array<AbstractMesh>)
 //    private fun _setDefaultFixedFrustumShadowProjectionMatrix(matrix: Matrix)
 //    private fun _setDefaultAutoExtendShadowProjectionMatrix(matrix: Matrix, viewMatrix: Matrix, renderList: Array<AbstractMesh>)
 //    private override fun _buildUniformLayout()
-    override fun transferToEffect(effect: Effect, lightIndex: String): DirectionalLight
-    override fun transferToNodeMaterialEffect(effect: Effect, lightDataUniformName: String): Light
-    override fun getDepthMinZ(activeCamera: Camera): Number
-    override fun getDepthMaxZ(activeCamera: Camera): Number
-    override fun prepareLightSpecificDefines(defines: Any, lightIndex: Number)
+	override fun transferToEffect(effect: Effect, lightIndex: String): DirectionalLight
+	override fun transferToNodeMaterialEffect(effect: Effect, lightDataUniformName: String): Light
+	override fun getDepthMinZ(activeCamera: Camera): Number
+	override fun getDepthMaxZ(activeCamera: Camera): Number
+	override fun prepareLightSpecificDefines(defines: Any, lightIndex: Number)
 }
 
 external interface `T$103` {
@@ -14789,53 +14791,65 @@ external open class DepthReducer(camera: Camera) : MinMaxReducer {
 external open class CascadedShadowGenerator(mapSize: Number, light: DirectionalLight, usefulFloatFirst: Boolean = definedExternally) : ShadowGenerator {
 //    private override fun _validateFilter(filter: Number): Number
     open var penumbraDarkness: Number
-//    private var _numCascades: Any
+//     open var _numCascades: Any
+    open var numCascades: Number
     open var stabilizeCascades: Boolean
-//    private var _freezeShadowCastersBoundingInfo: Any
-//    private var _freezeShadowCastersBoundingInfoObservable: Any
-//    private var _scbiMin: Any
-//    private var _scbiMax: Any
+//     open var _freezeShadowCastersBoundingInfo: Any
+//     open var _freezeShadowCastersBoundingInfoObservable: Any
+    open var freezeShadowCastersBoundingInfo: Boolean
+//     open var _scbiMin: Any
+//     open var _scbiMax: Any
 //    private fun _computeShadowCastersBoundingInfo()
-//    private var _shadowCastersBoundingInfo: BoundingInfo
-//    private var _breaksAreDirty: Boolean
-//    private var _minDistance: Number
-//    private var _maxDistance: Number
+//     open var _shadowCastersBoundingInfo: BoundingInfo
+    open var shadowCastersBoundingInfo: BoundingInfo
+//     open var _breaksAreDirty: Boolean
+//     open var _minDistance: Number
+//     open var _maxDistance: Number
     open fun setMinMaxDistance(min: Number, max: Number)
+    open val minDistance: Number
+    open val maxDistance: Number
     override fun getClassName(): String
-//    private var _cascadeMinExtents: Any
-//    private var _cascadeMaxExtents: Any
+//     open var _cascadeMinExtents: Any
+//     open var _cascadeMaxExtents: Any
     open fun getCascadeMinExtents(cascadeIndex: Number): Vector3?
     open fun getCascadeMaxExtents(cascadeIndex: Number): Vector3?
-//    private var _cascades: Any
-//    private var _currentLayer: Any
-//    private var _viewSpaceFrustumsZ: Any
-//    private var _viewMatrices: Any
-//    private var _projectionMatrices: Any
-//    private var _transformMatrices: Any
-//    private var _transformMatricesAsArray: Any
-//    private var _frustumLengths: Any
-//    private var _lightSizeUVCorrection: Any
-//    private var _depthCorrection: Any
-//    private var _frustumCornersWorldSpace: Any
-//    private var _frustumCenter: Any
-//    private var _shadowCameraPos: Any
-//    private var _shadowMaxZ: Any
-//    private var _debug: Boolean
-//    private var _depthClamp: Any
-//    private var _cascadeBlendPercentage: Any
-//    private var _lambda: Any
+//     open var _cascades: Any
+//     open var _currentLayer: Any
+//     open var _viewSpaceFrustumsZ: Any
+//     open var _viewMatrices: Any
+//     open var _projectionMatrices: Any
+//     open var _transformMatrices: Any
+//     open var _transformMatricesAsArray: Any
+//     open var _frustumLengths: Any
+//     open var _lightSizeUVCorrection: Any
+//     open var _depthCorrection: Any
+//     open var _frustumCornersWorldSpace: Any
+//     open var _frustumCenter: Any
+//     open var _shadowCameraPos: Any
+//     open var _shadowMaxZ: Any
+    open var shadowMaxZ: Number
+//     open var _debug: Boolean
+    open var debug: Boolean
+//     open var _depthClamp: Any
+    open var depthClamp: Boolean
+//     open var _cascadeBlendPercentage: Any
+    open var cascadeBlendPercentage: Number
+//     open var _lambda: Any
+    open var lambda: Number
     open fun getCascadeViewMatrix(cascadeNum: Number): Matrix?
     open fun getCascadeProjectionMatrix(cascadeNum: Number): Matrix?
     open fun getCascadeTransformMatrix(cascadeNum: Number): Matrix?
-//    private var _depthRenderer: Any
+//     open var _depthRenderer: Any
     open fun setDepthRenderer(depthRenderer: DepthRenderer?)
-//    private var _depthReducer: Any
-//    private var _autoCalcDepthBounds: Any
+//     open var _depthReducer: Any
+//     open var _autoCalcDepthBounds: Any
+    open var autoCalcDepthBounds: Boolean
+    open var autoCalcDepthBoundsRefreshRate: Number
     open fun splitFrustum()
-//    private var _splitFrustum: Any
-//    private var _computeMatrices: Any
-//    private var _computeFrustumInWorldSpace: Any
-//    private var _computeCascadeFrustum: Any
+//     open var _splitFrustum: Any
+//     open var _computeMatrices: Any
+//     open var _computeFrustumInWorldSpace: Any
+//     open var _computeCascadeFrustum: Any
 //    private override fun _initializeGenerator()
 //    private override fun _createTargetRenderTexture()
 //    private override fun _initializeShadowMap()
@@ -14853,7 +14867,7 @@ external open class CascadedShadowGenerator(mapSize: Number, light: DirectionalL
         var DEFAULT_CASCADES_COUNT: Number
         var MIN_CASCADES_COUNT: Number
         var MAX_CASCADES_COUNT: Number
-        var _SceneComponentInitialization: (scene: Scene) -> Unit
+//         var _SceneComponentInitialization: (scene: Scene) -> Unit
         fun Parse(parsedShadowGenerator: Any, scene: Scene): ShadowGenerator
     }
 }
@@ -17247,6 +17261,7 @@ external enum class SimplificationType {
 }
 
 external open class Mesh(name: String, scene: Scene? = definedExternally, parent: Node? = definedExternally, source: Mesh? = definedExternally, doNotCloneChildren: Boolean = definedExternally, clonePhysicsImpostor: Boolean = definedExternally) : AbstractMesh, IGetSetVerticesData {
+	override var material: Material?
     open fun getEmittedParticleSystems(): Array<IParticleSystem>
     open fun getHierarchyEmittedParticleSystems(): Array<IParticleSystem>
     open fun simplify(settings: Array<ISimplificationSettings>, parallelProcessing: Boolean = definedExternally, simplificationType: SimplificationType = definedExternally, successCallback: (mesh: Mesh, submeshIndex: Number) -> Unit = definedExternally): Mesh
@@ -17376,6 +17391,8 @@ external open class Mesh(name: String, scene: Scene? = definedExternally, parent
 //	override fun setIndices(indices: Int32Array, totalVertices:Int?, updatable: Boolean)
 //	override fun setIndices(indices: Uint32Array, totalVertices:Int?, updatable: Boolean)
 //	override fun setIndices(indices: Uint16Array, totalVertices:Int?, updatable: Boolean)
+
+	open var receiveShadows: Boolean = definedExternally
 
     companion object {
         var FRONTSIDE: Number
@@ -19695,6 +19712,7 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
 }
 
 external open class AbstractMesh(name: String, scene: Scene? = definedExternally) : TransformNode, IDisposable, ICullable, IGetSetVerticesData {
+	val material: Material?
 	override fun dispose()
 //     open var _renderOutline: Boolean
     open var renderOutline: Boolean
@@ -19743,8 +19761,8 @@ external open class AbstractMesh(name: String, scene: Scene? = definedExternally
     open var enablePointerMoveEvents: Boolean
     open var renderingGroupId: Number
 //     open var _material: Any
-    open var material: Material?
-    open var receiveShadows: Boolean
+//    open var material: Material?
+
     open var outlineColor: Color3
     open var outlineWidth: Number
     open var overlayColor: Color3
@@ -19793,9 +19811,9 @@ external open class AbstractMesh(name: String, scene: Scene? = definedExternally
 //    private fun _unBindEffect()
 //    private fun _removeLightSource(light: Light, dispose: Boolean)
 //     open var _markSubMeshesAsDirty: Any
-//    private fun _markSubMeshesAsLightDirty(dispose: Boolean = definedExternally)
+    fun _markSubMeshesAsLightDirty(dispose: Boolean = definedExternally)
 //    private fun _markSubMeshesAsAttributesDirty()
-//    private fun _markSubMeshesAsMiscDirty()
+    fun _markSubMeshesAsMiscDirty()
     override var scaling: Vector3
     open val isBlocked: Boolean
     open fun getLOD(camera: Camera): AbstractMesh?
