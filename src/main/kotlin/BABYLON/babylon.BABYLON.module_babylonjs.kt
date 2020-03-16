@@ -11929,16 +11929,12 @@ external open class NullEngineOptions {
 }
 
 external open class NullEngine(options: NullEngineOptions = definedExternally) : Engine {
-//    private var _options: Any
+//     open var _options: Any
     override fun isDeterministicLockStep(): Boolean
     override fun getLockstepMaxSteps(): Number
     override fun getHardwareScalingLevel(): Number
-    override fun createVertexBuffer(vertices: Array<Number>): DataBuffer
-    open fun createVertexBuffer(vertices: Float32Array): DataBuffer
-    open fun createIndexBuffer(indices: Array<Number>): DataBuffer
-    open fun createIndexBuffer(indices: Int32Array): DataBuffer
-    open fun createIndexBuffer(indices: Uint32Array): DataBuffer
-    open fun createIndexBuffer(indices: Uint16Array): DataBuffer
+//    override fun createVertexBuffer(vertices: FloatArray): DataBuffer
+//    open fun createIndexBuffer(indices: IndicesArray): DataBuffer
     open fun clear(color: IColor4Like, backBuffer: Boolean, depth: Boolean, stencil: Boolean = definedExternally)
     override fun getRenderWidth(useScreen: Boolean): Number
     override fun getRenderHeight(useScreen: Boolean): Number
@@ -11969,7 +11965,7 @@ external open class NullEngine(options: NullEngineOptions = definedExternally) :
     open fun setFloat3(uniform: WebGLUniformLocation, x: Number, y: Number, z: Number)
     open fun setBool(uniform: WebGLUniformLocation, bool: Number)
     open fun setFloat4(uniform: WebGLUniformLocation, x: Number, y: Number, z: Number, w: Number)
-    override fun setAlphaMode(mode: Number, noDepthWriteChange: Boolean)
+    open fun setAlphaMode(mode: Number, noDepthWriteChange: Boolean = definedExternally)
     open fun bindBuffers(vertexBuffers: `T$22`, indexBuffer: DataBuffer, effect: Effect)
     override fun wipeCaches(bruteForce: Boolean)
     override fun draw(useTriangles: Boolean, indexStart: Number, indexCount: Number, instancesCount: Number)
@@ -11977,27 +11973,20 @@ external open class NullEngine(options: NullEngineOptions = definedExternally) :
     override fun drawArraysType(fillMode: Number, verticesStart: Number, verticesCount: Number, instancesCount: Number)
 //    private override fun _createTexture(): WebGLTexture
 //    private override fun _releaseTexture(texture: InternalTexture)
-    open fun createTexture(urlArg: String, noMipmap: Boolean, invertY: Boolean, scene: Scene, samplingMode: Number = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally, buffer: dynamic /*  ArrayBuffer | HTMLImageElement  */ = definedExternally, fallBack: InternalTexture = definedExternally, format: Number = definedExternally): InternalTexture
+    override fun createTexture(urlArg: String?, noMipmap: Boolean, invertY: Boolean, scene: ISceneLike?, samplingMode: Number, onLoad: (() -> Unit)?, onError: ((message: String, exception: Any) -> Unit)?, buffer: dynamic /*  String | ArrayBuffer | ArrayBufferView | HTMLImageElement | Blob | ImageBitmap  */, fallback: InternalTexture?, format: Number?, forcedExtension: String?, mimeType: String): InternalTexture
     open fun createRenderTargetTexture(size: Any, options: Boolean): InternalTexture
-    override fun createRenderTargetTexture(size: Number, options: Boolean): InternalTexture
     open fun createRenderTargetTexture(size: Any, options: RenderTargetCreationOptions): InternalTexture
-    override fun createRenderTargetTexture(size: Number, options: RenderTargetCreationOptions): InternalTexture
     open fun updateTextureSamplingMode(samplingMode: Number, texture: InternalTexture)
     open fun bindFramebuffer(texture: InternalTexture, faceIndex: Number = definedExternally, requiredWidth: Number = definedExternally, requiredHeight: Number = definedExternally, forceFullscreenViewport: Boolean = definedExternally)
     override fun unBindFramebuffer(texture: InternalTexture, disableGenerateMipMaps: Boolean, onBeforeUnbind: () -> Unit)
-    override fun createDynamicVertexBuffer(vertices: Array<Number>): DataBuffer
-    open fun createDynamicVertexBuffer(vertices: Float32Array): DataBuffer
+//    override fun createDynamicVertexBuffer(vertices: FloatArray): DataBuffer
     open fun updateDynamicTexture(texture: InternalTexture?, canvas: HTMLCanvasElement, invertY: Boolean, premulAlpha: Boolean = definedExternally, format: Number = definedExternally)
     override fun areAllEffectsReady(): Boolean
     override fun getError(): Number
 //    private override fun _getUnpackAlignement(): Number
 //    private override fun _unpackFlipY(value: Boolean)
-    open fun updateDynamicIndexBuffer(indexBuffer: WebGLBuffer, indices: Array<Number>, offset: Number = definedExternally)
-    open fun updateDynamicIndexBuffer(indexBuffer: WebGLBuffer, indices: Int32Array, offset: Number = definedExternally)
-    open fun updateDynamicIndexBuffer(indexBuffer: WebGLBuffer, indices: Uint32Array, offset: Number = definedExternally)
-    open fun updateDynamicIndexBuffer(indexBuffer: WebGLBuffer, indices: Uint16Array, offset: Number = definedExternally)
-    open fun updateDynamicVertexBuffer(vertexBuffer: WebGLBuffer, vertices: Array<Number>, byteOffset: Number = definedExternally, byteLength: Number = definedExternally)
-    open fun updateDynamicVertexBuffer(vertexBuffer: WebGLBuffer, vertices: Float32Array, byteOffset: Number = definedExternally, byteLength: Number = definedExternally)
+//    open fun updateDynamicIndexBuffer(indexBuffer: WebGLBuffer, indices: IndicesArray, offset: Number = definedExternally)
+  //  open fun updateDynamicVertexBuffer(vertexBuffer: WebGLBuffer, vertices: FloatArray, byteOffset: Number = definedExternally, byteLength: Number = definedExternally)
 //    private fun _bindTextureDirectly(target: Number, texture: InternalTexture): Boolean
 //    private fun _bindTexture(channel: Number, texture: InternalTexture)
 //    private fun _deleteBuffer(buffer: WebGLBuffer)
@@ -12267,21 +12256,16 @@ external open class NativeTexture : InternalTexture {
 }
 
 external open class NativeEngine : Engine {
-//    private var _native: Any
+//     open var _native: Any
     open var INVALID_HANDLE: Any
     override fun getHardwareScalingLevel(): Number
 //    private override fun _queueNewFrame(bindedRenderFunction: Any, requester: Any): Number
 //    private override fun _bindUnboundFramebuffer(framebuffer: WebGLFramebuffer?)
     override fun getHostDocument(): Document?
     override fun clear(color: IColor4Like?, backBuffer: Boolean, depth: Boolean, stencil: Boolean)
-    open fun createIndexBuffer(indices: Array<Number>): NativeDataBuffer
-    open fun createIndexBuffer(indices: Int32Array): NativeDataBuffer
-    open fun createIndexBuffer(indices: Uint32Array): NativeDataBuffer
-    open fun createIndexBuffer(indices: Uint16Array): NativeDataBuffer
-    override fun createVertexBuffer(data: Array<Number>): NativeDataBuffer
-    override fun createVertexBuffer(data: ArrayBuffer): NativeDataBuffer
-    override fun createVertexBuffer(data: ArrayBufferView): NativeDataBuffer
-	open fun recordVertexArrayObject(vertexBuffers: `T$22`, indexBuffer: NativeDataBuffer?, effect: Effect): WebGLVertexArrayObject
+//    open fun createIndexBuffer(indices: IndicesArray): NativeDataBuffer
+//    override fun createVertexBuffer(data: DataArray): NativeDataBuffer
+//    override fun recordVertexArrayObject(vertexBuffers: `T$22`, indexBuffer: DataBuffer?, effect: Effect): WebGLVertexArrayObject
     open fun bindVertexArrayObject(vertexArray: WebGLVertexArrayObject)
     override fun releaseVertexArrayObject(vertexArray: WebGLVertexArrayObject)
     override fun getAttributes(pipelineContext: IPipelineContext, attributesNames: Array<String>): Array<Number>
@@ -12291,13 +12275,13 @@ external open class NativeEngine : Engine {
 //    private override fun _preparePipelineContext(pipelineContext: IPipelineContext, vertexSourceCode: String, fragmentSourceCode: String, createAsRaw: Boolean, rebuildRebind: Any, defines: String?, transformFeedbackVaryings: Array<String>?)
 //    private override fun _isRenderingStateCompiled(pipelineContext: IPipelineContext): Boolean
 //    private override fun _executeWhenRenderingStateIsCompiled(pipelineContext: IPipelineContext, action: () -> Unit)
-	override fun createRawShaderProgram(pipelineContext: IPipelineContext, vertexCode: String, fragmentCode: String, context: WebGLRenderingContext, transformFeedbackVaryings: Array<String>?): Any
-	override fun createShaderProgram(pipelineContext: IPipelineContext, vertexCode: String, fragmentCode: String, defines: String?, context: WebGLRenderingContext, transformFeedbackVaryings: Array<String>?): Any
+//    open fun createRawShaderProgram(pipelineContext: IPipelineContext, vertexCode: String, fragmentCode: String, context: WebGLRenderingContext = definedExternally, transformFeedbackVaryings: Array<String>? = definedExternally): Any
+  //  open fun createShaderProgram(pipelineContext: IPipelineContext, vertexCode: String, fragmentCode: String, defines: String?, context: WebGLRenderingContext = definedExternally, transformFeedbackVaryings: Array<String>? = definedExternally): Any
 //    private override fun _setProgram(program: WebGLProgram)
 //    private override fun _releaseEffect(effect: Effect)
 //    private override fun _deletePipelineContext(pipelineContext: IPipelineContext)
     override fun getUniforms(pipelineContext: IPipelineContext, uniformsNames: Array<String>): Array<WebGLUniformLocation>
-    override fun bindUniformBlock(pipelineContext: IPipelineContext, blockName: String, index: Number)
+    open fun bindUniformBlock(pipelineContext: IPipelineContext, blockName: String, index: Number)
     override fun bindSamplers(effect: Effect)
     open fun setMatrix(uniform: WebGLUniformLocation, matrix: Matrix)
     override fun getRenderWidth(useScreen: Boolean): Number
@@ -12311,9 +12295,9 @@ external open class NativeEngine : Engine {
     override fun setDepthWrite(enable: Boolean)
     override fun setColorWrite(enable: Boolean)
     override fun getColorWrite(): Boolean
-    override fun setAlphaConstants(r: Number, g: Number, b: Number, a: Number)
-    override fun setAlphaMode(mode: Number, noDepthWriteChange: Boolean)
-    override fun getAlphaMode(): Number
+    open fun setAlphaConstants(r: Number, g: Number, b: Number, a: Number)
+    open fun setAlphaMode(mode: Number, noDepthWriteChange: Boolean = definedExternally)
+    open fun getAlphaMode(): Number
     open fun setInt(uniform: WebGLUniformLocation, int: Number)
     open fun setIntArray(uniform: WebGLUniformLocation, array: Int32Array)
     open fun setIntArray2(uniform: WebGLUniformLocation, array: Int32Array)
@@ -12339,29 +12323,22 @@ external open class NativeEngine : Engine {
     override fun wipeCaches(bruteForce: Boolean)
 //    private override fun _createTexture(): WebGLTexture
 //    private override fun _deleteTexture(texture: WebGLTexture?)
-    open fun createTexture(urlArg: String?, noMipmap: Boolean, invertY: Boolean, scene: Scene?, samplingMode: Number = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally, buffer: dynamic /*  String | ArrayBuffer | Blob  */ = definedExternally, fallback: InternalTexture? = definedExternally, format: Number? = definedExternally, forcedExtension: String? = definedExternally): InternalTexture
+    override fun createTexture(urlArg: String?, noMipmap: Boolean, invertY: Boolean, scene: ISceneLike?, samplingMode: Number, onLoad: (() -> Unit)?, onError: ((message: String, exception: Any) -> Unit)?, buffer: dynamic /*  String | ArrayBuffer | ArrayBufferView | HTMLImageElement | Blob | ImageBitmap  */, fallback: InternalTexture?, format: Number?, forcedExtension: String?, mimeType: String): InternalTexture
     open fun createCubeTexture(rootUrl: String, scene: Scene?, files: Array<String>?, noMipmap: Boolean = definedExternally, onLoad: ((data: Any) -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally, format: Number = definedExternally, forcedExtension: Any = definedExternally, createPolynomials: Boolean = definedExternally, lodScale: Number = definedExternally, lodOffset: Number = definedExternally, fallback: InternalTexture? = definedExternally): InternalTexture
-//    private var _getSamplingFilter: Any
-    override fun createRenderTargetTexture(size: Number, options: Boolean): NativeTexture
-    override fun createRenderTargetTexture(size: Number, options: RenderTargetCreationOptions): NativeTexture
+//     open var _getSamplingFilter: Any
+    open fun createRenderTargetTexture(size: Number, options: Boolean): NativeTexture
+    open fun createRenderTargetTexture(size: Number, options: RenderTargetCreationOptions): NativeTexture
     open fun createRenderTargetTexture(size: `T$19`, options: Boolean): NativeTexture
     open fun createRenderTargetTexture(size: `T$19`, options: RenderTargetCreationOptions): NativeTexture
     open fun updateTextureSamplingMode(samplingMode: Number, texture: InternalTexture)
     open fun bindFramebuffer(texture: InternalTexture, faceIndex: Number = definedExternally, requiredWidth: Number = definedExternally, requiredHeight: Number = definedExternally, forceFullscreenViewport: Boolean = definedExternally)
     override fun unBindFramebuffer(texture: InternalTexture, disableGenerateMipMaps: Boolean, onBeforeUnbind: () -> Unit)
-    override fun createDynamicVertexBuffer(data: Array<Number>): DataBuffer
-    override fun createDynamicVertexBuffer(data: ArrayBuffer): DataBuffer
-    override fun createDynamicVertexBuffer(data: ArrayBufferView): DataBuffer
-    override fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: Array<Number>, offset: Number)
-    override fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: Int32Array, offset: Number)
-    override fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: Uint32Array, offset: Number)
-    override fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: Uint16Array, offset: Number)
-    override fun updateDynamicVertexBuffer(vertexBuffer: DataBuffer, data: Array<Number>, byteOffset: Number, byteLength: Number)
-    override fun updateDynamicVertexBuffer(vertexBuffer: DataBuffer, data: ArrayBuffer, byteOffset: Number, byteLength: Number)
-    override fun updateDynamicVertexBuffer(vertexBuffer: DataBuffer, data: ArrayBufferView, byteOffset: Number, byteLength: Number)
+//    override fun createDynamicVertexBuffer(data: DataArray): DataBuffer
+//    override fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: IndicesArray, offset: Number)
+//    override fun updateDynamicVertexBuffer(vertexBuffer: DataBuffer, data: DataArray, byteOffset: Number, byteLength: Number)
 //    private override fun _setTexture(channel: Number, texture: BaseTexture?, isPartOfTextureArray: Boolean, depthStencilTexture: Boolean): Boolean
-//    private var _updateAnisotropicLevel: Any
-//    private var _getAddressMode: Any
+//     open var _updateAnisotropicLevel: Any
+//     open var _getAddressMode: Any
 //    private fun _bindTexture(channel: Number, texture: InternalTexture)
 //    private fun _deleteBuffer(buffer: NativeDataBuffer)
 //    private override fun _deleteBuffer(buffer: DataBuffer)
@@ -12372,7 +12349,7 @@ external open class NativeEngine : Engine {
 //    private override fun _uploadImageToTexture(texture: InternalTexture, image: HTMLImageElement, faceIndex: Number, lod: Number)
 
     companion object {
-        var _GetNativeTextureFormat: Any
+//         var _GetNativeTextureFormat: Any
     }
 }
 
@@ -13796,49 +13773,8 @@ external open class DDSTools {
 }
 
 external open class ThinEngine(canvasOrContext: dynamic /*  HTMLCanvasElement | WebGLRenderingContext | WebGL2RenderingContext  */, antialias: Boolean = definedExternally, options: EngineOptions = definedExternally, adaptToDeviceRatio: Boolean = definedExternally) {
-    open fun createPrefilteredCubeTexture(rootUrl: String, scene: Scene?, lodScale: Number, lodOffset: Number, onLoad: ((internalTexture: InternalTexture?) -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally, format: Number = definedExternally, forcedExtension: Any = definedExternally, createPolynomials: Boolean = definedExternally): InternalTexture
-    open fun unBindMultiColorAttachmentFramebuffer(textures: Array<InternalTexture>, disableGenerateMipMaps: Boolean, onBeforeUnbind: () -> Unit = definedExternally)
-    open fun createMultipleRenderTarget(size: Any, options: IMultiRenderTargetOptions): Array<InternalTexture>
-    open fun updateMultipleRenderTargetTextureSampleCount(textures: Array<InternalTexture>?, samples: Number): Number
-    open fun setAlphaConstants(r: Number, g: Number, b: Number, a: Number)
-    open fun setAlphaMode(mode: Number, noDepthWriteChange: Boolean = definedExternally)
-    open fun getAlphaMode(): Number
-    open fun setAlphaEquation(equation: Number)
-    open fun getAlphaEquation(): Number
-    open fun updateVideoTexture(texture: InternalTexture?, video: HTMLVideoElement, invertY: Boolean)
-    open fun createRenderTargetCubeTexture(size: Number, options: RenderTargetCreationOptionsPartial = definedExternally): InternalTexture
-    open fun createDynamicTexture(width: Number, height: Number, generateMipMaps: Boolean, samplingMode: Number): InternalTexture
-    open fun updateDynamicTexture(texture: InternalTexture?, canvas: HTMLCanvasElement, invertY: Boolean, premulAlpha: Boolean = definedExternally, format: Number = definedExternally, forceBindTexture: Boolean = definedExternally)
-    open fun updateDynamicTexture(texture: InternalTexture?, canvas: OffscreenCanvas, invertY: Boolean, premulAlpha: Boolean = definedExternally, format: Number = definedExternally, forceBindTexture: Boolean = definedExternally)
-    open fun createRenderTargetTexture(size: Number, options: Boolean): InternalTexture
-    open fun createRenderTargetTexture(size: Number, options: RenderTargetCreationOptions): InternalTexture
-    open fun createRenderTargetTexture(size: `T$6`, options: Boolean): InternalTexture
-    open fun createRenderTargetTexture(size: `T$6`, options: RenderTargetCreationOptions): InternalTexture
-    open fun createDepthStencilTexture(size: Number, options: DepthTextureCreationOptions): InternalTexture
-    open fun createDepthStencilTexture(size: `T$6`, options: DepthTextureCreationOptions): InternalTexture
-//    private fun _createDepthStencilTexture(size: Number, options: DepthTextureCreationOptions): InternalTexture
-//    private fun _createDepthStencilTexture(size: `T$6`, options: DepthTextureCreationOptions): InternalTexture
-//    private fun _createDepthStencilCubeTexture(size: Number, options: DepthTextureCreationOptions): InternalTexture
-    open fun createCubeTexture(rootUrl: String, scene: Scene?, files: Array<String>?, noMipmap: Boolean?, onLoad: ((data: Any) -> Unit)?, onError: ((message: String, exception: Any) -> Unit)?, format: Number?, forcedExtension: Any, createPolynomials: Boolean, lodScale: Number, lodOffset: Number, fallback: InternalTexture?, excludeLoaders: Array<IInternalTextureLoader>): InternalTexture
-    open fun createCubeTexture(rootUrl: String, scene: Scene?, files: Array<String>?, noMipmap: Boolean, onLoad: ((data: Any) -> Unit)?, onError: ((message: String, exception: Any) -> Unit)?, format: Number?, forcedExtension: Any): InternalTexture
-    open fun createCubeTexture(rootUrl: String, scene: Scene?, files: Array<String>?, noMipmap: Boolean, onLoad: ((data: Any) -> Unit)?, onError: ((message: String, exception: Any) -> Unit)?, format: Number?, forcedExtension: Any, createPolynomials: Boolean, lodScale: Number, lodOffset: Number): InternalTexture
-//    private fun _partialLoadFile(url: String, index: Number, loadedFiles: Array<ArrayBuffer>, onfinish: (files: Array<ArrayBuffer>) -> Unit, onErrorCallBack: ((message: String, exception: Any) -> Unit)?)
-//    private fun _cascadeLoadFiles(scene: Scene?, onfinish: (images: Array<ArrayBuffer>) -> Unit, files: Array<String>, onError: ((message: String, exception: Any) -> Unit)?)
-//    private fun _cascadeLoadImgs(scene: Scene?, onfinish: (images: Array<HTMLImageElement>) -> Unit, files: Array<String>, onError: ((message: String, exception: Any) -> Unit)?, mimeType: String = definedExternally)
-//    private fun _partialLoadImg(url: String, index: Number, loadedImages: Array<HTMLImageElement>, scene: Scene?, onfinish: (images: Array<HTMLImageElement>) -> Unit, onErrorCallBack: ((message: String, exception: Any) -> Unit)?, mimeType: String = definedExternally)
-//    private fun _setCubeMapTextureParams(loadMipmap: Boolean)
-    open fun createUniformBuffer(elements: Array<Number>): DataBuffer
-    open fun createUniformBuffer(elements: Float32Array): DataBuffer
-    open fun createDynamicUniformBuffer(elements: Array<Number>): DataBuffer
-    open fun createDynamicUniformBuffer(elements: Float32Array): DataBuffer
-    open fun updateUniformBuffer(uniformBuffer: DataBuffer, elements: Array<Number>, offset: Number = definedExternally, count: Number = definedExternally)
-    open fun updateUniformBuffer(uniformBuffer: DataBuffer, elements: Float32Array, offset: Number = definedExternally, count: Number = definedExternally)
-    open fun bindUniformBuffer(buffer: DataBuffer?)
-    open fun bindUniformBufferBase(buffer: DataBuffer, location: Number)
-    open fun bindUniformBlock(pipelineContext: IPipelineContext, blockName: String, index: Number)
-//    private var _excludedCompressedTextures: Array<String>
-    open fun excludedCompressedTextureFormats(url: String?, textureFormatInUse: String?): String?
-//    private var _shaderProcessor: IShaderProcessor
+    open val description: String
+//     open var _shaderProcessor: IShaderProcessor
     open var forcePOTTextures: Boolean
     open var isFullscreen: Boolean
     open var cullBackFaces: Boolean
@@ -13847,82 +13783,96 @@ external open class ThinEngine(canvasOrContext: dynamic /*  HTMLCanvasElement | 
     open var validateShaderPrograms: Boolean
     open var useReverseDepthBuffer: Boolean
     open var disableUniformBuffers: Boolean
-//    private var _uniformBuffers: Array<UniformBuffer>
-//    private var _gl: WebGLRenderingContext
-//    private var _renderingCanvas: HTMLCanvasElement?
-//    private var _windowIsBackground: Boolean
-//    private var _webGLVersion: Number
-//    private var _creationOptions: EngineOptions
-//    private var _highPrecisionShadersAllowed: Boolean
-//    private var _badOS: Boolean
-//    private var _badDesktopOS: Boolean
-//    private var _hardwareScalingLevel: Any
-//    private var _caps: EngineCapabilities
-//    private var _isStencilEnable: Any
-//    private var _glVersion: Any
-//    private var _glRenderer: Any
-//    private var _glVendor: Any
-//    private var _videoTextureSupported: Boolean
-//    private var _renderingQueueLaunched: Boolean
-//    private var _activeRenderLoops: Array<() -> Unit>
+//     open var _uniformBuffers: Array<UniformBuffer>
+    open val supportsUniformBuffers: Boolean
+//     open var _gl: WebGLRenderingContext
+//     open var _webGLVersion: Number
+//     open var _renderingCanvas: HTMLCanvasElement?
+//     open var _windowIsBackground: Boolean
+//     open var _creationOptions: EngineOptions
+//     open var _highPrecisionShadersAllowed: Boolean
+//     open var _shouldUseHighPrecisionShader: Boolean
+    open val needPOTTextures: Boolean
+//     open var _badOS: Boolean
+//     open var _badDesktopOS: Boolean
+//     open var _hardwareScalingLevel: Any
+//     open var _caps: EngineCapabilities
+//     open var _isStencilEnable: Any
+//     open var _glVersion: Any
+//     open var _glRenderer: Any
+//     open var _glVendor: Any
+//     open var _videoTextureSupported: Boolean
+//     open var _renderingQueueLaunched: Boolean
+//     open var _activeRenderLoops: Array<() -> Unit>
     open var onContextLostObservable: Observable<ThinEngine>
     open var onContextRestoredObservable: Observable<ThinEngine>
-//    private var _onContextLost: Any
-//    private var _onContextRestored: Any
-//    private var _contextWasLost: Boolean
-//    private var _doNotHandleContextLost: Boolean
+//     open var _onContextLost: Any
+//     open var _onContextRestored: Any
+//     open var _contextWasLost: Boolean
+//     open var _doNotHandleContextLost: Boolean
+    open var doNotHandleContextLost: Boolean
     open var disableVertexArrayObjects: Boolean
-//    private var _colorWrite: Boolean
-//    private var _colorWriteChanged: Boolean
-//    private var _depthCullingState: DepthCullingState
-//    private var _stencilState: StencilState
-//    private var _alphaState: AlphaState
-//    private var _alphaMode: Number
-//    private var _alphaEquation: Number
-//    private var _internalTexturesCache: Array<InternalTexture>
-//    private var _activeChannel: Number
-//    private var _currentTextureChannel: Any
-//    private var _boundTexturesCache: `T$62`
-//    private var _currentEffect: Effect?
-//    private var _currentProgram: WebGLProgram?
-//    private var _compiledEffects: Any
-//    private var _vertexAttribArraysEnabled: Any
-//    private var _cachedViewport: IViewportLike?
-//    private var _cachedVertexArrayObject: Any
-//    private var _cachedVertexBuffers: Any
-//    private var _cachedIndexBuffer: DataBuffer?
-//    private var _cachedEffectForVertexBuffers: Effect?
-//    private var _currentRenderTarget: InternalTexture?
-//    private var _uintIndicesCurrentlySet: Any
-//    private var _currentBoundBuffer: Array<WebGLBuffer?>
-//    private var _currentFramebuffer: WebGLFramebuffer?
-//    private var _currentBufferPointers: Any
-//    private var _currentInstanceLocations: Any
-//    private var _currentInstanceBuffers: Any
-//    private var _textureUnits: Any
-//    private var _workingCanvas: dynamic /*  HTMLCanvasElement | OffscreenCanvas  */
-//    private var _workingContext: dynamic /*  CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D  */
-//    private var _boundRenderFunction: Any
-//    private var _vaoRecordInProgress: Any
-//    private var _mustWipeVertexAttributes: Any
-//    private var _emptyTexture: Any
-//    private var _emptyCubeTexture: Any
-//    private var _emptyTexture3D: Any
-//    private var _emptyTexture2DArray: Any
-//    private var _frameHandler: Number
-//    private var _nextFreeTextureSlots: Any
-//    private var _maxSimultaneousTextures: Any
-//    private var _activeRequests: Any
-//    private var _texturesSupported: Array<String>
-//    private var _textureFormatInUse: String?
+//     open var _colorWrite: Boolean
+//     open var _colorWriteChanged: Boolean
+//     open var _depthCullingState: DepthCullingState
+//     open var _stencilState: StencilState
+//     open var _alphaState: AlphaState
+//     open var _alphaMode: Number
+//     open var _alphaEquation: Number
+//     open var _internalTexturesCache: Array<InternalTexture>
+//     open var _activeChannel: Number
+//     open var _currentTextureChannel: Any
+//     open var _boundTexturesCache: `T$62`
+//     open var _currentEffect: Effect?
+//     open var _currentProgram: WebGLProgram?
+//     open var _compiledEffects: Any
+//     open var _vertexAttribArraysEnabled: Any
+//     open var _cachedViewport: IViewportLike?
+//     open var _cachedVertexArrayObject: Any
+//     open var _cachedVertexBuffers: Any
+//     open var _cachedIndexBuffer: DataBuffer?
+//     open var _cachedEffectForVertexBuffers: Effect?
+//     open var _currentRenderTarget: InternalTexture?
+//     open var _uintIndicesCurrentlySet: Any
+//     open var _currentBoundBuffer: Array<WebGLBuffer?>
+//     open var _currentFramebuffer: WebGLFramebuffer?
+//     open var _currentBufferPointers: Any
+//     open var _currentInstanceLocations: Any
+//     open var _currentInstanceBuffers: Any
+//     open var _textureUnits: Any
+//     open var _workingCanvas: dynamic /*  HTMLCanvasElement | OffscreenCanvas  */
+//     open var _workingContext: dynamic /*  CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D  */
+//     open var _boundRenderFunction: Any
+//     open var _vaoRecordInProgress: Any
+//     open var _mustWipeVertexAttributes: Any
+//     open var _emptyTexture: Any
+//     open var _emptyCubeTexture: Any
+//     open var _emptyTexture3D: Any
+//     open var _emptyTexture2DArray: Any
+//     open var _frameHandler: Number
+//     open var _nextFreeTextureSlots: Any
+//     open var _maxSimultaneousTextures: Any
+//     open var _activeRequests: Any
+//     open var _texturesSupported: Array<String>
+//     open var _textureFormatInUse: String?
+//     open var _supportsHardwareTextureRescaling: Boolean
+    open val texturesSupported: Array<String>
+    open val textureFormatInUse: String?
+    open val currentViewport: IViewportLike?
+    open val emptyTexture: InternalTexture
+    open val emptyTexture3D: InternalTexture
+    open val emptyTexture2DArray: InternalTexture
+    open val emptyCubeTexture: InternalTexture
     open var premultipliedAlpha: Boolean
-    open var onBeforeTextureInitObservable: Observable<Texture>
-//    private var _rebuildInternalTextures: Any
-//    private var _rebuildEffects: Any
+    open var onBeforeTextureInitObservable: Observable<Any>
+//     open var _rebuildInternalTextures: Any
+//     open var _rebuildEffects: Any
     open fun areAllEffectsReady(): Boolean
 //    private fun _rebuildBuffers()
-//    private var _initGLContext: Any
+//     open var _initGLContext: Any
+    open val webGLVersion: Number
     open fun getClassName(): String
+    open val isStencilEnable: Boolean
 //    private fun _prepareWorkingCanvas()
     open fun resetTextureCache()
     open fun getGlInfo(): `T$63`
@@ -13939,7 +13889,7 @@ external open class ThinEngine(canvasOrContext: dynamic /*  HTMLCanvasElement | 
 //    private fun _queueNewFrame(bindedRenderFunction: Any, requester: Any = definedExternally): Number
     open fun runRenderLoop(renderFunction: () -> Unit)
     open fun clear(color: IColor4Like?, backBuffer: Boolean, depth: Boolean, stencil: Boolean = definedExternally)
-//    private var _viewportCached: Any
+//     open var _viewportCached: Any
 //    private fun _viewport(x: Number, y: Number, width: Number, height: Number)
     open fun setViewport(viewport: IViewportLike, requiredWidth: Number = definedExternally, requiredHeight: Number = definedExternally)
     open fun beginFrame()
@@ -13952,33 +13902,30 @@ external open class ThinEngine(canvasOrContext: dynamic /*  HTMLCanvasElement | 
     open fun flushFramebuffer()
     open fun restoreDefaultFramebuffer()
 //    private fun _resetVertexBufferBinding()
-    open fun createVertexBuffer(data: Array<Number>): DataBuffer
-    open fun createVertexBuffer(data: ArrayBuffer): DataBuffer
-    open fun createVertexBuffer(data: ArrayBufferView): DataBuffer
-//    private var _createVertexBuffer: Any
-    open fun createDynamicVertexBuffer(data: Array<Number>): DataBuffer
-    open fun createDynamicVertexBuffer(data: ArrayBuffer): DataBuffer
-    open fun createDynamicVertexBuffer(data: ArrayBufferView): DataBuffer
+	open fun createVertexBuffer(data: Array<Number>): DataBuffer
+	open fun createVertexBuffer(data: ArrayBuffer): DataBuffer
+	open fun createVertexBuffer(data: ArrayBufferView): DataBuffer
+	//     open var _createVertexBuffer: Any
+	open fun createDynamicVertexBuffer(data: Array<Number>): DataBuffer
+	open fun createDynamicVertexBuffer(data: ArrayBuffer): DataBuffer
+	open fun createDynamicVertexBuffer(data: ArrayBufferView): DataBuffer
 //    private fun _resetIndexBufferBinding()
-    open fun createIndexBuffer(indices: Array<Number>, updatable: Boolean = definedExternally): DataBuffer
-    open fun createIndexBuffer(indices: Int32Array, updatable: Boolean = definedExternally): DataBuffer
-    open fun createIndexBuffer(indices: Uint32Array, updatable: Boolean = definedExternally): DataBuffer
-    open fun createIndexBuffer(indices: Uint16Array, updatable: Boolean = definedExternally): DataBuffer
-//    private fun _normalizeIndexData(indices: Array<Number>): dynamic /* Uint16Array | Uint32Array */
-//    private fun _normalizeIndexData(indices: Int32Array): dynamic /* Uint16Array | Uint32Array */
-//    private fun _normalizeIndexData(indices: Uint32Array): dynamic /* Uint16Array | Uint32Array */
-//    private fun _normalizeIndexData(indices: Uint16Array): dynamic /* Uint16Array | Uint32Array */
+	open fun createIndexBuffer(indices: Array<Number>, updatable: Boolean = definedExternally): DataBuffer
+	open fun createIndexBuffer(indices: Int32Array, updatable: Boolean = definedExternally): DataBuffer
+	open fun createIndexBuffer(indices: Uint32Array, updatable: Boolean = definedExternally): DataBuffer
+	open fun createIndexBuffer(indices: Uint16Array, updatable: Boolean = definedExternally): DataBuffer
+//    private fun _normalizeIndexData(indices: IndicesArray): dynamic /* Uint16Array | Uint32Array */
     open fun bindArrayBuffer(buffer: DataBuffer?)
     open fun bindIndexBuffer(buffer: DataBuffer?)
     open var bindBuffer: Any
     open fun updateArrayBuffer(data: Float32Array)
-//    private var _vertexAttribPointer: Any
+//     open var _vertexAttribPointer: Any
 //    private fun _bindIndexBufferWithCache(indexBuffer: DataBuffer?)
-//    private var _bindVertexBuffersAttributes: Any
+//     open var _bindVertexBuffersAttributes: Any
     open fun recordVertexArrayObject(vertexBuffers: `T$22`, indexBuffer: DataBuffer?, effect: Effect): WebGLVertexArrayObject
     open fun bindVertexArrayObject(vertexArrayObject: WebGLVertexArrayObject, indexBuffer: DataBuffer?)
     open fun bindBuffersDirectly(vertexBuffer: DataBuffer, indexBuffer: DataBuffer, vertexDeclaration: Array<Number>, vertexStrideSize: Number, effect: Effect)
-//    private var _unbindVertexArrayObject: Any
+//     open var _unbindVertexArrayObject: Any
     open fun bindBuffers(vertexBuffers: `T$14`, indexBuffer: DataBuffer?, effect: Effect)
     open fun unbindInstanceAttributes()
     open fun releaseVertexArrayObject(vao: WebGLVertexArrayObject)
@@ -13995,7 +13942,7 @@ external open class ThinEngine(canvasOrContext: dynamic /*  HTMLCanvasElement | 
     open fun drawUnIndexed(useTriangles: Boolean, verticesStart: Number, verticesCount: Number, instancesCount: Number = definedExternally)
     open fun drawElementsType(fillMode: Number, indexStart: Number, indexCount: Number, instancesCount: Number = definedExternally)
     open fun drawArraysType(fillMode: Number, verticesStart: Number, verticesCount: Number, instancesCount: Number = definedExternally)
-//    private var _drawMode: Any
+//     open var _drawMode: Any
 //    private fun _reportDrawCall()
 //    private fun _releaseEffect(effect: Effect)
 //    private fun _deletePipelineContext(pipelineContext: IPipelineContext)
@@ -14003,8 +13950,8 @@ external open class ThinEngine(canvasOrContext: dynamic /*  HTMLCanvasElement | 
     open fun createEffect(baseName: Any, attributesNamesOrOptions: Array<String>, uniformsNamesOrEngine: ThinEngine, samplers: Array<String> = definedExternally, defines: String = definedExternally, fallbacks: IEffectFallbacks = definedExternally, onCompiled: ((effect: Effect) -> Unit)? = definedExternally, onError: ((effect: Effect, errors: String) -> Unit)? = definedExternally, indexParameters: Any = definedExternally): Effect
     open fun createEffect(baseName: Any, attributesNamesOrOptions: IEffectCreationOptions, uniformsNamesOrEngine: Array<String>, samplers: Array<String> = definedExternally, defines: String = definedExternally, fallbacks: IEffectFallbacks = definedExternally, onCompiled: ((effect: Effect) -> Unit)? = definedExternally, onError: ((effect: Effect, errors: String) -> Unit)? = definedExternally, indexParameters: Any = definedExternally): Effect
     open fun createEffect(baseName: Any, attributesNamesOrOptions: IEffectCreationOptions, uniformsNamesOrEngine: ThinEngine, samplers: Array<String> = definedExternally, defines: String = definedExternally, fallbacks: IEffectFallbacks = definedExternally, onCompiled: ((effect: Effect) -> Unit)? = definedExternally, onError: ((effect: Effect, errors: String) -> Unit)? = definedExternally, indexParameters: Any = definedExternally): Effect
-//    private var _compileShader: Any
-//    private var _compileRawShader: Any
+//     open var _compileShader: Any
+//     open var _compileRawShader: Any
     open fun createRawShaderProgram(pipelineContext: IPipelineContext, vertexCode: String, fragmentCode: String, context: WebGLRenderingContext = definedExternally, transformFeedbackVaryings: Array<String>? = definedExternally): WebGLProgram
     open fun createShaderProgram(pipelineContext: IPipelineContext, vertexCode: String, fragmentCode: String, defines: String?, context: WebGLRenderingContext = definedExternally, transformFeedbackVaryings: Array<String>? = definedExternally): WebGLProgram
     open fun createPipelineContext(): IPipelineContext
@@ -14039,21 +13986,24 @@ external open class ThinEngine(canvasOrContext: dynamic /*  HTMLCanvasElement | 
     open fun applyStates()
     open fun setColorWrite(enable: Boolean)
     open fun getColorWrite(): Boolean
+    open val depthCullingState: DepthCullingState
+    open val alphaState: AlphaState
+    open val stencilState: StencilState
     open fun clearInternalTexturesCache()
     open fun wipeCaches(bruteForce: Boolean = definedExternally)
 //    private fun _getSamplingParameters(samplingMode: Number, generateMipMaps: Boolean): `T$64`
 //    private fun _createTexture(): WebGLTexture
-    open fun createTexture(urlArg: String?, noMipmap: Boolean, invertY: Boolean, scene: ISceneLike?, samplingMode: Number = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally, buffer: dynamic /*  String | ArrayBuffer | ArrayBufferView | HTMLImageElement | Blob | ImageBitmap  */ = definedExternally, fallback: InternalTexture? = definedExternally, format: Number? = definedExternally, forcedExtension: String? = definedExternally, excludeLoaders: Array<IInternalTextureLoader> = definedExternally, mimeType: String = definedExternally): InternalTexture
+    open fun createTexture(urlArg: String?, noMipmap: Boolean, invertY: Boolean, scene: ISceneLike?, samplingMode: Number = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally, buffer: dynamic /*  String | ArrayBuffer | ArrayBufferView | HTMLImageElement | Blob | ImageBitmap  */ = definedExternally, fallback: InternalTexture? = definedExternally, format: Number? = definedExternally, forcedExtension: String? = definedExternally, mimeType: String = definedExternally): InternalTexture
 //    private fun _rescaleTexture(source: InternalTexture, destination: InternalTexture, scene: Any?, internalFormat: Number, onComplete: () -> Unit)
     open fun createRawTexture(data: ArrayBufferView?, width: Number, height: Number, format: Number, generateMipMaps: Boolean, invertY: Boolean, samplingMode: Number, compression: String? = definedExternally, type: Number = definedExternally): InternalTexture
     open fun createRawCubeTexture(data: Array<ArrayBufferView>?, size: Number, format: Number, type: Number, generateMipMaps: Boolean, invertY: Boolean, samplingMode: Number, compression: String? = definedExternally): InternalTexture
     open fun createRawTexture3D(data: ArrayBufferView?, width: Number, height: Number, depth: Number, format: Number, generateMipMaps: Boolean, invertY: Boolean, samplingMode: Number, compression: String? = definedExternally, textureType: Number = definedExternally): InternalTexture
     open fun createRawTexture2DArray(data: ArrayBufferView?, width: Number, height: Number, depth: Number, format: Number, generateMipMaps: Boolean, invertY: Boolean, samplingMode: Number, compression: String? = definedExternally, textureType: Number = definedExternally): InternalTexture
-//    private var _unpackFlipYCached: Any
+//     open var _unpackFlipYCached: Any
     open var enableUnpackFlipYCached: Boolean
 //    private fun _unpackFlipY(value: Boolean)
 //    private fun _getUnpackAlignement(): Number
-//    private var _getTextureTarget: Any
+//     open var _getTextureTarget: Any
     open fun updateTextureSamplingMode(samplingMode: Number, texture: InternalTexture, generateMipMaps: Boolean = definedExternally)
     open fun updateTextureWrappingMode(texture: InternalTexture, wrapU: Number?, wrapV: Number? = definedExternally, wrapR: Number? = definedExternally)
 //    private fun _setupDepthStencilTexture(internalTexture: InternalTexture, size: Number, generateStencil: Boolean, bilinearFiltering: Boolean, comparisonFunction: Number)
@@ -14063,36 +14013,36 @@ external open class ThinEngine(canvasOrContext: dynamic /*  HTMLCanvasElement | 
     open fun updateTextureData(texture: InternalTexture, imageData: ArrayBufferView, xOffset: Number, yOffset: Number, width: Number, height: Number, faceIndex: Number = definedExternally, lod: Number = definedExternally)
 //    private fun _uploadArrayBufferViewToTexture(texture: InternalTexture, imageData: ArrayBufferView, faceIndex: Number = definedExternally, lod: Number = definedExternally)
 //    private fun _prepareWebGLTextureContinuation(texture: InternalTexture, scene: ISceneLike?, noMipmap: Boolean, isCompressed: Boolean, samplingMode: Number)
-//    private var _prepareWebGLTexture: Any
+//     open var _prepareWebGLTexture: Any
 //    private fun _setupFramebufferDepthAttachments(generateStencilBuffer: Boolean, generateDepthBuffer: Boolean, width: Number, height: Number, samples: Number = definedExternally): WebGLRenderbuffer?
-//    private var _getDepthStencilBuffer: Any
+//     open var _getDepthStencilBuffer: Any
 //    private fun _releaseFramebufferObjects(texture: InternalTexture)
 //    private fun _releaseTexture(texture: InternalTexture)
 //    private fun _deleteTexture(texture: WebGLTexture?)
 //    private fun _setProgram(program: WebGLProgram)
-//    private var _boundUniforms: `T$65`
+//     open var _boundUniforms: `T$65`
     open fun bindSamplers(effect: Effect)
-//    private var _activateCurrentTexture: Any
+//     open var _activateCurrentTexture: Any
 //    private fun _bindTextureDirectly(target: Number, texture: InternalTexture?, forTextureDataUpdate: Boolean = definedExternally, force: Boolean = definedExternally): Boolean
 //    private fun _bindTexture(channel: Number, texture: InternalTexture?)
     open fun unbindAllTextures()
     open fun setTexture(channel: Number, uniform: WebGLUniformLocation?, texture: BaseTexture?)
-//    private var _bindSamplerUniformToChannel: Any
-//    private var _getTextureWrapMode: Any
+//     open var _bindSamplerUniformToChannel: Any
+//     open var _getTextureWrapMode: Any
 //    private fun _setTexture(channel: Number, texture: BaseTexture?, isPartOfTextureArray: Boolean = definedExternally, depthStencilTexture: Boolean = definedExternally): Boolean
     open fun setTextureArray(channel: Number, uniform: WebGLUniformLocation?, textures: Array<BaseTexture>)
 //    private fun _setAnisotropicLevel(target: Number, internalTexture: InternalTexture, anisotropicFilteringLevel: Number)
-//    private var _setTextureParameterFloat: Any
-//    private var _setTextureParameterInteger: Any
+//     open var _setTextureParameterFloat: Any
+//     open var _setTextureParameterInteger: Any
     open fun unbindAllAttributes()
     open fun releaseEffects()
     open fun dispose()
     open fun attachContextLostEvent(callback: (event: WebGLContextEvent) -> Unit)
     open fun attachContextRestoredEvent(callback: (event: WebGLContextEvent) -> Unit)
     open fun getError(): Number
-//    private var _canRenderToFloatFramebuffer: Any
-//    private var _canRenderToHalfFloatFramebuffer: Any
-//    private var _canRenderToFramebuffer: Any
+//     open var _canRenderToFloatFramebuffer: Any
+//     open var _canRenderToHalfFloatFramebuffer: Any
+//     open var _canRenderToFramebuffer: Any
 //    private fun _getWebGLTextureType(type: Number): Number
 //    private fun _getInternalFormat(format: Number): Number
 //    private fun _getRGBABufferInternalSizedFormat(type: Number, format: Number = definedExternally): Number
@@ -14103,15 +14053,18 @@ external open class ThinEngine(canvasOrContext: dynamic /*  HTMLCanvasElement | 
 
     companion object {
         var ExceptionList: Array<dynamic /* `T$60` | `T$61` */>
-        var _TextureLoaders: Array<IInternalTextureLoader>
+//         var _TextureLoaders: Array<IInternalTextureLoader>
+        val NpmPackage: String
+        val Version: String
         var CollisionsEpsilon: Number
-        fun _ConcatenateShader(source: String, defines: String?, shaderVersion: String = definedExternally): String
-        fun _FileToolsLoadImage(input: String, onLoad: (img: dynamic /* HTMLImageElement | ImageBitmap */) -> Unit, onError: (message: String, exception: Any) -> Unit, offlineProvider: IOfflineProvider?, mimeType: String = definedExternally): HTMLImageElement?
-        fun _FileToolsLoadImage(input: ArrayBuffer, onLoad: (img: dynamic /* HTMLImageElement | ImageBitmap */) -> Unit, onError: (message: String, exception: Any) -> Unit, offlineProvider: IOfflineProvider?, mimeType: String = definedExternally): HTMLImageElement?
-        fun _FileToolsLoadImage(input: ArrayBufferView, onLoad: (img: dynamic /* HTMLImageElement | ImageBitmap */) -> Unit, onError: (message: String, exception: Any) -> Unit, offlineProvider: IOfflineProvider?, mimeType: String = definedExternally): HTMLImageElement?
-        fun _FileToolsLoadImage(input: Blob, onLoad: (img: dynamic /* HTMLImageElement | ImageBitmap */) -> Unit, onError: (message: String, exception: Any) -> Unit, offlineProvider: IOfflineProvider?, mimeType: String = definedExternally): HTMLImageElement?
-        fun _FileToolsLoadFile(url: String, onSuccess: (data: dynamic /* String | ArrayBuffer */, responseURL: String) -> Unit, onProgress: (ev: ProgressEvent) -> Unit = definedExternally, offlineProvider: IOfflineProvider = definedExternally, useArrayBuffer: Boolean = definedExternally, onError: (request: WebRequest, exception: LoadFileError) -> Unit = definedExternally): IFileRequest
-        var _isSupported: Any
+        var ShadersRepository: String
+//         fun _ConcatenateShader(source: String, defines: String?, shaderVersion: String = definedExternally): String
+//         fun _FileToolsLoadImage(input: String, onLoad: (img: dynamic /* HTMLImageElement | ImageBitmap */) -> Unit, onError: (message: String, exception: Any) -> Unit, offlineProvider: IOfflineProvider?, mimeType: String = definedExternally): HTMLImageElement?
+//         fun _FileToolsLoadImage(input: ArrayBuffer, onLoad: (img: dynamic /* HTMLImageElement | ImageBitmap */) -> Unit, onError: (message: String, exception: Any) -> Unit, offlineProvider: IOfflineProvider?, mimeType: String = definedExternally): HTMLImageElement?
+//         fun _FileToolsLoadImage(input: ArrayBufferView, onLoad: (img: dynamic /* HTMLImageElement | ImageBitmap */) -> Unit, onError: (message: String, exception: Any) -> Unit, offlineProvider: IOfflineProvider?, mimeType: String = definedExternally): HTMLImageElement?
+//         fun _FileToolsLoadImage(input: Blob, onLoad: (img: dynamic /* HTMLImageElement | ImageBitmap */) -> Unit, onError: (message: String, exception: Any) -> Unit, offlineProvider: IOfflineProvider?, mimeType: String = definedExternally): HTMLImageElement?
+//         fun _FileToolsLoadFile(url: String, onSuccess: (data: dynamic /* String | ArrayBuffer */, responseURL: String) -> Unit, onProgress: (ev: ProgressEvent) -> Unit = definedExternally, offlineProvider: IOfflineProvider = definedExternally, useArrayBuffer: Boolean = definedExternally, onError: (request: WebRequest, exception: LoadFileError) -> Unit = definedExternally): IFileRequest
+//         var _isSupported: Any
         fun isSupported(): Boolean
         fun CeilingPOT(x: Number): Number
         fun FloorPOT(x: Number): Number
@@ -17761,77 +17714,11 @@ external open class ParticleHelper {
 }
 
 external open class Engine(canvasOrContext: dynamic /*  HTMLCanvasElement | WebGLRenderingContext  */, antialias: Boolean = definedExternally, options: EngineOptions = definedExternally, adaptToDeviceRatio: Boolean = definedExternally) : ThinEngine {
-    open fun createEffectForParticles(fragmentName: String, uniformsNames: Array<String>, samplers: Array<String>, defines: String, fallbacks: EffectFallbacks = definedExternally, onCompiled: (effect: Effect) -> Unit = definedExternally, onError: (effect: Effect, errors: String) -> Unit = definedExternally): Effect
-    open var inputElement: HTMLElement?
-    open var activeView: EngineView?
-    open var views: Array<EngineView>
-    open fun registerView(canvas: HTMLCanvasElement, camera: Camera = definedExternally): EngineView
-    open fun unRegisterView(canvas: HTMLCanvasElement): Engine
-    open fun createTransformFeedback(): WebGLTransformFeedback
-    open fun deleteTransformFeedback(value: WebGLTransformFeedback)
-    open fun bindTransformFeedback(value: WebGLTransformFeedback?)
-    open fun beginTransformFeedback(usePoints: Boolean)
-    open fun endTransformFeedback()
-    open fun setTranformFeedbackVaryings(program: WebGLProgram, value: Array<String>)
-    open fun bindTransformFeedbackBuffer(value: DataBuffer?)
-    open fun createQuery(): WebGLQuery
-    open fun deleteQuery(query: WebGLQuery): Engine
-    open fun isQueryResultAvailable(query: WebGLQuery): Boolean
-    open fun getQueryResult(query: WebGLQuery): Number
-    open fun beginOcclusionQuery(algorithmType: Number, query: WebGLQuery): Engine
-    open fun endOcclusionQuery(algorithmType: Number): Engine
-    open fun startTimeQuery(): _TimeToken?
-    open fun endTimeQuery(token: _TimeToken): int
-//    private var _currentNonTimestampToken: _TimeToken?
-//    private fun _createTimeQuery(): WebGLQuery
-//    private fun _deleteTimeQuery(query: WebGLQuery)
-//    private fun _getGlAlgorithmType(algorithmType: Number): Number
-//    private fun _getTimeQueryResult(query: WebGLQuery): Any
-//    private fun _getTimeQueryAvailability(query: WebGLQuery): Any
-//    private var _vrDisplay: Any
-//    private var _vrSupported: Boolean
-//    private var _oldSize: Size
-//    private var _oldHardwareScaleFactor: Number
-//    private var _vrExclusivePointerMode: Boolean
-//    private var _webVRInitPromise: Promise<IDisplayChangedEventArgs>
-//    private var _onVRDisplayPointerRestricted: () -> Unit
-//    private var _onVRDisplayPointerUnrestricted: () -> Unit
-//    private var _onVrDisplayConnect: ((display: Any) -> Unit)?
-//    private var _onVrDisplayDisconnect: (() -> Unit)?
-//    private var _onVrDisplayPresentChange: (() -> Unit)?
-    open var onVRDisplayChangedObservable: Observable<IDisplayChangedEventArgs>
-    open var onVRRequestPresentComplete: Observable<Boolean>
-    open var onVRRequestPresentStart: Observable<Engine>
-    open var isInVRExclusivePointerMode: Boolean
-    open fun isVRDevicePresent(): Boolean
-    open fun getVRDevice(): Any
-    open fun initWebVRAsync(): Promise<IDisplayChangedEventArgs>
-//    private fun _getVRDisplaysAsync(): Promise<IDisplayChangedEventArgs>
-    open var vrPresentationAttributes: IVRPresentationAttributes?
-    open fun enableVR(options: WebVROptions)
-//    private fun _onVRFullScreenTriggered()
-    open fun createMultiviewRenderTargetTexture(width: Number, height: Number): InternalTexture
-    open fun bindMultiviewFramebuffer(multiviewTexture: InternalTexture)
-    override fun createRawTexture(data: ArrayBufferView?, width: Number, height: Number, format: Number, generateMipMaps: Boolean, invertY: Boolean, samplingMode: Number, compression: String?, type: Number): InternalTexture
-    open fun updateRawTexture(texture: InternalTexture?, data: ArrayBufferView?, format: Number, invertY: Boolean)
-    open fun updateRawTexture(texture: InternalTexture?, data: ArrayBufferView?, format: Number, invertY: Boolean, compression: String?, type: Number)
-    override fun createRawCubeTexture(data: Array<ArrayBufferView>?, size: Number, format: Number, type: Number, generateMipMaps: Boolean, invertY: Boolean, samplingMode: Number, compression: String?): InternalTexture
-    open fun updateRawCubeTexture(texture: InternalTexture, data: Array<ArrayBufferView>, format: Number, type: Number, invertY: Boolean)
-    open fun updateRawCubeTexture(texture: InternalTexture, data: Array<ArrayBufferView>, format: Number, type: Number, invertY: Boolean, compression: String?)
-    open fun updateRawCubeTexture(texture: InternalTexture, data: Array<ArrayBufferView>, format: Number, type: Number, invertY: Boolean, compression: String?, level: Number)
-    open fun createRawCubeTextureFromUrl(url: String, scene: Scene, size: Number, format: Number, type: Number, noMipmap: Boolean, callback: (ArrayBuffer: ArrayBuffer) -> Array<ArrayBufferView>?, mipmapGenerator: ((faces: Array<ArrayBufferView>) -> Array<Array<ArrayBufferView>>)?, onLoad: (() -> Unit)?, onError: ((message: String, exception: Any) -> Unit)?): InternalTexture
-    open fun createRawCubeTextureFromUrl(url: String, scene: Scene, size: Number, format: Number, type: Number, noMipmap: Boolean, callback: (ArrayBuffer: ArrayBuffer) -> Array<ArrayBufferView>?, mipmapGenerator: ((faces: Array<ArrayBufferView>) -> Array<Array<ArrayBufferView>>)?, onLoad: (() -> Unit)?, onError: ((message: String, exception: Any) -> Unit)?, samplingMode: Number, invertY: Boolean): InternalTexture
-    override fun createRawTexture3D(data: ArrayBufferView?, width: Number, height: Number, depth: Number, format: Number, generateMipMaps: Boolean, invertY: Boolean, samplingMode: Number, compression: String?, textureType: Number): InternalTexture
-    open fun updateRawTexture3D(texture: InternalTexture, data: ArrayBufferView?, format: Number, invertY: Boolean)
-    open fun updateRawTexture3D(texture: InternalTexture, data: ArrayBufferView?, format: Number, invertY: Boolean, compression: String?, textureType: Number)
-    override fun createRawTexture2DArray(data: ArrayBufferView?, width: Number, height: Number, depth: Number, format: Number, generateMipMaps: Boolean, invertY: Boolean, samplingMode: Number, compression: String?, textureType: Number): InternalTexture
-    open fun updateRawTexture2DArray(texture: InternalTexture, data: ArrayBufferView?, format: Number, invertY: Boolean)
-    open fun updateRawTexture2DArray(texture: InternalTexture, data: ArrayBufferView?, format: Number, invertY: Boolean, compression: String?, textureType: Number)
     open var enableOfflineSupport: Boolean
     open var disableManifestCheck: Boolean
     open var scenes: Array<Scene>
     open var onNewSceneAddedObservable: Observable<Scene>
-    open var postProcesses: Array<PostProcess>
+    open var postProcesses: Array<Any>
     open var isPointerLock: Boolean
     open var onResizeObservable: Observable<Engine>
     open var onCanvasBlurObservable: Observable<Engine>
@@ -17842,26 +17729,28 @@ external open class Engine(canvasOrContext: dynamic /*  HTMLCanvasElement | WebG
     open var onEndFrameObservable: Observable<Engine>
     open var onBeforeShaderCompilationObservable: Observable<Engine>
     open var onAfterShaderCompilationObservable: Observable<Engine>
-//    private var _loadingScreen: Any
-//    private var _pointerLockRequested: Any
-//    private var _dummyFramebuffer: Any
-//    private var _rescalePostProcess: Any
-//    private var _deterministicLockstep: Any
-//    private var _lockstepMaxSteps: Any
-//    private var _timeStep: Any
-//    private var _fps: Any
-//    private var _deltaTime: Any
-//    private var _drawCalls: PerfCounter
+//     open var _loadingScreen: Any
+//     open var _pointerLockRequested: Any
+//     open var _dummyFramebuffer: Any
+//     open var _rescalePostProcess: Any
+//     open var _deterministicLockstep: Any
+//     open var _lockstepMaxSteps: Any
+//     open var _timeStep: Any
+open val _supportsHardwareTextureRescaling: Boolean
+//     open var _fps: Any
+//     open var _deltaTime: Any
+//     open var _drawCalls: PerfCounter
     open var canvasTabIndex: Number
     open var disablePerformanceMonitorInBackground: Boolean
-//    private var _performanceMonitor: Any
-//    private var _onFocus: Any
-//    private var _onBlur: Any
-//    private var _onCanvasPointerOut: Any
-//    private var _onCanvasBlur: Any
-//    private var _onCanvasFocus: Any
-//    private var _onFullscreenChange: Any
-//    private var _onPointerLockChange: Any
+//     open var _performanceMonitor: Any
+    open val performanceMonitor: PerformanceMonitor
+//     open var _onFocus: Any
+//     open var _onBlur: Any
+//     open var _onCanvasPointerOut: Any
+//     open var _onCanvasBlur: Any
+//     open var _onCanvasFocus: Any
+//     open var _onFullscreenChange: Any
+//     open var _onPointerLockChange: Any
     open fun getInputElement(): HTMLElement?
     open fun getAspectRatio(viewportOwner: IViewportOwnerLike, useScreen: Boolean = definedExternally): Number
     open fun getScreenAspectRatio(): Number
@@ -17901,13 +17790,13 @@ external open class Engine(canvasOrContext: dynamic /*  HTMLCanvasElement | WebG
     open fun setDepthFunctionToGreaterOrEqual()
     open fun setDepthFunctionToLess()
     open fun setDepthFunctionToLessOrEqual()
-//    private var _cachedStencilBuffer: Any
-//    private var _cachedStencilFunction: Any
-//    private var _cachedStencilMask: Any
-//    private var _cachedStencilOperationPass: Any
-//    private var _cachedStencilOperationFail: Any
-//    private var _cachedStencilOperationDepthFail: Any
-//    private var _cachedStencilReference: Any
+//     open var _cachedStencilBuffer: Any
+//     open var _cachedStencilFunction: Any
+//     open var _cachedStencilMask: Any
+//     open var _cachedStencilOperationPass: Any
+//     open var _cachedStencilOperationFail: Any
+//     open var _cachedStencilOperationDepthFail: Any
+//     open var _cachedStencilReference: Any
     open fun cacheStencilState()
     open fun restoreStencilState()
     open fun setDirectViewport(x: Number, y: Number, width: Number, height: Number): IViewportLike?
@@ -17941,12 +17830,10 @@ external open class Engine(canvasOrContext: dynamic /*  HTMLCanvasElement | WebG
     override fun beginFrame()
     override fun endFrame()
     override fun resize()
-    open fun setTextureFormatToUse(formatsAvailable: Array<String>): String?
-    open fun setCompressedTextureExclusions(skippedFiles: Array<String>)
     override fun setSize(width: Number, height: Number)
-    open fun updateDynamicVertexBuffer(vertexBuffer: DataBuffer, data: Array<Number>, byteOffset: Number = definedExternally, byteLength: Number = definedExternally)
-    open fun updateDynamicVertexBuffer(vertexBuffer: DataBuffer, data: ArrayBuffer, byteOffset: Number = definedExternally, byteLength: Number = definedExternally)
-    open fun updateDynamicVertexBuffer(vertexBuffer: DataBuffer, data: ArrayBufferView, byteOffset: Number = definedExternally, byteLength: Number = definedExternally)
+	open fun updateDynamicVertexBuffer(vertexBuffer: DataBuffer, data: Array<Number>, byteOffset: Number = definedExternally, byteLength: Number = definedExternally)
+	open fun updateDynamicVertexBuffer(vertexBuffer: DataBuffer, data: ArrayBuffer, byteOffset: Number = definedExternally, byteLength: Number = definedExternally)
+	open fun updateDynamicVertexBuffer(vertexBuffer: DataBuffer, data: ArrayBufferView, byteOffset: Number = definedExternally, byteLength: Number = definedExternally)
 //    private override fun _deletePipelineContext(pipelineContext: IPipelineContext)
     override fun createShaderProgram(pipelineContext: IPipelineContext, vertexCode: String, fragmentCode: String, defines: String?, context: WebGLRenderingContext, transformFeedbackVaryings: Array<String>?): WebGLProgram
 //    private override fun _createShaderProgram(pipelineContext: WebGLPipelineContext, vertexShader: WebGLShader, fragmentShader: WebGLShader, context: WebGLRenderingContext, transformFeedbackVaryings: Array<String>?): WebGLProgram
@@ -17954,28 +17841,25 @@ external open class Engine(canvasOrContext: dynamic /*  HTMLCanvasElement | WebG
 //    private override fun _rescaleTexture(source: InternalTexture, destination: InternalTexture, scene: Any?, internalFormat: Number, onComplete: () -> Unit)
     open fun getFps(): Number
     open fun getDeltaTime(): Number
-//    private var _measureFps: Any
+//     open var _measureFps: Any
 //    private fun _uploadImageToTexture(texture: InternalTexture, image: HTMLImageElement, faceIndex: Number = definedExternally, lod: Number = definedExternally)
 //    private fun _uploadImageToTexture(texture: InternalTexture, image: ImageBitmap, faceIndex: Number = definedExternally, lod: Number = definedExternally)
-    open fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: Array<Number>, offset: Number = definedExternally)
-    open fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: Int32Array, offset: Number = definedExternally)
-    open fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: Uint32Array, offset: Number = definedExternally)
-    open fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: Uint16Array, offset: Number = definedExternally)
+	open fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: Array<Number>, offset: Number = definedExternally)
+	open fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: Int32Array, offset: Number = definedExternally)
+	open fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: Uint32Array, offset: Number = definedExternally)
+	open fun updateDynamicIndexBuffer(indexBuffer: DataBuffer, indices: Uint16Array, offset: Number = definedExternally)
     open fun updateRenderTargetTextureSampleCount(texture: InternalTexture?, samples: Number): Number
     open fun updateTextureComparisonFunction(texture: InternalTexture, comparisonFunction: Number)
     open fun createInstancesBuffer(capacity: Number): DataBuffer
     open fun deleteInstancesBuffer(buffer: WebGLBuffer)
+//     open var _clientWaitAsync: Any
+//    private fun _readPixelsAsync(x: Number, y: Number, w: Number, h: Number, format: Number, type: Number, outputBuffer: ArrayBufferView): Promise<ArrayBufferView>?
 //    private fun _readTexturePixels(texture: InternalTexture, width: Number, height: Number, faceIndex: Number = definedExternally, level: Number = definedExternally, buffer: ArrayBufferView? = definedExternally): ArrayBufferView
     override fun dispose()
-//    private var _disableTouchAction: Any
+//     open var _disableTouchAction: Any
     open fun displayLoadingUI()
     open fun hideLoadingUI()
-    override fun createUniformBuffer(elements: Array<Number>): DataBuffer
-    override fun createUniformBuffer(elements: Float32Array): DataBuffer
-    override fun createDynamicUniformBuffer(elements: Array<Number>): DataBuffer
-    override fun createDynamicUniformBuffer(elements: Float32Array): DataBuffer
-    override fun updateUniformBuffer(uniformBuffer: DataBuffer, elements: Array<Number>, offset: Number, count: Number)
-    override fun updateUniformBuffer(uniformBuffer: DataBuffer, elements: Float32Array, offset: Number, count: Number)
+    open var loadingScreen: ILoadingScreen
 
     companion object {
         var ALPHA_DISABLE: Number
@@ -18069,16 +17953,21 @@ external open class Engine(canvasOrContext: dynamic /*  HTMLCanvasElement | WebG
         var SCALEMODE_FLOOR: Number
         var SCALEMODE_NEAREST: Number
         var SCALEMODE_CEILING: Number
+        val NpmPackage: String
+        val Version: String
+        val Instances: Any
+        val LastCreatedEngine: Engine?
+        val LastCreatedScene: Scene?
         fun MarkAllMaterialsAsDirty(flag: Number, predicate: (mat: Material) -> Boolean = definedExternally)
         fun DefaultLoadingScreenFactory(canvas: HTMLCanvasElement): ILoadingScreen
-        var _RescalePostProcessFactory: ((engine: Engine) -> PostProcess)?
+//         var _RescalePostProcessFactory: ((engine: Engine) -> PostProcess)?
         var audioEngine: IAudioEngine
         var AudioEngineFactory: (hostElement: HTMLElement?) -> IAudioEngine
         var OfflineProviderFactory: (urlToScene: String, callbackManifestChecked: (checked: Boolean) -> Any, disableManifestCheck: Boolean) -> IOfflineProvider
-        fun _RequestPointerlock(element: HTMLElement)
-        fun _ExitPointerlock()
-        fun _RequestFullscreen(element: HTMLElement)
-        fun _ExitFullscreen()
+//         fun _RequestPointerlock(element: HTMLElement)
+//         fun _ExitPointerlock()
+//         fun _RequestFullscreen(element: HTMLElement)
+//         fun _ExitFullscreen()
     }
 }
 

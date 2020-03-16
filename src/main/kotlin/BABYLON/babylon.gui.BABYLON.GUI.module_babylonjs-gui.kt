@@ -3,10 +3,9 @@
 @file:JsModule("babylonjs-gui")
 package BABYLON.GUI
 
-import platform.*
-import BABYLON.AbstractMesh
+import BABYLON.*
 import BABYLON.Node
-import BABYLON.Number
+import platform.*
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*
@@ -21,6 +20,7 @@ import org.w3c.notifications.*
 import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
+import kotlin.Error
 
 external open class ValueAndUnit(value: Number, unit: Number = definedExternally, negativeValueAllowed: Boolean = definedExternally) {
     open var unit: Number
@@ -110,65 +110,80 @@ external interface `T$0` {
     operator fun set(pointerId: Number, value: Control)
 }
 
-external open class AdvancedDynamicTexture(name: String, width: Number?, height: Number?, scene: BABYLON.Scene?, generateMipMaps: Boolean = definedExternally, samplingMode: Number = definedExternally) : BABYLON.DynamicTexture {
-//    private var _isDirty: Any
-//    private var _renderObserver: Any
-//    private var _resizeObserver: Any
-//    private var _preKeyboardObserver: Any
-//    private var _pointerMoveObserver: Any
-//    private var _pointerObserver: Any
-//    private var _canvasPointerOutObserver: Any
-//    private var _background: Any
-//    private var _rootContainer: Container
-//    private var _lastPickedControl: Control
-//    private var _lastControlOver: `T$0`
-//    private var _lastControlDown: `T$0`
-//    private var _capturingControl: `T$0`
-//    private var _shouldBlockPointer: Boolean
-//    private var _layerToDispose: Any
-//    private var _linkedControls: Array<Control>
-//    private var _isFullscreen: Any
-//    private var _fullscreenViewport: Any
-//    private var _idealWidth: Any
-//    private var _idealHeight: Any
-//    private var _useSmallestIdeal: Any
-//    private var _renderAtIdealSize: Any
-//    private var _focusedControl: Any
-//    private var _blockNextFocusCheck: Any
-//    private var _renderScale: Any
-//    private var _rootElement: Any
-//    private var _cursorChanged: Any
-//    private var _numLayoutCalls: Number
-//    private var _numRenderCalls: Number
-//    private var _clipboardData: Any
-    open var onClipboardObservable: Any
-    open var onControlPickedObservable: Any
-    open var onBeginLayoutObservable: Any
-    open var onEndLayoutObservable: Any
-    open var onBeginRenderObservable: Any
-    open var onEndRenderObservable: Any
+external open class AdvancedDynamicTexture(name: String, width: Number?, height: Number?, scene: Scene?, generateMipMaps: Boolean = definedExternally, samplingMode: Number = definedExternally) : DynamicTexture {
+//     open var _isDirty: Any
+//     open var _renderObserver: Any
+//     open var _resizeObserver: Any
+//     open var _preKeyboardObserver: Any
+//     open var _pointerMoveObserver: Any
+//     open var _pointerObserver: Any
+//     open var _canvasPointerOutObserver: Any
+//     open var _background: Any
+//     open var _rootContainer: Container
+//     open var _lastPickedControl: Control
+//     open var _lastControlOver: `T$0`
+//     open var _lastControlDown: `T$0`
+//     open var _capturingControl: `T$0`
+//     open var _shouldBlockPointer: Boolean
+//     open var _layerToDispose: Any
+//     open var _linkedControls: Array<Control>
+//     open var _isFullscreen: Any
+//     open var _fullscreenViewport: Any
+//     open var _idealWidth: Any
+//     open var _idealHeight: Any
+//     open var _useSmallestIdeal: Any
+//     open var _renderAtIdealSize: Any
+//     open var _focusedControl: Any
+//     open var _blockNextFocusCheck: Any
+//     open var _renderScale: Any
+//     open var _rootElement: Any
+//     open var _cursorChanged: Any
+//     open var _numLayoutCalls: Number
+    open val numLayoutCalls: Number
+//     open var _numRenderCalls: Number
+    open val numRenderCalls: Number
+//     open var _clipboardData: Any
+    open var onClipboardObservable: Observable<ClipboardInfo>
+    open var onControlPickedObservable: Observable<Control>
+    open var onBeginLayoutObservable: Observable<AdvancedDynamicTexture>
+    open var onEndLayoutObservable: Observable<AdvancedDynamicTexture>
+    open var onBeginRenderObservable: Observable<AdvancedDynamicTexture>
+    open var onEndRenderObservable: Observable<AdvancedDynamicTexture>
     open var premulAlpha: Boolean
+    open var renderScale: Number
+    open var background: String
+    open var idealWidth: Number
+    open var idealHeight: Number
+    open var useSmallestIdeal: Boolean
+    open var renderAtIdealSize: Boolean
+    open val idealRatio: Number
+    open val layer: Any
+    open val rootContainer: Container
     open fun getChildren(): Array<Container>
     open fun getDescendants(directDescendantsOnly: Boolean = definedExternally, predicate: (control: Control) -> Boolean = definedExternally): Array<Control>
-	override fun getClassName(): String
+    open var focusedControl: Any
+    open var isForeground: Boolean
+    open var clipboardData: String
+//    open fun getClassName(): String
     open fun executeOnAllControls(func: (control: Control) -> Unit, container: Container = definedExternally)
-//    private var _useInvalidateRectOptimization: Any
-//    private var _invalidatedRectangle: Any
+//     open var _useInvalidateRectOptimization: Any
+    open var useInvalidateRectOptimization: Boolean
+//     open var _invalidatedRectangle: Any
     open fun invalidateRect(invalidMinX: Number, invalidMinY: Number, invalidMaxX: Number, invalidMaxY: Number)
     open fun markAsDirty()
     open fun createStyle(): Style
     open fun addControl(control: Control): AdvancedDynamicTexture
     open fun removeControl(control: Control): AdvancedDynamicTexture
-	override fun dispose()
-//    private var _onResize: Any
-//    private fun _getGlobalViewport(scene: BABYLON.Scene): BABYLON.Viewport
-    open fun getProjectedPosition(position: BABYLON.Vector3, worldMatrix: BABYLON.Matrix): BABYLON.Vector2
-//    private var _checkUpdate: Any
-//    private var _clearMeasure: Any
-//    private var _render: Any
+//    open fun dispose()
+//     open var _onResize: Any
+//    private fun _getGlobalViewport(scene: Scene): Viewport
+    open fun getProjectedPosition(position: Vector3, worldMatrix: Matrix): Vector2
+//     open var _checkUpdate: Any
+//     open var _clearMeasure: Any
+//     open var _render: Any
 //    private fun _changeCursor(cursor: String)
 //    private fun _registerLastControlDown(control: Control, pointerId: Number)
-//    private var _doPicking: Any
+//     open var _doPicking: Any
 //    private fun _cleanControlAfterRemovalFromList(list: `T$0`, control: Control)
 //    private fun _cleanControlAfterRemoval(control: Control)
     open fun attach()
@@ -177,14 +192,14 @@ external open class AdvancedDynamicTexture(name: String, width: Number?, height:
     open var onClipboardPaste: Any
     open fun registerClipboardEvents()
     open fun unRegisterClipboardEvents()
-    open fun attachToMesh(mesh: BABYLON.AbstractMesh, supportPointerMove: Boolean = definedExternally)
+    open fun attachToMesh(mesh: AbstractMesh, supportPointerMove: Boolean = definedExternally)
     open fun moveFocusToControl(control: IFocusableControl)
-//    private var _manageFocus: Any
-//    private var _attachToOnPointerOut: Any
+//     open var _manageFocus: Any
+//     open var _attachToOnPointerOut: Any
 
     companion object {
-        fun CreateForMesh(mesh: BABYLON.AbstractMesh, width: Number = definedExternally, height: Number = definedExternally, supportPointerMove: Boolean = definedExternally, onlyAlphaTesting: Boolean = definedExternally): AdvancedDynamicTexture
-        fun CreateFullscreenUI(name: String, foreground: Boolean = definedExternally, scene: BABYLON.Scene? = definedExternally, sampling: Number = definedExternally): AdvancedDynamicTexture
+        fun CreateForMesh(mesh: AbstractMesh, width: Number = definedExternally, height: Number = definedExternally, supportPointerMove: Boolean = definedExternally, onlyAlphaTesting: Boolean = definedExternally): AdvancedDynamicTexture
+        fun CreateFullscreenUI(name: String, foreground: Boolean = definedExternally, scene: Scene? = definedExternally, sampling: Number = definedExternally): AdvancedDynamicTexture
     }
 }
 
@@ -201,88 +216,63 @@ external interface `T$2` {
 
 external open class Control(name: String? = definedExternally) {
     open var name: String?
-	var alpha:Number = definedExternally
-	var zIndex:Number = definedExternally
-	var host: AdvancedDynamicTexture = definedExternally
-	var fontFamily: String = definedExternally
-    var fontStyle: String = definedExternally
-    var fontWeight: String = definedExternally
-	var fontSize: Any = definedExternally
-	var width: Any = definedExternally
-	var height: Any = definedExternally
-	var fontOffset:`T$1`= definedExternally
-	var color: String = definedExternally
-	var style:Style? = definedExternally
-	var horizontalAlignment:Number = definedExternally
-	var verticalAlignment:Number = definedExternally
-	val isDirty:Boolean = definedExternally
-    var paddingLeft: Any = definedExternally
-    var paddingRight: Any = definedExternally
-    var paddingTop: Any = definedExternally
-    var paddingBottom: Any = definedExternally
-	var isVisible:Boolean = definedExternally
-	var isEnabled:Boolean = definedExternally
-	var disabledColor: String = definedExternally
-	var scaleX:Number = definedExternally
-	var scaleY:Number = definedExternally
-
-	//    private var _alpha: Any
-//    private var _alphaSet: Any
-//    private var _zIndex: Any
-//    private var _host: AdvancedDynamicTexture
-    open var parent: Node?
-//    private var _currentMeasure: Measure
-//    private var _fontFamily: Any
-//    private var _fontStyle: Any
-//    private var _fontWeight: Any
-//    private var _fontSize: Any
-//    private var _font: Any
-//    private var _width: ValueAndUnit
-//    private var _height: ValueAndUnit
-//    private var _fontOffset: `T$1`
-//    private var _color: Any
-//    private var _style: Any
-//    private var _styleObserver: Any
-//    private var _horizontalAlignment: Number
-//    private var _verticalAlignment: Number
-//    private var _isDirty: Boolean
-//    private var _wasDirty: Boolean
-//    private var _tempParentMeasure: Measure
-//    private var _prevCurrentMeasureTransformedIntoGlobalSpace: Measure
-//    private var _cachedParentMeasure: Measure
-//    private var _paddingLeft: Any
-//    private var _paddingRight: Any
-//    private var _paddingTop: Any
-//    private var _paddingBottom: Any
-//    private var _left: ValueAndUnit
-//    private var _top: ValueAndUnit
-//    private var _scaleX: Any
-//    private var _scaleY: Any
-//    private var _rotation: Any
-//    private var _transformCenterX: Any
-//    private var _transformCenterY: Any
-//    private var _transformMatrix: Matrix2D
-//    private var _invertTransformMatrix: Matrix2D
-//    private var _transformedPosition: Any
-//    private var _isMatrixDirty: Any
-//    private var _cachedOffsetX: Any
-//    private var _cachedOffsetY: Any
-//    private var _isVisible: Any
-//    private var _isHighlighted: Any
-//    private var _linkedMesh: Any
-//    private var _fontSet: Any
-//    private var _dummyVector2: Any
-//    private var _downCount: Any
-//    private var _enterCount: Any
-//    private var _doNotRender: Any
-//    private var _downPointerIds: Any
-//    private var _isEnabled: Boolean
-//    private var _disabledColor: String
-//    private var _rebuildLayout: Boolean
-//    private var _customData: Any
-//    private var _isClipped: Boolean
-//    private var _automaticSize: Boolean
-//    private var _tag: Any
+//     open var _alpha: Any
+//     open var _alphaSet: Any
+//     open var _zIndex: Any
+//     open var _host: AdvancedDynamicTexture
+    open var parent: Any
+//     open var _currentMeasure: Measure
+//     open var _fontFamily: Any
+//     open var _fontStyle: Any
+//     open var _fontWeight: Any
+//     open var _fontSize: Any
+//     open var _font: Any
+//     open var _width: ValueAndUnit
+//     open var _height: ValueAndUnit
+//     open var _fontOffset: `T$1`
+//     open var _color: Any
+//     open var _style: Any
+//     open var _styleObserver: Any
+//     open var _horizontalAlignment: Number
+//     open var _verticalAlignment: Number
+//     open var _isDirty: Boolean
+//     open var _wasDirty: Boolean
+//     open var _tempParentMeasure: Measure
+//     open var _prevCurrentMeasureTransformedIntoGlobalSpace: Measure
+//     open var _cachedParentMeasure: Measure
+//     open var _paddingLeft: Any
+//     open var _paddingRight: Any
+//     open var _paddingTop: Any
+//     open var _paddingBottom: Any
+//     open var _left: ValueAndUnit
+//     open var _top: ValueAndUnit
+//     open var _scaleX: Any
+//     open var _scaleY: Any
+//     open var _rotation: Any
+//     open var _transformCenterX: Any
+//     open var _transformCenterY: Any
+//     open var _transformMatrix: Matrix2D
+//     open var _invertTransformMatrix: Matrix2D
+//     open var _transformedPosition: Any
+//     open var _isMatrixDirty: Any
+//     open var _cachedOffsetX: Any
+//     open var _cachedOffsetY: Any
+//     open var _isVisible: Any
+//     open var _isHighlighted: Any
+//     open var _linkedMesh: Any
+//     open var _fontSet: Any
+//     open var _dummyVector2: Any
+//     open var _downCount: Any
+//     open var _enterCount: Any
+//     open var _doNotRender: Any
+//     open var _downPointerIds: Any
+//     open var _isEnabled: Boolean
+//     open var _disabledColor: String
+//     open var _rebuildLayout: Boolean
+//     open var _customData: Any
+//     open var _isClipped: Boolean
+//     open var _automaticSize: Boolean
+//     open var _tag: Any
     open var uniqueId: Number
     open var metadata: Any
     open var isHitTestVisible: Boolean
@@ -291,36 +281,89 @@ external open class Control(name: String? = definedExternally) {
     open var clipChildren: Boolean
     open var clipContent: Boolean
     open var useBitmapCache: Boolean
-//    private var _cacheData: Any
-//    private var _shadowOffsetX: Any
-//    private var _shadowOffsetY: Any
-//    private var _shadowBlur: Any
-//    private var _shadowColor: Any
+//     open var _cacheData: Any
+//     open var _shadowOffsetX: Any
+    open var shadowOffsetX: Number
+//     open var _shadowOffsetY: Any
+    open var shadowOffsetY: Number
+//     open var _shadowBlur: Any
+    open var shadowBlur: Number
+//     open var _shadowColor: Any
+    open var shadowColor: String
     open var hoverCursor: String
-//    private var _linkOffsetX: ValueAndUnit
-//    private var _linkOffsetY: ValueAndUnit
+//     open var _linkOffsetX: ValueAndUnit
+//     open var _linkOffsetY: ValueAndUnit
+    open val typeName: String
     open fun getClassName(): String
-    open var onPointerMoveObservable: Any
-    open var onPointerOutObservable: Any
-    open var onPointerDownObservable: Any
-    open var onPointerUpObservable: Any
-    open var onPointerClickObservable: Any
-    open var onPointerEnterObservable: Any
-    open var onDirtyObservable: Any
-    open var onBeforeDrawObservable: Any
-    open var onAfterDrawObservable: Any
+    open var onPointerMoveObservable: Observable<Vector2>
+    open var onPointerOutObservable: Observable<Control>
+    open var onPointerDownObservable: Observable<Vector2WithInfo>
+    open var onPointerUpObservable: Observable<Vector2WithInfo>
+    open var onPointerClickObservable: Observable<Vector2WithInfo>
+    open var onPointerEnterObservable: Observable<Control>
+    open var onDirtyObservable: Observable<Control>
+    open var onBeforeDrawObservable: Observable<Control>
+    open var onAfterDrawObservable: Observable<Control>
+    open val host: AdvancedDynamicTexture
+    open var fontOffset: dynamic
+    open var alpha: Number
+    open var isHighlighted: Boolean
+    open var scaleX: Number
+    open var scaleY: Number
+    open var rotation: Number
+    open var transformCenterY: Number
+    open var transformCenterX: Number
+    open var horizontalAlignment: Number
+    open var verticalAlignment: Number
+    open var width: dynamic /* String | Number */
+    open var widthInPixels: Number
+    open var height: dynamic /* String | Number */
+    open var heightInPixels: Number
+    open var fontFamily: String
+    open var fontStyle: String
+    open var fontWeight: String
+    open var style: Any
+//     open var _isFontSizeInPercentage: Boolean
+    open var fontSizeInPixels: Number
+    open var fontSize: dynamic /* String | Number */
+    open var color: String
+    open var zIndex: Number
+    open var notRenderable: Boolean
+    open var isVisible: Boolean
+    open val isDirty: Boolean
+    open val linkedMesh: Any
+    open var paddingLeft: dynamic /* String | Number */
+    open var paddingLeftInPixels: Number
+    open var paddingRight: dynamic /* String | Number */
+    open var paddingRightInPixels: Number
+    open var paddingTop: dynamic /* String | Number */
+    open var paddingTopInPixels: Number
+    open var paddingBottom: dynamic /* String | Number */
+    open var paddingBottomInPixels: Number
+    open var left: dynamic /* String | Number */
+    open var leftInPixels: Number
+    open var top: dynamic /* String | Number */
+    open var topInPixels: Number
+    open var linkOffsetX: dynamic /* String | Number */
+    open var linkOffsetXInPixels: Number
+    open var linkOffsetY: dynamic /* String | Number */
+    open var linkOffsetYInPixels: Number
+    open val centerX: Number
+    open val centerY: Number
+    open var isEnabled: Boolean
+    open var disabledColor: String
 //    private fun _getTypeName(): String
     open fun getAscendantOfClass(className: String): Control?
 //    private fun _resetFontCache()
     open fun isAscendant(container: Control): Boolean
-    open fun getLocalCoordinates(globalCoordinates: BABYLON.Vector2): BABYLON.Vector2
-    open fun getLocalCoordinatesToRef(globalCoordinates: BABYLON.Vector2, result: BABYLON.Vector2): Control
-    open fun getParentLocalCoordinates(globalCoordinates: BABYLON.Vector2): BABYLON.Vector2
-    open fun moveToVector3(position: BABYLON.Vector3, scene: BABYLON.Scene)
+    open fun getLocalCoordinates(globalCoordinates: Vector2): Vector2
+    open fun getLocalCoordinatesToRef(globalCoordinates: Vector2, result: Vector2): Control
+    open fun getParentLocalCoordinates(globalCoordinates: Vector2): Vector2
+    open fun moveToVector3(position: Vector3, scene: Scene)
     open fun getDescendantsToRef(results: Array<Control>, directDescendantsOnly: Boolean = definedExternally, predicate: (control: Control) -> Boolean = definedExternally)
     open fun getDescendants(directDescendantsOnly: Boolean = definedExternally, predicate: (control: Control) -> Boolean = definedExternally): Array<Control>
-    open fun linkWithMesh(mesh: BABYLON.AbstractMesh?)
-//    private fun _moveToProjectedPosition(projectedPosition: BABYLON.Vector3)
+    open fun linkWithMesh(mesh: AbstractMesh?)
+//    private fun _moveToProjectedPosition(projectedPosition: Vector3)
 //    private fun _offsetLeft(offset: Number)
 //    private fun _offsetTop(offset: Number)
 //    private fun _markMatrixAsDirty()
@@ -342,33 +385,39 @@ external open class Control(name: String? = definedExternally) {
 //    private fun _preMeasure(parentMeasure: Measure, context: CanvasRenderingContext2D)
 //    private fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D)
 //    private fun _clipForChildren(context: CanvasRenderingContext2D)
-//    private var _tmpMeasureA: Any
-//    private var _clip: Any
-//    private fun _render(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure? = definedExternally): Boolean
-//    private fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure? = definedExternally)
+//     open var _tmpMeasureA: Any
+//     open var _clip: Any
+//    private fun _render(context: CanvasRenderingContext2D, invalidatedRectangle: Measure? = definedExternally): Boolean
+//    private fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: Measure? = definedExternally)
     open fun contains(x: Number, y: Number): Boolean
 //    private fun _processPicking(x: Number, y: Number, type: Number, pointerId: Number, buttonIndex: Number): Boolean
-//    private fun _onPointerMove(target: Control, coordinates: BABYLON.Vector2, pointerId: Number)
+//    private fun _onPointerMove(target: Control, coordinates: Vector2, pointerId: Number)
 //    private fun _onPointerEnter(target: Control): Boolean
 //    private fun _onPointerOut(target: Control, force: Boolean = definedExternally)
-//    private fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean
-//    private fun _onPointerUp(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean)
-//    private fun _forcePointerUp(pointerId: BABYLON.Number? = definedExternally)
+//    private fun _onPointerDown(target: Control, coordinates: Vector2, pointerId: Number, buttonIndex: Number): Boolean
+//    private fun _onPointerUp(target: Control, coordinates: Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean)
+//    private fun _forcePointerUp(pointerId: Number? = definedExternally)
 //    private fun _processObservables(type: Number, x: Number, y: Number, pointerId: Number, buttonIndex: Number): Boolean
-//    private var _prepareFont: Any
+//     open var _prepareFont: Any
     open fun dispose()
 
     companion object {
         var AllowAlphaInheritance: Boolean
-        var _ClipMeasure: Any
-        var _HORIZONTAL_ALIGNMENT_LEFT: Any
-        var _HORIZONTAL_ALIGNMENT_RIGHT: Any
-        var _HORIZONTAL_ALIGNMENT_CENTER: Any
-        var _VERTICAL_ALIGNMENT_TOP: Any
-        var _VERTICAL_ALIGNMENT_BOTTOM: Any
-        var _VERTICAL_ALIGNMENT_CENTER: Any
-        var _FontHeightSizes: Any
-        fun _GetFontOffset(font: String): `T$1`
+//         var _ClipMeasure: Any
+//         var _HORIZONTAL_ALIGNMENT_LEFT: Any
+//         var _HORIZONTAL_ALIGNMENT_RIGHT: Any
+//         var _HORIZONTAL_ALIGNMENT_CENTER: Any
+//         var _VERTICAL_ALIGNMENT_TOP: Any
+//         var _VERTICAL_ALIGNMENT_BOTTOM: Any
+//         var _VERTICAL_ALIGNMENT_CENTER: Any
+        val HORIZONTAL_ALIGNMENT_LEFT: Number
+        val HORIZONTAL_ALIGNMENT_RIGHT: Number
+        val HORIZONTAL_ALIGNMENT_CENTER: Number
+        val VERTICAL_ALIGNMENT_TOP: Number
+        val VERTICAL_ALIGNMENT_BOTTOM: Number
+        val VERTICAL_ALIGNMENT_CENTER: Number
+//         var _FontHeightSizes: Any
+//         fun _GetFontOffset(font: String): `T$1`
         var AddHeader: (control: Control, text: String, size: dynamic /* String | Number */, options: `T$2`) -> Any
         fun drawEllipse(x: Number, y: Number, width: Number, height: Number, context: CanvasRenderingContext2D)
     }
@@ -426,84 +475,104 @@ external enum class TextWrapping {
 }
 
 external open class TextBlock(name: String? = definedExternally, text: String = definedExternally) : Control {
-    override var name: String?
-	var textHorizontalAlignment:Number = definedExternally
-	var textVerticalAlignment:Number = definedExternally
-	var resizeToFit:Boolean = definedExternally
-	var textWrapping:Boolean = definedExternally
-	var text:String = definedExternally
-	var lineSpacing:Number = definedExternally
-	var outlineWidth:String = definedExternally
-	var outlineColor:String = definedExternally
-
-//    private var _text: Any
-//    private var _textWrapping: Any
-//    private var _textHorizontalAlignment: Any
-//    private var _textVerticalAlignment: Any
-//    private var _lines: Any
-//    private var _resizeToFit: Any
-//    private var _lineSpacing: Any
-//    private var _outlineWidth: Any
-//    private var _outlineColor: Any
-    open var onTextChangedObservable: Any
-    open var onLinesReadyObservable: Any
-//    private override fun _getTypeName(): String
+	override var name: String?
+	//     open var _text: Any
+//     open var _textWrapping: Any
+//     open var _textHorizontalAlignment: Any
+//     open var _textVerticalAlignment: Any
+//     open var _lines: Any
+//     open var _resizeToFit: Any
+//     open var _lineSpacing: Any
+//     open var _outlineWidth: Any
+//     open var _outlineColor: Any
+	open var onTextChangedObservable: Observable<TextBlock>
+	open var onLinesReadyObservable: Observable<TextBlock>
+	open val lines: Any
+	open var resizeToFit: Boolean
+	open var textWrapping: dynamic /* TextWrapping | Boolean */
+	open var text: String
+	open var textHorizontalAlignment: kotlin.Number
+	open var textVerticalAlignment: kotlin.Number
+	open var lineSpacing: dynamic /* String | Number */
+	open var outlineWidth: kotlin.Number
+	open var outlineColor: String
+	//    private override fun _getTypeName(): String
 //    private override fun _processMeasures(parentMeasure: Measure, context: CanvasRenderingContext2D)
-//    private var _drawText: Any
-//    private override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure?)
+//     open var _drawText: Any
+//    private override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: Measure?)
 //    private override fun _applyStates(context: CanvasRenderingContext2D)
 //    private fun _breakLines(refWidth: Number, context: CanvasRenderingContext2D): Array<Any?>
 //    private fun _parseLine(line: String?, context: CanvasRenderingContext2D): Any?
 //    private fun _parseLineEllipsis(line: String?, width: Number, context: CanvasRenderingContext2D): Any?
 //    private fun _parseLineWordWrap(line: String?, width: Number, context: CanvasRenderingContext2D): Array<Any?>
 //    private fun _renderLines(context: CanvasRenderingContext2D)
-    open fun computeExpectedHeight(): Number
-    override fun dispose()
+	open fun computeExpectedHeight(): kotlin.Number
+	override fun dispose()
 }
 
 external open class Image(name: String? = definedExternally, url: String? = definedExternally) : Control {
-    override var name: String?
-//    private var _workingCanvas: Any
-//    private var _domImage: Any
-//    private var _imageWidth: Any
-//    private var _imageHeight: Any
-//    private var _loaded: Any
-//    private var _stretch: Any
-//    private var _source: Any
-//    private var _autoScale: Any
-//    private var _sourceLeft: Any
-//    private var _sourceTop: Any
-//    private var _sourceWidth: Any
-//    private var _sourceHeight: Any
-//    private var _svgAttributesComputationCompleted: Any
-//    private var _isSVG: Any
-//    private var _cellWidth: Any
-//    private var _cellHeight: Any
-//    private var _cellId: Any
-//    private var _populateNinePatchSlicesFromImage: Any
-//    private var _sliceLeft: Any
-//    private var _sliceRight: Any
-//    private var _sliceTop: Any
-//    private var _sliceBottom: Any
-//    private var _detectPointerOnOpaqueOnly: Any
-    open var onImageLoadedObservable: Any
-    open var onSVGAttributesComputedObservable: Any
+	var source: String
+	override var name: String?
+//     open var _workingCanvas: Any
+//     open var _domImage: Any
+//     open var _imageWidth: Any
+//     open var _imageHeight: Any
+//     open var _loaded: Any
+//     open var _stretch: Any
+//     open var _source: Any
+//     open var _autoScale: Any
+//     open var _sourceLeft: Any
+//     open var _sourceTop: Any
+//     open var _sourceWidth: Any
+//     open var _sourceHeight: Any
+//     open var _svgAttributesComputationCompleted: Any
+//     open var _isSVG: Any
+//     open var _cellWidth: Any
+//     open var _cellHeight: Any
+//     open var _cellId: Any
+//     open var _populateNinePatchSlicesFromImage: Any
+//     open var _sliceLeft: Any
+//     open var _sliceRight: Any
+//     open var _sliceTop: Any
+//     open var _sliceBottom: Any
+//     open var _detectPointerOnOpaqueOnly: Any
+    open var onImageLoadedObservable: Observable<Image>
+    open var onSVGAttributesComputedObservable: Observable<Image>
+    open val isLoaded: Boolean
+    open var populateNinePatchSlicesFromImage: Boolean
+    open var detectPointerOnOpaqueOnly: Boolean
+    open var sliceLeft: Number
+    open var sliceRight: Number
+    open var sliceTop: Number
+    open var sliceBottom: Number
+    open var sourceLeft: Number
+    open var sourceTop: Number
+    open var sourceWidth: Number
+    open var sourceHeight: Number
+    open val isSVG: Boolean
+    open val svgAttributesComputationCompleted: Boolean
+    open var autoScale: Boolean
+    open var stretch: Number
 //    private fun _rotate90(n: Number, preserveProperties: Boolean = definedExternally): Image
-//    private var _handleRotationForSVGImage: Any
-//    private var _rotate90SourceProperties: Any
-//    private var _onImageLoaded: Any
-//    private var _extractNinePatchSliceDataFromImage: Any
-//    private var _svgCheck: Any
-//    private var _getSVGAttribs: Any
+//     open var _handleRotationForSVGImage: Any
+//     open var _rotate90SourceProperties: Any
+    open var domImage: HTMLImageElement
+//     open var _onImageLoaded: Any
+//     open var _extractNinePatchSliceDataFromImage: Any
+//     open var _svgCheck: Any
+//     open var _getSVGAttribs: Any
+    open var cellWidth: Number
+    open var cellHeight: Number
+    open var cellId: Number
     override fun contains(x: Number, y: Number): Boolean
 //    private override fun _getTypeName(): String
     open fun synchronizeSizeWithContent()
 //    private override fun _processMeasures(parentMeasure: Measure, context: CanvasRenderingContext2D)
-//    private var _prepareWorkingCanvasForOpaqueDetection: Any
-//    private var _drawImage: Any
+//     open var _prepareWorkingCanvasForOpaqueDetection: Any
+//     open var _drawImage: Any
 //    private fun _draw(context: CanvasRenderingContext2D)
-//    private var _renderCornerPatch: Any
-//    private var _renderNinePatch: Any
+//     open var _renderCornerPatch: Any
+//     open var _renderNinePatch: Any
     override fun dispose()
 
     companion object {
@@ -611,65 +680,85 @@ external open class VirtualKeyboard : StackPanel {
 
 external open class InputText(name: String? = definedExternally, text: String = definedExternally) : Control, IFocusableControl {
     override var name: String?
-//    private var _text: Any
-//    private var _placeholderText: Any
-//    private var _background: Any
-//    private var _focusedBackground: Any
-//    private var _focusedColor: Any
-//    private var _placeholderColor: Any
-//    private var _thickness: Any
-//    private var _margin: Any
-//    private var _autoStretchWidth: Any
-//    private var _maxWidth: Any
-//    private var _isFocused: Any
-//    private var _blinkTimeout: Any
-//    private var _blinkIsEven: Any
-//    private var _cursorOffset: Any
-//    private var _scrollLeft: Any
-//    private var _textWidth: Any
-//    private var _clickedCoordinate: Any
-//    private var _deadKey: Any
-//    private var _addKey: Any
-//    private var _currentKey: Any
-//    private var _isTextHighlightOn: Any
-//    private var _textHighlightColor: Any
-//    private var _highligherOpacity: Any
-//    private var _highlightedText: Any
-//    private var _startHighlightIndex: Any
-//    private var _endHighlightIndex: Any
-//    private var _cursorIndex: Any
-//    private var _onFocusSelectAll: Any
-//    private var _isPointerDown: Any
-//    private var _onClipboardObserver: Any
-//    private var _onPointerDblTapObserver: Any
-//    private var _connectedVirtualKeyboard: Any
+//     open var _text: Any
+//     open var _placeholderText: Any
+//     open var _background: Any
+//     open var _focusedBackground: Any
+//     open var _focusedColor: Any
+//     open var _placeholderColor: Any
+//     open var _thickness: Any
+//     open var _margin: Any
+//     open var _autoStretchWidth: Any
+//     open var _maxWidth: Any
+//     open var _isFocused: Any
+//     open var _blinkTimeout: Any
+//     open var _blinkIsEven: Any
+//     open var _cursorOffset: Any
+//     open var _scrollLeft: Any
+//     open var _textWidth: Any
+//     open var _clickedCoordinate: Any
+//     open var _deadKey: Any
+//     open var _addKey: Any
+//     open var _currentKey: Any
+//     open var _isTextHighlightOn: Any
+//     open var _textHighlightColor: Any
+//     open var _highligherOpacity: Any
+//     open var _highlightedText: Any
+//     open var _startHighlightIndex: Any
+//     open var _endHighlightIndex: Any
+//     open var _cursorIndex: Any
+//     open var _onFocusSelectAll: Any
+//     open var _isPointerDown: Any
+//     open var _onClipboardObserver: Any
+//     open var _onPointerDblTapObserver: Any
+//     open var _connectedVirtualKeyboard: Any
     open var promptMessage: String
     open var disableMobilePrompt: Boolean
-    open var onTextChangedObservable: Any
-    open var onBeforeKeyAddObservable: Any
-    open var onFocusObservable: Any
-    open var onBlurObservable: Any
-    open var onTextHighlightObservable: Any
-    open var onTextCopyObservable: Any
-    open var onTextCutObservable: Any
-    open var onTextPasteObservable: Any
-    open var onKeyboardEventProcessedObservable: Any
+    open var onTextChangedObservable: Observable<InputText>
+    open var onBeforeKeyAddObservable: Observable<InputText>
+    open var onFocusObservable: Observable<InputText>
+    open var onBlurObservable: Observable<InputText>
+    open var onTextHighlightObservable: Observable<InputText>
+    open var onTextCopyObservable: Observable<InputText>
+    open var onTextCutObservable: Observable<InputText>
+    open var onTextPasteObservable: Observable<InputText>
+    open var onKeyboardEventProcessedObservable: Observable<KeyboardEvent>
+    open var maxWidth: dynamic /* String | Number */
+    open val maxWidthInPixels: Number
+    open var highligherOpacity: Number
+    open var onFocusSelectAll: Boolean
+    open var textHighlightColor: String
+    open var margin: String
+    open val marginInPixels: Number
+    open var autoStretchWidth: Boolean
+    open var thickness: Number
+    open var focusedBackground: String
+    open var focusedColor: String
+    open var background: String
+    open var placeholderColor: String
+    open var placeholderText: String
+    open var deadKey: Boolean
+    open var highlightedText: String
+    open var addKey: Boolean
+    open var currentKey: String
+    open var text: String
+    override var width: dynamic /* String | Number */
     override fun onBlur()
     override fun onFocus()
 //    private override fun _getTypeName(): String
     override fun keepsFocusWith(): Array<Control>?
     open fun processKey(keyCode: Number, key: String = definedExternally, evt: KeyboardEvent = definedExternally)
-//    private var _updateValueFromCursorIndex: Any
-//    private var _processDblClick: Any
-//    private var _selectAllText: Any
+//     open var _updateValueFromCursorIndex: Any
+//     open var _processDblClick: Any
+//     open var _selectAllText: Any
     override fun processKeyboard(evt: KeyboardEvent)
-//    private var _onCopyText: Any
-//    private var _onCutText: Any
-//    private var _onPasteText: Any
-//    private override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: BABYLON.Measure?)
-//    private override fun _onPointerDown(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number): Boolean
-//    private override fun _onPointerMove(target: Control, coordinates: BABYLON.Vector2, pointerId: Number)
-//    private override fun _onPointerUp(target: Control, coordinates: BABYLON.Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean)
+//     open var _onCopyText: Any
+//     open var _onCutText: Any
+//     open var _onPasteText: Any
+//    private override fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: Measure?)
+//    private override fun _onPointerDown(target: Control, coordinates: Vector2, pointerId: Number, buttonIndex: Number): Boolean
+//    private override fun _onPointerMove(target: Control, coordinates: Vector2, pointerId: Number)
+//    private override fun _onPointerUp(target: Control, coordinates: Vector2, pointerId: Number, buttonIndex: Number, notifyClick: Boolean)
 //    private fun _beforeRenderText(text: String): String
     override fun dispose()
 }
