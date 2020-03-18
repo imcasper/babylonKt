@@ -278,6 +278,7 @@ external open class Control(name: String? = definedExternally) {
     open var isHitTestVisible: Boolean
     open var isPointerBlocker: Boolean
     open var isFocusInvisible: Boolean
+	open var  isHitByArea: Boolean
     open var clipChildren: Boolean
     open var clipContent: Boolean
     open var useBitmapCache: Boolean
