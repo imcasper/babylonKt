@@ -5,7 +5,6 @@ package BABYLON.GUI
 
 import BABYLON.*
 import BABYLON.Node
-import platform.*
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*
@@ -220,8 +219,8 @@ external open class Control(name: String? = definedExternally) {
 //     open var _alphaSet: Any
 //     open var _zIndex: Any
 //     open var _host: AdvancedDynamicTexture
-    open var parent: Any
-//     open var _currentMeasure: Measure
+    open var parent: Control
+     open var _currentMeasure: Measure
 //     open var _fontFamily: Any
 //     open var _fontStyle: Any
 //     open var _fontWeight: Any
@@ -277,7 +276,8 @@ external open class Control(name: String? = definedExternally) {
     open var metadata: Any
     open var isHitTestVisible: Boolean
     open var isPointerBlocker: Boolean
-    open var isFocusInvisible: Boolean
+	open var isFocusInvisible: Boolean
+	open var isHitByArea: Boolean
     open var clipChildren: Boolean
     open var clipContent: Boolean
     open var useBitmapCache: Boolean
@@ -372,12 +372,12 @@ external open class Control(name: String? = definedExternally) {
     open fun invalidateRect()
 //    private fun _markAsDirty(force: Boolean = definedExternally)
 //    private fun _markAllAsDirty()
-//    private fun _link(host: AdvancedDynamicTexture)
+	open fun _link(host: AdvancedDynamicTexture)
 //    private fun _transform(context: CanvasRenderingContext2D = definedExternally)
 //    private fun _renderHighlight(context: CanvasRenderingContext2D)
 //    private fun _renderHighlightSpecific(context: CanvasRenderingContext2D)
 //    private fun _applyStates(context: CanvasRenderingContext2D)
-//    private fun _layout(parentMeasure: Measure, context: CanvasRenderingContext2D): Boolean
+	open fun _layout(parentMeasure: Measure, context: CanvasRenderingContext2D): Boolean
 //    private fun _processMeasures(parentMeasure: Measure, context: CanvasRenderingContext2D)
 //    private fun _evaluateClippingState(parentMeasure: Measure)
 //    private fun _measure()
