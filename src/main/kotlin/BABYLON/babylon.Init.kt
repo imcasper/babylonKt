@@ -8,7 +8,6 @@ external class AudioNode
 external class AudioContext
 external class AudioBuffer
 
-external interface MouseWheelEvent
 external interface GamepadButton
 external class BodyInit
 external class OffscreenCanvas
@@ -21,9 +20,11 @@ external open class WriteableArray<T>
 typealias ArrayLike<T> = Array<T>
 typealias Number = Double
 
+
 /**
  * See <a href=https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent#GlobalEventHandlers>https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent#GlobalEventHandlers</a>
  */
+
 external class PointerEvent {
 	val pointerId:Any
 	val x:Double
