@@ -20,35 +20,6 @@ external open class WriteableArray<T>
 typealias ArrayLike<T> = Array<T>
 typealias Number = Double
 
-
-/**
- * See <a href=https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent#GlobalEventHandlers>https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent#GlobalEventHandlers</a>
- */
-
-external class PointerEvent {
-	val pointerId:Any
-	val x:Double
-	val y:Double
-	val width:Double
-	val height:Double
-
-	val pressure :Double
-	val tangentialPressure:Double
-	val tiltX:Double
-	val tiltY:Double
-	val twist:Double
-	val pointerType:Any
-	val button:Number
-	val isPrimary:Boolean
-}
-
-class MouseButton {
-	companion object {
-		val LEFT = 0.0
-		val MIDDLE = 1.0
-		val RIGHT = 2.0
-	}
-}
 class SphereOptions (
 		var segments: Number? = null,
 		var diameter: Number? = null,

@@ -9,6 +9,7 @@ import kotlin.js.Json
 import org.khronos.webgl.*
 import org.w3c.dom.*
 import org.w3c.dom.events.*
+import org.w3c.dom.pointerevents.*
 import org.w3c.dom.parsing.*
 import org.w3c.dom.svg.*
 import org.w3c.dom.url.*
@@ -4591,14 +4592,14 @@ external open class PointerEventTypes {
 
 external open class PointerInfoBase {
     constructor(type: Number, event: PointerEvent)
-    constructor(type: Number, event: MouseWheelEvent)
+    constructor(type: Number, event: WheelEvent)
     open var type: Number
     open var event: dynamic /* PointerEvent | MouseWheelEvent */
 }
 
 external open class PointerInfoPre : PointerInfoBase {
     constructor(type: Number, event: PointerEvent, localX: Number, localY: Number)
-    constructor(type: Number, event: MouseWheelEvent, localX: Number, localY: Number)
+    constructor(type: Number, event: WheelEvent, localX: Number, localY: Number)
     open var ray: Ray?
     open var localPosition: Vector2
     open var skipOnPointerObservable: Boolean
@@ -4606,7 +4607,7 @@ external open class PointerInfoPre : PointerInfoBase {
 
 external open class PointerInfo : PointerInfoBase {
     constructor(type: Number, event: PointerEvent, pickInfo: PickingInfo?)
-    constructor(type: Number, event: MouseWheelEvent, pickInfo: PickingInfo?)
+    constructor(type: Number, event: WheelEvent, pickInfo: PickingInfo?)
     open var pickInfo: PickingInfo?
 }
 

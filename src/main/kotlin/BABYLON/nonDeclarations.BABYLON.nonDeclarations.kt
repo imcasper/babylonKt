@@ -16,6 +16,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 import XRInputSource
+import org.w3c.dom.pointerevents.PointerEvent
 
 typealias float = Number
 
