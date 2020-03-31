@@ -3,7 +3,6 @@
 @file:JsModule("babylonjs")
 package BABYLON.Debug
 
-import platform.*
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*

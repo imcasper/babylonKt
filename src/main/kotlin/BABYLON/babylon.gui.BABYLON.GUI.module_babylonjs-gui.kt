@@ -5,7 +5,6 @@ package BABYLON.GUI
 
 import BABYLON.*
 import BABYLON.Node
-import platform.*
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*
@@ -220,8 +219,8 @@ external open class Control(name: String? = definedExternally) {
 //     open var _alphaSet: Any
 //     open var _zIndex: Any
 //     open var _host: AdvancedDynamicTexture
-    open var parent: Any
-//     open var _currentMeasure: Measure
+    open var parent: Control
+     open var _currentMeasure: Measure
 //     open var _fontFamily: Any
 //     open var _fontStyle: Any
 //     open var _fontWeight: Any
@@ -277,8 +276,8 @@ external open class Control(name: String? = definedExternally) {
     open var metadata: Any
     open var isHitTestVisible: Boolean
     open var isPointerBlocker: Boolean
-    open var isFocusInvisible: Boolean
-	open var  isHitByArea: Boolean
+	open var isFocusInvisible: Boolean
+	open var isHitByArea: Boolean
     open var clipChildren: Boolean
     open var clipContent: Boolean
     open var useBitmapCache: Boolean
@@ -373,12 +372,12 @@ external open class Control(name: String? = definedExternally) {
     open fun invalidateRect()
 //    private fun _markAsDirty(force: Boolean = definedExternally)
 //    private fun _markAllAsDirty()
-//    private fun _link(host: AdvancedDynamicTexture)
+	open fun _link(host: AdvancedDynamicTexture)
 //    private fun _transform(context: CanvasRenderingContext2D = definedExternally)
 //    private fun _renderHighlight(context: CanvasRenderingContext2D)
 //    private fun _renderHighlightSpecific(context: CanvasRenderingContext2D)
 //    private fun _applyStates(context: CanvasRenderingContext2D)
-//    private fun _layout(parentMeasure: Measure, context: CanvasRenderingContext2D): Boolean
+	open fun _layout(parentMeasure: Measure, context: CanvasRenderingContext2D): Boolean
 //    private fun _processMeasures(parentMeasure: Measure, context: CanvasRenderingContext2D)
 //    private fun _evaluateClippingState(parentMeasure: Measure)
 //    private fun _measure()
@@ -425,23 +424,27 @@ external open class Control(name: String? = definedExternally) {
 }
 
 external open class Container(name: String? = definedExternally) : Control {
-    override var name: String?
-//    private var _children: Array<Control>
-//    private var _measureForChildren: Measure
-//    private var _background: String
-//    private var _adaptWidthToChildren: Boolean
-//    private var _adaptHeightToChildren: Boolean
-    open var logLayoutCycleErrors: Boolean
-    open var maxLayoutCycle: Number
-//    private override fun _getTypeName(): String
+	override var name: String?
+	//     open var _children: Array<Control>
+//     open var _measureForChildren: Measure
+//     open var _background: String
+//     open var _adaptWidthToChildren: Boolean
+//     open var _adaptHeightToChildren: Boolean
+	open var logLayoutCycleErrors: Boolean
+	open var maxLayoutCycle: kotlin.Number
+	open var adaptHeightToChildren: Boolean
+	open var adaptWidthToChildren: Boolean
+	open var background: String
+	open val children: Any
+	//    private override fun _getTypeName(): String
 //    private override fun _flagDescendantsAsMatrixDirty()
-    open fun getChildByName(name: String): Control?
-    open fun getChildByType(name: String, type: String): Control?
-    open fun containsControl(control: Control): Boolean
-    open fun addControl(control: Control?): Container
-    open fun clearControls(): Container
-    open fun removeControl(control: Control): Container
-//    private fun _reOrderControl(control: Control)
+	open fun getChildByName(name: String): Control?
+	open fun getChildByType(name: String, type: String): Control?
+	open fun containsControl(control: Control): Boolean
+	open fun addControl(control: Control?): Container
+	open fun clearControls(): Container
+	open fun removeControl(control: Control): Container
+	//    private fun _reOrderControl(control: Control)
 //    private override fun _offsetLeft(offset: Number)
 //    private override fun _offsetTop(offset: Number)
 //    private override fun _markAllAsDirty()
@@ -452,20 +455,22 @@ external open class Container(name: String? = definedExternally) : Control {
 //    private override fun _layout(parentMeasure: Measure, context: CanvasRenderingContext2D): Boolean
 //    private fun _postMeasure()
 //    private fun _draw(context: CanvasRenderingContext2D, invalidatedRectangle: Measure = definedExternally)
-    override fun getDescendantsToRef(results: Array<Control>, directDescendantsOnly: Boolean, predicate: (control: Control) -> Boolean)
-//    private override fun _processPicking(x: Number, y: Number, type: Number, pointerId: Number, buttonIndex: Number): Boolean
+	override fun getDescendantsToRef(results: Array<Control>, directDescendantsOnly: Boolean, predicate: (control: Control) -> Boolean)
+	//    private override fun _processPicking(x: Number, y: Number, type: Number, pointerId: Number, buttonIndex: Number): Boolean
 //    private override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D)
-    override fun dispose()
+	override fun dispose()
 }
 
 external open class Rectangle(name: String? = definedExternally) : Container {
     override var name: String?
-//    private var _thickness: Any
-//    private var _cornerRadius: Any
+//     open var _thickness: Any
+//     open var _cornerRadius: Any
+    open var thickness: Number
+    open var cornerRadius: Number
 //    private override fun _getTypeName(): String
 //    private override fun _localDraw(context: CanvasRenderingContext2D)
 //    private override fun _additionalProcessing(parentMeasure: Measure, context: CanvasRenderingContext2D)
-//    private var _drawRoundedRect: Any
+//     open var _drawRoundedRect: Any
 //    private override fun _clipForChildren(context: CanvasRenderingContext2D)
 }
 

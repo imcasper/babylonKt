@@ -47,6 +47,23 @@ class BoxOptions (
 	var updatable: Boolean? = null
 )
 
+class TiledBox(
+	var depth: Number,
+	var pattern: Number? = null,
+	var size: Number? = null,
+	var width: Number? = null,
+	var height: Number? = null,
+	var tileSize: Number? = null,
+	var tileWidth: Number? = null,
+	var tileHeight: Number? = null,
+	var faceUV: Array<Vector4>? = null,
+	var faceColors: Array<Color4>? = null,
+	var alignHorizontal: Number? = null,
+	var alignVertical: Number? = null,
+	var sideOrientation: Number? = null,
+	var updatable: Boolean? = null
+)
+
 class DiskOptions (
 	var radius: Number? = null,
 	var tessellation: Number? = null,

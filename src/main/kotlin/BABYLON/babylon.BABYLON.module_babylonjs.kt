@@ -3,7 +3,6 @@
 @file:JsModule("babylonjs")
 package BABYLON
 
-import platform.*
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*
@@ -17048,82 +17047,6 @@ external open class DecalBuilder {
     }
 }
 
-external interface `T$130` {
-    var size: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var width: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var height: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var depth: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var faceUV: Array<Vector4>?
-        get() = definedExternally
-        set(value) = definedExternally
-    var faceColors: Array<Color4>?
-        get() = definedExternally
-        set(value) = definedExternally
-    var sideOrientation: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var frontUVs: Vector4?
-        get() = definedExternally
-        set(value) = definedExternally
-    var backUVs: Vector4?
-        get() = definedExternally
-        set(value) = definedExternally
-    var updatable: Boolean?
-        get() = definedExternally
-        set(value) = definedExternally
-}
-
-external interface `T$131` {
-    var pattern: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var size: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var width: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var height: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var depth: Number
-    var tileSize: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var tileWidth: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var tileHeight: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var faceUV: Array<Vector4>?
-        get() = definedExternally
-        set(value) = definedExternally
-    var faceColors: Array<Color4>?
-        get() = definedExternally
-        set(value) = definedExternally
-    var alignHorizontal: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var alignVertical: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var sideOrientation: Number?
-        get() = definedExternally
-        set(value) = definedExternally
-    var updatable: Boolean?
-        get() = definedExternally
-        set(value) = definedExternally
-}
-
 external interface `T$132` {
     var points: Array<Vector3>
     var dashSize: Number?
@@ -17145,11 +17068,12 @@ external interface `T$132` {
 
 external open class MeshBuilder {
     companion object {
-        fun CreateBox(name: String, options: `T$130`, scene: Scene? = definedExternally): Mesh
-        fun CreateTiledBox(name: String, options: `T$131`, scene: Scene? = definedExternally): Mesh
-        fun CreateSphere(name: String, options: SphereOptions, scene: Scene? = definedExternally): Mesh
-        fun CreateDisc(name: String, options: `T$49`, scene: Scene? = definedExternally): Mesh
-        fun CreateIcoSphere(name: String, options: `T$128`, scene: Scene? = definedExternally): Mesh
+        fun CreateBox(name: String, options: BoxOptions, scene: Scene? = definedExternally): Mesh
+		fun CreateSphere(name: String, options: SphereOptions, scene: Scene? = definedExternally): Mesh
+		fun CreateDisc(name: String, options: DiskOptions, scene: Scene? = definedExternally): Mesh
+		fun CreateIcoSphere(name: String, options: IcoSphereOptions, scene: Scene? = definedExternally): Mesh
+        fun CreateTiledBox(name: String, options: TiledBox, scene: Scene? = definedExternally): Mesh
+
         fun CreateRibbon(name: String, options: `T$109`, scene: Scene? = definedExternally): Mesh
         fun CreateCylinder(name: String, options: `T$79`, scene: Scene? = definedExternally): Mesh
         fun CreateTorus(name: String, options: `T$78`, scene: Scene? = definedExternally): Mesh
