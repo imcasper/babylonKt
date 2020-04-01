@@ -19,22 +19,24 @@ import org.w3c.workers.*
 import org.w3c.xhr.*
 import BABYLON.*
 
-external open class AxesViewer(scene: Scene, scaleLines: Number = definedExternally, renderingGroupId: Number? = definedExternally, xAxis: TransformNode = definedExternally, yAxis: TransformNode = definedExternally, zAxis: TransformNode = definedExternally) {
-//    private var _xAxis: Any
-//    private var _yAxis: Any
-//    private var _zAxis: Any
-//    private var _scaleLinesFactor: Any
-//    private var _instanced: Any
-	protected var scene: Scene
+external open class AxesViewer(scene: Scene, scaleLines: kotlin.Number = definedExternally, renderingGroupId: kotlin.Number? = definedExternally, xAxis: TransformNode = definedExternally, yAxis: TransformNode = definedExternally, zAxis: TransformNode = definedExternally) {
+	//     open var _xAxis: Any
+//     open var _yAxis: Any
+//     open var _zAxis: Any
+//     open var _scaleLinesFactor: Any
+//     open var _instanced: Any
+	open var scene: Scene
+	open var scaleLines: kotlin.Number
+	open val xAxis: TransformNode
+	open val yAxis: TransformNode
+	open val zAxis: TransformNode
+	open fun update(position: Vector3, xaxis: Vector3, yaxis: Vector3, zaxis: Vector3)
+	open fun createInstance(): AxesViewer
+	open fun dispose()
 
-	open var scaleLines: Number
-    open fun update(position: BABYLON.Vector3, xaxis: BABYLON.Vector3, yaxis: BABYLON.Vector3, zaxis: BABYLON.Vector3)
-    open fun createInstance(): AxesViewer
-    open fun dispose()
-
-    companion object {
-        var _SetRenderingGroupId: Any
-    }
+	companion object {
+//         var _SetRenderingGroupId: Any
+	}
 }
 
 external open class BoneAxesViewer(scene: Scene, bone: Bone, mesh: Mesh, scaleLines: Number = definedExternally) : AxesViewer {
