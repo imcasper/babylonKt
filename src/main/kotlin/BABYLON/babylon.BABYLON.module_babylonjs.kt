@@ -2205,7 +2205,7 @@ external open class TargetCamera(name: String, position: Vector3, scene: Scene, 
     open var updateUpVectorFromRotation: Boolean
 //    private var _tmpQuaternion: Any
     open var rotation: Vector3
-    open var rotationQuaternion: Quaternion
+    open var rotationQuaternion: Quaternion?
     open var speed: Number
     open var noRotationConstraint: Boolean
     open var lockedTarget: Any?
