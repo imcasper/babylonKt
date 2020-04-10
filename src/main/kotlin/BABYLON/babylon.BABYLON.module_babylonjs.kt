@@ -3581,18 +3581,22 @@ external open class Animatable(scene: Scene, target: Any, fromFrame: Number = de
     open var loopAnimation: Boolean
     open var onAnimationEnd: (() -> Unit)?
     open var onAnimationLoop: (() -> Unit)?
-//    private var _localDelayOffset: Any
-//    private var _pausedDelay: Any
-//    private var _runtimeAnimations: Any
-//    private var _paused: Any
-//    private var _scene: Any
-//    private var _speedRatio: Any
-//    private var _weight: Any
-//    private var _syncRoot: Any
+//     open var _localDelayOffset: Any
+//     open var _pausedDelay: Any
+//     open var _runtimeAnimations: Any
+//     open var _paused: Any
+//     open var _scene: Any
+//     open var _speedRatio: Any
+//     open var _weight: Any
+//     open var _syncRoot: Any
     open var disposeOnEnd: Boolean
     open var animationStarted: Boolean
     open var onAnimationEndObservable: Observable<Animatable>
     open var onAnimationLoopObservable: Observable<Animatable>
+    open val syncRoot: Animatable?
+    open val masterFrame: Number
+    open var weight: Number
+    open var speedRatio: Number
     open fun syncWith(root: Animatable): Animatable
     open fun getAnimations(): Array<RuntimeAnimation>
     open fun appendAnimations(target: Any, animations: Array<Animation>)
@@ -3604,7 +3608,7 @@ external open class Animatable(scene: Scene, target: Any, fromFrame: Number = de
     open fun goToFrame(frame: Number)
     open fun pause()
     open fun restart()
-//    private var _raiseOnAnimationEnd: Any
+//     open var _raiseOnAnimationEnd: Any
     open fun stop(animationName: String = definedExternally, targetMask: (target: Any) -> Boolean = definedExternally)
     open fun waitAsync(): Promise<Animatable>
 //    private fun _animate(delay: Number): Boolean
@@ -4789,7 +4793,7 @@ external open class PoseEnabledController(browserGamepad: Any) : Gamepad, PoseCo
     override var deviceRotationQuaternion: Quaternion
     override var deviceScaleFactor: Number
     override var position: Vector3
-    override var rotationQuaternion: Quaternion
+    override var rotationQuaternion: Quaternion?
     open var controllerType: PoseEnabledControllerType
 //    private var _calculatedPosition: Vector3
 //    private var _calculatedRotation: Any
@@ -4908,7 +4912,7 @@ external interface DevicePose {
 
 external interface PoseControlled {
     var position: Vector3
-    var rotationQuaternion: Quaternion
+    var rotationQuaternion: Quaternion?
     var devicePosition: Vector3?
         get() = definedExternally
         set(value) = definedExternally
@@ -9843,7 +9847,7 @@ external open class FlyCamera(name: String, position: Vector3, scene: Scene, set
     open var checkCollisions: Boolean
     open var applyGravity: Boolean
     override var cameraDirection: Vector3
-    override var rotationQuaternion: Quaternion
+    override var rotationQuaternion: Quaternion?
 //    private var _trackRoll: Number
     open var rollCorrect: Number
     open var bankedTurn: Boolean
