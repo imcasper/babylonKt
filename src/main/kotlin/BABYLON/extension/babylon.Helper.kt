@@ -2,11 +2,10 @@ package BABYLON.extension
 
 import BABYLON.*
 import org.w3c.dom.HTMLCanvasElement
-import org.w3c.dom.events.Event
 import kotlin.browser.document
 import kotlin.browser.window
 
-fun createScene(canvasElementId:String, antiAlias:Boolean = true, createCamera:Boolean = true, createLight:Boolean = true, blockContextMenu:Boolean = true): Scene {
+fun createScene(canvasElementId: String, antiAlias: Boolean = true, createCamera: Boolean = true, createLight: Boolean = true, blockContextMenu: Boolean = true, autoResize: Boolean = true): Scene {
 	val canvas = document.getElementById(canvasElementId)
 	if (!(canvas is HTMLCanvasElement)) {
 		throw Error("Cant find canvas with id $canvasElementId")
@@ -30,31 +29,20 @@ fun createScene(canvasElementId:String, antiAlias:Boolean = true, createCamera:B
 	if (createLight) {
 		DirectionalLight("default-light", Vector3(1.0, -2.0, -3.0), scene)
 	}
+
+	if (autoResize) {
+		window.addEventListener("resize", { engine.resize() })
+	}
 	return scene
 }
 
 fun Scene.runRenderLoop() {
-	// run the render loop
-	val engine = this.getEngine()
-	var lastException: Throwable? = null
-
-	val onResize: (Event) -> Unit = {
-		if (lastException == null) {
-			engine.resize()
+	getEngine().runRenderLoop {
+		try {
+			render()
+		} catch (exception: Throwable) {
+			console.error(exception)
+			return@runRenderLoop
 		}
 	}
-
-	val onRender: () -> Unit = {
-		if (lastException == null) {
-			try {
-				render()
-			} catch (exception: Throwable) {
-				lastException = exception
-				console.error(lastException)
-			}
-		}
-	}
-
-	engine.runRenderLoop(onRender)
-	window.addEventListener("resize", onResize)
 }
