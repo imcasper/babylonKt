@@ -1994,32 +1994,36 @@ external open class DepthTextureCreationOptions {
 }
 
 external open class CubeTexture(rootUrl: String, scene: Scene, extensions: Array<String>? = definedExternally, noMipmap: Boolean = definedExternally, files: Array<String>? = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally, format: Number = definedExternally, prefiltered: Boolean = definedExternally, forcedExtension: Any = definedExternally, createPolynomials: Boolean = definedExternally, lodScale: Number = definedExternally, lodOffset: Number = definedExternally) : BaseTexture {
-//    private var _delayedOnLoad: Any
-    open var onLoadObservable: Observable<CubeTexture>
-    open var url: String
-    open var boundingBoxPosition: Vector3
-//    private var _boundingBoxSize: Any
-//    private var _rotationY: Number
-//    private var _noMipmap: Any
-//    private var _files: Any
-//    private var _forcedExtension: String?
-//    private var _extensions: Any
-//    private var _textureMatrix: Any
-//    private var _format: Any
-//    private var _createPolynomials: Any
-//    private var _prefiltered: Boolean
-    override fun getClassName(): String
-    open fun updateURL(url: String, forcedExtension: String = definedExternally, onLoad: () -> Unit = definedExternally, prefiltered: Boolean = definedExternally)
-    open fun delayLoad(forcedExtension: String = definedExternally)
-    override fun getReflectionTextureMatrix(): Matrix
-    open fun setReflectionTextureMatrix(value: Matrix)
-    override fun clone(): CubeTexture?
+	//     open var _delayedOnLoad: Any
+	open var onLoadObservable: Observable<CubeTexture>
+	open var url: String
+	open var boundingBoxPosition: Vector3
+	//     open var _boundingBoxSize: Any
+	open var boundingBoxSize: Vector3
+	//     open var _rotationY: Number
+	open var rotationY: Number
+	override val noMipmap: Boolean
+	//     open var _noMipmap: Any
+//     open var _files: Any
+//     open var _forcedExtension: String?
+//     open var _extensions: Any
+//     open var _textureMatrix: Any
+//     open var _format: Any
+//     open var _createPolynomials: Any
+//     open var _prefiltered: Boolean
+	open val isPrefiltered: Boolean
+	override fun getClassName(): String
+	open fun updateURL(url: String, forcedExtension: String = definedExternally, onLoad: () -> Unit = definedExternally, prefiltered: Boolean = definedExternally)
+	open fun delayLoad(forcedExtension: String = definedExternally)
+	override fun getReflectionTextureMatrix(): Matrix
+	open fun setReflectionTextureMatrix(value: Matrix)
+//	open fun clone(): CubeTexture
 
-    companion object {
-        fun CreateFromImages(files: Array<String>, scene: Scene, noMipmap: Boolean = definedExternally): CubeTexture
-        fun CreateFromPrefilteredData(url: String, scene: Scene, forcedExtension: Any = definedExternally, createPolynomials: Boolean = definedExternally): CubeTexture
-        fun Parse(parsedTexture: Any, scene: Scene, rootUrl: String): CubeTexture
-    }
+	companion object {
+		fun CreateFromImages(files: Array<String>, scene: Scene, noMipmap: Boolean = definedExternally): CubeTexture
+		fun CreateFromPrefilteredData(url: String, scene: Scene, forcedExtension: Any = definedExternally, createPolynomials: Boolean = definedExternally): CubeTexture
+		fun Parse(parsedTexture: Any, scene: Scene, rootUrl: String): CubeTexture
+	}
 }
 
 external open class MaterialDefines {
@@ -19005,62 +19009,23 @@ external object outlineVertexShader {
 }
 
 external open class Scene(engine: Engine, options: SceneOptions = definedExternally) : AbstractScene, IAnimatable {
-	val frustumPlanes:Array<Plane>
-	val meshUnderPointer:AbstractMesh?
-	var pointerX:Number
-	var pointerY:Number
-	val totalVerticesPerfCounter: PerfCounter
-	val totalActiveIndicesPerfCounter: PerfCounter
-	val activeParticlesPerfCounter: PerfCounter
-	val activeBonesPerfCounter: PerfCounter
-	val isLoading:Boolean
-	val animatables:Array<Animatable>
-	val uid:String
-	val blockfreeActiveMeshesAndRenderingGroups:Boolean
-	val isDisposed:Boolean
-	val blockMaterialDirtyMechanism:Boolean
-//	val environmentTexture:BaseTexture?
-	val environmentIntensity:Number
-	val imageProcessingConfiguration: ImageProcessingConfiguration
-	var forceWireframe:Boolean
-	var skipFrustumClipping:Boolean
-	var forcePointsCloud:Boolean
-	var animationPropertiesOverride: AnimationPropertiesOverride?
-	val unTranslatedPointer:Vector2
-	var DragMovementThreshold:Number
-	var LongPressDelay:Number
-	var DoubleClickDelay:Number
-	var ExclusiveDoubleClickMode:Number
-	var useRightHandedSystem:Boolean
-	var fogEnabled:Boolean
-	var fogMode:Number
-	var shadowsEnabled:Boolean
-	val lightsEnabled:Boolean
-	var activeCamera:Camera?
-	var defaultMaterial:Material
-	var texturesEnabled:Boolean
-	var skeletonsEnabled:Boolean
-	val collisionCoordinator:ICollisionCoordinator
-
-	override var animations:Array<Animation>? = definedExternally
-	
-//    private var _outlineRenderer: OutlineRenderer
+//     open var _outlineRenderer: OutlineRenderer
     open fun getOutlineRenderer(): OutlineRenderer
-//    private var _depthRenderer: `T$142`
+//     open var _depthRenderer: `T$235`
     open fun enableDepthRenderer(camera: Camera? = definedExternally, storeNonLinearDepth: Boolean = definedExternally): DepthRenderer
     open fun disableDepthRenderer(camera: Camera? = definedExternally)
-//    private var _boundingBoxRenderer: BoundingBoxRenderer
-//    private var _forceShowBoundingBoxes: Boolean
+//     open var _boundingBoxRenderer: BoundingBoxRenderer
+//     open var _forceShowBoundingBoxes: Boolean
     open var forceShowBoundingBoxes: Boolean
     open fun getBoundingBoxRenderer(): BoundingBoxRenderer
-//    private var _postProcessRenderPipelineManager: PostProcessRenderPipelineManager
+//     open var _postProcessRenderPipelineManager: PostProcessRenderPipelineManager
     open var postProcessRenderPipelineManager: PostProcessRenderPipelineManager
-//    private var _geometryBufferRenderer: GeometryBufferRenderer?
+//     open var _geometryBufferRenderer: GeometryBufferRenderer?
     open var geometryBufferRenderer: GeometryBufferRenderer?
     open fun enableGeometryBufferRenderer(ratio: Number = definedExternally): GeometryBufferRenderer?
     open fun disableGeometryBufferRenderer()
-//    private var _physicsEngine: IPhysicsEngine?
-//    private var _physicsTimeAccumulator: Number
+//     open var _physicsEngine: IPhysicsEngine?
+//     open var _physicsTimeAccumulator: Number
     open fun getPhysicsEngine(): IPhysicsEngine?
     open fun enablePhysics(gravity: Vector3?, plugin: IPhysicsEnginePlugin = definedExternally): Boolean
     open fun disablePhysicsEngine()
@@ -19068,7 +19033,7 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open fun deleteCompoundImpostor(compound: Any)
     open var onBeforePhysicsObservable: Observable<Scene>
     open var onAfterPhysicsObservable: Observable<Scene>
-//    private var _simplificationQueue: SimplificationQueue
+//     open var _simplificationQueue: SimplificationQueue
     open var simplificationQueue: SimplificationQueue
     open fun createDefaultLight(replace: Boolean = definedExternally)
     open fun createDefaultCamera(createArcRotateCamera: Boolean = definedExternally, replace: Boolean = definedExternally, attachCameraControls: Boolean = definedExternally)
@@ -19077,14 +19042,14 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open fun createDefaultEnvironment(options: IEnvironmentHelperOptionsPartial = definedExternally): EnvironmentHelper?
     open fun createDefaultVRExperience(webVROptions: VRExperienceHelperOptions = definedExternally): VRExperienceHelper
     open fun createDefaultXRExperienceAsync(options: WebXRDefaultExperienceOptions): Promise<WebXRDefaultExperience>
-//    private var _debugLayer: DebugLayer
+//     open var _debugLayer: DebugLayer
     open var debugLayer: DebugLayer
-//    private var _selectionOctree: Octree<AbstractMesh>
+//     open var _selectionOctree: Octree<AbstractMesh>
     open var selectionOctree: Octree<AbstractMesh>
     open fun createOrUpdateSelectionOctree(maxCapacity: Number = definedExternally, maxDepth: Number = definedExternally): Octree<AbstractMesh>
-//    private var _gamepadManager: GamepadManager?
+//     open var _gamepadManager: GamepadManager?
     open var gamepadManager: GamepadManager
-//    private var _mainSoundTrack: SoundTrack
+//     open var _mainSoundTrack: SoundTrack
     open var mainSoundTrack: SoundTrack
     open var soundTracks: Array<SoundTrack>?
     open fun getSoundByName(name: String): Sound?
@@ -19092,14 +19057,14 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open var headphone: Boolean
     open var audioListenerPositionProvider: (() -> Vector3)?
     open var audioPositioningRefreshRate: Number
-//    private var _transformMatrixR: Matrix
-//    private var _multiviewSceneUbo: UniformBuffer?
+//     open var _transformMatrixR: Matrix
+//     open var _multiviewSceneUbo: UniformBuffer?
 //    private fun _createMultiviewUbo()
 //    private fun _updateMultiviewUbo(viewR: Matrix = definedExternally, projectionR: Matrix = definedExternally)
 //    private fun _renderMultiviewToSingleView(camera: Camera)
 //    private fun _registerTargetForLateAnimationBinding(runtimeAnimation: RuntimeAnimation, originalValue: Any)
-//    private fun _processLateAnimationBindingsForMatrices(holder: `T$10`): Any
-//    private fun _processLateAnimationBindingsForQuaternions(holder: `T$11`, refQuaternion: Quaternion): Quaternion
+//    private fun _processLateAnimationBindingsForMatrices(holder: `T$159`): Any
+//    private fun _processLateAnimationBindingsForQuaternions(holder: `T$160`, refQuaternion: Quaternion): Quaternion
 //    private fun _processLateAnimationBindings()
     open fun beginWeightedAnimation(target: Any, from: Number, to: Number, weight: Number, loop: Boolean = definedExternally, speedRatio: Number = definedExternally, onAnimationEnd: () -> Unit = definedExternally, animatable: Animatable = definedExternally, targetMask: (target: Any) -> Boolean = definedExternally, onAnimationLoop: () -> Unit = definedExternally): Animatable
     open fun beginAnimation(target: Any, from: Number, to: Number, loop: Boolean = definedExternally, speedRatio: Number = definedExternally, onAnimationEnd: () -> Unit = definedExternally, animatable: Animatable = definedExternally, stopCurrent: Boolean = definedExternally, targetMask: (target: Any) -> Boolean = definedExternally, onAnimationLoop: () -> Unit = definedExternally): Animatable
@@ -19110,9 +19075,9 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open fun getAllAnimatablesByTarget(target: Any): Array<Animatable>
     open fun stopAllAnimations()
     open var deltaTime: Number
-//    private var _pointerOverSprite: Sprite?
-//    private var _pickedDownSprite: Sprite?
-//    private var _tempSpritePickingRay: Ray?
+//     open var _pointerOverSprite: Sprite?
+//     open var _pickedDownSprite: Sprite?
+//     open var _tempSpritePickingRay: Ray?
     open var spriteManagers: Array<ISpriteManager>
     open var onBeforeSpritesRenderingObservable: Observable<Scene>
     open var onAfterSpritesRenderingObservable: Observable<Scene>
@@ -19124,26 +19089,32 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open fun multiPickSpriteWithRay(ray: Ray, predicate: (sprite: Sprite) -> Boolean = definedExternally, camera: Camera = definedExternally): Array<PickingInfo>?
     open fun setPointerOverSprite(sprite: Sprite?)
     open fun getPointerOverSprite(): Sprite?
-//    private var _tempPickingRay: Ray?
-//    private var _cachedRayForTransform: Ray
-//    private var _pickWithRayInverseMatrix: Matrix
+//     open var _tempPickingRay: Ray?
+//     open var _cachedRayForTransform: Ray
+//     open var _pickWithRayInverseMatrix: Matrix
 //    private fun _internalPick(rayFunction: (world: Matrix) -> Ray, predicate: (mesh: AbstractMesh) -> Boolean = definedExternally, fastCheck: Boolean = definedExternally, trianglePredicate: TrianglePickingPredicate = definedExternally): PickingInfo?
 //    private fun _internalMultiPick(rayFunction: (world: Matrix) -> Ray, predicate: (mesh: AbstractMesh) -> Boolean = definedExternally, trianglePredicate: TrianglePickingPredicate = definedExternally): Array<PickingInfo>?
-//    private var _inputManager: InputManager
+//     open var _inputManager: InputManager
     open var cameraToUseForPointers: Camera?
-//    private var _isScene: Boolean
-//    private var _blockEntityCollection: Boolean
+//     open var _isScene: Boolean
+//     open var _blockEntityCollection: Boolean
     open var autoClear: Boolean
     open var autoClearDepthAndStencil: Boolean
     open var clearColor: Color4
     open var ambientColor: Color3
     open var environmentBRDFTexture: BaseTexture
-//    private var _environmentTexture: BaseTexture?
-//    private var _environmentIntensity: Number
-//    private var _imageProcessingConfiguration: ImageProcessingConfiguration
-//    private var _forceWireframe: Any
-//    private var _skipFrustumClipping: Any
-//    private var _forcePointsCloud: Any
+//     open var _environmentTexture: BaseTexture?
+    override var environmentTexture: BaseTexture?
+//     open var _environmentIntensity: Number
+    open var environmentIntensity: Number
+//     open var _imageProcessingConfiguration: ImageProcessingConfiguration
+    open val imageProcessingConfiguration: ImageProcessingConfiguration
+//     open var _forceWireframe: Any
+    open var forceWireframe: Boolean
+//     open var _skipFrustumClipping: Any
+    open var skipFrustumClipping: Boolean
+//     open var _forcePointsCloud: Any
+    open var forcePointsCloud: Boolean
     open var clipPlane: Plane?
     open var clipPlane2: Plane?
     open var clipPlane3: Plane?
@@ -19151,7 +19122,8 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open var clipPlane5: Plane?
     open var clipPlane6: Plane?
     open var animationsEnabled: Boolean
-//    private var _animationPropertiesOverride: Any
+//     open var _animationPropertiesOverride: Any
+    open var animationPropertiesOverride: AnimationPropertiesOverride?
     open var useConstantAnimationDeltaTime: Boolean
     open var constantlyUpdateMeshUnderPointer: Boolean
     open var hoverCursor: String
@@ -19164,21 +19136,21 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open var loadingPluginName: String
     open var disableOfflineSupportExceptionRules: Array<RegExp>
     open var onDisposeObservable: Observable<Scene>
-//    private var _onDisposeObserver: Any
+//     open var _onDisposeObserver: Any
     open var onBeforeRenderObservable: Observable<Scene>
-//    private var _onBeforeRenderObserver: Any
+//     open var _onBeforeRenderObserver: Any
     open var onAfterRenderObservable: Observable<Scene>
     open var onAfterRenderCameraObservable: Observable<Camera>
-//    private var _onAfterRenderObserver: Any
+//     open var _onAfterRenderObserver: Any
     open var onBeforeAnimationsObservable: Observable<Scene>
     open var onAfterAnimationsObservable: Observable<Scene>
     open var onBeforeDrawPhaseObservable: Observable<Scene>
     open var onAfterDrawPhaseObservable: Observable<Scene>
     open var onReadyObservable: Observable<Scene>
     open var onBeforeCameraRenderObservable: Observable<Camera>
-//    private var _onBeforeCameraRenderObserver: Any
+//     open var _onBeforeCameraRenderObserver: Any
     open var onAfterCameraRenderObservable: Observable<Camera>
-//    private var _onAfterCameraRenderObserver: Any
+//     open var _onAfterCameraRenderObserver: Any
     open var onBeforeActiveMeshesEvaluationObservable: Observable<Scene>
     open var onAfterActiveMeshesEvaluationObservable: Observable<Scene>
     open var onBeforeParticlesRenderingObservable: Observable<Scene>
@@ -19210,7 +19182,7 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open var onMeshImportedObservable: Observable<AbstractMesh>
     open var onAnimationFileImportedObservable: Observable<Scene>
     open var customLODSelector: (mesh: AbstractMesh, camera: Camera) -> AbstractMesh?
-//    private var _registeredForLateAnimationBindings: SmartArrayNoDuplicate<Any>
+//     open var _registeredForLateAnimationBindings: SmartArrayNoDuplicate<Any>
     open var pointerDownPredicate: (Mesh: AbstractMesh) -> Boolean
     open var pointerUpPredicate: (Mesh: AbstractMesh) -> Boolean
     open var pointerMovePredicate: (Mesh: AbstractMesh) -> Boolean
@@ -19220,34 +19192,45 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open var onPointerPick: (evt: PointerEvent, pickInfo: PickingInfo) -> Unit
     open var onPrePointerObservable: Observable<PointerInfoPre>
     open var onPointerObservable: Observable<PointerInfo>
-//    private var _mirroredCameraPosition: Vector3?
+    open val unTranslatedPointer: Vector2
+//     open var _mirroredCameraPosition: Vector3?
     open var onPreKeyboardObservable: Observable<KeyboardInfoPre>
     open var onKeyboardObservable: Observable<KeyboardInfo>
-//    private var _useRightHandedSystem: Any
-//    private var _timeAccumulator: Any
-//    private var _currentStepId: Any
-//    private var _currentInternalStep: Any
+//     open var _useRightHandedSystem: Any
+    open var useRightHandedSystem: Boolean
+//     open var _timeAccumulator: Any
+//     open var _currentStepId: Any
+//     open var _currentInternalStep: Any
     open fun setStepId(newStepId: Number)
     open fun getStepId(): Number
     open fun getInternalStep(): Number
-//    private var _fogEnabled: Any
-//    private var _fogMode: Any
+//     open var _fogEnabled: Any
+    open var fogEnabled: Boolean
+//     open var _fogMode: Any
+    open var fogMode: Number
     open var fogColor: Color3
     open var fogDensity: Number
     open var fogStart: Number
     open var fogEnd: Number
-//    private var _shadowsEnabled: Any
-//    private var _lightsEnabled: Any
+//     open var _shadowsEnabled: Any
+    open var shadowsEnabled: Boolean
+//     open var _lightsEnabled: Any
+    open var lightsEnabled: Boolean
     open var activeCameras: Array<Camera>
-//    private var _activeCamera: Camera?
-//    private var _defaultMaterial: Any
-//    private var _texturesEnabled: Any
+//     open var _activeCamera: Camera?
+    open var activeCamera: Camera?
+//     open var _defaultMaterial: Any
+    open var defaultMaterial: Material
+//     open var _texturesEnabled: Any
+    open var texturesEnabled: Boolean
     open var particlesEnabled: Boolean
     open var spritesEnabled: Boolean
-//    private var _skeletonsEnabled: Any
+//     open var _skeletonsEnabled: Any
+    open var skeletonsEnabled: Boolean
     open var lensFlaresEnabled: Boolean
     open var collisionsEnabled: Boolean
-//    private var _collisionCoordinator: Any
+//     open var _collisionCoordinator: Any
+    open val collisionCoordinator: ICollisionCoordinator
     open var gravity: Vector3
     open var postProcessesEnabled: Boolean
     open var postProcesses: Array<PostProcess>
@@ -19260,99 +19243,107 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open var probesEnabled: Boolean
     open var offlineProvider: IOfflineProvider
     open var actionManager: AbstractActionManager
-//    private var _meshesForIntersections: Any
+//     open var _meshesForIntersections: Any
     open var proceduralTexturesEnabled: Boolean
-//    private var _engine: Any
-//    private var _totalVertices: Any
-//    private var _activeIndices: PerfCounter
-//    private var _activeParticles: PerfCounter
-//    private var _activeBones: PerfCounter
-//    private var _animationRatio: Any
-//    private var _animationTimeLast: Number
-//    private var _animationTime: Number
+//     open var _engine: Any
+//     open var _totalVertices: Any
+//     open var _activeIndices: PerfCounter
+//     open var _activeParticles: PerfCounter
+//     open var _activeBones: PerfCounter
+//     open var _animationRatio: Any
+//     open var _animationTimeLast: Number
+//     open var _animationTime: Number
     open var animationTimeScale: Number
-//    private var _cachedMaterial: Material?
-//    private var _cachedEffect: Effect?
-//    private var _cachedVisibility: Number?
-//    private var _renderId: Any
-//    private var _frameId: Any
-//    private var _executeWhenReadyTimeoutId: Any
-//    private var _intermediateRendering: Any
-//    private var _viewUpdateFlag: Any
-//    private var _projectionUpdateFlag: Any
-//    private var _toBeDisposed: Array<IDisposable?>
-//    private var _activeRequests: Any
-//    private var _pendingData: Array<Any>
-//    private var _isDisposed: Any
+//     open var _cachedMaterial: Material?
+//     open var _cachedEffect: Effect?
+//     open var _cachedVisibility: Number?
+//     open var _renderId: Any
+//     open var _frameId: Any
+//     open var _executeWhenReadyTimeoutId: Any
+//     open var _intermediateRendering: Any
+//     open var _viewUpdateFlag: Any
+//     open var _projectionUpdateFlag: Any
+//     open var _toBeDisposed: Array<IDisposable?>
+//     open var _activeRequests: Any
+//     open var _pendingData: Array<Any>
+//     open var _isDisposed: Any
     open var dispatchAllSubMeshesOfActiveMeshes: Boolean
-//    private var _activeMeshes: Any
-//    private var _processedMaterials: Any
-//    private var _renderTargets: Any
-//    private var _activeParticleSystems: SmartArray<IParticleSystem>
-//    private var _activeSkeletons: Any
-//    private var _softwareSkinnedMeshes: Any
-//    private var _renderingManager: Any
-//    private var _activeAnimatables: Array<Animatable>
-//    private var _transformMatrix: Any
-//    private var _sceneUbo: Any
-//    private var _viewMatrix: Matrix
-//    private var _projectionMatrix: Any
-//    private var _forcedViewPosition: Vector3?
-//    private var _frustumPlanes: Array<Plane>
+//     open var _activeMeshes: Any
+//     open var _processedMaterials: Any
+//     open var _renderTargets: Any
+//     open var _activeParticleSystems: SmartArray<IParticleSystem>
+//     open var _activeSkeletons: Any
+//     open var _softwareSkinnedMeshes: Any
+//     open var _renderingManager: Any
+//     open var _activeAnimatables: Array<Animatable>
+//     open var _transformMatrix: Any
+//     open var _sceneUbo: Any
+//     open var _viewMatrix: Matrix
+//     open var _projectionMatrix: Any
+//     open var _forcedViewPosition: Vector3?
+//     open var _frustumPlanes: Array<Plane>
+    open val frustumPlanes: Any
     open var requireLightSorting: Boolean
     open var useMaterialMeshMap: Boolean
     open var useClonedMeshMap: Boolean
-//    private var _externalData: Any
-//    private var _uid: Any
-//    private var _components: Array<ISceneComponent>
-//    private var _serializableComponents: Array<ISceneSerializableComponent>
-//    private var _transientComponents: Any
-//    private var _registerTransientComponents: Any
+//     open var _externalData: Any
+//     open var _uid: Any
+//     open var _components: Array<ISceneComponent>
+//     open var _serializableComponents: Array<ISceneSerializableComponent>
+//     open var _transientComponents: Any
+//     open var _registerTransientComponents: Any
 //    private fun _addComponent(component: ISceneComponent)
 //    private fun _getComponent(name: String): ISceneComponent?
-//    private var _beforeCameraUpdateStage: Stage<SimpleStageAction>
-//    private var _beforeClearStage: Stage<SimpleStageAction>
-//    private var _gatherRenderTargetsStage: Stage<RenderTargetsStageAction>
-//    private var _gatherActiveCameraRenderTargetsStage: Stage<RenderTargetsStageAction>
-//    private var _isReadyForMeshStage: Stage<MeshStageAction>
-//    private var _beforeEvaluateActiveMeshStage: Stage<SimpleStageAction>
-//    private var _evaluateSubMeshStage: Stage<EvaluateSubMeshStageAction>
-//    private var _activeMeshStage: Stage<ActiveMeshStageAction>
-//    private var _cameraDrawRenderTargetStage: Stage<CameraStageFrameBufferAction>
-//    private var _beforeCameraDrawStage: Stage<CameraStageAction>
-//    private var _beforeRenderTargetDrawStage: Stage<RenderTargetStageAction>
-//    private var _beforeRenderingGroupDrawStage: Stage<RenderingGroupStageAction>
-//    private var _beforeRenderingMeshStage: Stage<RenderingMeshStageAction>
-//    private var _afterRenderingMeshStage: Stage<RenderingMeshStageAction>
-//    private var _afterRenderingGroupDrawStage: Stage<RenderingGroupStageAction>
-//    private var _afterCameraDrawStage: Stage<CameraStageAction>
-//    private var _afterRenderTargetDrawStage: Stage<RenderTargetStageAction>
-//    private var _afterRenderStage: Stage<SimpleStageAction>
-//    private var _pointerMoveStage: Stage<PointerMoveStageAction>
-//    private var _pointerDownStage: Stage<PointerUpDownStageAction>
-//    private var _pointerUpStage: Stage<PointerUpDownStageAction>
+//     open var _beforeCameraUpdateStage: Stage<SimpleStageAction>
+//     open var _beforeClearStage: Stage<SimpleStageAction>
+//     open var _gatherRenderTargetsStage: Stage<RenderTargetsStageAction>
+//     open var _gatherActiveCameraRenderTargetsStage: Stage<RenderTargetsStageAction>
+//     open var _isReadyForMeshStage: Stage<MeshStageAction>
+//     open var _beforeEvaluateActiveMeshStage: Stage<SimpleStageAction>
+//     open var _evaluateSubMeshStage: Stage<EvaluateSubMeshStageAction>
+//     open var _activeMeshStage: Stage<ActiveMeshStageAction>
+//     open var _cameraDrawRenderTargetStage: Stage<CameraStageFrameBufferAction>
+//     open var _beforeCameraDrawStage: Stage<CameraStageAction>
+//     open var _beforeRenderTargetDrawStage: Stage<RenderTargetStageAction>
+//     open var _beforeRenderingGroupDrawStage: Stage<RenderingGroupStageAction>
+//     open var _beforeRenderingMeshStage: Stage<RenderingMeshStageAction>
+//     open var _afterRenderingMeshStage: Stage<RenderingMeshStageAction>
+//     open var _afterRenderingGroupDrawStage: Stage<RenderingGroupStageAction>
+//     open var _afterCameraDrawStage: Stage<CameraStageAction>
+//     open var _afterRenderTargetDrawStage: Stage<RenderTargetStageAction>
+//     open var _afterRenderStage: Stage<SimpleStageAction>
+//     open var _pointerMoveStage: Stage<PointerMoveStageAction>
+//     open var _pointerDownStage: Stage<PointerUpDownStageAction>
+//     open var _pointerUpStage: Stage<PointerUpDownStageAction>
     open var geometriesByUniqueId: Any
     open fun getClassName(): String
-//    private var _defaultMeshCandidates: Any
+//     open var _defaultMeshCandidates: Any
 //    private fun _getDefaultMeshCandidates(): ISmartArrayLike<AbstractMesh>
-//    private var _defaultSubMeshCandidates: Any
+//     open var _defaultSubMeshCandidates: Any
 //    private fun _getDefaultSubMeshCandidates(mesh: AbstractMesh): ISmartArrayLike<SubMesh>
     open fun setDefaultCandidateProviders()
+    open val meshUnderPointer: AbstractMesh?
+    open var pointerX: Number
+    open var pointerY: Number
     open fun getCachedMaterial(): Material?
     open fun getCachedEffect(): Effect?
     open fun getCachedVisibility(): Number?
     open fun isCachedMaterialInvalid(material: Material, effect: Effect, visibility: Number = definedExternally): Boolean
     open fun getEngine(): Engine
     open fun getTotalVertices(): Number
+    open val totalVerticesPerfCounter: PerfCounter
     open fun getActiveIndices(): Number
+    open val totalActiveIndicesPerfCounter: PerfCounter
     open fun getActiveParticles(): Number
+    open val activeParticlesPerfCounter: PerfCounter
     open fun getActiveBones(): Number
+    open val activeBonesPerfCounter: PerfCounter
     open fun getActiveMeshes(): SmartArray<AbstractMesh>
     open fun getAnimationRatio(): Number
     open fun getRenderId(): Number
     open fun getFrameId(): Number
     open fun incrementRenderId()
-//    private var _createUbo: Any
+//     open var _createUbo: Any
     open fun simulatePointerMove(pickResult: PickingInfo, pointerEventInit: PointerEventInit = definedExternally): Scene
     open fun simulatePointerDown(pickResult: PickingInfo, pointerEventInit: PointerEventInit = definedExternally): Scene
     open fun simulatePointerUp(pickResult: PickingInfo, pointerEventInit: PointerEventInit = definedExternally, doubleTap: Boolean = definedExternally): Scene
@@ -19365,14 +19356,16 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open fun unregisterBeforeRender(func: () -> Unit)
     open fun registerAfterRender(func: () -> Unit)
     open fun unregisterAfterRender(func: () -> Unit)
-//    private var _executeOnceBeforeRender: Any
+//     open var _executeOnceBeforeRender: Any
     open fun executeOnceBeforeRender(func: () -> Unit, timeout: Number = definedExternally)
 //    private fun _addPendingData(data: Any)
 //    private fun _removePendingData(data: Any)
     open fun getWaitingItemsCount(): Number
+    open val isLoading: Boolean
     open fun executeWhenReady(func: () -> Unit)
     open fun whenReadyAsync(): Promise<Unit>
 //    private fun _checkIsReady()
+    open val animatables: Any
     open fun resetLastAnimationTimeFrame()
     open fun getViewMatrix(): Matrix
     open fun getProjectionMatrix(): Matrix
@@ -19428,7 +19421,7 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open fun getLightByUniqueID(uniqueId: Number): Light?
     open fun getParticleSystemByID(id: String): IParticleSystem?
     open fun getGeometryByID(id: String): Geometry?
-//    private var _getGeometryByUniqueID: Any
+//     open var _getGeometryByUniqueID: Any
     open fun pushGeometry(geometry: Geometry, force: Boolean = definedExternally): Boolean
     open fun removeGeometry(geometry: Geometry): Boolean
     open fun getGeometries(): Array<Geometry>
@@ -19451,13 +19444,15 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open fun getMorphTargetManagerById(id: Number): MorphTargetManager?
     open fun getMorphTargetById(id: String): MorphTarget?
     open fun isActiveMesh(mesh: AbstractMesh): Boolean
+    open val uid: String
     open fun <T> addExternalData(key: String, data: T): Boolean
     open fun <T> getExternalData(key: String): T?
     open fun <T> getOrAddExternalDataWithFactory(key: String, factory: (k: String) -> T): T
     open fun removeExternalData(key: String): Boolean
-//    private var _evaluateSubMesh: Any
+//     open var _evaluateSubMesh: Any
     open fun freeProcessedMaterials()
-//    private var _preventFreeActiveMeshesAndRenderingGroups: Any
+//     open var _preventFreeActiveMeshesAndRenderingGroups: Any
+    open var blockfreeActiveMeshesAndRenderingGroups: Boolean
     open fun freeActiveMeshes()
     open fun freeRenderingGroups()
 //    private fun _isInIntermediateRendering(): Boolean
@@ -19465,18 +19460,18 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open var getActiveSubMeshCandidates: (mesh: AbstractMesh) -> ISmartArrayLike<SubMesh>
     open var getIntersectingSubMeshCandidates: (mesh: AbstractMesh, localRay: Ray) -> ISmartArrayLike<SubMesh>
     open var getCollidingSubMeshCandidates: (mesh: AbstractMesh, collider: Collider) -> ISmartArrayLike<SubMesh>
-//    private var _activeMeshesFrozen: Any
-//    private var _skipEvaluateActiveMeshesCompletely: Any
+//     open var _activeMeshesFrozen: Any
+//     open var _skipEvaluateActiveMeshesCompletely: Any
     open fun freezeActiveMeshes(skipEvaluateActiveMeshes: Boolean = definedExternally): Scene
     open fun unfreezeActiveMeshes(): Scene
-//    private var _evaluateActiveMeshes: Any
-//    private var _activeMesh: Any
+//     open var _evaluateActiveMeshes: Any
+//     open var _activeMesh: Any
     open fun updateTransformMatrix(force: Boolean = definedExternally)
-//    private var _bindFrameBuffer: Any
-//    private var _allowPostProcessClearColor: Boolean
+//     open var _bindFrameBuffer: Any
+//     open var _allowPostProcessClearColor: Boolean
 //    private fun _renderForCamera(camera: Camera, rigParent: Camera = definedExternally)
-//    private var _processSubCameras: Any
-//    private var _checkIntersections: Any
+//     open var _processSubCameras: Any
+//     open var _checkIntersections: Any
 //    private fun _advancePhysicsEngineStep(step: Number)
     open var getDeterministicFrameTime: () -> Number
 //    private fun _animate()
@@ -19485,6 +19480,7 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open fun freezeMaterials()
     open fun unfreezeMaterials()
     open fun dispose()
+    open val isDisposed: Boolean
     open fun clearCachedVertexData()
     open fun cleanCachedTextureBuffer()
     open fun getWorldExtends(filterPredicate: (mesh: AbstractMesh) -> Boolean = definedExternally): `T$48`
@@ -19500,7 +19496,7 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open fun getPointerOverMesh(): AbstractMesh?
 //    private fun _rebuildGeometries()
 //    private fun _rebuildTextures()
-//    private var _getByTags: Any
+//     open var _getByTags: Any
     open fun getMeshesByTags(tagsQuery: String, forEach: (mesh: AbstractMesh) -> Unit = definedExternally): Array<Mesh>
     open fun getCamerasByTags(tagsQuery: String, forEach: (camera: Camera) -> Unit = definedExternally): Array<Camera>
     open fun getLightsByTags(tagsQuery: String, forEach: (light: Light) -> Unit = definedExternally): Array<Light>
@@ -19508,7 +19504,8 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
     open fun setRenderingOrder(renderingGroupId: Number, opaqueSortCompareFn: ((a: SubMesh, b: SubMesh) -> Number)? = definedExternally, alphaTestSortCompareFn: ((a: SubMesh, b: SubMesh) -> Number)? = definedExternally, transparentSortCompareFn: ((a: SubMesh, b: SubMesh) -> Number)? = definedExternally)
     open fun setRenderingAutoClearDepthStencil(renderingGroupId: Number, autoClearDepthStencil: Boolean, depth: Boolean = definedExternally, stencil: Boolean = definedExternally)
     open fun getAutoClearDepthStencilSetup(index: Number): IRenderingManagerAutoClearSetup
-//    private var _blockMaterialDirtyMechanism: Any
+//     open var _blockMaterialDirtyMechanism: Any
+    open var blockMaterialDirtyMechanism: Boolean
     open fun markAllMaterialsAsDirty(flag: Number, predicate: (mat: Material) -> Boolean = definedExternally)
 //    private fun _loadFile(url: String, onSuccess: (data: dynamic /* String | ArrayBuffer */, responseURL: String) -> Unit, onProgress: (ev: ProgressEvent) -> Unit = definedExternally, useOfflineSupport: Boolean = definedExternally, useArrayBuffer: Boolean = definedExternally, onError: (request: WebRequest, exception: LoadFileError) -> Unit = definedExternally): IFileRequest
 //    private fun _loadFileAsync(url: String, onProgress: (data: Any) -> Unit = definedExternally, useOfflineSupport: Boolean = definedExternally, useArrayBuffer: Boolean = definedExternally): Promise<dynamic /* String | ArrayBuffer */>
@@ -19526,8 +19523,13 @@ external open class Scene(engine: Engine, options: SceneOptions = definedExterna
         var MaxDeltaTime: Number
         fun DefaultMaterialFactory(scene: Scene): Material
         fun CollisionCoordinatorFactory(): ICollisionCoordinator
+        var DragMovementThreshold: Number
+        var LongPressDelay: Number
+        var DoubleClickDelay: Number
+        var ExclusiveDoubleClickMode: Boolean
     }
 }
+
 
 external open class AbstractMesh(name: String, scene: Scene? = definedExternally) : TransformNode, IDisposable, ICullable, IGetSetVerticesData {
 	val material: Material?
