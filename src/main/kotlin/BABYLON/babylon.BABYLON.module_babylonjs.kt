@@ -2731,7 +2731,7 @@ external open class DynamicTexture(name: String, options: Any, scene: Scene?, ge
     open fun getContext(): CanvasRenderingContext2D
     open fun clear()
     open fun update(invertY: Boolean = definedExternally, premulAlpha: Boolean = definedExternally)
-    open fun drawText(text: String, x: Number?, y: Number?, font: String, color: String, clearColor: String, invertY: Boolean = definedExternally, update: Boolean = definedExternally)
+    open fun drawText(text: String, x: Number?, y: Number?, font: String, color: String, clearColor: String?, invertY: Boolean = definedExternally, update: Boolean = definedExternally)
     override fun clone(): DynamicTexture
     override fun serialize(): Any
 //    private override fun _rebuild()
