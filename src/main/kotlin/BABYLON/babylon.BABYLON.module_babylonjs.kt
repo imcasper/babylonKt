@@ -5161,7 +5161,7 @@ external open class MirrorTexture : RenderTargetTexture {
     override fun dispose()
 }
 
-external open class Texture(url: String?, sceneOrEngine: dynamic /*  Scene | ThinEngine  */, noMipmap: Boolean = definedExternally, invertY: Boolean = definedExternally, samplingMode: Int = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally, buffer: dynamic /*  String | ArrayBuffer | ArrayBufferView | HTMLImageElement | Blob | ImageBitmap  */ = definedExternally, deleteBuffer: Boolean = definedExternally, format: Number = definedExternally, mimeType: String = definedExternally) : BaseTexture {
+external open class Texture(url: String?, sceneOrEngine: dynamic /*  Scene | ThinEngine  */, noMipmap: Boolean = definedExternally, invertY: Boolean = definedExternally, samplingMode: Number = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally, buffer: dynamic /*  String | ArrayBuffer | ArrayBufferView | HTMLImageElement | Blob | ImageBitmap  */ = definedExternally, deleteBuffer: Boolean = definedExternally, format: Number = definedExternally, mimeType: String = definedExternally) : BaseTexture {
     open var url: String?
     open var uOffset: Number
     open var vOffset: Number
@@ -5173,36 +5173,40 @@ external open class Texture(url: String?, sceneOrEngine: dynamic /*  Scene | Thi
     open var uRotationCenter: Number
     open var vRotationCenter: Number
     open var wRotationCenter: Number
+    override val noMipmap: Boolean
     open var inspectableCustomProperties: Array<IInspectable>?
-//    private var _noMipmap: Any
-//    private var _invertY: Boolean
-//    private var _rowGenerationMatrix: Any
-//    private var _cachedTextureMatrix: Any
-//    private var _projectionModeMatrix: Any
-//    private var _t0: Any
-//    private var _t1: Any
-//    private var _t2: Any
-//    private var _cachedUOffset: Any
-//    private var _cachedVOffset: Any
-//    private var _cachedUScale: Any
-//    private var _cachedVScale: Any
-//    private var _cachedUAng: Any
-//    private var _cachedVAng: Any
-//    private var _cachedWAng: Any
-//    private var _cachedProjectionMatrixId: Any
-//    private var _cachedCoordinatesMode: Any
-//    private var _initialSamplingMode: Number
-//    private var _buffer: dynamic /*  String | ArrayBuffer | ArrayBufferView | HTMLImageElement | Blob | ImageBitmap  */
-//    private var _deleteBuffer: Any
-//    private var _format: Number?
-//    private var _delayedOnLoad: Any
-//    private var _delayedOnError: Any
-//    private var _mimeType: Any
+//     open var _noMipmap: Any
+//     open var _invertY: Boolean
+//     open var _rowGenerationMatrix: Any
+//     open var _cachedTextureMatrix: Any
+//     open var _projectionModeMatrix: Any
+//     open var _t0: Any
+//     open var _t1: Any
+//     open var _t2: Any
+//     open var _cachedUOffset: Any
+//     open var _cachedVOffset: Any
+//     open var _cachedUScale: Any
+//     open var _cachedVScale: Any
+//     open var _cachedUAng: Any
+//     open var _cachedVAng: Any
+//     open var _cachedWAng: Any
+//     open var _cachedProjectionMatrixId: Any
+//     open var _cachedCoordinatesMode: Any
+//     open var _initialSamplingMode: Number
+//     open var _buffer: dynamic /*  String | ArrayBuffer | ArrayBufferView | HTMLImageElement | Blob | ImageBitmap  */
+//     open var _deleteBuffer: Any
+//     open var _format: Number?
+//     open var _delayedOnLoad: Any
+//     open var _delayedOnError: Any
+//     open var _mimeType: Any
     open var onLoadObservable: Observable<Texture>
-//    private var _isBlocking: Boolean
+//     open var _isBlocking: Boolean
+    override var isBlocking: Boolean
+    open val samplingMode: Number
+    open val invertY: Boolean
     open fun updateURL(url: String, buffer: dynamic /*  String | ArrayBuffer | ArrayBufferView | HTMLImageElement | Blob  */ = definedExternally, onLoad: () -> Unit = definedExternally)
     override fun delayLoad()
-//    private var _prepareRowForTextureGeneration: Any
+//     open var _prepareRowForTextureGeneration: Any
     open fun getTextureMatrix(uBase: Number = definedExternally): Matrix
     override fun getReflectionTextureMatrix(): Matrix
 	override fun clone(): Texture
@@ -5212,37 +5216,37 @@ external open class Texture(url: String?, sceneOrEngine: dynamic /*  Scene | Thi
 
     companion object {
         var SerializeBuffers: Boolean
-        var _CubeTextureParser: (jsonTexture: Any, scene: Scene, rootUrl: String) -> CubeTexture
-        var _CreateMirror: (name: String, renderTargetSize: Number, scene: Scene, generateMipMaps: Boolean) -> MirrorTexture
-        var _CreateRenderTargetTexture: (name: String, renderTargetSize: Number, scene: Scene, generateMipMaps: Boolean) -> RenderTargetTexture
-        var NEAREST_SAMPLINGMODE:Int
-        var NEAREST_NEAREST_MIPLINEAR:Int
-        var BILINEAR_SAMPLINGMODE:Int
-        var LINEAR_LINEAR_MIPNEAREST:Int
-        var TRILINEAR_SAMPLINGMODE:Int
-        var LINEAR_LINEAR_MIPLINEAR:Int
-        var NEAREST_NEAREST_MIPNEAREST:Int
-        var NEAREST_LINEAR_MIPNEAREST:Int
-        var NEAREST_LINEAR_MIPLINEAR:Int
-        var NEAREST_LINEAR:Int
-        var NEAREST_NEAREST:Int
-        var LINEAR_NEAREST_MIPNEAREST:Int
-        var LINEAR_NEAREST_MIPLINEAR:Int
-        var LINEAR_LINEAR:Int
-        var LINEAR_NEAREST:Int
-        var EXPLICIT_MODE:Int
-        var SPHERICAL_MODE:Int
-        var PLANAR_MODE:Int
-        var CUBIC_MODE:Int
-        var PROJECTION_MODE:Int
-        var SKYBOX_MODE:Int
-        var INVCUBIC_MODE:Int
-        var EQUIRECTANGULAR_MODE:Int
-        var FIXED_EQUIRECTANGULAR_MODE:Int
-        var FIXED_EQUIRECTANGULAR_MIRRORED_MODE:Int
-        var CLAMP_ADDRESSMODE:Int
-        var WRAP_ADDRESSMODE:Int
-        var MIRROR_ADDRESSMODE:Int
+//         var _CubeTextureParser: (jsonTexture: Any, scene: Scene, rootUrl: String) -> CubeTexture
+//         var _CreateMirror: (name: String, renderTargetSize: Number, scene: Scene, generateMipMaps: Boolean) -> MirrorTexture
+//         var _CreateRenderTargetTexture: (name: String, renderTargetSize: Number, scene: Scene, generateMipMaps: Boolean) -> RenderTargetTexture
+        var NEAREST_SAMPLINGMODE: Number
+        var NEAREST_NEAREST_MIPLINEAR: Number
+        var BILINEAR_SAMPLINGMODE: Number
+        var LINEAR_LINEAR_MIPNEAREST: Number
+        var TRILINEAR_SAMPLINGMODE: Number
+        var LINEAR_LINEAR_MIPLINEAR: Number
+        var NEAREST_NEAREST_MIPNEAREST: Number
+        var NEAREST_LINEAR_MIPNEAREST: Number
+        var NEAREST_LINEAR_MIPLINEAR: Number
+        var NEAREST_LINEAR: Number
+        var NEAREST_NEAREST: Number
+        var LINEAR_NEAREST_MIPNEAREST: Number
+        var LINEAR_NEAREST_MIPLINEAR: Number
+        var LINEAR_LINEAR: Number
+        var LINEAR_NEAREST: Number
+        var EXPLICIT_MODE: Number
+        var SPHERICAL_MODE: Number
+        var PLANAR_MODE: Number
+        var CUBIC_MODE: Number
+        var PROJECTION_MODE: Number
+        var SKYBOX_MODE: Number
+        var INVCUBIC_MODE: Number
+        var EQUIRECTANGULAR_MODE: Number
+        var FIXED_EQUIRECTANGULAR_MODE: Number
+        var FIXED_EQUIRECTANGULAR_MIRRORED_MODE: Number
+        var CLAMP_ADDRESSMODE: Number
+        var WRAP_ADDRESSMODE: Number
+        var MIRROR_ADDRESSMODE: Number
         var UseSerializedUrlIfAny: Boolean
         fun Parse(parsedTexture: Any, scene: Scene, rootUrl: String): BaseTexture?
         fun CreateFromBase64String(data: String, name: String, scene: Scene, noMipmap: Boolean = definedExternally, invertY: Boolean = definedExternally, samplingMode: Number = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: (() -> Unit)? = definedExternally, format: Number = definedExternally): Texture
@@ -5263,15 +5267,17 @@ external open class PostProcessManager(scene: Scene) {
     open fun dispose()
 }
 
+
 external open class RenderTargetTexture : Texture {
     constructor(name: String, size: Number, scene: Scene?, generateMipMaps: Boolean, doNotChangeAspectRatio: Boolean, type: Number, isCube: Boolean, samplingMode: Number, generateDepthBuffer: Boolean, generateStencilBuffer: Boolean, isMulti: Boolean, format: Number, delayAllocation: Boolean)
     constructor(name: String, size: `T$6`, scene: Scene?, generateMipMaps: Boolean, doNotChangeAspectRatio: Boolean, type: Number, isCube: Boolean, samplingMode: Number, generateDepthBuffer: Boolean, generateStencilBuffer: Boolean, isMulti: Boolean, format: Number, delayAllocation: Boolean)
     constructor(name: String, size: `T$20`, scene: Scene?, generateMipMaps: Boolean, doNotChangeAspectRatio: Boolean, type: Number, isCube: Boolean, samplingMode: Number, generateDepthBuffer: Boolean, generateStencilBuffer: Boolean, isMulti: Boolean, format: Number, delayAllocation: Boolean)
-	override var isCube: Boolean
+    override var isCube: Boolean
     open var renderListPredicate: (AbstractMesh: AbstractMesh) -> Boolean
-//    private var _renderList: Any
+//     open var _renderList: Any
+    open var renderList: Array<AbstractMesh>?
     open var getCustomRenderList: (layerOrFace: Number, renderList: Immutable<Array<AbstractMesh>>?) -> Array<AbstractMesh>?
-//    private var _hookArray: Any
+//     open var _hookArray: Any
     open var renderParticles: Boolean
     open var renderSprites: Boolean
     override var coordinatesMode: Int
@@ -5279,39 +5285,44 @@ external open class RenderTargetTexture : Texture {
     open var customRenderFunction: (opaqueSubMeshes: SmartArray<SubMesh>, alphaTestSubMeshes: SmartArray<SubMesh>, transparentSubMeshes: SmartArray<SubMesh>, depthOnlySubMeshes: SmartArray<SubMesh>, beforeTransparents: () -> Unit) -> Unit
     open var useCameraPostProcesses: Boolean
     open var ignoreCameraViewport: Boolean
-//    private var _postProcessManager: Any
-//    private var _postProcesses: Any
-//    private var _resizeObserver: Any
+//     open var _postProcessManager: Any
+//     open var _postProcesses: Any
+//     open var _resizeObserver: Any
     open var onBeforeBindObservable: Observable<RenderTargetTexture>
     open var onAfterUnbindObservable: Observable<RenderTargetTexture>
-//    private var _onAfterUnbindObserver: Any
+//     open var _onAfterUnbindObserver: Any
     open var onBeforeRenderObservable: Observable<Number>
-//    private var _onBeforeRenderObserver: Any
+//     open var _onBeforeRenderObserver: Any
     open var onAfterRenderObservable: Observable<Number>
-//    private var _onAfterRenderObserver: Any
+//     open var _onAfterRenderObserver: Any
     open var onClearObservable: Observable<Engine>
-//    private var _onClearObserver: Any
+//     open var _onClearObserver: Any
     open var onResizeObservable: Observable<RenderTargetTexture>
     open var clearColor: Color4
-//    private var _size: dynamic /* Number | `T$6` */
-//    private var _initialSizeParameter: dynamic /* Number | `T$19` | `T$20` */
-//    private var _sizeRatio: Number?
-//    private var _generateMipMaps: Boolean
-//    private var _renderingManager: RenderingManager
-//    private var _waitingRenderList: Array<String>
-//    private var _doNotChangeAspectRatio: Boolean
-//    private var _currentRefreshId: Number
-//    private var _refreshRate: Number
-//    private var _textureMatrix: Matrix
-//    private var _samples: Number
-//    private var _renderTargetOptions: RenderTargetCreationOptions
-//    private var _engine: Engine
+//     open var _size: dynamic /* Number | `T$6` */
+//     open var _initialSizeParameter: dynamic /* Number | `T$19` | `T$20` */
+//     open var _sizeRatio: Number?
+//     open var _generateMipMaps: Boolean
+//     open var _renderingManager: RenderingManager
+//     open var _waitingRenderList: Array<String>
+//     open var _doNotChangeAspectRatio: Boolean
+//     open var _currentRefreshId: Number
+//     open var _refreshRate: Number
+//     open var _textureMatrix: Matrix
+//     open var _samples: Number
+//     open var _renderTargetOptions: RenderTargetCreationOptions
+    open val renderTargetOptions: RenderTargetCreationOptions
+//     open var _engine: Engine
 //    private fun _onRatioRescale()
     open var boundingBoxPosition: Vector3
-//    private var _boundingBoxSize: Any
+//     open var _boundingBoxSize: Any
+    open var boundingBoxSize: Vector3
+    open val depthStencilTexture: InternalTexture?
     open fun createDepthStencilTexture(comparisonFunction: Number = definedExternally, bilinearFiltering: Boolean = definedExternally, generateStencil: Boolean = definedExternally)
-//    private var _processSizeParameter: Any
+//     open var _processSizeParameter: Any
+    open var samples: Number
     open fun resetRefreshCounter()
+    open var refreshRate: Number
     open fun addPostProcess(postProcess: PostProcess)
     open fun clearPostProcesses(dispose: Boolean = definedExternally)
     open fun removePostProcess(postProcess: PostProcess)
@@ -5320,15 +5331,16 @@ external open class RenderTargetTexture : Texture {
     open fun getRenderWidth(): Number
     open fun getRenderHeight(): Number
     open fun getRenderLayers(): Number
+    override val canRescale: Boolean
     override fun scale(ratio: Number)
     override fun getReflectionTextureMatrix(): Matrix
     open fun resize(size: Number)
     open fun resize(size: `T$19`)
     open fun resize(size: `T$20`)
-//    private var _defaultRenderListPrepared: Any
+//     open var _defaultRenderListPrepared: Any
     open fun render(useCameraPostProcess: Boolean = definedExternally, dumpForDebug: Boolean = definedExternally)
-//    private var _bestReflectionRenderTargetDimension: Any
-//    private var _prepareRenderingManager: Any
+//     open var _bestReflectionRenderTargetDimension: Any
+//     open var _prepareRenderingManager: Any
 //    private fun _bindFrameBuffer(faceIndex: Number = definedExternally, layer: Number = definedExternally)
     open fun unbindFrameBuffer(engine: Engine, faceIndex: Number)
     open var renderToTarget: Any
@@ -12108,6 +12120,7 @@ external open class CubeMapToSphericalPolynomialTools {
 }
 
 external open class BaseTexture(scene: Scene?) : IAnimatable {
+    open var sphericalPolynomial: SphericalPolynomial?
     open var uniqueId: Number
     open var name: String
     open var metadata: Any
@@ -14877,18 +14890,21 @@ external open class HDRTools {
 }
 
 external open class HDRCubeTexture(url: String, scene: Scene, size: Number, noMipmap: Boolean = definedExternally, generateHarmonics: Boolean = definedExternally, gammaSpace: Boolean = definedExternally, reserved: Boolean = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally) : BaseTexture {
-//    private var _generateHarmonics: Any
-//    private var _noMipmap: Any
-//    private var _textureMatrix: Any
-//    private var _size: Any
-//    private var _onLoad: Any
-//    private var _onError: Any
+//     open var _generateHarmonics: Any
+//     open var _noMipmap: Any
+//     open var _textureMatrix: Any
+//     open var _size: Any
+//     open var _onLoad: Any
+//     open var _onError: Any
     open var url: String
     override var coordinatesMode: Int
-//    private var _isBlocking: Boolean
-//    private var _rotationY: Number
+//     open var _isBlocking: Boolean
+    override var isBlocking: Boolean
+//     open var _rotationY: Number
+    open var rotationY: Number
     open var boundingBoxPosition: Vector3
-//    private var _boundingBoxSize: Any
+//     open var _boundingBoxSize: Any
+    open var boundingBoxSize: Vector3
     override fun getClassName(): String
     open var loadTexture: Any
 	override fun clone(): HDRCubeTexture
@@ -14898,7 +14914,7 @@ external open class HDRCubeTexture(url: String, scene: Scene, size: Number, noMi
     override fun serialize(): Any
 
     companion object {
-        var _facesMapping: Any
+//         var _facesMapping: Any
         fun Parse(parsedTexture: Any, scene: Scene, rootUrl: String): HDRCubeTexture?
     }
 }
@@ -15375,9 +15391,9 @@ external open class PBRSpecularGlossinessMaterial(name: String, scene: Scene) : 
 }
 
 external open class ColorGradingTexture(url: String, scene: Scene) : BaseTexture {
-//    private var _textureMatrix: Any
+//     open var _textureMatrix: Any
     open var url: String
-//    private var _engine: Any
+//     open var _engine: Any
     override fun getTextureMatrix(): Matrix
     open var load3dlTexture: Any
     open var loadTexture: Any
@@ -15386,21 +15402,21 @@ external open class ColorGradingTexture(url: String, scene: Scene) : BaseTexture
     override fun serialize(): Any
 
     companion object {
-        var _noneEmptyLineRegex: Any
+//         var _noneEmptyLineRegex: Any
         fun Parse(parsedTexture: Any, scene: Scene): ColorGradingTexture?
     }
 }
 
 external open class EquiRectangularCubeTexture(url: String, scene: Scene, size: Number, noMipmap: Boolean = definedExternally, gammaSpace: Boolean = definedExternally, onLoad: (() -> Unit)? = definedExternally, onError: ((message: String, exception: Any) -> Unit)? = definedExternally) : BaseTexture {
-//    private var _noMipmap: Any
-//    private var _onLoad: Any
-//    private var _onError: Any
-//    private var _size: Any
-//    private var _buffer: Any
-//    private var _width: Any
-//    private var _height: Any
+//     open var _noMipmap: Any
+//     open var _onLoad: Any
+//     open var _onError: Any
+//     open var _size: Any
+//     open var _buffer: Any
+//     open var _width: Any
+//     open var _height: Any
     open var url: String
-	override var coordinatesMode: Int
+    override var coordinatesMode: Int
     open var loadImage: Any
     open var loadTexture: Any
     open var getFloat32ArrayFromArrayBuffer: Any
@@ -15408,7 +15424,7 @@ external open class EquiRectangularCubeTexture(url: String, scene: Scene, size: 
 	override fun clone(): EquiRectangularCubeTexture
 
     companion object {
-        var _FacesMapping: Any
+//         var _FacesMapping: Any
     }
 }
 
