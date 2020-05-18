@@ -1639,13 +1639,13 @@ external open class VertexBuffer {
     open fun create()
 
     companion object {
-        var BYTE: Number
-        var UNSIGNED_BYTE: Number
-        var SHORT: Number
-        var UNSIGNED_SHORT: Number
-        var INT: Number
-        var UNSIGNED_INT: Number
-        var FLOAT: Number
+        var BYTE: Int
+        var UNSIGNED_BYTE: Int
+        var SHORT: Int
+        var UNSIGNED_SHORT: Int
+        var INT: Int
+        var UNSIGNED_INT: Int
+        var FLOAT: Int
         var PositionKind: String
         var NormalKind: String
         var TangentKind: String
@@ -2914,7 +2914,7 @@ external open class BaseParticleSystem(name: String) {
     open var textureMask: Color4
     open var particleEmitterType: IParticleEmitterType?
 //    private var _isSubEmitter: Boolean
-    open var billboardMode: Number
+    open var billboardMode: Int
 //    private var _isBillboardBased: Boolean
 //    private var _scene: Scene
 //    private var _imageProcessingConfigurationDefines: ImageProcessingConfigurationDefines
@@ -3095,9 +3095,9 @@ external open class ParticleSystem(name: String, capacity: Number, scene: Scene,
     override fun serialize(): Any
 
     companion object {
-        var BILLBOARDMODE_Y: Number
-        var BILLBOARDMODE_ALL: Number
-        var BILLBOARDMODE_STRETCHED: Number
+        var BILLBOARDMODE_Y: Int
+        var BILLBOARDMODE_ALL: Int
+        var BILLBOARDMODE_STRETCHED: Int
         fun _GetAttributeNamesOrOptions(isAnimationSheetEnabled: Boolean = definedExternally, isBillboardBased: Boolean = definedExternally, useRampGradients: Boolean = definedExternally): Array<String>
         fun _GetEffectCreationOptions(isAnimationSheetEnabled: Boolean = definedExternally): Array<String>
         fun _Serialize(serializationObject: Any, particleSystem: IParticleSystem)
@@ -3360,7 +3360,7 @@ external interface IParticleSystem {
     var translationPivot: Vector2
     var noiseTexture: BaseTexture?
     var noiseStrength: Vector3
-    var billboardMode: Number
+    var billboardMode: Int
     var limitVelocityDamping: Number
     var beginAnimationOnStart: Boolean
     var beginAnimationFrom: Number
@@ -7530,7 +7530,7 @@ external open class SolidParticle(particleIndex: Number, particleId: Number, pos
 //    private var _rotationMatrix: Array<Number>
     open var parentId: Number?
     open var materialIndex: Number?
-    open var cullingStrategy: Number
+    open var cullingStrategy: Int
 //    private var _globalPosition: Vector3
     open fun copyToRef(target: SolidParticle): SolidParticle
     open fun intersectsMesh(target: Mesh): Boolean
@@ -17811,97 +17811,97 @@ open val _supportsHardwareTextureRescaling: Boolean
     open var loadingScreen: ILoadingScreen
 
     companion object {
-        var ALPHA_DISABLE: Number
-        var ALPHA_ADD: Number
-        var ALPHA_COMBINE: Number
-        var ALPHA_SUBTRACT: Number
-        var ALPHA_MULTIPLY: Number
-        var ALPHA_MAXIMIZED: Number
-        var ALPHA_ONEONE: Number
-        var ALPHA_PREMULTIPLIED: Number
-        var ALPHA_PREMULTIPLIED_PORTERDUFF: Number
-        var ALPHA_INTERPOLATE: Number
-        var ALPHA_SCREENMODE: Number
-        var DELAYLOADSTATE_NONE: Number
-        var DELAYLOADSTATE_LOADED: Number
-        var DELAYLOADSTATE_LOADING: Number
-        var DELAYLOADSTATE_NOTLOADED: Number
-        var NEVER: Number
-        var ALWAYS: Number
-        var LESS: Number
-        var EQUAL: Number
-        var LEQUAL: Number
-        var GREATER: Number
-        var GEQUAL: Number
-        var NOTEQUAL: Number
-        var KEEP: Number
-        var REPLACE: Number
-        var INCR: Number
-        var DECR: Number
-        var INVERT: Number
-        var INCR_WRAP: Number
-        var DECR_WRAP: Number
-        var TEXTURE_CLAMP_ADDRESSMODE: Number
-        var TEXTURE_WRAP_ADDRESSMODE: Number
-        var TEXTURE_MIRROR_ADDRESSMODE: Number
-        var TEXTUREFORMAT_ALPHA: Number
-        var TEXTUREFORMAT_LUMINANCE: Number
-        var TEXTUREFORMAT_LUMINANCE_ALPHA: Number
-        var TEXTUREFORMAT_RGB: Number
-        var TEXTUREFORMAT_RGBA: Number
-        var TEXTUREFORMAT_RED: Number
-        var TEXTUREFORMAT_R: Number
-        var TEXTUREFORMAT_RG: Number
-        var TEXTUREFORMAT_RED_INTEGER: Number
-        var TEXTUREFORMAT_R_INTEGER: Number
-        var TEXTUREFORMAT_RG_INTEGER: Number
-        var TEXTUREFORMAT_RGB_INTEGER: Number
-        var TEXTUREFORMAT_RGBA_INTEGER: Number
-        var TEXTURETYPE_UNSIGNED_BYTE: Number
-        var TEXTURETYPE_UNSIGNED_INT: Number
-        var TEXTURETYPE_FLOAT: Number
-        var TEXTURETYPE_HALF_FLOAT: Number
-        var TEXTURETYPE_BYTE: Number
-        var TEXTURETYPE_SHORT: Number
-        var TEXTURETYPE_UNSIGNED_SHORT: Number
-        var TEXTURETYPE_INT: Number
-        var TEXTURETYPE_UNSIGNED_INTEGER: Number
-        var TEXTURETYPE_UNSIGNED_SHORT_4_4_4_4: Number
-        var TEXTURETYPE_UNSIGNED_SHORT_5_5_5_1: Number
-        var TEXTURETYPE_UNSIGNED_SHORT_5_6_5: Number
-        var TEXTURETYPE_UNSIGNED_INT_2_10_10_10_REV: Number
-        var TEXTURETYPE_UNSIGNED_INT_24_8: Number
-        var TEXTURETYPE_UNSIGNED_INT_10F_11F_11F_REV: Number
-        var TEXTURETYPE_UNSIGNED_INT_5_9_9_9_REV: Number
-        var TEXTURETYPE_FLOAT_32_UNSIGNED_INT_24_8_REV: Number
-        var TEXTURE_NEAREST_SAMPLINGMODE: Number
-        var TEXTURE_BILINEAR_SAMPLINGMODE: Number
-        var TEXTURE_TRILINEAR_SAMPLINGMODE: Number
-        var TEXTURE_NEAREST_NEAREST_MIPLINEAR: Number
-        var TEXTURE_LINEAR_LINEAR_MIPNEAREST: Number
-        var TEXTURE_LINEAR_LINEAR_MIPLINEAR: Number
-        var TEXTURE_NEAREST_NEAREST_MIPNEAREST: Number
-        var TEXTURE_NEAREST_LINEAR_MIPNEAREST: Number
-        var TEXTURE_NEAREST_LINEAR_MIPLINEAR: Number
-        var TEXTURE_NEAREST_LINEAR: Number
-        var TEXTURE_NEAREST_NEAREST: Number
-        var TEXTURE_LINEAR_NEAREST_MIPNEAREST: Number
-        var TEXTURE_LINEAR_NEAREST_MIPLINEAR: Number
-        var TEXTURE_LINEAR_LINEAR: Number
-        var TEXTURE_LINEAR_NEAREST: Number
-        var TEXTURE_EXPLICIT_MODE: Number
-        var TEXTURE_SPHERICAL_MODE: Number
-        var TEXTURE_PLANAR_MODE: Number
-        var TEXTURE_CUBIC_MODE: Number
-        var TEXTURE_PROJECTION_MODE: Number
-        var TEXTURE_SKYBOX_MODE: Number
-        var TEXTURE_INVCUBIC_MODE: Number
-        var TEXTURE_EQUIRECTANGULAR_MODE: Number
-        var TEXTURE_FIXED_EQUIRECTANGULAR_MODE: Number
-        var TEXTURE_FIXED_EQUIRECTANGULAR_MIRRORED_MODE: Number
-        var SCALEMODE_FLOOR: Number
-        var SCALEMODE_NEAREST: Number
-        var SCALEMODE_CEILING: Number
+        var ALPHA_DISABLE: Int
+        var ALPHA_ADD: Int
+        var ALPHA_COMBINE: Int
+        var ALPHA_SUBTRACT: Int
+        var ALPHA_MULTIPLY: Int
+        var ALPHA_MAXIMIZED: Int
+        var ALPHA_ONEONE: Int
+        var ALPHA_PREMULTIPLIED: Int
+        var ALPHA_PREMULTIPLIED_PORTERDUFF: Int
+        var ALPHA_INTERPOLATE: Int
+        var ALPHA_SCREENMODE: Int
+        var DELAYLOADSTATE_NONE: Int
+        var DELAYLOADSTATE_LOADED: Int
+        var DELAYLOADSTATE_LOADING: Int
+        var DELAYLOADSTATE_NOTLOADED: Int
+        var NEVER: Int
+        var ALWAYS: Int
+        var LESS: Int
+        var EQUAL: Int
+        var LEQUAL: Int
+        var GREATER: Int
+        var GEQUAL: Int
+        var NOTEQUAL: Int
+        var KEEP: Int
+        var REPLACE: Int
+        var INCR: Int
+        var DECR: Int
+        var INVERT: Int
+        var INCR_WRAP: Int
+        var DECR_WRAP: Int
+        var TEXTURE_CLAMP_ADDRESSMODE: Int
+        var TEXTURE_WRAP_ADDRESSMODE: Int
+        var TEXTURE_MIRROR_ADDRESSMODE: Int
+        var TEXTUREFORMAT_ALPHA: Int
+        var TEXTUREFORMAT_LUMINANCE: Int
+        var TEXTUREFORMAT_LUMINANCE_ALPHA: Int
+        var TEXTUREFORMAT_RGB: Int
+        var TEXTUREFORMAT_RGBA: Int
+        var TEXTUREFORMAT_RED: Int
+        var TEXTUREFORMAT_R: Int
+        var TEXTUREFORMAT_RG: Int
+        var TEXTUREFORMAT_RED_INTEGER: Int
+        var TEXTUREFORMAT_R_INTEGER: Int
+        var TEXTUREFORMAT_RG_INTEGER: Int
+        var TEXTUREFORMAT_RGB_INTEGER: Int
+        var TEXTUREFORMAT_RGBA_INTEGER: Int
+        var TEXTURETYPE_UNSIGNED_BYTE: Int
+        var TEXTURETYPE_UNSIGNED_INT: Int
+        var TEXTURETYPE_FLOAT: Int
+        var TEXTURETYPE_HALF_FLOAT: Int
+        var TEXTURETYPE_BYTE: Int
+        var TEXTURETYPE_SHORT: Int
+        var TEXTURETYPE_UNSIGNED_SHORT: Int
+        var TEXTURETYPE_INT: Int
+        var TEXTURETYPE_UNSIGNED_INTEGER: Int
+        var TEXTURETYPE_UNSIGNED_SHORT_4_4_4_4: Int
+        var TEXTURETYPE_UNSIGNED_SHORT_5_5_5_1: Int
+        var TEXTURETYPE_UNSIGNED_SHORT_5_6_5: Int
+        var TEXTURETYPE_UNSIGNED_INT_2_10_10_10_REV: Int
+        var TEXTURETYPE_UNSIGNED_INT_24_8: Int
+        var TEXTURETYPE_UNSIGNED_INT_10F_11F_11F_REV: Int
+        var TEXTURETYPE_UNSIGNED_INT_5_9_9_9_REV: Int
+        var TEXTURETYPE_FLOAT_32_UNSIGNED_INT_24_8_REV: Int
+        var TEXTURE_NEAREST_SAMPLINGMODE: Int
+        var TEXTURE_BILINEAR_SAMPLINGMODE: Int
+        var TEXTURE_TRILINEAR_SAMPLINGMODE: Int
+        var TEXTURE_NEAREST_NEAREST_MIPLINEAR: Int
+        var TEXTURE_LINEAR_LINEAR_MIPNEAREST: Int
+        var TEXTURE_LINEAR_LINEAR_MIPLINEAR: Int
+        var TEXTURE_NEAREST_NEAREST_MIPNEAREST: Int
+        var TEXTURE_NEAREST_LINEAR_MIPNEAREST: Int
+        var TEXTURE_NEAREST_LINEAR_MIPLINEAR: Int
+        var TEXTURE_NEAREST_LINEAR: Int
+        var TEXTURE_NEAREST_NEAREST: Int
+        var TEXTURE_LINEAR_NEAREST_MIPNEAREST: Int
+        var TEXTURE_LINEAR_NEAREST_MIPLINEAR: Int
+        var TEXTURE_LINEAR_LINEAR: Int
+        var TEXTURE_LINEAR_NEAREST: Int
+        var TEXTURE_EXPLICIT_MODE: Int
+        var TEXTURE_SPHERICAL_MODE: Int
+        var TEXTURE_PLANAR_MODE: Int
+        var TEXTURE_CUBIC_MODE: Int
+        var TEXTURE_PROJECTION_MODE: Int
+        var TEXTURE_SKYBOX_MODE: Int
+        var TEXTURE_INVCUBIC_MODE: Int
+        var TEXTURE_EQUIRECTANGULAR_MODE: Int
+        var TEXTURE_FIXED_EQUIRECTANGULAR_MODE: Int
+        var TEXTURE_FIXED_EQUIRECTANGULAR_MIRRORED_MODE: Int
+        var SCALEMODE_FLOOR: Int
+        var SCALEMODE_NEAREST: Int
+        var SCALEMODE_CEILING: Int
         val NpmPackage: String
         val Version: String
         val Instances: Any
@@ -19574,7 +19574,7 @@ external open class AbstractMesh(name: String, scene: Scene? = definedExternally
     open var edgesRenderer: EdgesRenderer?
     open var instancedBuffers: Json
 //     open var _internalAbstractMeshDataInfo: _InternalAbstractMeshDataInfo
-    open var cullingStrategy: Number
+    open var cullingStrategy: Int
     open val facetNb: Number
     open var partitioningSubdivisions: Number
     open var partitioningBBoxRatio: Number
@@ -19740,10 +19740,10 @@ external open class AbstractMesh(name: String, scene: Scene? = definedExternally
         var OCCLUSION_TYPE_STRICT: Number
         var OCCLUSION_ALGORITHM_TYPE_ACCURATE: Number
         var OCCLUSION_ALGORITHM_TYPE_CONSERVATIVE: Number
-        var CULLINGSTRATEGY_STANDARD: Number
-        var CULLINGSTRATEGY_BOUNDINGSPHERE_ONLY: Number
-        var CULLINGSTRATEGY_OPTIMISTIC_INCLUSION: Number
-        var CULLINGSTRATEGY_OPTIMISTIC_INCLUSION_THEN_BSPHERE_ONLY: Number
+        var CULLINGSTRATEGY_STANDARD: Int
+        var CULLINGSTRATEGY_BOUNDINGSPHERE_ONLY: Int
+        var CULLINGSTRATEGY_OPTIMISTIC_INCLUSION: Int
+        var CULLINGSTRATEGY_OPTIMISTIC_INCLUSION_THEN_BSPHERE_ONLY: Int
         val BILLBOARDMODE_NONE: Number
         val BILLBOARDMODE_X: Number
         val BILLBOARDMODE_Y: Number
