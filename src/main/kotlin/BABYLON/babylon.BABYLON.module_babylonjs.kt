@@ -5637,7 +5637,7 @@ external open class Geometry(id: String, scene: Scene, vertexData: VertexData = 
     open fun setAllVerticesData(vertexData: VertexData, updatable: Boolean)
 
 	override fun isVerticesDataPresent(kind: String): Boolean
-	override fun getVerticesData(kind: String, copyWhenShared: Boolean, forceCopy: Boolean): Any /*  Array<Number> | Float32Array  */
+	override fun getVerticesData(kind: String, copyWhenShared: Boolean, forceCopy: Boolean): Any
 	override fun getIndices(copyWhenShared: Boolean, forceCopy: Boolean): Any /*  Array<Number> | Int32Array | Uint32Array | Uint16Array  */
 	override fun setVerticesData(kind: String, data: Array<Number>, updatable: Boolean, stride:Int)
 	override fun setVerticesData(kind: String, data: Float32Array, updatable: Boolean, stride:Int)
