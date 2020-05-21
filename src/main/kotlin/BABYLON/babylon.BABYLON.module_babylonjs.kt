@@ -8858,15 +8858,15 @@ external open class TargetedAnimation {
 
 external open class AnimationGroup(name: String, scene: Scene? = definedExternally) : IDisposable {
     open var name: String
-//    private var _scene: Any
-//    private var _targetedAnimations: Any
-//    private var _animatables: Any
-//    private var _from: Any
-//    private var _to: Any
-//    private var _isStarted: Any
-//    private var _isPaused: Any
-//    private var _speedRatio: Any
-//    private var _loopAnimation: Any
+//     open var _scene: Any
+//     open var _targetedAnimations: Any
+//     open var _animatables: Any
+//     open var _from: Any
+//     open var _to: Any
+//     open var _isStarted: Any
+//     open var _isPaused: Any
+//     open var _speedRatio: Any
+//     open var _loopAnimation: Any
     open var uniqueId: Number
     open var onAnimationEndObservable: Observable<TargetedAnimation>
     open var onAnimationLoopObservable: Observable<TargetedAnimation>
@@ -8874,11 +8874,19 @@ external open class AnimationGroup(name: String, scene: Scene? = definedExternal
     open var onAnimationGroupEndObservable: Observable<AnimationGroup>
     open var onAnimationGroupPauseObservable: Observable<AnimationGroup>
     open var onAnimationGroupPlayObservable: Observable<AnimationGroup>
+    open val from: Number
+    open val to: Number
+    open val isStarted: Boolean
+    open val isPlaying: Boolean
+    open var speedRatio: Number
+    open var loopAnimation: Boolean
+    open val targetedAnimations: Array<TargetedAnimation>
+    open val animatables: Array<Animatable>
     open fun addTargetedAnimation(animation: Animation, target: Any): TargetedAnimation
     open fun normalize(beginFrame: Number? = definedExternally, endFrame: Number? = definedExternally): AnimationGroup
-//    private var _animationLoopCount: Any
-//    private var _animationLoopFlags: Any
-//    private var _processLoop: Any
+//     open var _animationLoopCount: Any
+//     open var _animationLoopFlags: Any
+//     open var _processLoop: Any
     open fun start(loop: Boolean = definedExternally, speedRatio: Number = definedExternally, from: Number = definedExternally, to: Number = definedExternally): AnimationGroup
     open fun pause(): AnimationGroup
     open fun play(loop: Boolean = definedExternally): AnimationGroup
@@ -8889,7 +8897,7 @@ external open class AnimationGroup(name: String, scene: Scene? = definedExternal
     open fun syncAllAnimationsWith(root: Animatable): AnimationGroup
     open fun goToFrame(frame: Number): AnimationGroup
     override fun dispose()
-//    private var _checkAnimationGroupEnded: Any
+//     open var _checkAnimationGroupEnded: Any
     open fun clone(newName: String, targetConverter: (oldTarget: Any) -> Any = definedExternally): AnimationGroup
     open fun serialize(): Any
     open fun getClassName(): String
